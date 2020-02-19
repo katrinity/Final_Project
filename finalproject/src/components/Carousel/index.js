@@ -4,6 +4,7 @@ import moana2 from './moana2.jpg';
 import moana3 from './moana3.jpg';
 import AddInfo from '../AddInfo';
 import toy from './toy.jpeg';
+import Search from '../Search';
 
 class Carousel extends Component {
     constructor(props) {
@@ -20,6 +21,7 @@ class Carousel extends Component {
         return (
             <div className="row">
                 <div className="col-sm-6 searchResults">
+                    <Search />
                     <img id="drag1" src={toy} draggable="true" onDragStart={this.drag} />
                 </div>
                 <div className="col-sm-6">

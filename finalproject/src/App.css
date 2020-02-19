@@ -73,6 +73,9 @@ a{
 .catName{
   padding: 0 0 10px 0;
 }
-.searchResults{
-  padding: 75px;
+.search-button{
+  margin: 0 0 0 20px;
+}
+.text{
+  width: 375px;
 }
