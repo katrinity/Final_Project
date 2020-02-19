@@ -7,22 +7,43 @@ class Bucket extends Component {
 
         };
     }
+    drop = (ev) => {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+        
+      }
+    allowDrop = (ev) => {
+        ev.preventDefault();
+      }
     render() {
         return (
             <div className="bucket">
-                <a  href="/">My Bucket</a>
-                <div className="card">
-                    <div>
-                        <a href="comedy"> Comedy</a>
+                <div className="bucketH">My Bucket</div>
+                <div className="row">
+                    <div className="col-sm-3">
+                        <div id="div1" className="div1" onDrop={this.drop} onDragOver={this.allowDrop} className="card">
+                            <div contenteditable="true" className="catName">Comedy</div>
+                            <div > </div>
+                        </div>
                     </div>
-                    <div>
-                        <a href="action"> Action</a>
+                    <div className="col-sm-3">
+                        <div id="div2" className="div1" onDrop={this.drop} onDragOver={this.allowDrop} className="card">
+                            <div contenteditable="true" className="catName">Action</div>
+                            <div > </div>
+                        </div>
                     </div>
-                    <div>
-                        <a href="mustWatch"> Must Watch</a>
-                    </div>
-                    <div>
-                        <a href="timeWaste"> Time Waste</a>
+                    <div className="col-sm-3">
+                        <div id="div3" className="div1" onDrop={this.drop} onDragOver={this.allowDrop} className="card">
+                            <div contenteditable="true" className="catName">Must watch</div>
+                            <div > </div>
+                        </div>
+                    </div>   
+                    <div className="col-sm-3">
+                        <div id="div4" className="div1" onDrop={this.drop} onDragOver={this.allowDrop}  className="card">
+                            <div contenteditable="true" className="catName">Waste of time</div>
+                            <div > </div>
+                        </div>
                     </div>
                 </div>
             </div>
