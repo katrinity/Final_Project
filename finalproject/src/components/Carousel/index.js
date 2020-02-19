@@ -23,6 +23,7 @@ class Carousel extends Component {
                 <div className="col-sm-6 searchResults">
                     <Search />
                     <img id="drag1" src={toy} draggable="true" onDragStart={this.drag} />
+                    <h6>Drag the image and place it in desired section</h6>
                 </div>
                 <div className="col-sm-6">
                 <AddInfo />
