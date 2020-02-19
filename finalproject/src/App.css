@@ -79,3 +79,6 @@ a{
 .text{
   width: 375px;
 }
+.bucket1, .bucket2, .bucket3, .bucket4{
+  color: blue;
+}

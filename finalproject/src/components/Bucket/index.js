@@ -24,25 +24,25 @@ class Bucket extends Component {
                     <div className="col-sm-3">
                         <div id="div1" className="div1" onDrop={this.drop} onDragOver={this.allowDrop} className="card">
                             <div contenteditable="true" className="catName">Comedy</div>
-                            <div > </div>
+                            <a href="" className="bucket1"> More movies...</a>
                         </div>
                     </div>
                     <div className="col-sm-3">
                         <div id="div2" className="div1" onDrop={this.drop} onDragOver={this.allowDrop} className="card">
                             <div contenteditable="true" className="catName">Action</div>
-                            <div > </div>
+                            <a href="" className="bucket2"> More movies...</a>
                         </div>
                     </div>
                     <div className="col-sm-3">
                         <div id="div3" className="div1" onDrop={this.drop} onDragOver={this.allowDrop} className="card">
                             <div contenteditable="true" className="catName">Must watch</div>
-                            <div > </div>
+                            <a href="" className="bucket3"> More movies...</a>
                         </div>
                     </div>   
                     <div className="col-sm-3">
                         <div id="div4" className="div1" onDrop={this.drop} onDragOver={this.allowDrop}  className="card">
                             <div contenteditable="true" className="catName">Waste of time</div>
-                            <div > </div>
+                            <a href="" className="bucket4"> More movies...</a>
                         </div>
                     </div>
                 </div>
