@@ -19,7 +19,9 @@ class Bucket extends Component {
     render() {
         return (
             <div className="bucket">
-                <div className="bucketH">My Bucket</div>
+                <div className="bucketH"><h1>My Bucket
+                    <button type="submit" className="search-button btn btn-primary">Save</button></h1>
+                </div>
                 <div className="row">
                     <div className="col-sm-3">
                         <div id="div1" className="div1" onDrop={this.drop} onDragOver={this.allowDrop} className="card">
