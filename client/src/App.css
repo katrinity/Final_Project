@@ -233,4 +233,22 @@ a{
   text-align: center;
 }
 
+.login-form {
+	float: right;
+}
 
+
+#register-form, #signin-form, .g-signin2, #sign-out, #app-content, #registered-events{
+	margin-right: 20px;
+	padding-right: 10px;
+}
+
+.google{
+	float: right;
+	padding: 45px;
+	border-left: 1px solid lightgray;
+}
+
+.signinbtn {
+	margin-top: 13px;
+}

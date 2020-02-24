@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import $ from "jquery";
 
 class Nav extends Component {
     constructor(props) {
@@ -7,6 +8,55 @@ class Nav extends Component {
 
         };
     }
+
+     onSignIn = (googleUser) => {
+        // Useful data for your client-side scripts:
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        console.log('Full Name: ' + profile.getName());
+        console.log('Given Name: ' + profile.getGivenName());
+        console.log('Family Name: ' + profile.getFamilyName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+      
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+      
+      //registerUser function call with google email parameters.
+          this.registerUser(profile.getEmail(),"", "google");
+          console.log("profile "+JSON.stringify(profile));
+          console.log("google user has checked in");  
+      }
+    registerUser = (email, password, provider) => {
+        var user = {
+            email: email,
+            password: password,
+            provider: provider
+        };
+        // Send the PUT request.
+        $.ajax("/api/register", {
+            type: "POST",
+            data: user
+            }).then(   
+            function(res, err) {
+                $.noConflict();
+                if(res.id != ""){
+                    // $("#registerModal").modal('hide');
+                    window.$('#registerModal').modal('hide');
+                    // if(provider != "events") 
+                    //     authUser(email,"", provider);
+                }
+                
+            }
+        );
+    }
+
+    registerUserModal = () => {
+        var password = document.getElementById("psw").value;
+        var email = document.getElementById("email").value;
+        this.registerUser(email,password,"events");
+    }
+
     render() {
         return (
             <>
@@ -22,17 +72,17 @@ class Nav extends Component {
                     </ul>
                 </nav>
 
-                <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="loginModalLabel">Sign-in User</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                <div className="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+                    <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="loginModalLabel">Sign-in User</h5>
+                                <button type="button" className="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
                             </div>
-                            <div class="modal-body">
+                            <div className="modal-body text-left">
                                 <div>
-                                    <div class="google">
-                                        <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+                                    <div className="google">
+                                        <div className="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
                                     </div>
                                     <div>
                                         <label for="email"><b>Email</b>
@@ -45,30 +95,30 @@ class Nav extends Component {
                                         <div>
                                             <input type="password" placeholder="Enter Password" name="psw" id="signPsw" required />
                                         </div>
-                                        <button type="button" class="btn btn-primary signinbtn">Sign-in</button>
+                                        <button type="button" className="btn btn-primary signinbtn">Sign-in</button>
                                         <div id="invalidLogin"></div>
                                     </div>
 
                                 </div>
 
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="registerModalLabel">Register User</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <div className="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+                    <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="registerModalLabel">Register User</h5>
+                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body">
+                            <div className="modal-body text-left">
 
                                 <label for="email"><b>Email</b>
                                     <div id="valiEmail"></div>
@@ -89,9 +139,9 @@ class Nav extends Component {
                                     <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required />
                                 </div>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary registerbtn">Register</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <div className="modal-footer">
+                                <button id="registerbtn" type="button" onClick={this.registerUserModal} className="btn btn-primary registerbtn">Register</button>
+                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>

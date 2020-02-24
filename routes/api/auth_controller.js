@@ -3,45 +3,37 @@ var router = express.Router();
 var Crypto = require('crypto-js');
 
 // Import the model (auth.js) to use its database functions.
-var auth = require("../models/users.js");
-var cards = require("../models/cards.js");
+var auth = require("../../models/user.js");
 const usersController = require("../../controllers/usersController");
 
 
 // Create all our routes and set up logic within those routes where required.
 router.post("/api/auth/:email", function(req, res) {
-    var condition = "email = '" + req.params.email+"'"+ " and provider = '"+req.body.provider + "'";
-  auth.selectOne(condition,function(data) {
-    
-      if(data.length>0 && data[0].provider){
-        if(data[0].provider && data[0].provider == "events"){
-            var encryptedPassword = Crypto.SHA256(req.body.password).toString();
-            if( data[0].password == encryptedPassword){
+    var encryptedPassword = Crypto.SHA256(req.body.password).toString();
+    var condition = {
+        email: req.params.email, 
+        provider:  req.body.provider 
+    };
+
+    usersController.findAll(condition,function(result) {
+        if(result.length >= 0) {
+            if(result[0].provider && result[0].provider == "events") {
+                if (results[0].password == encryptedPassword) {
+                    req.session.userid = req.params.email;
+                    res.json({ result: "success"});
+                } else {
+                    res.json({result: "fail"});
+                }
+            } else {
                 req.session.userid = req.params.email;
-                res.json({ result:"success" });
-
-            }else{
-                
-                res.json({ result:"fail" });
+                res.json({result: "success"});
             }
-        }else{
-            req.session.userid = req.params.email;
-            
-            res.json({ result:"success" });
+            usersController.create(req,res);
+        } else {
+            res.json({result: "fail"});
         }
-    }else{
-        res.json({ result:"fail" });
-    }
-
-  });
-});
-
-router.post("/api/savecard", function(req, res) {
-    cards.insertOne(["cardnum","expiry","cvv","zipcode"], ["'" + req.body.cardnum + "'","'" + req.body.expiry 
-    + "'","'" + req.body.cvv + "'","'" + req.body.zipcode], function(result) {
-        // Send back the ID of the new quote
-        res.json({ id: result.insertId });
-      });
+    });
+    
 });
 
 router.post("/api/register", function(req, res) {
@@ -77,7 +69,6 @@ router.delete("/api/session", function(req,res) {
     req.session.destroy(function(err) {
         res.json({});
       });
-    
 });
 // Export routes for server.js to use.
 module.exports = router;
