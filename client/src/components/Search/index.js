@@ -14,7 +14,7 @@ class Search extends Component {
         className="search-input"
       >
         <input type="text" id="query" className="text" placeholder="Search for a Movie" />
-        <button type="submit" className="search-button bg-primary" onClick={()=>{this.props.cb(document.getElementById("query").value)}}>Search</button>
+        <button type="submit" className="search-button bg-primary text-light" onClick={()=>{this.props.cb(document.getElementById("query").value)}}>Search</button>
       </div>
     );
   }
