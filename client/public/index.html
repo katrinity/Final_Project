@@ -11,7 +11,7 @@
     />
     <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id"
-    content="515887323360-0cns1fkulrl4lf3v1asg8s03ashofsgp.apps.googleusercontent.com">
+    content="546502102285-qq6seq1qsltob40ret084hdh60pm41uk.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
@@ -52,5 +52,28 @@
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script>
+  function onSignIn(googleUser){
+        // Useful data for your client-side scripts:
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        console.log('Full Name: ' + profile.getName());
+        console.log('Given Name: ' + profile.getGivenName());
+        console.log('Family Name: ' + profile.getFamilyName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+      
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+      
+      //registerUser function call with google email parameters.
+          // this.registerUser(profile.getEmail(),"", "google");
+          if(window.navComponent != null) {
+            window.navComponent.registerUser(profile.getEmail(),"","google", window.navComponent);
+          }
+          console.log("profile "+JSON.stringify(profile));
+          console.log("google user has checked in");  
+      }
+  </script>
   </body>
 </html>

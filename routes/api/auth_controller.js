@@ -18,7 +18,7 @@ router.post("/api/auth/:email", function(req, res) {
     usersController.findAll(condition,function(result) {
         if(result.length >= 0) {
             if(result[0].provider && result[0].provider == "events") {
-                if (results[0].password == encryptedPassword) {
+                if (result[0].password == encryptedPassword) {
                     req.session.userid = req.params.email;
                     res.json({ result: "success"});
                 } else {
@@ -28,11 +28,10 @@ router.post("/api/auth/:email", function(req, res) {
                 req.session.userid = req.params.email;
                 res.json({result: "success"});
             }
-            usersController.create(req,res);
         } else {
             res.json({result: "fail"});
         }
-    });
+    }, function(err) { ;});
     
 });
 
