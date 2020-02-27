@@ -1,18 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 import Nav from './components/Nav';
-import Carousel from './components/Carousel';
+import Main from './pages/Main';
 import AddInfo from './components/AddInfo';
-import Bucket from './components/Bucket';
+
 
 function App() {
   return (
-    <div className="App">
+    <Router>
+    <div>
       <Nav />
-      <Carousel />
-      <Bucket />
+      <Switch>
+        <Route exact path="/" component={Landing} />
+        <Route exact path="/home" component={Main} />
+        {/* <Route exact path="/books/:id" component={Detail} /> */}
+        <Route component={NoMatch} />
+      </Switch>
     </div>
+    </Router>
   );
 }
 
