@@ -150,8 +150,7 @@ class Carousel extends Component {
                             </span>
                         </span>
                     </div>
-                </div>
-                    
+                </div>                    
 
                     <h6>Drag the image and drop it in desired category below</h6>
                     <h9>(Click on the image to get more information)</h9>

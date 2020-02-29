@@ -5,6 +5,7 @@ class Bucket extends Component {
     constructor(props) {
         super(props);
         this.state = {
+
             cat1: [
 
             ],
