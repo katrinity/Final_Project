@@ -9,8 +9,8 @@ class AddInfo extends Component {
     }
     render() {
         return (
-            <div className="info">
-                <a className="info" href="/">Additional Info</a>
+            <div>
+                <p className="info">{this.props.text}</p>
             </div>
         );
     }

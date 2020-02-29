@@ -1,18 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
+import {BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 import Nav from './components/Nav';
-import Carousel from './components/Carousel';
-import AddInfo from './components/AddInfo';
-import Bucket from './components/Bucket';
+import SearchPage from './components/Pages/Search';
+import SavedPage from './components/Pages/Saved';
 
 function App() {
   return (
-    <div className="App">
-      <Nav />
-      <Carousel />
-      <Bucket />
-    </div>
+    <Router>
+      <div className="App">
+        
+        <Switch>
+          <Route exact path="/" component={SearchPage} />
+          <Route exact path="/search" component={SearchPage} />
+          <Route exact path="/saved" component={SavedPage} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
