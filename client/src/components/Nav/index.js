@@ -13,6 +13,22 @@ class Nav extends Component {
     componentDidMount() {
         this.checkSession();
         window.navComponent = this;
+        $("#email").focusout((ev)=>{
+            var email = ev.target.value;
+            this.validateEmail($("#"+ev.target.id), email, "#valiEmail");
+        });
+        $("#signEmail").focusout((ev)=>{
+            var email = ev.target.value;
+            this.validateEmail($("#"+ev.target.id), email, "#valiSignEmail");
+        });
+        $("#psw").focusout((ev) => {  
+            var psw = ev.target.value;
+            this.validatePsw($("#"+ev.target.id), psw);
+        });
+        $("#psw-repeat").focusout((ev) => {  
+            var pswRepeat = ev.target.value;
+            this.checkPasswordMatch();
+        });
     }
 
     checkSession = () => {
@@ -138,6 +154,54 @@ class Nav extends Component {
     
         });
         ;
+    }
+
+    //--------------------- function to validate email--------------------------
+    validateEmail = (elem, email, name) => {
+    
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if(email == "" || !re.test(String(email).toLowerCase())){
+            elem.css("border-color", "red");
+            $(name).html("Please enter a valid email.");
+            $(name).css("color", "red");
+            return false;
+        }else{
+            elem.css("border-color", "white");
+            $(name).html("");
+            return true;
+        }
+    }
+
+//------------------------- function to validate password---------------------------
+    validatePsw = (elem, psw) => {
+        var re = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+        if(!re.test(psw)){
+            elem.css("border-color", "red");
+            $("#valiPsw").html("Please enter a valid password");
+            $("#valiPsw").css("color", "red");
+        }else{
+            elem.css("border-color", "white");
+            $("#valiPsw").html("");
+        }
+    
+    }
+
+//---------------------------function to check the password re-entry--------------
+    checkPasswordMatch = () => {
+        var password = $("#psw").val();
+        var confirmPassword = $("#psw-repeat").val();
+
+        if (password != confirmPassword){
+            $("#valiRepeatPsw").html("Passwords do not match!");
+            $("#valiRepeatPsw").css("color", "red");
+            $("#psw-repeat").css("border-color", "red");
+            return false;
+        }else{
+            $("#valiRepeatPsw").html("");
+            $("#psw-repeat").css("border-color", "white");
+            return true;
+        }
+    
     }
 
     render() {
