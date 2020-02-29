@@ -107,7 +107,7 @@ class Carousel extends Component {
                                 <div id="front" className="movie-card movie-card-front">
                                     <img onClick={this.flipCard} className="drag3" src={this.state.movie.poster} id="drag1" draggable="true"  alt="Click on the image to get more information"/>
                                 </div>
-                                <div id="back" onClick={this.flipCard} className="movie-card movie-card-back overflow-hidden">
+                                <div id="back" onClick={this.flipCard} className="movie-card movie-card-back ">
                                     <br></br>
                                     <div className="d-inline"><h3 className="d-inline">{this.state.movie.title} <h5 className="d-inline">({this.state.movie.year})</h5></h3></div>
                                     <br/>
