@@ -130,7 +130,7 @@ class Carousel extends Component {
                             </div>
                         </div>
                         <div className="form-group" id="formBackground">
-                            <textarea rows="5" cols="20" wrap="hard"type="field" id="inputField" placeholder="Tell us how you really feel.."/>
+                            <textarea rows="5" cols="20" wrap="hard"type="field" id="inputField" placeholder="Tell us how you really feel.." maxlength="150"/>
                         <div>
                         <span id="emojiBtn">
                             <span>

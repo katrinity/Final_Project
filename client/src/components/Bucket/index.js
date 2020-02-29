@@ -28,7 +28,10 @@ class Bucket extends Component {
             function(res) {
               if(res.id) {
                 myComp.saveCategory("cat1",res.id, myComp);
-                myComp.setState({"cat1": []});
+                myComp.saveCategory("cat2",res.id, myComp);
+                myComp.saveCategory("cat3",res.id, myComp);
+                myComp.saveCategory("cat4",res.id, myComp);
+                myComp.setState({"cat1": [], "cat2": [], "cat3": [], "cat4": []});
               } else {
                 alert('Please log in first');
               }
