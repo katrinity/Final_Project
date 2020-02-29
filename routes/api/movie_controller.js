@@ -50,6 +50,22 @@ router.get("/api/movies", function(req, res) {
     getMovies(req,res);
 });
 
+router.get("/api/:email/movies/:cat", function(req, res) {
+    var condition = {email: req.params.email};
+    usersController.findAll(condition,function(result) {
+        if(result.length > 0) {
+            req.body.userid = result[0]._id;
+            delete req.body.email;
+            condition = {category: req.params.cat, userid: req.body.userid};
+            moviesController.findAll(condition,function(result) {
+                res.json(result);
+            });
+        } else {
+            res.json({result: "failure"});
+        }
+    }, function(err) {console.log(err)});
+});
+
 function getMovies(req,res1) {
         var movieTrailers = [];
         //Get movie list from rottentomatoes

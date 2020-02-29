@@ -4,12 +4,15 @@ import '../../../App.css';
 import Nav from '../../../components/Nav';
 import Carousel from '../../../components/Carousel';
 import Bucket from '../../../components/Bucket';
+import axios from "axios";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class SavedPage extends Component {
 
     constructor(props) {
       super(props);
       this.state = {
+          movies: [],
         menus: [
             {
                 id: "cat1",
@@ -30,27 +33,49 @@ class SavedPage extends Component {
         ]
       };
     }
+    componentDidMount(){
+        this.getCategoryMovies("cat1","123@yahoo.com");
+    }
+    getCategoryMovies = (category, email) =>{
+        var mythis = this;
+        axios({ method: "get", url: "/api/"+ email + "/movies/" + category }).then(function(result){
+            console.log(result);
+            mythis.setState({movies: result.data});
+
+    });
+
+    }
   render() {
     return (
         <>
             <Nav menus={this.state.menus}/>
-            <div className="card1 text-center">
-                
-                <div className=" card2 card mb-3 d-inline-block">
-                    <div className="row no-gutters">
-                        <div className="col-md-4">
-                            <img src="https://m.media-amazon.com/images/M/MV5BMTYzMDM4NzkxOV5BMl5BanBnXkFtZTgwNzM1Mzg2NzM@._V1_SX300.jpg" className="saved-card" alt="..."/>
-                        </div>
-                        <div className="col-md-8">
-                            <div className="card-body">
-                                <h5 className="card-title">Card title</h5>
-                                <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <p className="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            </div>
-                        </div>
-                    </div>
+            
+                <div className="row">
+                {
+                    this.state.movies.map( (value, index)=>{
+                        return <div className=" col-md-3 col-sm-12 d-inline-block">
+                                    <div className="movie">
+                                        <img className="saved-img" src= {value.poster} />
+                                        <ul className="social">
+                                            <li><a href="#"><i className="fa fa-facebook"></i></a></li>
+                                            <li><a href="#"><i className="fa fa-twitter"></i></a></li>
+                                            {/* <li><a href="#"><i className="fa fa-google"></i></a></li>
+                                            <li><a href="#"><i className="fa fa-whatsapp"></i></a></li> */}
+                                        </ul>
+                                        <div className="movie-review">
+                                            <h5 className="title">{value.title}</h5>
+                                            <p className="text">{value.comments}</p>
+                                            <p className="text"><small ><img className="dbimage" src={value.emojiUrl} />{value.emojiText}</small></p>
+                                            
+                                        </div>   
+                              
+                                    </div>
+                                </div>
+                    })
+                    
+                }
                 </div>
-            </div>
+            
       </>
     );
   }

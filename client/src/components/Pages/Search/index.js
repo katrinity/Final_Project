@@ -4,6 +4,8 @@ import '../../../App.css';
 import Nav from '../../../components/Nav';
 import Carousel from '../../../components/Carousel';
 import Bucket from '../../../components/Bucket';
+import Sidebar from '../../../components/Sidebar';
+
 
 class SearchPage extends Component {
 
@@ -19,6 +21,7 @@ class SearchPage extends Component {
     return (
       <>
           <Nav menus={this.state.menus}/>
+          {/* <Sidebar /> */}
           <Carousel />
           <Bucket />
       </>
