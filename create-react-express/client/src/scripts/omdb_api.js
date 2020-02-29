@@ -12,4 +12,5 @@ export default {
     searchByName: function(query){
         return axios.get(queryURL2+query+apiKEY);
     }
+
 }
