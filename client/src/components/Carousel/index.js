@@ -20,7 +20,11 @@ class Carousel extends Component {
                 genre: "Animation",
                 plot: "When a new toy called \"Forky\" joins Woody and the gang, a road trip alongside old and new friends reveals how big the world can be for a toy.",
                 poster: "https://m.media-amazon.com/images/M/MV5BMTYzMDM4NzkxOV5BMl5BanBnXkFtZTgwNzM1Mzg2NzM@._V1_SX300.jpg"
-            }
+            },
+            
+            movieTrailers: [
+                
+            ]
         };
     }
 
@@ -38,8 +42,24 @@ class Carousel extends Component {
                 
         }
     }
-
+    addEmoji = (url, text)=>{
+        var emojiDiv = $("<span id='emoji1' class='emoji'>");
+        $("#showEmoji").empty();
+      $("#showEmoji").append(emojiDiv);          
+          var emojiImage = $('<img id="emojiImage">')
+              .attr("class", 'emoji_images')
+              .attr("src", url);
+              
+          $(emojiDiv).append(emojiImage);
+          $(emojiDiv).append(text);
+    
+    }
     searchMovie = (movieTitle) => {
+        if($("#emoji1") != null) {
+            $("#emoji1").remove();
+        }
+        $("#showEmoji").empty();
+        $("#inputField").val("");
         axios.get(
             "https://www.omdbapi.com/?t=" + movieTitle + "&apikey=trilogy"
           ).then( (response) => {
@@ -62,53 +82,75 @@ class Carousel extends Component {
             }
           });
     }
+    componentDidMount() {
+        var compThis = this;
+        $.ajax({METHOD: "GET", url: "/api/movies"}).done(function (res3, status) {
+            console.log(res3.result);
+            
+            compThis.setState({movieTrailers: res3.result});
+            
+        });
+    }
+        
     render() {
         return (
             <div className="row">
                 <div className="col-sm-6 searchResults">
                     <Search cb={this.searchMovie}/>
-                    <div id="showEmoji"></div>
-                    <div className="movie-outer">
-                        <div id="movie" className="movie-card-container" onDragStart={this.drag}>
-                            <div id="front" className="movie-card movie-card-front">
-                                <img onClick={this.flipCard} className="drag3" src={this.state.movie.poster} id="drag1" draggable="true"  alt="Click on the image to get more information"/>
-                            </div>
-                            <div id="back" onClick={this.flipCard} className="movie-card movie-card-back overflow-hidden">
-                                <br></br>
-                                <div className="d-inline"><h3 className="d-inline">{this.state.movie.title} <h5 className="d-inline">({this.state.movie.year})</h5></h3></div>
-                                <br/>
+                    <div id="showEmoji">
+                        <div className="text-muted pt-1 d-inline">Click an emoji below to rate this movie!</div> 
+                    </div>
+                        <div>
+                        </div>               
+                        <div className="movie-outer">
+                            <div id="movie" className="movie-card-container" onDragStart={this.drag}>
+                                <div id="front" className="movie-card movie-card-front">
+                                    <img onClick={this.flipCard} className="drag3" src={this.state.movie.poster} id="drag1" draggable="true"  alt="Click on the image to get more information"/>
+                                </div>
+                                <div id="back" onClick={this.flipCard} className="movie-card movie-card-back overflow-hidden">
+                                    <br></br>
+                                    <div className="d-inline"><h3 className="d-inline">{this.state.movie.title} <h5 className="d-inline">({this.state.movie.year})</h5></h3></div>
+                                    <br/>
 
-                                <div className="d-inline text-muted">{this.state.movie.rated} | </div>
-                                <div className="d-inline text-muted"> {this.state.movie.runtime} | </div>
-                                <div className="d-inline text-muted"> {this.state.movie.genre}</div>
-                                <br/>
-                                <br/>
-                                <div className="text-justify"> {this.state.movie.plot}</div>
+                                    <div className="d-inline text-muted">{this.state.movie.rated} | </div>
+                                    <div className="d-inline text-muted"> {this.state.movie.runtime} | </div>
+                                    <div className="d-inline text-muted"> {this.state.movie.genre}</div>
+
+                                    <div id="genre" className="d-none ">{this.state.movie.genre}</div>
+                                    <div id="runtime" className="d-none ">{this.state.movie.runtime}</div>
+                                    <div id="rated" className="d-none ">{this.state.movie.rated}</div>
+                                    <div id="title" className="d-none ">{this.state.movie.title}</div>
+                                    <div id="plot" className="d-none ">{this.state.movie.plot}</div>
+                                    <div id="year" className="d-none ">{this.state.movie.year}</div>
+                                    <div id="poster" className="d-none ">{this.state.movie.poster}</div>
+                                    <br/>
+                                    <br/>
+                                    <div className="text-justify p-3"> {this.state.movie.plot}</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="form-group" id="formBackground">
-                        <textarea rows="5" cols="20" wrap="hard"type="field" id="inputField" placeholder="Tell us how you really feel.."/>
+                        <div className="form-group" id="formBackground">
+                            <textarea rows="5" cols="20" wrap="hard"type="field" id="inputField" placeholder="Tell us how you really feel.."/>
                         <div>
                         <span id="emojiBtn">
                             <span>
-                                <img className='emoji_images' src='https://media1.giphy.com/media/cNEkiz27tOidqUBuoR/giphy.gif?cid=5bb8f59ca32da18d5db7e3eec65bfc6485b1322c7076fe51&rid=giphy.gif'/>
+                                <span><img className='emoji_images' onClick={() => {this.addEmoji('https://media1.giphy.com/media/cNEkiz27tOidqUBuoR/giphy.gif?cid=5bb8f59ca32da18d5db7e3eec65bfc6485b1322c7076fe51&rid=giphy.gif', "Love it!")}} src='https://media1.giphy.com/media/cNEkiz27tOidqUBuoR/giphy.gif?cid=5bb8f59ca32da18d5db7e3eec65bfc6485b1322c7076fe51&rid=giphy.gif'/></span>
                             </span>
                             <span>
-                                <img className='emoji_images' src='https://media1.giphy.com/media/2fIbmaiOnI3VlQFZEq/giphy.gif?cid=5bb8f59c42e8574e14297affade56521b2c2e09a17c571e5&rid=giphy.gif'/>
+                                <img className='emoji_images' onClick={() => {this.addEmoji('https://media1.giphy.com/media/2fIbmaiOnI3VlQFZEq/giphy.gif?cid=5bb8f59c42e8574e14297affade56521b2c2e09a17c571e5&rid=giphy.gif', "Very Funny!")}} src='https://media1.giphy.com/media/2fIbmaiOnI3VlQFZEq/giphy.gif?cid=5bb8f59c42e8574e14297affade56521b2c2e09a17c571e5&rid=giphy.gif'/>
                             </span>
                             <span>
-                                <img className='emoji_images' src='https://media1.giphy.com/media/yN4RUYrRRrKVRoGqQm/giphy.gif?cid=5bb8f59c088fc0f7e47356326fca34b85ba4fa89269ee73f&rid=giphy.gif'/>
+                                <img className='emoji_images' onClick={() => {this.addEmoji('https://media1.giphy.com/media/yN4RUYrRRrKVRoGqQm/giphy.gif?cid=5bb8f59c088fc0f7e47356326fca34b85ba4fa89269ee73f&rid=giphy.gif', "Hate i!")}} src='https://media1.giphy.com/media/yN4RUYrRRrKVRoGqQm/giphy.gif?cid=5bb8f59c088fc0f7e47356326fca34b85ba4fa89269ee73f&rid=giphy.gif'/>
                             </span>
                             <span>
-                                <img className='emoji_images' src='https://media0.giphy.com/media/TgGWZwWlsODxFPA21A/giphy.gif?cid=5bb8f59c6a8b5177645135e80c211200296a599b35fc109c&rid=giphy.gif'/>
+                                <img className='emoji_images' onClick={() => {this.addEmoji('https://media0.giphy.com/media/TgGWZwWlsODxFPA21A/giphy.gif?cid=5bb8f59c6a8b5177645135e80c211200296a599b35fc109c&rid=giphy.gif', "Great movie!" )}} src='https://media0.giphy.com/media/TgGWZwWlsODxFPA21A/giphy.gif?cid=5bb8f59c6a8b5177645135e80c211200296a599b35fc109c&rid=giphy.gif'/>
                             </span>
                             <span>
-                                <img className='emoji_images' src='https://media1.giphy.com/media/3OsFzorSZSUZcvo6UC/giphy.gif?cid=5bb8f59ce67e551ac6b809f9280b8411078bfa3057e7b31a&rid=giphy.gif'/>
+                                <img className='emoji_images' onClick={() => {this.addEmoji('https://media1.giphy.com/media/3OsFzorSZSUZcvo6UC/giphy.gif?cid=5bb8f59ce67e551ac6b809f9280b8411078bfa3057e7b31a&rid=giphy.gif', "Very Entertaining!" )}} src='https://media1.giphy.com/media/3OsFzorSZSUZcvo6UC/giphy.gif?cid=5bb8f59ce67e551ac6b809f9280b8411078bfa3057e7b31a&rid=giphy.gif'/>
                             </span>
                         </span>
-                        </div>
                     </div>
+                </div>
                     
 
                     <h6>Drag the image and drop it in desired category below</h6>
@@ -116,35 +158,35 @@ class Carousel extends Component {
 
                 </div>
                 <div className="col-sm-6">
-                    <AddInfo />
+                    <AddInfo text="Checkout latest trailers!"/>
                     <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
-                        <ol className="carousel-indicators">
-                            <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                        </ol>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                        </ol> 
                         <div className="carousel-inner">
-                            <div className="carousel-item active">
-                                <img src={moana1} className="d-block w-100" alt="..." /> 
-                            </div>
-                            <div className="carousel-item">
-                                <img src={moana2} className="d-block w-100" alt="..." />
-                            </div>
-                            <div className="carousel-item">
-                                <img src={moana3} className="d-block w-100" alt="..." />
-                            </div>
+                        {
+                            this.state.movieTrailers.map((value, index) => {
+                                var active = "carousel-item";
+                                var url = "https://www.youtube.com/embed/"+value.youtubeId+"?rel=0";
+                                if(index == 0) {
+                                    active = "carousel-item active";
+                                }
+                                return <div className={active}>
+                                        <iframe width="420" height="315" className="d-block w-100" src={url} frameborder="0"></iframe>
+                                        </div>
+                            })
+                        }
                         </div>
-                        <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span className="sr-only">Previous</span>
-                        </a>
-                        <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                            <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span className="sr-only">Next</span>
-                        </a>
+                        
+                        
+                        
                     </div>
                         
-                    <AddInfo />
+                    {/* <AddInfo text="Additional Information"/> */}
                 </div>
             </div>
         );

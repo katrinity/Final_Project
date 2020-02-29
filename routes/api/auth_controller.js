@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var Crypto = require('crypto-js');
 
+
 // Import the model (auth.js) to use its database functions.
 var auth = require("../../models/user.js");
 const usersController = require("../../controllers/usersController");

@@ -24,11 +24,15 @@ app.use(express.json());
 // Import routes and give the server access to them.
 var routes = require("./routes/api/auth_controller.js");
 app.use(routes);
+var routes1 = require("./routes/api/movie_controller.js");
+app.use(routes1);
+
+
 
 // Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
+// if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
-  }
+//   }
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/movies");

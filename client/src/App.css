@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-image: linear-gradient(to right, rgb(244, 131, 131) ,rgb(143, 212, 235),rgb(164, 230, 164),rgb(240, 205, 140), rgb(244, 244, 149));
 }
 
 .App-logo {
@@ -37,7 +38,7 @@
   }
 }
 
-.carousel-inner, #myCarousel, img{
+ #myCarousel, img{
   width: 800px;
   height: 300px;
   
@@ -48,16 +49,16 @@ a{
   
 }
 .info{
-  background-color: lightgray;
-  color: black;
-  margin: 10px 10px 10px 0;
+  background-image: linear-gradient(to right, rgb(244, 131, 131) ,rgb(143, 212, 235),rgb(164, 230, 164),rgb(240, 205, 140), rgb(244, 244, 149));
+  color: rgb(5, 106, 33);
+  font-weight: bolder;
+  margin: 60px 10px 10px 0;
   width: 800px;
   height: 50px;
   padding-top: 10px;
 }
 .card{
-  background-color: lightgray;
-  height: 250px;
+  height: 500px;
   font-weight: bolder;
   margin: 20px 10px 0 10px;
 }
@@ -67,8 +68,8 @@ a{
 }
 #drag1{
   background-color: lightgray;
-  width: 300px;
-  height: 200px;
+  width: 500px;
+  height: 300px;
 }
 .catName{
   padding: 0 0 10px 0;
@@ -96,8 +97,8 @@ a{
 }
 .movie-card {
   background-color: lightgray;
-  width: 300px;
-  height: 200px;
+  width: 500px;
+  height: 300px;
   margin: 0 auto;
   backface-visibility: hidden;
   position: absolute;
@@ -116,26 +117,18 @@ a{
 }
 .movie-card-container {
   background-color: lightgray;
-  width: 300px;
-  height: 200px;
+  width: 500px;
+  height: 300px;
   display: inline-block;
 }
 
 .movie-outer {
   background-color: lightgray;
-  width: 300px;
-  height: 200px;
+  width: 500px;
+  height: 300px;
   display: inline-block;
   cursor: grab;
 }
-
-/* .category:hover {
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-    transform: scale(1.05);
-    transition: 0.1s;
-
-} */
-
 .searchResults {
   text-align: center;
 }
@@ -165,11 +158,112 @@ a{
   width: 50px;
   margin:3.5px;
   cursor: grab;
+  border-radius: 30px;
 
 }
 #inputField{
-  width: 300px;
+  width: 500px;
   height: 50px;
   
 }
+#showEmoji {
+  width: 500px;
+  height: 50px;
+  display: inline-block;
+  border-top: 1px;
+  border: solid;
+  border-color: lightgray;
+}
 
+.emoji {
+  margin: 10px;
+}
+
+.catImage {
+  height: 200px;
+  width: 30px;
+}
+
+.grow {
+  transition: all 0.1s ease-in-out;
+}
+
+.grow:hover {
+  transform: scale(1.05);
+}
+
+.grow1 {
+  transform: scale(1.05);
+}
+
+.getMovieImage{
+  width: 30px;
+  height: 30px;
+}
+#div1{
+  color: rgb(11, 11, 240);
+}
+.comedy{
+  background: rgb(207, 208, 235);
+}
+#div2{
+  color: rgb(238, 65, 12);
+}
+.action{
+  background: rgb(242, 194, 194);
+}
+#div3{
+  color: rgb(5, 106, 33);
+}
+.must{
+  background: rgb(220, 240, 188);
+}
+#div4{
+  color: rgb(238, 65, 12);
+}
+.waste{
+  background: rgb(242, 194, 194);
+}
+
+.bucket-image {
+  height: 280px;
+  width: 250px;
+  display: inline-block;
+}
+.bucket-image-container{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 5px;
+}
+
+.bucket-comments {
+  font-weight: normal;
+  text-align: left;
+  justify-content: center;
+  display: flex;
+  padding: 30px;
+}
+.nav-cat {
+  justify-content: center;
+  margin-left: 20%;
+}
+.nav-cat-item {
+  justify-content: center;
+  margin-left: 15px;
+}
+
+.card1 {
+  width: 100%;
+}
+
+.saved-card {
+  width: auto;
+  height: auto;
+}
+
+.card2 {
+  width: 60%;
+  height: 400px;
+}
