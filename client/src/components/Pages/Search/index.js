@@ -17,10 +17,15 @@ class SearchPage extends Component {
         ]
       };
     }
+
+    refreshComponent = () => {
+        this.forceUpdate();
+    }
+
   render() {
     return (
       <>
-          <Nav menus={this.state.menus}/>
+          <Nav cb={this.refreshComponent} menus={this.state.menus}/>
           {/* <Sidebar /> */}
           <Carousel />
           <Bucket />

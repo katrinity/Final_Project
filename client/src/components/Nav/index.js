@@ -103,6 +103,7 @@ class Nav extends Component {
     }
 
     authUser = (email, password, provider, navThis) => {
+        var myThis = this;
         var password = {
             password: password,
             provider: provider
@@ -124,6 +125,7 @@ class Nav extends Component {
                     $(elem).html("Please enter a valid email or password.");
                     $(elem).css("color", "red");
                 }
+                myThis.props.cb();
             }
         );
     }
@@ -143,6 +145,7 @@ class Nav extends Component {
           
                 // this.state.sessionId = "";
                 navThis.checkSession();
+                navThis.props.cb();
         
             }
         );

@@ -5,6 +5,8 @@ import Nav from '../../../components/Nav';
 import Carousel from '../../../components/Carousel';
 import Bucket from '../../../components/Bucket';
 import axios from "axios";
+import $ from "jquery";
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class SavedPage extends Component {
@@ -34,7 +36,22 @@ class SavedPage extends Component {
       };
     }
     componentDidMount(){
-        this.getCategoryMovies("cat1","123@yahoo.com");
+        this.getMovies(); 
+    }
+
+    getMovies = () => {
+        var myThis = this;
+        $.ajax("/api/session", {
+            type: "GET"
+          }).then(
+            function(res) {
+              if(res.id) {
+                myThis.getCategoryMovies("cat1",res.id);
+              } else {
+                myThis.setState({movies: []});
+              }
+            }
+          );
     }
     getCategoryMovies = (category, email) =>{
         var mythis = this;
@@ -42,19 +59,24 @@ class SavedPage extends Component {
             console.log(result);
             mythis.setState({movies: result.data});
 
-    });
+        });
 
     }
+    refreshComponent = () => {
+        this.getMovies();
+    }
+
   render() {
     return (
         <>
-            <Nav menus={this.state.menus}/>
+            <Nav cb={this.refreshComponent} menus={this.state.menus}/>
             
                 <div className="row">
                 {
                     this.state.movies.map( (value, index)=>{
                         return <div className=" col-md-3 col-sm-12 d-inline-block">
                                     <div className="movie">
+                                        <div className="delete-button">X</div>
                                         <img className="saved-img" src= {value.poster} />
                                         <ul className="social">
                                             <li><a href="#"><i className="fa fa-facebook"></i></a></li>
@@ -65,7 +87,7 @@ class SavedPage extends Component {
                                         <div className="movie-review">
                                             <h5 className="title">{value.title}</h5>
                                             <p className="text">{value.comments}</p>
-                                            <p className="text"><small ><img className="dbimage" src={value.emojiUrl} />{value.emojiText}</small></p>
+                                            <p className="text1"><small ><img className="dbimage" src={value.emojiUrl} />{value.emojiText}</small></p>
                                             
                                         </div>   
                               

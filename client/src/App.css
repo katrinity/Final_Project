@@ -84,7 +84,10 @@ a{
 
 .text{
   width: 300px;
-  margin: 0 0 0 15%;
+  margin: 0 0 0 1%;
+  padding: 0 3% 3% 3%;
+  text-align: justify;
+  
 }
 .bucket1, .bucket2, .bucket3, .bucket4{
   color: blue;
@@ -217,7 +220,6 @@ a{
   width: 100%;
   padding-top: 1%;
 }
-
 .bucket-comments {
   font-weight: normal;
   text-align: left;
@@ -228,21 +230,19 @@ a{
 .nav-cat {
   justify-content: center;
   margin-left: 20%;
+  width: 600px;
 }
 .nav-cat-item {
   justify-content: center;
   margin-left: 4%;
 }
-
 .card1 {
   width: 100%;
 }
-
 .saved-card {
   width: auto;
   height: auto;
 }
-
 .card2 {
   width: 60%;
   height: 400px;
@@ -268,7 +268,7 @@ a{
   left: 15%;
   margin-left: 5%;
 }
-.movie:hover:after{
+.movie:hover1:after{
   opacity: 1;
   top: 0;
 }
@@ -298,11 +298,11 @@ a{
   display: inline-block;
 }
 .movie .social li a i{
-  width: 35px;
-  height: 35px;
-  line-height: 35px;
+  width: 150%;
+  height: 300%;
+  line-height: 250%;
   color: #fff;
-  margin: 0 5px;
+  margin: 0 15%;
   background-color: #0b579f;
   border-radius: 50%;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
@@ -315,20 +315,20 @@ color: #fff;
 transform: scale(1.5);
 }
 .movie .movie-review{
-  width: 335px;
+  width: 78%;
   background-color: #fff;
   position: absolute;
   bottom: 0;
-  left: 9%;
+  left: 11%;
   z-index: 1;
-  height: 200px;
+  height: 45%;
 }
 .movie:hover .movie-review{
   background-color: #f9f9f9;
 }
 .movie .movie-review:before{
 content: "";
-border-right: 335px solid #fff;
+border-right: 330px solid #fff;
 border-top: 40px solid transparent;
 position: absolute;
 top: -40px;
@@ -341,9 +341,20 @@ left: 0;
 content: "";
 height: 50%;
 position: absolute;
-top: 50%;
+top: 20%;
 left: 0;
 background-color: #0b579f;
 transform:translateY(-50%);
+}
+.delete-button {
+  position: absolute;
+  font-weight: bolder;
+  margin: 2% 0 0 70%;
+  color: gold;
+  border: 1px solid;
+  border-color: gold ;
+  border-radius: 75px;
+  width: 10%;
+  background-color: black;
 }
 
