@@ -53,6 +53,8 @@ class Bucket extends Component {
                 comments: myComp.state[category][i].comments,
                 title: myComp.state[category][i].title,
                 plot: myComp.state[category][i].plot,
+                rating: myComp.state[category][i].rating,
+                ratingrt: myComp.state[category][i].ratingrt
               }).then(
                 function(res) {
                   console.log(res);
@@ -83,6 +85,8 @@ class Bucket extends Component {
                     year: $("#year").text(),
                     plot: $("#plot").text(),
                     rated: $("#rated").text(),
+                    rating: $("#rating").text(),
+                    ratingrt: $("#ratingrt").text(),
                     comments: comments});
         this.setState({[category]: movies});
     }

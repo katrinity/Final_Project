@@ -97,16 +97,27 @@ class SavedPage extends Component {
                                     <div className="movie">
                                         <div onClick={() => {this.deleteMovie(value._id)}} className="delete-button">X</div>
                                         <img className="saved-img" src= {value.poster} />
-                                        <ul className="social">
+                                        {/* <ul className="social">
                                             <li><a href="#"><i className="fa fa-facebook"></i></a></li>
                                             <li><a href="#"><i className="fa fa-twitter"></i></a></li>
-                                            {/* <li><a href="#"><i className="fa fa-google"></i></a></li>
-                                            <li><a href="#"><i className="fa fa-whatsapp"></i></a></li> */}
-                                        </ul>
+                                            <li><a href="#"><i className="fa fa-google"></i></a></li>
+                                            <li><a href="#"><i className="fa fa-whatsapp"></i></a></li>
+                                        </ul> */}
                                         <div className="movie-review">
                                             <h5 className="title">{value.title}</h5>
-                                            <p className="text">{value.comments}</p>
-                                            <p className="text1"><small ><img className="dbimage" src={value.emojiUrl} />{value.emojiText}</small></p>
+                                            <div className="d-inline text-muted text-small">{value.rated} | </div>
+                                            <div className="d-inline text-muted text-small"> {value.runtime} | </div>
+                                            <div className="d-inline text-muted text-small"> {value.genre} |</div>
+                                            <div className="d-inline text-muted text-small"> {value.year}</div>
+                                            
+                                            <br/>
+                                            <p className="text mt-3">{value.comments}</p>
+                                        
+                                            <p className="text1 d-inline"><small ><img className="dbimage" src={value.emojiUrl} />{value.emojiText}</small></p>
+                                            <img className="d-inline rt-image" src="https://files.911media.com/wp-content/uploads/2017/10/rotten-tomatoes-logo.png"/>
+                                            <div className="d-inline text-small"> {value.ratingrt}</div>
+                                            <img className="d-inline rt-image3" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/500px-IMDB_Logo_2016.svg.png"/>
+                                            <div className="d-inline text-small"> {value.rating}</div>
                                             
                                         </div>   
                               

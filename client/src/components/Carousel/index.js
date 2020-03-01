@@ -19,7 +19,9 @@ class Carousel extends Component {
                 runtime: "100 min",
                 genre: "Animation",
                 plot: "When a new toy called \"Forky\" joins Woody and the gang, a road trip alongside old and new friends reveals how big the world can be for a toy.",
-                poster: "https://m.media-amazon.com/images/M/MV5BMTYzMDM4NzkxOV5BMl5BanBnXkFtZTgwNzM1Mzg2NzM@._V1_SX300.jpg"
+                poster: "https://m.media-amazon.com/images/M/MV5BMTYzMDM4NzkxOV5BMl5BanBnXkFtZTgwNzM1Mzg2NzM@._V1_SX300.jpg",
+                rating: "7.9",
+                ratingrt: "97%"
             },
             
             movieTrailers: [
@@ -68,6 +70,7 @@ class Carousel extends Component {
                 if(genre.indexOf(",") >= 0) {
                     genre = genre.substring(0,genre.indexOf(","));
                 }
+                var rating = this.getRottenTomatoesRating(response);
                 this.setState({
                     movie: { 
                         title: response.data.Title,
@@ -76,11 +79,22 @@ class Carousel extends Component {
                         genre: genre,
                         runtime: response.data.Runtime,
                         rated: response.data.Rated,
-                        year: response.data.Year
+                        year: response.data.Year,
+                        rating: response.data.imdbRating,
+                        ratingrt: rating
                     }
                 });
             }
           });
+    }
+    getRottenTomatoesRating = (response) => {
+        for(var i = 0; i < response.data.Ratings.length; i++) {
+            if (response.data.Ratings[i].Source == "Rotten Tomatoes") {
+                return response.data.Ratings[i].Value;
+            } 
+            
+        }
+        return "N/A";
     }
     componentDidMount() {
         var compThis = this;
@@ -123,6 +137,8 @@ class Carousel extends Component {
                                     <div id="plot" className="d-none ">{this.state.movie.plot}</div>
                                     <div id="year" className="d-none ">{this.state.movie.year}</div>
                                     <div id="poster" className="d-none ">{this.state.movie.poster}</div>
+                                    <div id="rating" className="d-none ">{this.state.movie.rating}</div>
+                                    <div id="ratingrt" className="d-none ">{this.state.movie.ratingrt}</div>
                                     <br/>
                                     <br/>
                                     <div className="text-justify p-3"> {this.state.movie.plot}</div>

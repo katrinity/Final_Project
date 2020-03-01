@@ -256,7 +256,7 @@ a{
   margin: 4%;
   height: 450px;
 }
-.movie:after{
+.movie1:after{
   content: "";
   background: rgba(43,193,234,0.6);
   position: absolute;
@@ -357,5 +357,19 @@ transform:translateY(-50%);
   width: 10%;
   background-color: black;
   cursor: grab;
+}
+.text-small {
+  font-size: small;
+}
+.rt-image{
+  width: 15%;
+  height: 20%;
+  margin-left: 3%;
+}
+.rt-image3{
+  width: 15%;
+  height: 10%;
+  margin-left: 3%;
+  margin-right: 1%;
 }
 
