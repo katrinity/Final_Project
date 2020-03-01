@@ -64,7 +64,10 @@ class Bucket extends Component {
         
     }
     
-    dropToCategory = (category) => {
+    dropToCategory = (ev,category) => {
+        if((ev.dataTransfer.getData("text")) != "movie-from-search") {
+            return;
+        }
         var url = document.getElementById("drag1").getAttribute("src");
         var emojiImage = document.getElementById("emojiImage");
         var comments = $("#inputField").val();
@@ -95,6 +98,27 @@ class Bucket extends Component {
         ev.preventDefault();
     }
 
+    deleteMovie = (index,cat) => {
+        
+        var currentMovies = this.state[cat].slice(0);
+        var catMovies = [];
+        var j = 0;
+        for(var i = 0; i < currentMovies.length; i++) {
+            if(i == index) {
+                continue;
+            }            
+            catMovies.push(currentMovies.slice(i,i+1)[0]);
+            j++;
+        }
+        // $("#cat1Carousel").carousel("pause").removeData();
+        this.setState({[cat]: catMovies});
+        
+    }
+    componentDidUpdate() {
+        // alert($("#cat1Carousel").text());
+        // $("#cat1Carousel").carousel();
+    }
+
     render() {
         return (
             <div className="bucket">
@@ -103,7 +127,7 @@ class Bucket extends Component {
                 </div>
                 <div className="row">
                     <div className="col-sm-3">
-                        <div id="div1" className="div1" onDrop={(ev) => {this.dropToCategory("cat1")}} onDragOver={this.allowDrop} className="card grow comedy">
+                        <div id="div1" className="div1" onDrop={(ev) => { this.dropToCategory(ev,"cat1")}} onDragOver={this.allowDrop} className="card grow comedy">
         <div contenteditable="true" className="catName">Comedy({this.state.cat1.length})</div>
                             
                             <div id="cat1Carousel" className="carousel slide " data-ride="carousel">
@@ -113,19 +137,28 @@ class Bucket extends Component {
                                         var active = "carousel-item showEmojiComedy";
                                         var id = "showEmojiComedy" + index;
                                         var emojiId = "showEmojiComedyEmoji" + index;
+                                        
                                         if(index == 0) {
-                                            active = "carousel-item active showEmojiComedy"
+                                            active = "carousel-item active showEmojiComedy";
+                                            
                                         }
+                                         
                                         if (value.emojiUrl == "") {
                                             return <div id={id} className={active}>
                                                 <div id={emojiId}><div className="text-muted pt-1">Click emojis below to rate this movie!</div></div>
-                                                <div className="bucket-image-container text-center"><img src={value.poster} className="d-block bucket-image d-inline" alt="..."/></div>
+                                                <div className="bucket-image-container text-center">
+                                                    <div onClick={() => {this.deleteMovie(index,"cat1")}} className="delete-button-search">X</div>
+                                                    <img src={value.poster} className="d-block bucket-image d-inline" alt="..."/>
+                                                </div>
                                                 <div className="bucket-comments"><span >{value.comments}</span></div>
                                             </div>
                                         } else {
                                             return <div id={id} className={active}>
                                                 <div id={emojiId}><span class='emoji'><img className="emoji_images" src={value.emojiUrl}></img>{value.emojiText}</span></div>
-                                                <div className="bucket-image-container text-center"><img src={value.url} className="d-block bucket-image d-inline" alt="..."/></div>
+                                                <div className="bucket-image-container text-center">
+                                                    <div onClick={() => {this.deleteMovie(index,"cat1")}} className="delete-button-search">X</div>
+                                                    <img src={value.url} className="d-block bucket-image d-inline" alt="..."/>
+                                                </div>
                                                 <div className="bucket-comments"><span >{value.comments}</span></div>
                                             </div>
                                         }
@@ -145,7 +178,7 @@ class Bucket extends Component {
                         </div>
                     </div>
                     <div className="col-sm-3">
-                        <div id="div2" className="div1" onDrop={(ev) => {this.dropToCategory("cat2")}} onDragOver={this.allowDrop} className="card grow action">
+                        <div id="div2" className="div1" onDrop={(ev) => {this.dropToCategory(ev,"cat2")}} onDragOver={this.allowDrop} className="card grow action">
                             <div contenteditable="true" className="catName">Action({this.state.cat2.length})</div>
                             <div id="cat2Carousel" className="carousel slide " data-ride="carousel">
                                 <div id="cat2-carousel-inner" className="carousel-inner">
@@ -160,13 +193,19 @@ class Bucket extends Component {
                                         if (value.emojiUrl == "") {
                                             return <div id={id} className={active}>
                                                 <div id={emojiId}><div className="text-muted pt-1">Click emojis below to rate this movie!</div></div>
-                                                <div className="bucket-image-container text-center"><img src={value.url} className="d-block bucket-image d-inline" alt="..."/></div>
+                                                <div className="bucket-image-container text-center">
+                                                    <div onClick={() => {this.deleteMovie(index,"cat2")}} className="delete-button-search">X</div>
+                                                    <img src={value.url} className="d-block bucket-image d-inline" alt="..."/>
+                                                </div>
                                                 <div className="bucket-comments"><span >{value.comments}</span></div>
                                             </div>
                                         } else {
                                             return <div id={id} className={active}>
                                                 <div id={emojiId}><span class='emoji'><img className="emoji_images" src={value.emojiUrl}></img>{value.emojiText}</span></div>
-                                                <div className="bucket-image-container text-center"><img src={value.url} className="d-block bucket-image d-inline" alt="..."/></div>
+                                                <div className="bucket-image-container text-center">
+                                                    <div onClick={() => {this.deleteMovie(index,"cat2")}} className="delete-button-search">X</div>
+                                                    <img src={value.url} className="d-block bucket-image d-inline" alt="..."/>
+                                                </div>
                                                 <div className="bucket-comments"><span >{value.comments}</span></div>
                                             </div>
                                         }
@@ -186,7 +225,7 @@ class Bucket extends Component {
                         </div>
                     </div>
                     <div className="col-sm-3">
-                        <div id="div3" className="div1" onDrop={(ev) => {this.dropToCategory("cat3")}} onDragOver={this.allowDrop} className="card grow must">
+                        <div id="div3" className="div1" onDrop={(ev) => {this.dropToCategory(ev,"cat3")}} onDragOver={this.allowDrop} className="card grow must">
                             <div contenteditable="true" className="catName">Must watch({this.state.cat3.length})</div>
                             <div id="cat3Carousel" className="carousel slide " data-ride="carousel">
                                 <div id="cat3-carousel-inner" className="carousel-inner">
@@ -201,13 +240,19 @@ class Bucket extends Component {
                                         if (value.emojiUrl == "") {
                                             return <div id={id} className={active}>
                                                 <div id={emojiId}><div className="text-muted pt-1">Click emojis below to rate this movie!</div></div>
-                                                <div className="bucket-image-container text-center"><img src={value.url} className="d-block bucket-image d-inline" alt="..."/></div>
+                                                <div className="bucket-image-container text-center">
+                                                    <div onClick={() => {this.deleteMovie(index,"cat3")}} className="delete-button-search">X</div>
+                                                    <img src={value.url} className="d-block bucket-image d-inline" alt="..."/>
+                                                </div>
                                                 <div className="bucket-comments"><span >{value.comments}</span></div>
                                             </div>
                                         } else {
                                             return <div id={id} className={active}>
                                                 <div id={emojiId}><span class='emoji'><img className="emoji_images" src={value.emojiUrl}></img>{value.emojiText}</span></div>
-                                                <div className="bucket-image-container text-center"><img src={value.url} className="d-block bucket-image d-inline" alt="..."/></div>
+                                                <div className="bucket-image-container text-center">
+                                                    <div onClick={() => {this.deleteMovie(index,"cat3")}} className="delete-button-search">X</div>
+                                                    <img src={value.url} className="d-block bucket-image d-inline" alt="..."/>
+                                                </div>
                                                 <div className="bucket-comments"><span >{value.comments}</span></div>
                                             </div>
                                         }
@@ -227,7 +272,7 @@ class Bucket extends Component {
                         </div>
                     </div>   
                     <div className="col-sm-3">
-                        <div id="div4" className="div1" onDrop={(ev) => {this.dropToCategory("cat4")}} onDragOver={this.allowDrop}  className="card grow waste">
+                        <div id="div4" className="div1" onDrop={(ev) => {this.dropToCategory(ev,"cat4")}} onDragOver={this.allowDrop}  className="card grow waste">
                             <div contenteditable="true" className="catName">Waste of time({this.state.cat4.length})</div>
                             <div id="cat4Carousel" className="carousel slide " data-ride="carousel">
                                 <div id="cat4-carousel-inner" className="carousel-inner">
@@ -242,13 +287,19 @@ class Bucket extends Component {
                                         if (value.emojiUrl == "") {
                                             return <div id={id} className={active}>
                                                 <div id={emojiId}><div className="text-muted pt-1">Click emojis below to rate this movie!</div></div>
-                                                <div className="bucket-image-container text-center"><img src={value.url} className="d-block bucket-image d-inline" alt="..."/></div>
+                                                <div className="bucket-image-container text-center">
+                                                    <div onClick={() => {this.deleteMovie(index,"cat4")}} className="delete-button-search">X</div>
+                                                    <img src={value.url} className="d-block bucket-image d-inline" alt="..."/>
+                                                </div>
                                                 <div className="bucket-comments"><span >{value.comments}</span></div>
                                             </div>
                                         } else {
                                             return <div id={id} className={active}>
                                                 <div id={emojiId}><span class='emoji'><img className="emoji_images" src={value.emojiUrl}></img>{value.emojiText}</span></div>
-                                                <div className="bucket-image-container text-center"><img src={value.url} className="d-block bucket-image d-inline" alt="..."/></div>
+                                                <div className="bucket-image-container text-center">
+                                                    <div onClick={() => {this.deleteMovie(index,"cat4")}} className="delete-button-search">X</div>
+                                                    <img src={value.url} className="d-block bucket-image d-inline" alt="..."/>
+                                                </div>
                                                 <div className="bucket-comments"><span >{value.comments}</span></div>
                                             </div>
                                         }

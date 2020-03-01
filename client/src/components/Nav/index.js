@@ -216,19 +216,7 @@ class Nav extends Component {
                         <li className="" ><a className={this.props.menus.length != 0 ? "font-weight-normal text-white-50" : "font-weight-bold border-bottom"} href="/search">Search</a></li>
                         <li className="pl-3 "><a className={this.props.menus.length != 0 ? "font-weight-bold border-bottom" : "font-weight-normal text-white-50"} href="/saved">Saved</a></li>
                     </ul>
-                    <ul className="nav bg-primary text-light nav-cat">
-                    {
-                        this.props.menus.map((value, index) => {
-                            var clazz = "font-weight-normal nav-cat-item";
-                            if(index == 0) {
-                                clazz = "font-weight-bold nav-cat-item border-bottom"
-                            }
-                            return <li className={clazz}>
-                                {value.name}
-                            </li>
-                        })
-                    }
-                    </ul>
+                    
                     <ul className="nav navbar-nav ml-auto">
                         <li>
                             <button id="signin-form" type="button" className="btn btn-outline-light ml-3" data-toggle="modal" data-target="#loginModal"> Log in </button>

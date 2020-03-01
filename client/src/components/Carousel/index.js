@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-import moana1 from './moana1.jpeg';
-import moana2 from './moana2.jpg';
-import moana3 from './moana3.jpg';
 import AddInfo from '../AddInfo';
-import toy from './toy.jpeg';
 import Search from '../Search';
 import $ from 'jquery';
 const axios = require("axios");
@@ -31,7 +27,7 @@ class Carousel extends Component {
     }
 
     drag = (ev) => {
-        ev.dataTransfer.setData("text", "movie");
+        ev.dataTransfer.setData("text", "movie-from-search");
     }
 
     flipCard = () => {
@@ -142,6 +138,10 @@ class Carousel extends Component {
                                     <br/>
                                     <br/>
                                     <div className="text-justify p-3"> {this.state.movie.plot}</div>
+                                    <img className="d-inline rt-image1" src="https://files.911media.com/wp-content/uploads/2017/10/rotten-tomatoes-logo.png"/>
+                                    <div className="d-inline text-small"> {this.state.movie.ratingrt}</div>
+                                    <img className="d-inline rt-image4" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/500px-IMDB_Logo_2016.svg.png"/>
+                                    <div className="d-inline text-small"> {this.state.movie.rating}</div>
                                 </div>
                             </div>
                         </div>
