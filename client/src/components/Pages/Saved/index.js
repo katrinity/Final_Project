@@ -62,6 +62,25 @@ class SavedPage extends Component {
         });
 
     }
+    deleteMovie = (id) => {
+        var myThis = this;
+        $.ajax("/api/session", {
+            type: "GET"
+          }).then(
+            function(res) {
+              if(res.id) {
+                $.ajax("/api/"+res.id+"/movies/"+id, {
+                    type: "DELETE"
+                  }).then(
+                    function(res) {
+                      myThis.getMovies();
+                    }
+                  );
+              }
+            }
+          );
+    }
+
     refreshComponent = () => {
         this.getMovies();
     }
@@ -76,7 +95,7 @@ class SavedPage extends Component {
                     this.state.movies.map( (value, index)=>{
                         return <div className=" col-md-3 col-sm-12 d-inline-block">
                                     <div className="movie">
-                                        <div className="delete-button">X</div>
+                                        <div onClick={() => {this.deleteMovie(value._id)}} className="delete-button">X</div>
                                         <img className="saved-img" src= {value.poster} />
                                         <ul className="social">
                                             <li><a href="#"><i className="fa fa-facebook"></i></a></li>

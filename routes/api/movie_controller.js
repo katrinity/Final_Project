@@ -66,6 +66,12 @@ router.get("/api/:email/movies/:cat", function(req, res) {
     }, function(err) {console.log(err)});
 });
 
+router.delete("/api/:email/movies/:id", function(req, res) {
+    
+    moviesController.remove(req,res);
+        
+});
+
 function getMovies(req,res1) {
         var movieTrailers = [];
         //Get movie list from rottentomatoes

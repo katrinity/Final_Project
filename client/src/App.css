@@ -356,5 +356,6 @@ transform:translateY(-50%);
   border-radius: 75px;
   width: 10%;
   background-color: black;
+  cursor: grab;
 }
 
