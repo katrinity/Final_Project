@@ -95,7 +95,7 @@ class Carousel extends Component {
     render() {
         return (
             <div className="row">
-                <div className="col-sm-6 searchResults">
+                <div className="col-sm-5 searchResults">
                     <Search cb={this.searchMovie}/>
                     <div id="showEmoji">
                         <div className="text-muted pt-1 d-inline">Click an emoji below to rate this movie!</div> 
@@ -157,10 +157,10 @@ class Carousel extends Component {
                     <h9>(Click on the image to get more information)</h9>
 
                 </div>
-                <div className="col-sm-6">
+                <div className="col-sm-7">
                     <AddInfo text="Checkout latest trailers!"/>
                     <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
+                        <ol className="carousel-indicators">
                             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
@@ -176,7 +176,7 @@ class Carousel extends Component {
                                     active = "carousel-item active";
                                 }
                                 return <div className={active}>
-                                        <iframe width="420" height="315" className="d-block w-100" src={url} frameborder="0"></iframe>
+                                        <iframe width="420" height="415" className="d-block w-100" src={url} frameborder="0"></iframe>
                                         </div>
                             })
                         }

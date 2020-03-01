@@ -41,26 +41,27 @@
  #myCarousel, img{
   width: 800px;
   height: 300px;
-  
 }
 a{
   color: black;
   font-weight: bold;
-  
+}
+#carouselExampleIndicators{
+  margin: 5% 5% 0 0;
 }
 .info{
-  background-image: linear-gradient(to right, rgb(244, 131, 131) ,rgb(143, 212, 235),rgb(164, 230, 164),rgb(240, 205, 140), rgb(244, 244, 149));
+  background-image: linear-gradient(to left, rgb(244, 131, 131) ,rgb(143, 212, 235),rgb(164, 230, 164),rgb(240, 205, 140), rgb(244, 244, 149));
   color: rgb(5, 106, 33);
   font-weight: bolder;
-  margin: 60px 10px 10px 0;
+  margin: 8% 5% 5% 5%;
   width: 800px;
   height: 50px;
-  padding-top: 10px;
+  padding-top: 1%;
 }
 .card{
   height: 500px;
   font-weight: bolder;
-  margin: 20px 10px 0 10px;
+  margin: 10% 1% 0 1%;
 }
 .bucketH {
   font-weight: bolder;
@@ -74,15 +75,16 @@ a{
   background-color: rgb(200, 200, 237);
 }
 .catName{
-  padding: 0 0 10px 0;
+  padding: 0 0 1% 0;
 }
 .search-button{
-  margin: 0 0 0 20px;
+  margin: 0 0 0 2%;
   border-radius: 5px;
 }
 
 .text{
-  width: 375px;
+  width: 300px;
+  margin: 0 0 0 15%;
 }
 .bucket1, .bucket2, .bucket3, .bucket4{
   color: blue;
@@ -90,7 +92,7 @@ a{
   bottom: 0px;
 }
 .bucket{
-  padding: 40px 20px 50px 20px;
+  padding: 0 2% 5% 2%;
 }
 
 .drag3 {
@@ -120,31 +122,28 @@ a{
 .searchResults {
   text-align: center;
 }
-
 .login-form {
 	float: right;
 }
-
-
-#register-form, #signin-form, .g-signin2, #sign-out, #app-content, #registered-events{
-	margin-right: 20px;
-	padding-right: 10px;
-}
+/* #register-form, #signin-form, .g-signin2, #sign-out, #app-content, #registered-events{
+	margin-right: %;
+	padding-right: %;
+} */
 
 .google{
 	float: right;
-	padding: 45px;
+	padding: 10%;
 	border-left: 1px solid lightgray;
 }
 
 .signinbtn {
-	margin-top: 13px;
+	margin-top: 3%;
 }
 
 .emoji_images{
   height: 50px;
   width: 50px;
-  margin:3.5px;
+  margin: 1%;
   cursor: grab;
   border-radius: 30px;
 
@@ -158,32 +157,25 @@ a{
   width: 300px;
   height: 50px;
   display: inline-block;
-  border-top: 1px;
   border: solid;
   border-color: lightgray;
 }
-
 .emoji {
-  margin: 10px;
+  margin: 1%;
 }
-
 .catImage {
   height: 200px;
   width: 30px;
 }
-
 .grow {
   transition: all 0.1s ease-in-out;
 }
-
 .grow:hover {
   transform: scale(1.05);
 }
-
 .grow1 {
   transform: scale(1.05);
 }
-
 .getMovieImage{
   width: 30px;
   height: 30px;
@@ -223,7 +215,7 @@ a{
   display: flex;
   justify-content: center;
   width: 100%;
-  padding-top: 5px;
+  padding-top: 1%;
 }
 
 .bucket-comments {
@@ -239,7 +231,7 @@ a{
 }
 .nav-cat-item {
   justify-content: center;
-  margin-left: 15px;
+  margin-left: 4%;
 }
 
 .card1 {
@@ -261,6 +253,8 @@ a{
 }
 .movie{
   overflow: hidden;
+  margin: 4%;
+  height: 450px;
 }
 .movie:after{
   content: "";
@@ -272,7 +266,7 @@ a{
   height: 100%;
   opacity: 0;
   left: 15%;
-  margin-left: 18px;
+  margin-left: 5%;
 }
 .movie:hover:after{
   opacity: 1;
@@ -280,6 +274,7 @@ a{
 }
 .saved-img{
   width:330px;
+  height: 450px;
 }
 .movie .social{
   width: 100%;
@@ -293,9 +288,11 @@ a{
   z-index: 1;
   transform: translatey(-50%) rotate(-12deg);
   transition: all 0.8s ease 0s;
+  display: none;
 }
 .movie:hover .social{
   top:40%;
+  display: block;
 }
 .movie .social li{
   display: inline-block;
@@ -322,8 +319,9 @@ transform: scale(1.5);
   background-color: #fff;
   position: absolute;
   bottom: 0;
-  left: 39px;
+  left: 9%;
   z-index: 1;
+  height: 200px;
 }
 .movie:hover .movie-review{
   background-color: #f9f9f9;
