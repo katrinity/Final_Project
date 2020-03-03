@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import $ from 'jquery';
+import {Carousel} from 'react-responsive-carousel';
 
 class Bucket extends Component {
     constructor(props) {
@@ -110,13 +111,16 @@ class Bucket extends Component {
             catMovies.push(currentMovies.slice(i,i+1)[0]);
             j++;
         }
-        // $("#cat1Carousel").carousel("pause").removeData();
+        window.pauseCarousel("#" + cat + "Carousel");
         this.setState({[cat]: catMovies});
         
     }
     componentDidUpdate() {
-        // alert($("#cat1Carousel").text());
-        // $("#cat1Carousel").carousel();
+        
+        window.continueCarousel("#cat1Carousel");
+        window.continueCarousel("#cat2Carousel");
+        window.continueCarousel("#cat3Carousel");
+        window.continueCarousel("#cat4Carousel");
     }
 
     render() {
@@ -137,6 +141,7 @@ class Bucket extends Component {
                                         var active = "carousel-item showEmojiComedy";
                                         var id = "showEmojiComedy" + index;
                                         var emojiId = "showEmojiComedyEmoji" + index;
+                                        var emojitext = "Click emojis below to rate this movie!";
                                         
                                         if(index == 0) {
                                             active = "carousel-item active showEmojiComedy";
@@ -145,7 +150,7 @@ class Bucket extends Component {
                                          
                                         if (value.emojiUrl == "") {
                                             return <div id={id} className={active}>
-                                                <div id={emojiId}><div className="text-muted pt-1">Click emojis below to rate this movie!</div></div>
+                                                <div id={emojiId}><div className="text-muted pt-1">{emojitext}</div></div>
                                                 <div className="bucket-image-container text-center">
                                                     <div onClick={() => {this.deleteMovie(index,"cat1")}} className="delete-button-search">X</div>
                                                     <img src={value.poster} className="d-block bucket-image d-inline" alt="..."/>
@@ -274,6 +279,8 @@ class Bucket extends Component {
                     <div className="col-sm-3">
                         <div id="div4" className="div1" onDrop={(ev) => {this.dropToCategory(ev,"cat4")}} onDragOver={this.allowDrop}  className="card grow waste">
                             <div contenteditable="true" className="catName">Waste of time({this.state.cat4.length})</div>
+                            
+                            
                             <div id="cat4Carousel" className="carousel slide " data-ride="carousel">
                                 <div id="cat4-carousel-inner" className="carousel-inner">
                                 { 
