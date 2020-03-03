@@ -19,7 +19,25 @@
     "nodemon": "^1.18.7"
   },
   "dependencies": {
+<<<<<<< HEAD
     "express": "^4.16.3",
     "if-env": "^1.0.4"
+=======
+    "@fortawesome/fontawesome-svg-core": "^1.2.27",
+    "@fortawesome/free-solid-svg-icons": "^5.12.1",
+    "@fortawesome/react-fontawesome": "^0.1.8",
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "crypto-js": "^3.1.9-1",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "if-env": "^1.0.4",
+    "jquery": "^3.4.1",
+    "mongoose": "^5.3.16",
+    "path": "^0.12.7",
+    "qrcode": "^1.4.4",
+    "react-responsive-carousel": "^3.1.51",
+    "request": "^2.88.0"
+>>>>>>> 36ca9980f272c93652932e03f64a9d11a3fc7f9f
   }
 }

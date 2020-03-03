@@ -4,6 +4,8 @@ import '../../../App.css';
 import Nav from '../../../components/Nav';
 import Carousel from '../../../components/Carousel';
 import Bucket from '../../../components/Bucket';
+import Sidebar from '../../../components/Sidebar';
+
 
 class SearchPage extends Component {
 
@@ -15,10 +17,16 @@ class SearchPage extends Component {
         ]
       };
     }
+
+    refreshComponent = () => {
+        this.forceUpdate();
+    }
+
   render() {
     return (
       <>
-          <Nav menus={this.state.menus}/>
+          <Nav cb={this.refreshComponent} menus={this.state.menus}/>
+          {/* <Sidebar /> */}
           <Carousel />
           <Bucket />
       </>

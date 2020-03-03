@@ -13,7 +13,9 @@ const movieSchema = new Schema({
   poster: { type: String},
   comments: { type: String},
   emojiText: { type: String},
-  emojiUrl: { type: String}
+  emojiUrl: { type: String},
+  rating: {type: String},
+  ratingrt: {type: String}
 });
 
 const Movie = mongoose.model("Movie", movieSchema);

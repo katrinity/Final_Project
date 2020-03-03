@@ -19,6 +19,10 @@
    
     
     <script src="https://kit.fontawesome.com/859b5e863e.js" crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.css"  crossorigin="anonymous">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -42,11 +46,121 @@
 
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-   
-
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  -->
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.js"
+    crossorigin="anonymous"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  </body>
+<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.js"  crossorigin="anonymous"></script> -->
+<!-- <script src="bootstrap.js"></script> -->
+<script>
+  function onSignIn(googleUser){
+        // Useful data for your client-side scripts:
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        console.log('Full Name: ' + profile.getName());
+        console.log('Given Name: ' + profile.getGivenName());
+        console.log('Family Name: ' + profile.getFamilyName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+      
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+      
+      //registerUser function call with google email parameters.
+          // this.registerUser(profile.getEmail(),"", "google");
+          if(window.navComponent != null) {
+            window.navComponent.registerUser(profile.getEmail(),"","google", window.navComponent);
+          }
+          console.log("profile "+JSON.stringify(profile));
+          console.log("google user has checked in");  
+      }
+  </script>
+
+
+<script src="https://apis.google.com/js/api.js"></script>
+<script>
+  /**
+   * Sample JavaScript code for youtube.search.list
+   * See instructions for running APIs Explorer code samples locally:
+   * https://developers.google.com/explorer-help/guides/code_samples#javascript
+   */
+
+  
+  function getMovie() {
+  
+    //Get movie list from rottentomatoes
+    $.ajax({METHOD: "GET", url: "https://www.rottentomatoes.com/trailers"}).done( function(res,status) {
+      var index1 = res.indexOf('id="jsonLdSchema">');
+      var index2 = res.indexOf('<\/script>',index1);
+      var movieData = JSON.parse(res.substring(index1+18,index2));
+      
+      //Go after top 5 movies
+      for(var i = 0; i < 5; i++) {
+        var movie = movieData.itemListElement[1].item.itemListElement[i].url;
+        //Just get the name from the url
+        var name = movie.substring(33);
+        //Replace _s
+        name = name.replace(new RegExp('_', 'g')," ");
+
+        var wordsInName = name.split(" ");
+        var year = wordsInName.pop();
+        var name1 = wordsInName.join(" ");
+        var url = null;
+        var finalName;
+
+        //Form the omdbapi URL for the movie title
+        if(isNaN(year)) {
+          url = "http://www.omdbapi.com/?apikey=2da97dda&s=" + name + "&type=movie";
+          finalName = name;
+        } else {
+          if(wordsInName.length == 1 && isNaN(wordsInName[0])) {
+            url = "http://www.omdbapi.com/?apikey=2da97dda&s=" + name1 + "&type=movie&y=" + year;
+          } else {
+            url = "http://www.omdbapi.com/?apikey=2da97dda&s=" + name1 + "&type=movie";
+          }
+          finalName = name1;
+          
+        }
+
+        
+          $.ajax({METHOD: "GET", url: "/api/movies/" + finalName + " trailer"}).done(function (res3, status) {
+            console.log(res3.youtubeId);
+            var movie1 = '<div><iframe width="420" height="315" src="https://www.youtube.com/embed/'+res3.youtubeId+'"></iframe></div>';
+            $("#getMovie").append(movie1);
+          });
+      }
+    });
+
+
+
+    
+    
+  }
+</script>
+<!-- <button onclick="getMovie()"> Get New Movies</button>
+<iframe width="420" height="315"
+src="https://www.youtube.com/embed/rBxcF-r9Ibs">
+</iframe>
+<div id="getMovie" style="text-align: center">  
+  
+</div> -->
+<script>
+  
+  
+  function pauseCarousel(id) {
+    $(id).carousel("prev");
+    $(id).carousel("pause");
+  }
+  function continueCarousel(id) {
+    $(id).carousel("cycle");
+  }
+</script>
+</body>
 </html>
