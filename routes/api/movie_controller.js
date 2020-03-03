@@ -50,6 +50,28 @@ router.get("/api/movies", function(req, res) {
     getMovies(req,res);
 });
 
+router.get("/api/:email/movies/:cat", function(req, res) {
+    var condition = {email: req.params.email};
+    usersController.findAll(condition,function(result) {
+        if(result.length > 0) {
+            req.body.userid = result[0]._id;
+            delete req.body.email;
+            condition = {category: req.params.cat, userid: req.body.userid};
+            moviesController.findAll(condition,function(result) {
+                res.json(result);
+            });
+        } else {
+            res.json({result: "failure"});
+        }
+    }, function(err) {console.log(err)});
+});
+
+router.delete("/api/:email/movies/:id", function(req, res) {
+    
+    moviesController.remove(req,res);
+        
+});
+
 function getMovies(req,res1) {
         var movieTrailers = [];
         //Get movie list from rottentomatoes
@@ -96,6 +118,51 @@ function getMovies(req,res1) {
         });
 }
 
+function getMovies1(req,res1) {
+    var movieTrailers = [];
+    //Get movie list from rottentomatoes
+    axios({method: "get", url: "https://www.rottentomatoes.com/trailers"}).then( function(res,status) {
+        res = res.data;
+        var index1 = res.indexOf('id="jsonLdSchema">');
+        var index2 = res.indexOf('<\/script>',index1);
+        var movieData = JSON.parse(res.substring(index1+18,index2));
+        
+        //Go after top 5 movies
+        for(var i = 0; i < 5; i++) {
+            var movie = movieData.itemListElement[1].item.itemListElement[i].url;
+            //Just get the name from the url
+            var name = movie.substring(33);
+            //Replace _s
+            name = name.replace(new RegExp('_', 'g')," ");
+    
+            var wordsInName = name.split(" ");
+            var year = wordsInName.pop();
+            var name1 = wordsInName.join(" ");
+            var url = null;
+            var finalName;
+    
+            //Form the omdbapi URL for the movie title
+            if(isNaN(year)) {
+                finalName = name;
+            } else {
+                finalName = name1;
+            }
+            finalName = finalName + " trailer";
+            axios({ method: "get", url: "https://www.youtube.com/results?search_query=" + finalName, responseType: "text"}).then(function(youtubeData){
+
+                var index = youtubeData.data.indexOf("yt-lockup-video");
+                var index = youtubeData.data.indexOf("https://i.ytimg.com/vi", index);
+                var movie = youtubeData.data.substring(index+23, youtubeData.data.indexOf("/", index+23));
+                movieTrailers.push({youtubeId: movie});
+                if(movieTrailers.length >= 5) {
+                    res1.json({result: movieTrailers});
+                }
+
+            });
+            
+        }
+    });
+}
 
 // Export routes for server.js to use.
 module.exports = router;

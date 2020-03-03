@@ -4,12 +4,17 @@ import '../../../App.css';
 import Nav from '../../../components/Nav';
 import Carousel from '../../../components/Carousel';
 import Bucket from '../../../components/Bucket';
+import axios from "axios";
+import $ from "jquery";
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class SavedPage extends Component {
 
     constructor(props) {
       super(props);
       this.state = {
+          movies: [],
         menus: [
             {
                 id: "cat1",
@@ -30,27 +35,132 @@ class SavedPage extends Component {
         ]
       };
     }
+    componentDidMount(){
+        this.getMovies("cat1"); 
+    }
+
+    getMovies = (category) => {
+        var myThis = this;
+        $.ajax("/api/session", {
+            type: "GET"
+          }).then(
+            function(res) {
+              if(res.id) {
+                myThis.getCategoryMovies(category,res.id);
+              } else {
+                myThis.setState({movies: []});
+              }
+            }
+          );
+    }
+    getCategoryMovies = (category, email) =>{
+        var mythis = this;
+        axios({ method: "get", url: "/api/"+ email + "/movies/" + category }).then(function(result){
+            console.log(result);
+            mythis.setState({movies: result.data});
+
+        });
+
+    }
+
+    deleteMovie = (id,category) => {
+        var myThis = this;
+        $.ajax("/api/session", {
+            type: "GET"
+          }).then(
+            function(res) {
+              if(res.id) {
+                $.ajax("/api/"+res.id+"/movies/"+id, {
+                    type: "DELETE"
+                  }).then(
+                    function(res) {
+                      myThis.getMovies(category);
+                    }
+                  );
+              }
+            }
+          );
+    }
+
+    refreshComponent = () => {
+        this.getMovies("cat1");
+    }
+
+    showCategory = (ev,category) => {
+        this.getMovies(category);
+        var id = "#" + ev.target.id;
+        this.updateNavLink(id);
+    }
+
+    updateNavLink = (id) => {
+        var navids = ["#nav-cat1", "#nav-cat2","#nav-cat3","#nav-cat4"];
+        navids.map((value,index) => {
+
+            if(id == value) {
+                $(value).attr("class","nav-link active");
+            } else {
+                $(value).attr("class","nav-link");
+            }
+        });
+    }
+
   render() {
     return (
         <>
-            <Nav menus={this.state.menus}/>
-            <div className="card1 text-center">
-                
-                <div className=" card2 card mb-3 d-inline-block">
-                    <div className="row no-gutters">
-                        <div className="col-md-4">
-                            <img src="https://m.media-amazon.com/images/M/MV5BMTYzMDM4NzkxOV5BMl5BanBnXkFtZTgwNzM1Mzg2NzM@._V1_SX300.jpg" className="saved-card" alt="..."/>
-                        </div>
-                        <div className="col-md-8">
-                            <div className="card-body">
-                                <h5 className="card-title">Card title</h5>
-                                <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <p className="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            </div>
-                        </div>
-                    </div>
+            <Nav cb={this.refreshComponent} menus={this.state.menus}/>
+            <ul class="nav nav-pills justify-content-center mt-3 mb-3">
+                <li class="nav-item">
+                    <a id="nav-cat1" class="nav-link active" onClick={(ev) => {this.showCategory(ev,"cat1")}} href="#">Comedy</a>
+                </li>
+                <li class="nav-item">
+                    <a id="nav-cat2" class="nav-link" onClick={(ev) => {this.showCategory(ev,"cat2")}} href="#">Action</a>
+                </li>
+                <li class="nav-item">
+                    <a id="nav-cat3" class="nav-link" onClick={(ev) => {this.showCategory(ev,"cat3")}} href="#">Must watch</a>
+                </li>
+                <li class="nav-item">
+                    <a id="nav-cat4" class="nav-link" onClick={(ev) => {this.showCategory(ev,"cat4")}} href="#" >Waste of time</a>
+                </li>
+            </ul>
+            
+                <div className="row">
+                {
+                    this.state.movies.map( (value, index)=>{
+                        return <div className=" col-md-3 col-sm-12 d-inline-block">
+                                    <div className="movie">
+                                        <div onClick={() => {this.deleteMovie(value._id,value.category)}} className="delete-button">X</div>
+                                        <img className="saved-img" src= {value.poster} />
+                                        
+                                        <div className="movie-review">
+                                            <h5 className="title">{value.title}</h5>
+                                            <div className="d-inline text-muted text-small">{value.rated} | </div>
+                                            <div className="d-inline text-muted text-small"> {value.runtime} | </div>
+                                            <div className="d-inline text-muted text-small"> {value.genre} |</div>
+                                            <div className="d-inline text-muted text-small"> {value.year}</div>
+                                            
+                                            <br/>
+                                            <p className="text mt-3 saved-comments">{value.comments}</p>
+                                        
+                                            <p className="text1 d-inline"><small ><img className="dbimage" src={value.emojiUrl} />{value.emojiText}</small></p>
+                                            <img className="d-inline rt-image" src="https://files.911media.com/wp-content/uploads/2017/10/rotten-tomatoes-logo.png"/>
+                                            <div className="d-inline text-small"> {value.ratingrt}</div>
+                                            <img className="d-inline rt-image3" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/500px-IMDB_Logo_2016.svg.png"/>
+                                            <div className="d-inline text-small"> {value.rating}</div>
+                                            <ul className="social">
+                                                <li><a href="#"><i className="fa fa-facebook"></i></a></li>
+                                                <li><a href="#"><i className="fa fa-twitter"></i></a></li>
+                                                <li><a href="#"><i className="fa fa-google"></i></a></li>
+                                                <li><a href="#"><i className="fa fa-whatsapp"></i></a></li>
+                                            </ul>
+                                        </div>   
+                              
+                                    </div>
+                                </div>
+                    })
+                    
+                }
                 </div>
-            </div>
+            
       </>
     );
   }

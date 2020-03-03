@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-import moana1 from './moana1.jpeg';
-import moana2 from './moana2.jpg';
-import moana3 from './moana3.jpg';
 import AddInfo from '../AddInfo';
-import toy from './toy.jpeg';
 import Search from '../Search';
 import $ from 'jquery';
 const axios = require("axios");
@@ -19,7 +15,9 @@ class Carousel extends Component {
                 runtime: "100 min",
                 genre: "Animation",
                 plot: "When a new toy called \"Forky\" joins Woody and the gang, a road trip alongside old and new friends reveals how big the world can be for a toy.",
-                poster: "https://m.media-amazon.com/images/M/MV5BMTYzMDM4NzkxOV5BMl5BanBnXkFtZTgwNzM1Mzg2NzM@._V1_SX300.jpg"
+                poster: "https://m.media-amazon.com/images/M/MV5BMTYzMDM4NzkxOV5BMl5BanBnXkFtZTgwNzM1Mzg2NzM@._V1_SX300.jpg",
+                rating: "7.9",
+                ratingrt: "97%"
             },
             
             movieTrailers: [
@@ -29,7 +27,7 @@ class Carousel extends Component {
     }
 
     drag = (ev) => {
-        ev.dataTransfer.setData("text", "movie");
+        ev.dataTransfer.setData("text", "movie-from-search");
     }
 
     flipCard = () => {
@@ -68,6 +66,7 @@ class Carousel extends Component {
                 if(genre.indexOf(",") >= 0) {
                     genre = genre.substring(0,genre.indexOf(","));
                 }
+                var rating = this.getRottenTomatoesRating(response);
                 this.setState({
                     movie: { 
                         title: response.data.Title,
@@ -76,11 +75,22 @@ class Carousel extends Component {
                         genre: genre,
                         runtime: response.data.Runtime,
                         rated: response.data.Rated,
-                        year: response.data.Year
+                        year: response.data.Year,
+                        rating: response.data.imdbRating,
+                        ratingrt: rating
                     }
                 });
             }
           });
+    }
+    getRottenTomatoesRating = (response) => {
+        for(var i = 0; i < response.data.Ratings.length; i++) {
+            if (response.data.Ratings[i].Source == "Rotten Tomatoes") {
+                return response.data.Ratings[i].Value;
+            } 
+            
+        }
+        return "N/A";
     }
     componentDidMount() {
         var compThis = this;
@@ -95,7 +105,7 @@ class Carousel extends Component {
     render() {
         return (
             <div className="row">
-                <div className="col-sm-6 searchResults">
+                <div className="col-sm-5 searchResults">
                     <Search cb={this.searchMovie}/>
                     <div id="showEmoji">
                         <div className="text-muted pt-1 d-inline">Click an emoji below to rate this movie!</div> 
@@ -107,7 +117,7 @@ class Carousel extends Component {
                                 <div id="front" className="movie-card movie-card-front">
                                     <img onClick={this.flipCard} className="drag3" src={this.state.movie.poster} id="drag1" draggable="true"  alt="Click on the image to get more information"/>
                                 </div>
-                                <div id="back" onClick={this.flipCard} className="movie-card movie-card-back overflow-hidden">
+                                <div id="back" onClick={this.flipCard} className="movie-card movie-card-back ">
                                     <br></br>
                                     <div className="d-inline"><h3 className="d-inline">{this.state.movie.title} <h5 className="d-inline">({this.state.movie.year})</h5></h3></div>
                                     <br/>
@@ -123,14 +133,20 @@ class Carousel extends Component {
                                     <div id="plot" className="d-none ">{this.state.movie.plot}</div>
                                     <div id="year" className="d-none ">{this.state.movie.year}</div>
                                     <div id="poster" className="d-none ">{this.state.movie.poster}</div>
+                                    <div id="rating" className="d-none ">{this.state.movie.rating}</div>
+                                    <div id="ratingrt" className="d-none ">{this.state.movie.ratingrt}</div>
                                     <br/>
                                     <br/>
                                     <div className="text-justify p-3"> {this.state.movie.plot}</div>
+                                    <img className="d-inline rt-image1" src="https://files.911media.com/wp-content/uploads/2017/10/rotten-tomatoes-logo.png"/>
+                                    <div className="d-inline text-small"> {this.state.movie.ratingrt}</div>
+                                    <img className="d-inline rt-image4" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/500px-IMDB_Logo_2016.svg.png"/>
+                                    <div className="d-inline text-small"> {this.state.movie.rating}</div>
                                 </div>
                             </div>
                         </div>
                         <div className="form-group" id="formBackground">
-                            <textarea rows="5" cols="20" wrap="hard"type="field" id="inputField" placeholder="Tell us how you really feel.."/>
+                            <textarea rows="5" cols="20" wrap="hard"type="field" id="inputField" placeholder="Tell us how you really feel.." maxlength="150"/>
                         <div>
                         <span id="emojiBtn">
                             <span>
@@ -156,10 +172,10 @@ class Carousel extends Component {
                     <h9>(Click on the image to get more information)</h9>
 
                 </div>
-                <div className="col-sm-6">
+                <div className="col-sm-7">
                     <AddInfo text="Checkout latest trailers!"/>
                     <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
+                        <ol className="carousel-indicators">
                             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
@@ -175,7 +191,7 @@ class Carousel extends Component {
                                     active = "carousel-item active";
                                 }
                                 return <div className={active}>
-                                        <iframe width="420" height="315" className="d-block w-100" src={url} frameborder="0"></iframe>
+                                        <iframe width="420" height="415" className="d-block w-100" src={url} frameborder="0"></iframe>
                                         </div>
                             })
                         }
