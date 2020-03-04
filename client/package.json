@@ -10,13 +10,10 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-<<<<<<< HEAD
-    "radium": "^0.26.0",
-=======
     "jquery": "^3.4.1",
->>>>>>> 36ca9980f272c93652932e03f64a9d11a3fc7f9f
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
+    "react-multi-carousel": "^2.5.2",
     "react-responsive-carousel": "^3.1.51",
     "react-router-dom": "^5.1.2",
     "react-scripts": "2.1.1"
