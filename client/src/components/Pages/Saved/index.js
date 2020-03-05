@@ -7,7 +7,7 @@ import Bucket from '../../../components/Bucket';
 import axios from "axios";
 import $ from "jquery";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { FontAwesomeIcon } from '@fontawesome/react-fontawesome';
 
 class SavedPage extends Component {
 
