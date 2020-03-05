@@ -12,7 +12,7 @@ const responsive = {
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 4,
+      items: 6,
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
@@ -64,8 +64,11 @@ class Banner extends Component{
           <div><BannerCard/></div>
           <div><BannerCard/></div>
           <div><BannerCard/></div>   
+          <div><BannerCard/></div> 
+          <div><BannerCard/></div> 
+          <div><BannerCard/></div> 
           <div>
-          <div style = {{width: '300px', height: '400px'}} className = 'container'>
+          <div style = {{width: '200px', height: '300px'}} className = 'container'>
           <div className="containerBanner">
                 <div className="overlayBanner">
                     <div className = "items"></div>
