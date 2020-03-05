@@ -157,8 +157,11 @@ src="https://www.youtube.com/embed/rBxcF-r9Ibs">
 <script>
   
   
-  function pauseCarousel(id) {
-    $(id).carousel("prev");
+  function pauseCarousel(id, prev) {
+    if(prev) {
+      $(id).carousel("prev");
+    } 
+    
     $(id).carousel("pause");
   }
   function continueCarousel(id) {

@@ -104,14 +104,18 @@ class Bucket extends Component {
         var currentMovies = this.state[cat].slice(0);
         var catMovies = [];
         var j = 0;
+        var prev = true;
         for(var i = 0; i < currentMovies.length; i++) {
             if(i == index) {
+                if(i == 0) {
+                    prev = false;
+                }
                 continue;
             }            
             catMovies.push(currentMovies.slice(i,i+1)[0]);
             j++;
         }
-        window.pauseCarousel("#" + cat + "Carousel");
+        window.pauseCarousel("#" + cat + "Carousel", prev);
         this.setState({[cat]: catMovies});
         
     }
