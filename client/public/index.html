@@ -20,9 +20,9 @@
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
    
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.css"  crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.css"  crossorigin="anonymous"> -->
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/859b5e863e.js" crossorigin="anonymous"></script>
     <!--
@@ -48,18 +48,24 @@
 
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
-  -->
+    -->
+   
     <script
     src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
     crossorigin="anonymous"></script>
-    <script
+    <!-- <script
     src="https://code.jquery.com/jquery-3.4.1.js"
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script> -->
 <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<<<<<<< HEAD
 <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.js"  crossorigin="anonymous"></script>
+=======
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.js"  crossorigin="anonymous"></script> --> -->
+>>>>>>> 086f28410655016ed02a6360009d536535c761a8
 <!-- <script src="bootstrap.js"></script> -->
 <script>
   function onSignIn(googleUser){
@@ -83,6 +89,9 @@
           console.log("profile "+JSON.stringify(profile));
           console.log("google user has checked in");  
       }
+    function playMovie(id) {
+      document.getElementById(id).play();
+    }
   </script>
 
 
@@ -156,8 +165,11 @@ src="https://www.youtube.com/embed/rBxcF-r9Ibs">
 <script>
   
   
-  function pauseCarousel(id) {
-    $(id).carousel("prev");
+  function pauseCarousel(id, prev) {
+    if(prev) {
+      $(id).carousel("prev");
+    } 
+    
     $(id).carousel("pause");
   }
   function continueCarousel(id) {

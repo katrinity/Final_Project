@@ -3,6 +3,7 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import BannerCard from '../BannerCard';
 import Radium from 'radium';
+import $ from 'jquery';
 
 const responsive = {
     superLargeDesktop: {
@@ -29,9 +30,28 @@ class Banner extends Component{
   constructor(props) {
     super(props);
     this.state = {
-        items: ''
+        items: '',
+        trendingMovies: [],
+        trendingTV: []
     };
   } 
+
+  componentDidMount() {
+    var compThis = this;
+        $.ajax({METHOD: "GET", url: "/api/trending-movies"}).done(function (res, status) {
+            
+            compThis.getTrendingTV(compThis, res.result);
+            
+        });
+    }
+
+  getTrendingTV = (compThis, movies) => {
+    $.ajax({METHOD: "GET", url: "/api/trending-tv"}).done(function (res, status) {
+            
+        compThis.setState({trendingMovies: movies, trendingTV: res.result});
+        
+    });
+  }
 
   
   render(){
@@ -42,7 +62,7 @@ class Banner extends Component{
           direction = {'right'}
           arrows
           autoPlay
-          autoPlaySpeed={2000}
+          autoPlaySpeed={20000}
           centerMode={false}
           className=""
           containerClass="container-with-dots"
@@ -60,35 +80,45 @@ class Banner extends Component{
           slidesToSlide={3}
           swipeable
         >
-          <div><BannerCard/></div>
+          {/* <div><BannerCard/></div>
           <div><BannerCard/></div>
           <div><BannerCard/></div>
           <div><BannerCard/></div>   
           <div><BannerCard/></div> 
           <div><BannerCard/></div> 
-          <div><BannerCard/></div> 
-          <div>
+          <div><BannerCard/></div>  */}
+          {
+              this.state[this.props.loadElement].map((value,index) => {
+                  if(this.props.loadElement == "trendingMovies") {
+                    return <div><BannerCard mediatype="movie" index={index} movie={value.movie} youtubeId={value.youtubeId}/></div>
+                  } else {
+                    return <div><BannerCard mediatype="tv" index={index} movie={value.movie} youtubeId={value.youtubeId}/></div>
+                  }
+                  
+              })
+          }
+          {/* <div>
           <div style = {{width: '200px', height: '300px'}} className = 'container'>
-          <div className="containerBanner">
-                <div className="overlayBanner">
-                    <div className = "items"></div>
-                    <div className = "items head">
-                    <p>Movie Here</p>
-                    <hr></hr>
+            <div className="containerBanner">
+                    <div className="overlayBanner">
+                        <div className = "items"></div>
+                        <div className = "items head">
+                            <p>Movie Here</p>
+                            <hr></hr>
+                        </div>
+                        <div className = "items director">
+                            <p className="old">Director: </p>
+                            <p className="new">Release Year:</p>
+                            <p className="genre">Genre: </p>
+                        </div>
+                        <div className="items cart">
+                            <i class="fas fa-cart-arrow-down"></i>
+                            <span>SAVE and RATE</span>
+                        </div>
+                        </div>
                     </div>
-                    <div className = "items director">
-                    <p className="old">Director: </p>
-                    <p className="new">Release Year:</p>
-                    <p className="genre">Genre: </p>
-                    </div>
-                    <div className="items cart">
-                    <i class="fas fa-cart-arrow-down"></i>
-                    <span>SAVE and RATE</span>
-                </div>
-                </div>
             </div>
-          </div>
-          </div>       
+          </div>        */}
         </Carousel>
         )
     }

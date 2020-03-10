@@ -12,8 +12,17 @@ function Landing(){
     return(
         <div>
         <Nav menus = {[]}/>
+<<<<<<< HEAD
         <Banner />
         <Banner />
+=======
+
+    
+        <br/>
+        <Banner loadElement="trendingMovies"/>
+        <br/>
+        <Banner loadElement="trendingTV"/>
+>>>>>>> 086f28410655016ed02a6360009d536535c761a8
         
         </div>
         
