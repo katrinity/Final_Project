@@ -6,23 +6,19 @@ import Banner from '../../Banner';
 import BannerCard from '../../BannerCard';
 import Bucket from '../../../components/Bucket';
 import axios from "axios";
+import Theater from '../../Theater'
 import $ from "jquery";
 
 function Landing(){
     return(
         <div>
         <Nav menus = {[]}/>
-<<<<<<< HEAD
-        <Banner />
-        <Banner />
-=======
-
-    
         <br/>
-        <Banner loadElement="trendingMovies"/>
+        <Theater />
+        <br/>
+        <Banner mediatype = 'movie' loadElement="trendingMovies"/>
         <br/>
         <Banner loadElement="trendingTV"/>
->>>>>>> 086f28410655016ed02a6360009d536535c761a8
         
         </div>
         

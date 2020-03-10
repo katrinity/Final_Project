@@ -5,7 +5,8 @@ const footerStyle = {
     base:{
         backgroundColor: '#263238',
         boxShadow: '0px -3px 15px 0px rgba(0,0,0,0.75)',
-        paddingTop: '10px'
+        paddingTop: '10px',
+        zIndex: '2'
     }
 }
 const buttonStyle = {

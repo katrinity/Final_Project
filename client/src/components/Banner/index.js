@@ -2,8 +2,10 @@ import React, {Component} from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import BannerCard from '../BannerCard';
+import Theater from '../Theater';
 import Radium from 'radium';
 import $ from 'jquery';
+import { isAbsolute } from 'path';
 
 const responsive = {
     superLargeDesktop: {
@@ -13,7 +15,7 @@ const responsive = {
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 6,
+      items: 4,
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
@@ -38,24 +40,30 @@ class Banner extends Component{
 
   componentDidMount() {
     var compThis = this;
-        $.ajax({METHOD: "GET", url: "/api/trending-movies"}).done(function (res, status) {
-            
-            compThis.getTrendingTV(compThis, res.result);
-            
-        });
-    }
+        $.ajax({METHOD: "GET", url: "/api/trending-movies"}).done(function (res, status) {           
+            compThis.getTrendingTV(compThis, res.result);         
+        }); 
+       
+  }
+
+  printResults(){
+    console.log(this.state.trendingMovies);
+    console.log(this.state.trendingTV);
+  }
 
   getTrendingTV = (compThis, movies) => {
-    $.ajax({METHOD: "GET", url: "/api/trending-tv"}).done(function (res, status) {
-            
-        compThis.setState({trendingMovies: movies, trendingTV: res.result});
-        
+    $.ajax({METHOD: "GET", url: "/api/trending-tv"}).done(function (res, status) {        
+        compThis.setState({trendingMovies: movies, trendingTV: res.result});      
     });
   }
 
   
+
+  
   render(){
         return(
+          <div test = {this.state.trendingMovies} className = 'container'>
+          {this.props.mediatype == "movie" ? <h1 className = 'carousel-title'>Trending Movies:</h1> : <h1 className = 'carousel-title'>Trending TV Shows:</h1>}
           <Carousel
           additionalTransfrom={0}
           responsive = {responsive}
@@ -73,9 +81,9 @@ class Banner extends Component{
           itemClass=""
           keyBoardControl
           minimumTouchDrag={80}
-          renderButtonGroupOutside={false}
-          renderDotsOutside={false}
-          showDots={false}
+          renderButtonGroupOutside={true}
+          renderDotsOutside={true}
+          // showDots={true}
           sliderClass=""
           slidesToSlide={3}
           swipeable
@@ -120,6 +128,7 @@ class Banner extends Component{
             </div>
           </div>        */}
         </Carousel>
+        </div>
         )
     }
 }
