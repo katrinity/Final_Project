@@ -88,7 +88,7 @@ function Footer(){
 
 
             <div style = {{backgroundColor: '#1e282d', color: 'white'}} className="footer-copyright text-center py-3">© 2020 Copyright:
-                <a href="https://github.com/homemadechowder/Final_Project"> Andrew Krishna Sree @ Github</a>
+                <a href="https://github.com/homemadechowder/Final_Project"> Andrew Katia Krishna Sree @ Github</a>
             </div>
 
 

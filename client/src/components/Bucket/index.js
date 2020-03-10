@@ -131,7 +131,7 @@ class Bucket extends Component {
         return (
             <div className="bucket">
                 <div className="bucketH"><h1>My Bucket
-                    <button type="submit" onClick={this.saveMovies} className="search-button btn btn-primary">Save</button></h1>
+                    <button type="submit" onClick={this.saveMovies} className="search-button btn btn-outline-primary">Save</button></h1>
                 </div>
                 <div className="row">
                     <div className="col-sm-3">
