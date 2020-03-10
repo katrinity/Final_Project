@@ -34,7 +34,8 @@ class Banner extends Component{
     this.state = {
         items: '',
         trendingMovies: [],
-        trendingTV: []
+        trendingTV: [],
+        link:''
     };
   } 
 
@@ -57,6 +58,9 @@ class Banner extends Component{
     });
   }
 
+  getLink = (link) =>{
+    this.setState({link: link})
+  }
   
 
   
@@ -98,7 +102,7 @@ class Banner extends Component{
           {
               this.state[this.props.loadElement].map((value,index) => {
                   if(this.props.loadElement == "trendingMovies") {
-                    return <div><BannerCard mediatype="movie" index={index} movie={value.movie} youtubeId={value.youtubeId}/></div>
+                    return <div><BannerCard getLink = {this.props.getLinkAgain} mediatype="movie" index={index} movie={value.movie} youtubeId={value.youtubeId}/></div>
                   } else {
                     return <div><BannerCard mediatype="tv" index={index} movie={value.movie} youtubeId={value.youtubeId}/></div>
                   }

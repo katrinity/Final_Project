@@ -15,10 +15,7 @@ function Landing(){
         <Nav menus = {[]}/>
         <br/>
         <Theater />
-        <br/>
-        <Banner mediatype = 'movie' loadElement="trendingMovies"/>
-        <br/>
-        <Banner loadElement="trendingTV"/>
+ 
         
         </div>
         

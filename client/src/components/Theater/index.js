@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import $ from 'jquery';
 import { isAbsolute } from 'path';
+import Banner from '../Banner';
+
 
 const containerStyle = {
    
@@ -12,40 +14,37 @@ class Theater extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            items: '',
-            trendingMovies: [],
-            trendingTV: []
+            link: 'http://link.theplatform.com/s/NGweTC/media/cJcMXTtoO5Jk',
         };
       } 
-    
+
+
       componentDidMount() {
-        var compThis = this;
-            $.ajax({METHOD: "GET", url: "/api/trending-movies"}).done(function (res, status) {           
-                compThis.getTrendingTV(compThis, res.result);         
-            });
-    
+        // Link.getLink();
             
       }
     
-      getTrendingTV = (compThis, movies) => {
-        $.ajax({METHOD: "GET", url: "/api/trending-tv"}).done(function (res, status) {        
-            compThis.setState({trendingMovies: movies, trendingTV: res.result});      
-        });
-      }
-    
 
+      getLinkAgain = (link) => {
+        this.setState({link: link})
+      }
 
     render(){
     return(
+        <div>
         <div style = {containerStyle} className = 'container'>
             <div className = 'row'>
                 <div className = 'col-12'>
-                    <video className = 'theater' controls>
-                        <source src='http://link.theplatform.com/s/NGweTC/media/n1OKyT_EBLI4' type="video/mp4"></source>
+                    <video key = {this.state.link} className = 'theater' controls autoPlay>
+                        <source src = {this.state.link} type="video/mp4"></source>
                         Your browser does not support the video tag.
                     </video>
                 </div>
             </div>
+        </div>
+        <br/>
+        <Banner getLinkAgain = {this.getLinkAgain} mediatype = 'movie' loadElement="trendingMovies"/>
+        <Banner loadElement="trendingTV"/>
         </div>
     )
     }

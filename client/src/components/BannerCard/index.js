@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import $ from 'jquery';
+import Theater from '../Theater';
 
 
 const zindex = {
@@ -12,7 +13,7 @@ class BannerCard extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            items: ''
+            link: '',
         };
     }
 
@@ -25,7 +26,9 @@ class BannerCard extends Component{
         $(id).show();
     }
 
-    
+    getLink = () => {
+        this.setState({link: this.props.movie.mainTrailer.sourceId});
+    }
 
     enableControls = (id, index) => {
         $(".containerBanner" + index).css('z-index','145');
@@ -59,7 +62,7 @@ class BannerCard extends Component{
                 <img id={"movie-image" + this.props.index} className={"movie-image-trending " + "movie-image" + this.props.index} src={this.props.movie.image} alt = {this.props.index}>
                 </img>
                 {/* <div class="movie-title">{this.props.movie.title.substring(0,20) + (this.props.movie.title.length > 20 ? "..." : "")}</div> */}
-                <div  index={this.props.index} id={"overlayBanner" + this.props.index} className={"col-mb-8 overlayBanner" + " overlayBanner" + this.props.index}>
+                <div onClick = {()=>this.props.getLink(this.props.movie.mainTrailer.sourceId)} index={this.props.index} id={"overlayBanner" + this.props.index} className={"col-mb-8 overlayBanner" + " overlayBanner" + this.props.index}>
                 
                 {/* <iframe className="movie-frame d-block " src={"https://www.youtube.com/embed/"+this.props.youtubeId+"?rel=0"} frameborder="0"></iframe> */}
                     <div ></div>
@@ -85,7 +88,7 @@ class BannerCard extends Component{
     }
 
     tvContent = () => {
-        return <div   className={"col-mb-4 tv-image-container" + " tv-image-container" + this.props.index}>
+        return <div className={"col-mb-4 tv-image-container" + " tv-image-container" + this.props.index}>
                 <img className="tv-image-trending" src={this.props.movie.posters.primary}/>
                 {/* <div class="movie-title">{this.props.movie.title.substring(0,20) + (this.props.movie.title.length > 20 ? "..." : "")} */}
                 <div  index={this.props.index} id={"overlayBanner" + this.props.index} className={"col-mb-8 overlayBanner" + " overlayBanner" + this.props.index}>
@@ -119,10 +122,12 @@ class BannerCard extends Component{
     
     render(){
         return(
-            <div className={"row containerBanner" + " containerBanner" + this.props.index} >
+            <div>
+            <div className={"row containerBanner" + " containerBanner" + this.props.index} data-id={this.props.movie.id} >
                 
                 {this.props.mediatype == "movie" ? this.movieContent() : this.tvContent()}
                 
+            </div>
             </div>
         )
     }
