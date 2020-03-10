@@ -393,3 +393,76 @@ margin: 2% 0 0 30%;
 .saved-comments:hover {
   overflow: scroll;
 }
+
+.movie-image {
+  width: 50%;
+  height: 75%;
+  margin-top: 10%;
+}
+.movie-image-container {
+  transition: 0.6s;
+  padding: 3%;
+}
+.movie-frame {
+  transition: 0.6s;
+  float: left;
+}
+
+.overlayBanner {
+  position: absolute;
+}
+
+.movie-image-containerx:hover{
+  z-index: 0;
+  color: #fff;
+  transform: scale(1.5);
+  }
+
+  .movie-frame:hover{
+    color: #fff;
+    transform: scale(1.5);
+    }
+.hideOverlay {
+  display: none !important;
+  visibility: hidden;
+}
+
+.movie-frame {
+  width: 100%;
+}
+
+.movie-image-trending {
+  width: 98%;
+  height: 60%;
+  margin: 10%;
+  transition: 0.6s;
+  
+}
+
+
+.containerBanner {
+  padding: 3%;
+}
+
+.movie-title {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 20%;
+  color: white;
+}
+.tv-image-trending {
+  width: 90%;
+  height: 60%;
+  margin: 1%;
+  transition: 0.6s;
+}
+
+
+.tv-image-container {
+
+  transition: 0.6s;
+}
+.tv-image-container:hover {
+  transform: scale(1.5);
+}
