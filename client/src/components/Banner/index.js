@@ -7,25 +7,6 @@ import Radium from 'radium';
 import $ from 'jquery';
 import { isAbsolute } from 'path';
 
-const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5,
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 4,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-    },
-  };
 
 class Banner extends Component{
   
@@ -69,8 +50,9 @@ class Banner extends Component{
           <div test = {this.state.trendingMovies} className = 'container'>
           {this.props.mediatype == "movie" ? <h1 className = 'carousel-title'>Trending Movies:</h1> : <h1 className = 'carousel-title'>Trending TV Shows:</h1>}
           <Carousel
+          
           additionalTransfrom={0}
-          responsive = {responsive}
+          responsive = {this.props.responsive}
           direction = {'right'}
           arrows
           autoPlay
@@ -89,7 +71,7 @@ class Banner extends Component{
           renderDotsOutside={true}
           // showDots={true}
           sliderClass=""
-          slidesToSlide={3}
+          slidesToSlide={2}
           swipeable
         >
           {/* <div><BannerCard/></div>

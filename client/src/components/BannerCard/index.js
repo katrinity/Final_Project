@@ -71,17 +71,25 @@ class BannerCard extends Component{
                         <p>{this.props.movie.title}</p>
                         <hr></hr>
                     </div>
-
+                     
+                    
                     <div className = "items director">
                         <p className="old">Director: <strong>{this.props.youtubeId.director[0].name} </strong></p>
                         <p className="new">Release Year: <strong>{this.props.movie.theaterReleaseDate} 2020</strong></p>
                         <p className = 'genre'>Genre: <strong>{this.props.youtubeId.genre[0]} </strong></p>
-                    </div>
+                       
+                    </div>                 
+                    
                     <div className="items cart">
                         <i className="fas fa-cart-arrow-down"></i>
                         <span>SAVE and RATE</span>
                     </div>
+                    
+                    {/* <div className = 'synopsis'>
+                       {this.props.movie.synopsis}
+                    </div> */}
                 </div>
+
                 
             </div>          
         )
@@ -103,6 +111,7 @@ class BannerCard extends Component{
 
                     <div className = "items director">
                         <p className="old">Director: {this.props.youtubeId.director}</p>
+                        
                         <p className="new">Release Year: {this.props.movie.theaterReleaseDate} 2020</p>
                         <p className = 'genre'>Genre: {this.props.youtubeId.genre} </p>
                     </div>
