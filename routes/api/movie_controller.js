@@ -118,6 +118,125 @@ function getMovies(req,res1) {
         });
 }
 
+router.get("/api/trending-movies", function(req, res) {
+    getTrendingMovies(req,res);
+});
+
+function getTrendingMovies(req,res1) {
+    var trendingMovies = [];
+    var movieCount = {total: 10};
+    //Get movie list from rottentomatoes
+    axios({method: "get", url: "https://www.rottentomatoes.com/browse/in-theaters/"}).then( function(res,status) {
+        res = res.data;
+        var index1 = res.indexOf('var loadPage = (function(adPromise)');
+        var index2 = res.indexOf('[{"id":',index1);
+        var index3 = res.indexOf(']}]', index2);
+        var movies = res.substring(index2, index3+4);
+        var movieData = JSON.parse(res.substring(index2,index3+3));
+        
+        //Go after top 5 movies
+        for(var i = 0, j = 0; i < movieData.length; i++) {
+            var movie = movieData[i];
+            if (Object.keys(movie).includes("mainTrailer")) {
+                if(Object.keys(movie.mainTrailer).includes("sourceId")) {
+                    j++;
+                    getMovieImage(req,res1,trendingMovies, movie, movieCount);
+                }
+            }
+            if(j >= 10) {
+                break;
+            }
+            
+            
+        }
+    });
+}
+
+function getMovieImage(req, res1, trendingMovies, movie, movieCount) {
+    axios({ method: "get", url: "https://www.rottentomatoes.com" + movie.url }).then(function(movieDetails){
+
+                var index1 = movieDetails.data.indexOf('application/ld+json">');
+                var index2 = movieDetails.data.indexOf("</script>", index1);
+                var movieTrailer = JSON.parse(movieDetails.data.substring(index1+21, index2));
+                movie.image = movieTrailer.image;
+                console.log(movie.image);
+                if(movie.image.indexOf("740x290") >= 0) {
+                    console.log("Movie count = " + movieCount.total);
+                    trendingMovies.push({ movie: movie, youtubeId: movieTrailer});
+                    if(trendingMovies.length >= movieCount.total) {
+                        res1.json({result: trendingMovies});
+                    }
+                } else {
+                    movieCount.total = movieCount.total - 1;
+                    if(trendingMovies.length >= movieCount.total) {
+                        res1.json({result: trendingMovies});
+                    }
+                }
+
+            });
+
+}
+
+function getYoutubeTrailer(req,res1, trendingMovies, movie) {
+    axios({ method: "get", url: "https://www.youtube.com/results?search_query=" + movie.title + " trailer", responseType: "text"}).then(function(youtubeData){
+
+                var index = youtubeData.data.indexOf("yt-lockup-video");
+                var index = youtubeData.data.indexOf("https://i.ytimg.com/vi", index);
+                var movieTrailer = youtubeData.data.substring(index+23, youtubeData.data.indexOf("/", index+23));
+                trendingMovies.push({ movie: movie, youtubeId: movieTrailer});
+                if(trendingMovies.length >= 10) {
+                    res1.json({result: trendingMovies});
+                }
+
+            });
+}
+
+router.get("/api/trending-tv", function(req, res) {
+    getTrendingTV(req,res);
+});
+
+function getTrendingTV(req,res1) {
+    var trendingMovies = [];
+    //Get movie list from rottentomatoes
+    axios({method: "get", url: "https://www.rottentomatoes.com/browse/tv-list-1"}).then( function(res,status) {
+        res = res.data;
+        var index1 = res.indexOf('var loadPage = (function(adPromise)');
+        console.log("index1 = " + index1);
+        var index2 = res.indexOf('[{"title":',index1);
+        console.log("index2 = " + index2);
+        var index3 = res.indexOf('}]', index2);
+        console.log("index3 = " + index3);
+        console.log("length = " + res.length);
+        var movies = res.substring(index2, index3+3);
+        // console.log("movies = " + movies.substring(index3,4));
+        var movieData = JSON.parse(res.substring(index2,index3+2));
+        
+        // Go after top 5 movies
+        for(var i = 0; i < 10; i++) {
+            var movie = movieData[i];
+            
+            getYoutubeTrailer(req,res1,trendingMovies, movie);
+            
+        }
+        //Go after top 5 movies
+        // for(var i = 0, j = 0; i < movieData.length; i++) {
+        //     var movie = movieData[i];
+        //     console.log(Object.keys(movie));
+        //     if (Object.keys(movie).includes("mainTrailer")) {
+        //         if(Object.keys(movie.mainTrailer).includes("sourceId")) {
+        //             j++;
+        //             getMovieImage(req,res1,trendingMovies, movie, movieCount);
+        //         }
+        //     }
+        //     if(j >= 10) {
+        //         break;
+        //     }
+            
+            
+        // }
+    });
+}
+
 function getMovies1(req,res1) {
     var movieTrailers = [];
     //Get movie list from rottentomatoes
