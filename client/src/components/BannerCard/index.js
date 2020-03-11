@@ -100,21 +100,22 @@ class BannerCard extends Component{
         return <div className={"col-mb-4 tv-image-container" + " tv-image-container" + this.props.index}>
                 <img className="tv-image-trending" src={this.props.movie.posters.primary}/>
                 {/* <div class="movie-title">{this.props.movie.title.substring(0,20) + (this.props.movie.title.length > 20 ? "..." : "")} */}
-                <div  index={this.props.index} id={"overlayBanner" + this.props.index} className={"col-mb-8 overlayBanner" + " overlayBanner" + this.props.index}>
+                <div onClick = {()=>this.props.getLink("https://www.youtube.com/embed/"+this.props.youtubeId + '?autoplay=1&mute=1')}index={this.props.index} id={"overlayBanner" + this.props.index} className={"col-mb-8 overlayBanner" + " overlayBanner" + this.props.index}>
                 
                 {/* <iframe className="movie-frame d-block " src={"https://www.youtube.com/embed/"+this.props.youtubeId+"?rel=0"} frameborder="0"></iframe> */}
                     <div ></div>
                   
                     <div id={"title" + this.props.index} className="title color-white">
                         <p>{this.props.movie.title}</p>
+                        <hr></hr>
                     </div>
-
+{/* 
                     <div className = "items director">
                         <p className="old">Director: {this.props.youtubeId.director}</p>
                         
                         <p className="new">Release Year: {this.props.movie.theaterReleaseDate} 2020</p>
                         <p className = 'genre'>Genre: {this.props.youtubeId.genre} </p>
-                    </div>
+                    </div> */}
 
                     <div className="items cart">
                         <i className="fas fa-cart-arrow-down"></i>

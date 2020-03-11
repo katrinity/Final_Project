@@ -111,6 +111,7 @@ a{
   width: 100px;
   border: solid;
 }
+
 .movie-card {
   background-color: lightgray;
   width: 300px;
@@ -548,6 +549,11 @@ video {
   box-shadow: 0 10px 16px 0 rgba(0,0,0,2),0 6px 20px 0 rgba(0,0,0,0.19);
 
 }
+
+iframe{
+  z-index: -1;
+  box-shadow: 0 10px 16px 0 rgba(0,0,0,2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
 .hideOverlay {
   display: none !important;
   visibility: hidden;
@@ -623,14 +629,31 @@ video {
   padding-left: 20px;
   letter-spacing: 3px;
 }
+
+.askk{
+  animation: 1.4s ease-in-out 0s 1 slideInFromLeft;
+  /* animation: 1s ease-in 0.2s 1 squish; */
+  text-align: center;
+  font-size: 5vw;
+  font-family: 'Faster One', cursive;
+  color: #ffbf00;
+}
+
+
+.motto{
+  text-align: center;
+  font-size: 1.9vw;
+  font-family: 'Saira Stencil One', cursive;
+  color: #fef5df;
+}
 .title {
-  font-size: 25px;
+  font-size: 2vw;
   line-height: 30px;
   transform: translateY(40px);
   text-align: center;
   transition: all 0.7s;
   font-family: 'Marcellus SC', serif;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5vw;
 }
 .title hr {
   display: block;
@@ -644,8 +667,8 @@ video {
 }
 .director {
   text-align: left;
-  font-size: 12px;
-  line-height: 10px;
+  font-size: 1vw;
+  line-height: 0.5vw;
   font-weight: bold;
   opacity: 1;
   transform: translateY(40px);
@@ -653,11 +676,9 @@ video {
 }
 .synopsis {
   position: 'absolute';
-  padding-left: 15px;
-  padding-right: 15px;
-  text-align: justify;
-  text-justify: inter-word;
-  font-size:   20px;
+  padding-left: 1vw;
+  text-align: left;
+  font-size:   1.5vw;
   letter-spacing: 1px;
   color: #FFDBAC;
   font-weight: bold;
@@ -691,7 +712,7 @@ video {
 }
 .containerBanner:hover .overlayBanner .title {
   transform: translateY(0px);
-  margin-bottom: 1rem;
+  margin-bottom: 1vw;
 }
 .containerBanner:hover .overlayBanner hr {
   width: 90px;
@@ -724,4 +745,20 @@ video {
 
 .react-multi-carousel-list{
   border-bottom: 2px solid grey;
+}
+
+/* Shenanigans - TEXT EFFECT */
+
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-120%);
+    width: 100%;
+  }
+  80% {
+    transform: translateX(20%);
+  }
+  100%{
+    transform: translateX(0);
+  }
 }

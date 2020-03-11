@@ -47,7 +47,7 @@ class Banner extends Component{
   
   render(){
         return(
-          <div test = {this.state.trendingMovies} className = 'container'>
+          <div className = 'container'>
           {this.props.mediatype == "movie" ? <h1 className = 'carousel-title'><i class="fas fa-film"></i> Trending Movies </h1> : <h1 className = 'carousel-title'><i class="fas fa-tv"></i> Trending TV Shows </h1>}
           <Carousel
           
@@ -86,7 +86,7 @@ class Banner extends Component{
                   if(this.props.loadElement == "trendingMovies") {
                     return <div><BannerCard getLink = {this.props.getLinkAgain} mediatype="movie" index={index} movie={value.movie} youtubeId={value.youtubeId}/></div>
                   } else {
-                    return <div><BannerCard mediatype="tv" index={index} movie={value.movie} youtubeId={value.youtubeId}/></div>
+                    return <div><BannerCard getLink = {this.props.getLinkAgain} mediatype="tv" index={index} movie={value.movie} youtubeId={value.youtubeId}/></div>
                   }
                   
               })
