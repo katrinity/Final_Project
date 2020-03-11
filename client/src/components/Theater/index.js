@@ -70,7 +70,7 @@ class Theater extends Component{
         <div className = 'container'>
             <div className = 'row'>
                 <div className = 'col-12'>
-                    <video key = {this.state.link} className = 'theater' controls autoPlay>
+                    <video key = {this.state.link} className = 'theater' controls autoPlay muted>
                         <source src = {this.state.link} type="video/mp4"></source>
                         Your browser does not support the video tag.
                     </video>

@@ -48,7 +48,7 @@ class Banner extends Component{
   render(){
         return(
           <div test = {this.state.trendingMovies} className = 'container'>
-          {this.props.mediatype == "movie" ? <h1 className = 'carousel-title'>Trending Movies:</h1> : <h1 className = 'carousel-title'>Trending TV Shows:</h1>}
+          {this.props.mediatype == "movie" ? <h1 className = 'carousel-title'><i class="fas fa-film"></i> Trending Movies </h1> : <h1 className = 'carousel-title'><i class="fas fa-tv"></i> Trending TV Shows </h1>}
           <Carousel
           
           additionalTransfrom={0}

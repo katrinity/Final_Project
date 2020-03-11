@@ -14,8 +14,7 @@ function Landing(){
         <div>
         <Nav menus = {[]}/>
         <br/>
-        <Theater />
- 
+        <div id = 'theater'><Theater /></div>
         
         </div>
         
