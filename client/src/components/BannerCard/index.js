@@ -19,7 +19,7 @@ class BannerCard extends Component{
 
     componentDidMount() {
         // $(".overlayBanner").hide();
-
+        // this.removeEmTag(this.props.movie.synopsis);
     }
 
     showMovie = (id) => {
@@ -50,6 +50,7 @@ class BannerCard extends Component{
         // document.getElementById(id).pause();
     }
 
+
     movieContent = () => {
         return (
             
@@ -69,7 +70,7 @@ class BannerCard extends Component{
                   
                     <div id={"title" + this.props.index} className="title color-white">
                         <p>{this.props.movie.title}</p>
-                        <hr></hr>
+                        {/* <hr></hr> */}
                     </div>
                      
                     
@@ -85,9 +86,9 @@ class BannerCard extends Component{
                         <span>SAVE and RATE</span>
                     </div>
                     
-                    {/* <div className = 'synopsis'>
+                    <div className = 'synopsis'>
                        {this.props.movie.synopsis}
-                    </div> */}
+                    </div>
                 </div>
 
                 
@@ -106,7 +107,6 @@ class BannerCard extends Component{
                   
                     <div id={"title" + this.props.index} className="title color-white">
                         <p>{this.props.movie.title}</p>
-                        <hr></hr>
                     </div>
 
                     <div className = "items director">
@@ -115,6 +115,7 @@ class BannerCard extends Component{
                         <p className="new">Release Year: {this.props.movie.theaterReleaseDate} 2020</p>
                         <p className = 'genre'>Genre: {this.props.youtubeId.genre} </p>
                     </div>
+
                     <div className="items cart">
                         <i className="fas fa-cart-arrow-down"></i>
                         <span>SAVE and RATE</span>

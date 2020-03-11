@@ -605,7 +605,8 @@ video {
 .overlayBanner {
   clear: left;
   /* width: 70; */
-  max-height: 60%;
+  min-height: 20vw;
+  max-height: 20vw;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 2fr 2fr 1fr;
@@ -615,6 +616,7 @@ video {
   opacity: 1;
   transition: all 0.5s;
   font-family: 'Noto Serif', serif;
+  border: solid 2px #152238;;
 }
 .items {
   padding-left: 20px;
@@ -624,7 +626,10 @@ video {
   font-size: 25px;
   line-height: 30px;
   transform: translateY(40px);
+  text-align: center;
   transition: all 0.7s;
+  font-family: 'Marcellus SC', serif;
+  margin-bottom: 3rem;
 }
 .title hr {
   display: block;
@@ -646,17 +651,20 @@ video {
   transition: all 0.7s;
 }
 .synopsis {
-  padding-left: 20px;
-  letter-spacing: 3px;
   position: 'absolute';
-  text-align: left;
-  font-size: 15px;
-  line-height: 16px;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: justify;
+  text-justify: inter-word;
+  font-size:   20px;
+  letter-spacing: 1px;
+  color: #FFDBAC;
   font-weight: bold;
-
+  font-family: 'Goudy Bookletter 1911', serif;
   opacity: 0;
   transform: translateY(40px);
   transition: all 0.7s;
+  
 }
 .genre{
   transition: all 0.7s;
@@ -677,9 +685,12 @@ video {
 }
 .containerBanner:hover .overlayBanner {
   opacity: 1;
+  border-color: #fef5df;
+  transition: border-color 1s ease; 
 }
 .containerBanner:hover .overlayBanner .title {
   transform: translateY(0px);
+  margin-bottom: 1rem;
 }
 .containerBanner:hover .overlayBanner hr {
   width: 90px;
@@ -708,6 +719,8 @@ video {
   opacity: 1;
   display: block;
 }
+
+
 .react-multi-carousel-list{
   border-bottom: 2px solid grey;
 }
