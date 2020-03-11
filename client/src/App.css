@@ -714,10 +714,9 @@ iframe{
   transform: translateY(0px);
   margin-bottom: 1vw;
 }
-.containerBanner:hover .overlayBanner hr {
-  width: 90px;
-  /* transition-delay: 0.4s; */
-}
+/* .containerBanner:hover .overlayBanner hr {
+  width: 18vw;
+} */
 .containerBanner:hover .overlayBanner .director {
   transform: translateY(0);
   /* transition-delay: 0.3s; */
