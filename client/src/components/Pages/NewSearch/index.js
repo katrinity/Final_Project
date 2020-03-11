@@ -15,7 +15,7 @@ class NewSearchPage extends Component {
         ]
       };
     }
-
+   
     refreshComponent = () => {
         this.forceUpdate();
     }

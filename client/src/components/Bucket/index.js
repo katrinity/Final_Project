@@ -69,7 +69,7 @@ class Bucket extends Component {
         if((ev.dataTransfer.getData("text")) != "movie-from-search") {
             return;
         }
-        var url = document.getElementById("drag1").getAttribute("src");
+        // var url = document.getElementById("drag1").getAttribute("src");
         var emojiImage = document.getElementById("emojiImage");
         var comments = $("#inputField").val();
         var emojiUrl = "";
@@ -79,7 +79,7 @@ class Bucket extends Component {
             emojiText = $("#emoji1").text();
         }
         var movies = this.state[category].slice(0);
-        movies.push({url: url, 
+        movies.push({url: $("#poster").text(), 
                     emojiUrl: emojiUrl, 
                     emojiText: emojiText, 
                     poster: $("#poster").text(),
