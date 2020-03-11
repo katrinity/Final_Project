@@ -13,19 +13,19 @@ class Nav extends Component {
     componentDidMount() {
         this.checkSession();
         window.navComponent = this;
-        $("#email").focusout((ev)=>{
+        $("#email").focusout((ev) => {
             var email = ev.target.value;
-            this.validateEmail($("#"+ev.target.id), email, "#valiEmail");
+            this.validateEmail($("#" + ev.target.id), email, "#valiEmail");
         });
-        $("#signEmail").focusout((ev)=>{
+        $("#signEmail").focusout((ev) => {
             var email = ev.target.value;
-            this.validateEmail($("#"+ev.target.id), email, "#valiSignEmail");
+            this.validateEmail($("#" + ev.target.id), email, "#valiSignEmail");
         });
-        $("#psw").focusout((ev) => {  
+        $("#psw").focusout((ev) => {
             var psw = ev.target.value;
-            this.validatePsw($("#"+ev.target.id), psw);
+            this.validatePsw($("#" + ev.target.id), psw);
         });
-        $("#psw-repeat").focusout((ev) => {  
+        $("#psw-repeat").focusout((ev) => {
             var pswRepeat = ev.target.value;
             this.checkPasswordMatch();
         });
@@ -34,27 +34,27 @@ class Nav extends Component {
     checkSession = () => {
         $.ajax("/api/session", {
             type: "GET"
-          }).then(
-            function(res) {
-            //   this.state.sessionId = res.id;
-              if(res.id) {
-                window.$("#register-form").hide();
-                window.$("#signin-form").hide();
-                window.$(".app").show();
-                window.$("#app-content").html("Welcome " + res.id + "!");
-                window.$("#signOut").show();
-              } else {
-                window.$("#register-form").show();
-                window.$("#signin-form").show();
-                window.$(".app").hide();
-                window.$("#signOut").hide();
-              }
+        }).then(
+            function (res) {
+                //   this.state.sessionId = res.id;
+                if (res.id) {
+                    window.$("#register-form").hide();
+                    window.$("#signin-form").hide();
+                    window.$(".app").show();
+                    window.$("#app-content").html("Welcome " + res.id + "!");
+                    window.$("#signOut").show();
+                } else {
+                    window.$("#register-form").show();
+                    window.$("#signin-form").show();
+                    window.$(".app").hide();
+                    window.$("#signOut").hide();
+                }
             }
-          );
+        );
     }
 
-     onSignIn(googleUser){
-         alert('asdfsd');
+    onSignIn(googleUser) {
+        alert('asdfsd');
         // Useful data for your client-side scripts:
         var profile = googleUser.getBasicProfile();
         console.log("ID: " + profile.getId()); // Don't send this directly to your server!
@@ -63,15 +63,15 @@ class Nav extends Component {
         console.log('Family Name: ' + profile.getFamilyName());
         console.log("Image URL: " + profile.getImageUrl());
         console.log("Email: " + profile.getEmail());
-      
+
         // The ID token you need to pass to your backend:
         var id_token = googleUser.getAuthResponse().id_token;
-      
-      //registerUser function call with google email parameters.
-          this.registerUser(profile.getEmail(),"", "google");
-          console.log("profile "+JSON.stringify(profile));
-          console.log("google user has checked in");  
-      }
+
+        //registerUser function call with google email parameters.
+        this.registerUser(profile.getEmail(), "", "google");
+        console.log("profile " + JSON.stringify(profile));
+        console.log("google user has checked in");
+    }
     registerUser = (email, password, provider, navThis) => {
         var user = {
             email: email,
@@ -82,16 +82,16 @@ class Nav extends Component {
         $.ajax("/api/register", {
             type: "POST",
             data: user
-            }).then(   
-            function(res, err) {
+        }).then(
+            function (res, err) {
                 $.noConflict();
-                if(res.id != ""){
+                if (res.id != "") {
                     // $("#registerModal").modal('hide');
                     window.$('#registerModal').modal('hide');
-                    if(provider != "events") 
-                        navThis.authUser(email,"", provider, navThis);
+                    if (provider != "events")
+                        navThis.authUser(email, "", provider, navThis);
                 }
-                
+
             }
         );
     }
@@ -99,7 +99,7 @@ class Nav extends Component {
     registerUserModal = () => {
         var password = document.getElementById("psw").value;
         var email = document.getElementById("email").value;
-        this.registerUser(email,password,"events", this);
+        this.registerUser(email, password, "events", this);
     }
 
     authUser = (email, password, provider, navThis) => {
@@ -108,20 +108,20 @@ class Nav extends Component {
             password: password,
             provider: provider
         };
-    
+
         // Send the POST request.
-        $.ajax("/api/auth/"+email, {
+        $.ajax("/api/auth/" + email, {
             type: "POST",
             data: password
-            }).then(
-            function(res, err) {
-                if(res.result == "success"){
+        }).then(
+            function (res, err) {
+                if (res.result == "success") {
                     window.$("#loginModal").modal('hide');
-                    var elem=$("#invalidLogin");
+                    var elem = $("#invalidLogin");
                     $(elem).html("");
                     navThis.checkSession();
-                }else{
-                    var elem=$("#invalidLogin");
+                } else {
+                    var elem = $("#invalidLogin");
                     $(elem).html("Please enter a valid email or password.");
                     $(elem).css("color", "red");
                 }
@@ -133,7 +133,7 @@ class Nav extends Component {
     authUserModal = () => {
         var password = document.getElementById("signPsw").value;
         var email = document.getElementById("signEmail").value;
-        this.authUser(email,password,"events", this);
+        this.authUser(email, password, "events", this);
     }
 
     eventSignOut = (navThis) => {
@@ -141,12 +141,12 @@ class Nav extends Component {
         $.ajax("/api/session", {
             type: "DELETE"
         }).then(
-            function(res) {
-          
+            function (res) {
+
                 // this.state.sessionId = "";
                 navThis.checkSession();
                 navThis.props.cb();
-        
+
             }
         );
     }
@@ -154,57 +154,57 @@ class Nav extends Component {
     signOut = () => {
         var auth2 = window.gapi.auth2.getAuthInstance();
         auth2.signOut().then(function () {
-    
+
         });
         ;
     }
 
     //--------------------- function to validate email--------------------------
     validateEmail = (elem, email, name) => {
-    
+
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        if(email == "" || !re.test(String(email).toLowerCase())){
+        if (email == "" || !re.test(String(email).toLowerCase())) {
             elem.css("border-color", "red");
             $(name).html("Please enter a valid email.");
             $(name).css("color", "red");
             return false;
-        }else{
+        } else {
             elem.css("border-color", "white");
             $(name).html("");
             return true;
         }
     }
 
-//------------------------- function to validate password---------------------------
+    //------------------------- function to validate password---------------------------
     validatePsw = (elem, psw) => {
         var re = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
-        if(!re.test(psw)){
+        if (!re.test(psw)) {
             elem.css("border-color", "red");
             $("#valiPsw").html("Please enter a valid password");
             $("#valiPsw").css("color", "red");
-        }else{
+        } else {
             elem.css("border-color", "white");
             $("#valiPsw").html("");
         }
-    
+
     }
 
-//---------------------------function to check the password re-entry--------------
+    //---------------------------function to check the password re-entry--------------
     checkPasswordMatch = () => {
         var password = $("#psw").val();
         var confirmPassword = $("#psw-repeat").val();
 
-        if (password != confirmPassword){
+        if (password != confirmPassword) {
             $("#valiRepeatPsw").html("Passwords do not match!");
             $("#valiRepeatPsw").css("color", "red");
             $("#psw-repeat").css("border-color", "red");
             return false;
-        }else{
+        } else {
             $("#valiRepeatPsw").html("");
             $("#psw-repeat").css("border-color", "white");
             return true;
         }
-    
+
     }
 
     render() {
@@ -213,10 +213,31 @@ class Nav extends Component {
                 <nav className="navbar navbar-expand-lg bg-primary">
                     <a className="navbar-brand" href="/">Movie Review</a>
                     <ul className="nav bg-primary text-light">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
                         <li className="" ><a className={this.props.menus.length != 0 ? "font-weight-normal text-white-50" : "font-weight-bold border-bottom"} href="/search">Search</a></li>
                         <li className="pl-3 "><a className={this.props.menus.length != 0 ? "font-weight-bold border-bottom" : "font-weight-normal text-white-50"} href="/saved">Saved</a></li>
                     </ul>
-                    
+
+
+
+                    {/* <div class="collapse navbar-collapse" id="navbarNav">
+                       <ul className="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Features</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Pricing</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                            </li>
+                        </ul>
+                    </div> */}
                     <ul className="nav navbar-nav ml-auto">
                         <li>
                             <button id="signin-form" type="button" className="btn btn-outline-light ml-3" data-toggle="modal" data-target="#loginModal"> Log in </button>
@@ -231,12 +252,13 @@ class Nav extends Component {
                             </div>
                         </li>
                         <li>
-                            <button id="signOut" type="button" className="btn btn-outline-light" onClick={() => {this.eventSignOut(this)}}>
+                            <button id="signOut" type="button" className="btn btn-outline-light" onClick={() => { this.eventSignOut(this) }}>
                                 Sign out
                             </button>
                         </li>
                     </ul>
                 </nav>
+
 
                 <div className="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
                     <div className="modal-dialog" role="document">
