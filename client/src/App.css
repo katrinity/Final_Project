@@ -300,21 +300,14 @@ transform: scale(1.5);
   z-index: 1;
   height: 45%;
 }
-.movie:hover .movie-review{
+/* .movie:hover .movie-review{
   background-color: #f9f9f9;
-}
-.movie .movie-review:before{
-content: "";
-border-right: 330px solid #fff;
-border-top: 40px solid transparent;
-position: absolute;
-top: -40px;
-left: 0;
-}
-.movie:hover .movie-review:before{
+} */
+
+/* .movie:hover .movie-review:before{
   border-right-color: #f9f9f9;
-}
-.movie .movie-review:after{
+} */
+/* .movie .movie-review:after{
 content: "";
 height: 50%;
 position: absolute;
@@ -322,7 +315,7 @@ top: 20%;
 left: 0;
 background-color: #0b579f;
 transform:translateY(-50%);
-}
+} */
 .delete-button, .delete-button-search {
   position: absolute;
   font-weight: bolder;

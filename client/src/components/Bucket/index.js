@@ -69,6 +69,10 @@ class Bucket extends Component {
         if((ev.dataTransfer.getData("text")) != "movie-from-search") {
             return;
         }
+        this.selectACategory(category);
+    }
+    
+    selectACategory = (category) => {
         // var url = document.getElementById("drag1").getAttribute("src");
         var emojiImage = document.getElementById("emojiImage");
         var comments = $("#inputField").val();

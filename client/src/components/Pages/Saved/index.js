@@ -108,18 +108,18 @@ class SavedPage extends Component {
     return (
         <>
             <Nav cb={this.refreshComponent} menus={this.state.menus}/>
-            <ul class="nav nav-pills justify-content-center mt-3 mb-3">
-                <li class="nav-item">
-                    <a id="nav-cat1" class="nav-link active" onClick={(ev) => {this.showCategory(ev,"cat1")}} href="#">Comedy</a>
+            <ul className="nav nav-pills justify-content-center mt-3 mb-3">
+                <li className="nav-item">
+                    <a id="nav-cat1" className="nav-link active" onClick={(ev) => {this.showCategory(ev,"cat1")}} href="#">Comedy</a>
                 </li>
-                <li class="nav-item">
-                    <a id="nav-cat2" class="nav-link" onClick={(ev) => {this.showCategory(ev,"cat2")}} href="#">Action</a>
+                <li className="nav-item">
+                    <a id="nav-cat2" className="nav-link" onClick={(ev) => {this.showCategory(ev,"cat2")}} href="#">Action</a>
                 </li>
-                <li class="nav-item">
-                    <a id="nav-cat3" class="nav-link" onClick={(ev) => {this.showCategory(ev,"cat3")}} href="#">Must watch</a>
+                <li className="nav-item">
+                    <a id="nav-cat3" className="nav-link" onClick={(ev) => {this.showCategory(ev,"cat3")}} href="#">Must watch</a>
                 </li>
-                <li class="nav-item">
-                    <a id="nav-cat4" class="nav-link" onClick={(ev) => {this.showCategory(ev,"cat4")}} href="#" >Waste of time</a>
+                <li className="nav-item">
+                    <a id="nav-cat4" className="nav-link" onClick={(ev) => {this.showCategory(ev,"cat4")}} href="#" >Waste of time</a>
                 </li>
             </ul>
             

@@ -14,18 +14,23 @@ class NewSearchPage extends Component {
 
         ]
       };
+      this.bucket = React.createRef();
     }
    
     refreshComponent = () => {
         this.forceUpdate();
     }
 
+    assignCategory = (category) => {
+        this.bucket.current.selectACategory(category);
+    }
+
   render() {
     return (
       <>
           <Nav cb={this.refreshComponent} menus={this.state.menus}/>
-          <SearchInput />
-          <Bucket />
+          <SearchInput cb={this.assignCategory}/>
+          <Bucket ref={this.bucket}/>
       </>
     );
   }

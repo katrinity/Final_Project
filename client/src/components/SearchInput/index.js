@@ -109,10 +109,10 @@ drag = (ev) => {
                     +
                 </button>
                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a className="dropdown-item" href="#">Comedy</a>
-                    <a className="dropdown-item" href="#">Action</a>
-                    <a className="dropdown-item" href="#">Must watch</a>
-                    <a className="dropdown-item" href="#">Waste of time</a>
+                    <div className="dropdown-item" onClick={() => {this.props.cb("cat1")}} >Comedy</div>
+                    <div className="dropdown-item" onClick={() => {this.props.cb("cat2")}}>Action</div>
+                    <div className="dropdown-item" onClick={() => {this.props.cb("cat3")}}>Must watch</div>
+                    <div className="dropdown-item" onClick={() => {this.props.cb("cat4")}}>Waste of time</div>
                 </div>
             </div>
                   </div>
