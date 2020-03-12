@@ -7,7 +7,7 @@ class SearchInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        movie: [],
+        movies: [],
         movieDetail: [],
     };
   }
@@ -23,26 +23,23 @@ class SearchInput extends Component {
     $("#showEmoji").empty();
     $("#inputField").val("");
     axios.get(
-        "https://www.omdbapi.com/?t=" + movieTitle + "&apikey=trilogy"
+        "https://www.omdbapi.com/?s=" + movieTitle + "&apikey=trilogy"
       ).then( (response) => {
-        if(response.data != null && response.data.Title != null) {
-            var genre = response.data.Genre;
-            if(genre.indexOf(",") >= 0) {
-                genre = genre.substring(0,genre.indexOf(","));
+        console.log('response = '+response.data.Search.length);
+        if(response.data.Search != null) {
+            var movies = [];
+            for(var i=0; i< response.data.Search.length; i++){
+              movies[i]={
+                title: response.data.Search[i].Title,
+                poster: response.data.Search[i].Poster,
+                year: response.data.Search[i].Year,
+                imdbID: response.data.Search[i].imdbID,
+                type: response.data.Search[i].Type
+              }
             }
-            var rating = this.getRottenTomatoesRating(response);
+            console.log('movies = '+movies.length);
             this.setState({
-                movie: [{ 
-                    title: response.data.Title,
-                    poster: response.data.Poster,
-                    plot: response.data.Plot,
-                    genre: genre,
-                    runtime: response.data.Runtime,
-                    rated: response.data.Rated,
-                    year: response.data.Year,
-                    rating: response.data.imdbRating,
-                    ratingrt: rating
-                }],
+                movies: movies,
                 movieDetail: [],
             });
         }
@@ -60,13 +57,40 @@ getRottenTomatoesRating = (response) => {
 
 getMovieDetails = (movie) => {
     var myThis = this;
-    axios({ method: "get", url: "/api/trailers/" + movie.title}).then(function(youtubeData){
+    axios({ method: "get", url: "/api/trailers/" + movie.title + " "+movie.type}).then(function(youtubeData){
 
                 movie.trailer = youtubeData.data.result;
-                myThis.setState({movie: [], movieDetail: [movie]});
+                myThis.getMovieDetailFromOmdb(movie, myThis);
+                
             });
 }
+getMovieDetailFromOmdb = (movie, myThis) => {
+  axios.get(
+    "https://www.omdbapi.com/?i=" + movie.imdbID + "&apikey=trilogy"
+  ).then( (response) => {
+    if(response.data != null && response.data.Title != null) {
+        var genre = response.data.Genre;
+        if(genre.indexOf(",") >= 0) {
+            genre = genre.substring(0,genre.indexOf(","));
+        }
+        var rating = this.getRottenTomatoesRating(response);
+            movie.title= response.data.Title;
+            movie.poster= response.data.Poster;
+            movie.plot= response.data.Plot;
+            movie.genre= genre;
+            movie.runtime= response.data.Runtime;
+            movie.rated= response.data.Rated;
+            movie.year= response.data.Year;
+            movie.rating= response.data.imdbRating;
+            movie.ratingrt= rating;
+            movie.imdbID= response.data.imdbID;
+            movie.Type= response.data.Type;
 
+      } 
+      myThis.setState({movies: [], movieDetail: [movie]});  
+      });
+
+}
 drag = (ev) => {
     ev.dataTransfer.setData("text", "movie-from-search");
 }
@@ -77,13 +101,13 @@ drag = (ev) => {
         <input type="text" id="searchInput" className="inputs" placeholder="Search for a Movie"  onKeyPress={(event) => {this.keyPressed(event,this)}}/>
       </div>
       {
-          this.state.movie.map((value,index) => {
+          this.state.movies.map((value,index) => {
             return <div class="list-group">
             <a onClick={() => {this.getMovieDetails(value)}} style={{background: 'black'}}  class="list-group-item list-group-item-action">
                 <div style={{background: 'black'}} class="d-flex w-100 justify-content-between">
                     <img style={{width: '100px', height: '100px', float: 'left'}} src={value.poster}/>
                     <h5 class="mb-1 " style={{color: 'white', 'text-align': 'left'}} >{value.title} {value.year}</h5>
-                    <small style={{color: 'white'}}>{value.ratingrt}</small>
+                    <small style={{color: 'white'}}>{value.type}</small>
                 </div>
         
             </a>

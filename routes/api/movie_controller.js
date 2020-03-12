@@ -193,7 +193,7 @@ function getYoutubeTrailer(req,res1, trendingMovies, movie) {
             });
 }
 router.get("/api/trailers/:title", function(req, res) {
-    axios({ method: "get", url: "https://www.youtube.com/results?search_query=" + req.params.title + " trailer", responseType: "text"}).then(function(youtubeData){
+    axios({ method: "get", url: "https://www.youtube.com/results?search_query=" + req.params.title , responseType: "text"}).then(function(youtubeData){
 
         var index = youtubeData.data.indexOf("yt-lockup-video");
         var index = youtubeData.data.indexOf("https://i.ytimg.com/vi", index);
