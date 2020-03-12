@@ -6,18 +6,15 @@ import Banner from '../../Banner';
 import BannerCard from '../../BannerCard';
 import Bucket from '../../../components/Bucket';
 import axios from "axios";
+import Theater from '../../Theater'
 import $ from "jquery";
 
 function Landing(){
     return(
         <div>
         <Nav menus = {[]}/>
-
-    
         <br/>
-        <Banner loadElement="trendingMovies"/>
-        <br/>
-        <Banner loadElement="trendingTV"/>
+        <div id = 'theater'><Theater /></div>
         
         </div>
         
