@@ -214,7 +214,7 @@ class Nav extends Component {
     return(
     <>
         <div id="myNav" class="overlay">                                           
-            <Overlay/>         
+            <Overlay cb={this.props.cb} />         
         </div>
         <NavButton />  
         {/* google sign in modal */}
