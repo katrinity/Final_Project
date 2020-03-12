@@ -59,7 +59,10 @@ getRottenTomatoesRating = (response) => {
 
 getMovieDetails = (movie) => {
     var myThis = this;
-    axios({ method: "get", url: "/api/trailers/" + movie.title + " "+movie.type}).then(function(youtubeData){
+    var year = movie.year.replace("–"," ");
+    var url1 = "/api/trailers/" + movie.title + " "+movie.type + " " + year;
+    console.log("url " + url1);
+    axios({ method: "get", url: "/api/trailers/" + movie.title + " "+movie.type + " " + year}).then(function(youtubeData){
 
                 movie.trailer = youtubeData.data.result;
                 myThis.getMovieDetailFromOmdb(movie, myThis);
