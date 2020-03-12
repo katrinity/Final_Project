@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   background-color: #152238;
+  overflow: hidden;
 }
 .App-logo {
   height: 40vmin;
@@ -91,6 +92,7 @@ a{
 }
 .bucket{
   padding: 0 2% 5% 2%;
+  z-index: 1;
 }
 .drag3 {
   width: 100px;
@@ -730,75 +732,123 @@ margin: 2% 0 0 30%;
 
 
 /* Search Result Container */
-.search-result-container{
+#motion-container{
+  overflow:hidden;
+  display: flex;
+  background: rgb(2,0,36);
+  background: linear-gradient(300deg, rgba(2,0,36,1) 0%, rgba(4,4,41,1) 41%, rgba(38,81,135,1) 88%);
+}
+#search-result-container{
   position: relative  ;
+  /* background-image: url('https://images.unsplash.com/photo-1499162526249-f5b8b9ba9923?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=865bf5c0b77ceb22e88de9fd41c5a671'); */
+  background-size: 3000vw;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 50vw;
-  overflow: hidden;
+  width: 200vw;
+  height: 35vw;
+  display: flex;
+  justify-content: center;
+  z-index: 0;
 }
 
 .search-results{
   position: absolute;
   top: 0;
   left: 0;
-  width: 25vw;
-  height: 18vw;
+  width: 30vw;
+  height: 14vw;
+  transition: all 0.6s;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  opacity: 0.7;
+  background-color:  #152238;
+  color: #fef5df;
+  font-family: 'Stardos Stencil', cursive;
 }
 
-div#search-item-1{
+.search-results:hover{
+  transform: scale(1.1);
+  z-index: 3;
+  opacity: 1;
+  border:  2px solid #fef5df;
+}
+.search-title{
   position: absolute;
+  top: 1vw;
+  left: 10.5vw;
+  font-size: 2vw;
+  text-align: left;
+}
+p.search-year{
+  position: absolute;
+  right: 1vw;
+  bottom: 0vw;
+  font-size: 3vw;
+  text-align: left
+}
+#search-item-1{
   top: 0;
-  left: 0;
-  background-color: yellow;
+  left: 2vw;
 }
 
 #search-item-2{
-  position: absolute;
-  top: 39vw;
-  right: 20vw;
-  background-color: orange;
+  top: 14vw;
+  left: 28vw;
 }
 #search-item-3{
-  position: absolute;
-  top: 15vw;
-  left: 80vw;
-  background-color: red;
+  top: 20vw;
+  left: 3vw;
 }
+
 #search-item-4{
-  top: 34vw;
-  left: 42vw;
-  background-color: blue;
+  top: 5vw;
+  left: 50vw;
 }
+
 #search-item-5{
-  top: 2vw;
-  left: 38vw;
-  background-color: pink;
+  top: 22vw;
+  left: 60vw;
 }
-#search-item-6{
-  top: 0;
-  left: 0;
-  background-color: olive;
+
+#search-item-6{ 
+  top: 1vw;
+  left: 79vw;
 }
+
 #search-item-7{
-  top: 0;
-  left: 0;
-  background-color: maroon;
+  top: 18vw;
+  left: 90vw;
 }
+
 #search-item-8{
-  top: 0;
-  left: 0;
-  background-color: palegreen
+  top: 5vw;
+  left: 110vw;
+  
 }
+
 #search-item-9{
   top: 0;
-  left: 0;
-  background-color: palevioletred
+  left: 140vw;;
 }
+
 #search-item-10{
-  top: 0;
-  left: 0;
-  background-color: gold
+  top: 22vw;
+  left: 145vw;
+}
+
+img.search-poster{
+  position: absolute;
+  left:0;
+  top:0;
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+}
+img[src=""] {
+  display: none;
+}
+img[src='N/A']{
+  display: none;
+}
+div[check=''] {
+  display:none;
 }

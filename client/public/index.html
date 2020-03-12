@@ -61,7 +61,47 @@
     crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script>
+  var lFollowX = 0,
+    lFollowY = 0,
+    x = 0,
+    y = 0,
+    friction = 1/300;
 
+function moveBackground() {
+  x += (lFollowX - x) * friction;
+  y += (lFollowY - y) * friction;
+  if (x < -10){
+  translate = 'translate(' + x + 'px, ' + y + 'px) scale(1)';
+  }
+  else{
+    translate = 'translate(0px, ' + y + 'px) scale(1)'
+  }
+
+  $('#search-result-container').css({
+    '-webit-transform': translate,
+    '-moz-transform': translate,
+    'transform': translate
+  });
+
+
+  
+
+  window.requestAnimationFrame(moveBackground);
+
+}
+
+$(window).on('mousemove click', function(e) {
+
+  var lMouseX = Math.max(-100, Math.min(100, $(window).width()/2 - e.clientX));
+  var lMouseY = Math.max(-100, Math.min(100, $(window).height()/2 - e.clientY));
+  lFollowX = (170 * lMouseX) / 10; // 100 : 12 = lMouxeX : lFollow
+  lFollowY = (20 * lMouseY) / 10;
+
+});
+
+moveBackground();
+</script>
 <script src="https://kit.fontawesome.com/859b5e863e.js" crossorigin="anonymous"></script>
 <script>
   function onSignIn(googleUser){
@@ -145,7 +185,7 @@
       }
     });
 
-
+    
 
     
     

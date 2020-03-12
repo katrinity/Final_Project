@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import Review from "../Review";
 import $ from "jquery";
 // import Modal from 'react-modal';
-
-const axios = require("axios");
+import axios from 'axios';
 
 class SearchInput extends Component {
   constructor(props) {
@@ -16,6 +15,7 @@ class SearchInput extends Component {
   keyPressed(event,myThis) {
     if (event.key === "Enter") {
       myThis.searchMovie($("#searchInput").val());
+      
     }
   }
   searchMovie = (movieTitle) => {
@@ -29,16 +29,19 @@ class SearchInput extends Component {
       ).then( (response) => {
         console.log('response = '+response.data.Search.length);
         if(response.data.Search != null) {
-            var movies = [];
-            for(var i=0; i< response.data.Search.length; i++){
-              movies[i]={
-                title: response.data.Search[i].Title,
-                poster: response.data.Search[i].Poster,
-                year: response.data.Search[i].Year,
-                imdbID: response.data.Search[i].imdbID,
-                type: response.data.Search[i].Type
-              }
+            var movies = [];   
+            for(var i=0; i< response.data.Search.length; i++){ 
+
+                movies[i]={
+                  title: response.data.Search[i].Title,
+                  poster: response.data.Search[i].Poster,
+                  year: response.data.Search[i].Year,
+                  imdbID: response.data.Search[i].imdbID,
+                  type: response.data.Search[i].Type
+                }
+            
             }
+            
             console.log('movies = '+movies.length);
             this.setState({
                 movies: movies,
@@ -93,6 +96,7 @@ getMovieDetailFromOmdb = (movie, myThis) => {
 
       } 
       myThis.setState({ movieDetail: [movie]});  
+      
       });
 
 }
@@ -105,25 +109,96 @@ componentDidUpdate() {
 drag = (ev) => {
     ev.dataTransfer.setData("text", "movie-from-search");
 }
+
+
+
   render(){
+
+    const movieItems = this.state.movies;
+    if (movieItems.length < 10){
+      for (var i = movieItems.length; i < 10; i++){
+        movieItems[i]={         
+            title: '',
+            poster: '',
+            year: '',
+            imdbID: '',
+            type: '',
+        }
+      }
+    }
+
+    
+    
+
     return (
-        <>
+      <>
       <div className="search-input">
         <input type="text" id="searchInput" className="inputs" placeholder="Search for a Movie"  onKeyPress={(event) => {this.keyPressed(event,this)}}/>
       </div>
       <button id="launch-modal" style={{visibility: 'hidden'}} type="button" class="btn btn-primary" data-toggle="modal" data-target="#mModal">Hidden</button>
 
-      <div className = 'search-result-container'>
-        <div id = 'search-item-1' className = 'search-results'> 1</div>
-        <div id = 'search-item-2' className = 'search-results'>2 </div>
-        <div id = 'search-item-3' className = 'search-results'>3 </div>
-        <div id = 'search-item-4' className = 'search-results'>4 </div>
-        <div id = 'search-item-5' className = 'search-results'>5 </div>
-        <div id = 'search-item-6' className = 'search-results'>6 </div>
-        <div id = 'search-item-7' className = 'search-results'> 7</div>
-        <div id = 'search-item-8' className = 'search-results'>8 </div>
-        <div id = 'search-item-9' className = 'search-results'> 9</div>
-        <div id = 'search-item-10' className = 'search-results'>10 </div>
+      
+      <div id = 'motion-container'>
+      {movieItems[0] != null
+        ? 
+      <div id = 'search-result-container'>
+       
+        <div check = {movieItems[0].title} id = 'search-item-1' className = 'search-results'>
+          <h1 className = 'search-title'>{movieItems[0].title}</h1>
+          <p className = 'search-year'>{movieItems[0].year}</p>
+          <img className = 'search-poster' src = {movieItems[0].poster} alt = '1'></img>
+        </div>
+        <div check = {movieItems[1].title} id = 'search-item-2' className = 'search-results'>
+        <h1 className = 'search-title'>{movieItems[1].title}</h1>
+          <p className = 'search-year'>{movieItems[1].year}</p>
+          <img className = 'search-poster' src = {movieItems[1].poster} alt = '2'></img>
+        </div>
+        <div check = {movieItems[2].title} id = 'search-item-3' className = 'search-results'>
+        <h1 className = 'search-title'>{movieItems[2].title}</h1>
+          <p className = 'search-year'>{movieItems[2].year}</p>
+          <img className = 'search-poster' src = {movieItems[2].poster} alt = '3'></img>
+        </div>
+        <div check = {movieItems[3].title} id = 'search-item-4' className = 'search-results'>
+        <h1 className = 'search-title'>{movieItems[3].title}</h1>
+          <p className = 'search-year'>{movieItems[3].year}</p>
+          <img className = 'search-poster' src = {movieItems[3].poster} alt = '4'></img>
+        </div>
+        <div check = {movieItems[4].title} id = 'search-item-5' className = 'search-results'>
+        <h1 className = 'search-title'>{movieItems[4].title}</h1>
+          <p className = 'search-year'>{movieItems[4].year}</p>
+          <img className = 'search-poster' src = {movieItems[4].poster} alt = '5'></img>
+        </div>
+        <div check = {movieItems[5].title} id = 'search-item-6' className = 'search-results'>
+        <h1 className = 'search-title'>{movieItems[5].title}</h1>
+          <p className = 'search-year'>{movieItems[5].year}</p>
+          <img className = 'search-poster' src = {movieItems[5].poster} alt = '6'></img>
+        </div>
+        <div check = {movieItems[6].title} id = 'search-item-7' className = 'search-results'>
+        <h1 className = 'search-title'>{movieItems[6].title}</h1>
+          <p className = 'search-year'>{movieItems[6].year}</p>
+          <img className = 'search-poster' src = {movieItems[6].poster} alt = '7'></img>
+        </div>
+        <div check = {movieItems[7].title} id = 'search-item-8' className = 'search-results'>
+        <h1 className = 'search-title'>{movieItems[7].title}</h1>
+          <p className = 'search-year'>{movieItems[7].year}</p>
+          <img className = 'search-poster' src = {movieItems[7].poster} alt = '8'></img>
+        </div>
+        <div check = {movieItems[8].title}  id = 'search-item-9' className = 'search-results'>
+        <h1 className = 'search-title'>{movieItems[8].title}</h1>
+          <p className = 'search-year'>{movieItems[8].year}</p>
+          <img className = 'search-poster' src = {movieItems[8].poster} alt = '9'></img>
+        </div>
+        <div check = {movieItems[9].title}id = 'search-item-10' className = 'search-results'>
+        <h1 className = 'search-title'>{movieItems[9].title}</h1>
+          <p className = 'search-year'>{movieItems[9].year}</p>
+          <img className = 'search-poster' src = {movieItems[9].poster} alt = '10'></img>
+        </div>
+        
+        
+      </div>
+      :
+      <div></div>
+      }
       </div>
       {
           // this.state.movies.map((value,index) => {
