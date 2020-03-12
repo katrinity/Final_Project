@@ -177,6 +177,8 @@ function getMovieImage(req, res1, trendingMovies, movie, movieCount) {
 
 }
 
+
+
 function getYoutubeTrailer(req,res1, trendingMovies, movie) {
     axios({ method: "get", url: "https://www.youtube.com/results?search_query=" + movie.title + " trailer", responseType: "text"}).then(function(youtubeData){
 
@@ -190,6 +192,17 @@ function getYoutubeTrailer(req,res1, trendingMovies, movie) {
 
             });
 }
+router.get("/api/trailers/:title", function(req, res) {
+    axios({ method: "get", url: "https://www.youtube.com/results?search_query=" + req.params.title , responseType: "text"}).then(function(youtubeData){
+
+        var index = youtubeData.data.indexOf("yt-lockup-video");
+        var index = youtubeData.data.indexOf("https://i.ytimg.com/vi", index);
+        var movieTrailer = youtubeData.data.substring(index+23, youtubeData.data.indexOf("/", index+23));
+        
+        res.json({result: movieTrailer});
+
+    });
+});
 
 router.get("/api/trending-tv", function(req, res) {
     getTrendingTV(req,res);
