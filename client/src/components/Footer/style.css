@@ -5,11 +5,15 @@
 } */
 
 .footer-margin {
-    height: 100px;
-    /* flex-shrink: none; */
+    /* height: 100px; */
+    flex-shrink: none;
     display: block;
     position: absolute;
     bottom: 0;
   width: 100%;
   height: 20px;
+  }
+
+  .footer-copyright {
+      font-size: x-small;
   }
