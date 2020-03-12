@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-color: black;
+  background-color: #152238;
 }
 .App-logo {
   height: 40vmin;
@@ -175,28 +175,28 @@ a{
   color: rgb(11, 11, 240);
 }
 .comedy{
-  background:rgb(12, 12, 12);
+  background-color: #282c34;;
   border-color:  rgb(11, 11, 240)
 }
 #div2{
   color: rgb(238, 65, 12);
 }
 .action{
-  background:rgb(12, 12, 12);
+  background-color: #282c34;;
   border-color:rgb(238, 65, 12);
 }
 #div3{
   color: rgb(5, 106, 33);
 }
 .must{
-  background:rgb(12, 12, 12);
+  background-color: #282c34;;
   border-color:rgb(5, 106, 33);
 }
 #div4{
   color: rgb(238, 65, 12);
 }
 .waste{
-  background:rgb(12, 12, 12);
+  background-color: #282c34;;
   border-color: rgb(238, 65, 12); ;
 }
 .bucket-image {
@@ -678,11 +678,11 @@ margin: 2% 0 0 30%;
 }
 
 .search-input, .bucket{
-  background-color: black;
+  background-color: #282c34;;
   color: white;
 }
 .inputs{
-  width: 90%;
+  width: 80%;
   padding: 1%;
   margin: 1%;
   color: white;
