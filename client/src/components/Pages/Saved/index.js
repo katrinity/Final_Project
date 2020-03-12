@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import {BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import '../../../App.css';
 import Nav from '../../../components/Nav';
-import Carousel from '../../../components/Carousel';
-import Bucket from '../../../components/Bucket';
+// import Carousel from '../../../components/Carousel';
+// import Bucket from '../../../components/Bucket';
 import axios from "axios";
 import $ from "jquery";
 
