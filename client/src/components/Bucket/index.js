@@ -70,7 +70,11 @@ class Bucket extends Component {
         if((ev.dataTransfer.getData("text")) != "movie-from-search") {
             return;
         }
-        var url = document.getElementById("drag1").getAttribute("src");
+        this.selectACategory(category);
+    }
+
+    selectACategory = (category) => {
+        // var url = document.getElementById("drag1").getAttribute("src");
         var emojiImage = document.getElementById("emojiImage");
         var comments = $("#inputField").val();
         var emojiUrl = "";
@@ -80,7 +84,7 @@ class Bucket extends Component {
             emojiText = $("#emoji1").text();
         }
         var movies = this.state[category].slice(0);
-        movies.push({url: url, 
+        movies.push({url: $("#poster").text(), 
                     emojiUrl: emojiUrl, 
                     emojiText: emojiText, 
                     poster: $("#poster").text(),
@@ -132,12 +136,12 @@ class Bucket extends Component {
         return (
             <div className="bucket">
                 <div className="bucketH"><h1>My Bucket
-                    <button type="submit" onClick={this.saveMovies} className="search-button btn btn-primary">Save</button></h1>
+                    <button type="submit" onClick={this.saveMovies} className="search-button btn btn-outline-primary">Save</button></h1>
                 </div>
                 <div className="row">
                     <div className="col-sm-3">
                         <div id="div1" className="div1" onDrop={(ev) => { this.dropToCategory(ev,"cat1")}} onDragOver={this.allowDrop} className="card grow comedy">
-        <div contenteditable="true" className="catName">Comedy({this.state.cat1.length})</div>
+                            <div contenteditable="true" className="catName">Comedy({this.state.cat1.length})</div>
                             
                             <div id="cat1Carousel" className="carousel slide " data-ride="carousel">
                                 <div id="cat1-carousel-inner" className="carousel-inner">
@@ -176,13 +180,13 @@ class Bucket extends Component {
                                     })
                                 }
                                 </div>
-                                <a class="carousel-control-prev" href="#cat1Carousel" role="button" data-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span>
+                                <a className="carousel-control-prev" href="#cat1Carousel" role="button" data-slide="prev">
+                                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span className="sr-only">Previous</span>
                                 </a>
-                                <a class="carousel-control-next" href="#cat1Carousel" role="button" data-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
+                                <a className="carousel-control-next" href="#cat1Carousel" role="button" data-slide="next">
+                                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span className="sr-only">Next</span>
                                 </a>
                             </div>
                         </div>
@@ -223,13 +227,13 @@ class Bucket extends Component {
                                     })
                                 }
                                 </div>
-                                <a class="carousel-control-prev" href="#cat2Carousel" role="button" data-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span>
+                                <a className="carousel-control-prev" href="#cat2Carousel" role="button" data-slide="prev">
+                                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span className="sr-only">Previous</span>
                                 </a>
-                                <a class="carousel-control-next" href="#cat2Carousel" role="button" data-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
+                                <a className="carousel-control-next" href="#cat2Carousel" role="button" data-slide="next">
+                                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span className="sr-only">Next</span>
                                 </a>
                             </div>
                         </div>
@@ -270,13 +274,13 @@ class Bucket extends Component {
                                     })
                                 }
                                 </div>
-                                <a class="carousel-control-prev" href="#cat3Carousel" role="button" data-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span>
+                                <a className="carousel-control-prev" href="#cat3Carousel" role="button" data-slide="prev">
+                                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span className="sr-only">Previous</span>
                                 </a>
-                                <a class="carousel-control-next" href="#cat3Carousel" role="button" data-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
+                                <a className="carousel-control-next" href="#cat3Carousel" role="button" data-slide="next">
+                                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span className="sr-only">Next</span>
                                 </a>
                             </div>
                         </div>
@@ -319,13 +323,13 @@ class Bucket extends Component {
                                     })
                                 }
                                 </div>
-                                <a class="carousel-control-prev" href="#cat4Carousel" role="button" data-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span>
+                                <a className="carousel-control-prev" href="#cat4Carousel" role="button" data-slide="prev">
+                                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span className="sr-only">Previous</span>
                                 </a>
-                                <a class="carousel-control-next" href="#cat4Carousel" role="button" data-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
+                                <a className="carousel-control-next" href="#cat4Carousel" role="button" data-slide="next">
+                                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span className="sr-only">Next</span>
                                 </a>
                             </div>
                         </div>

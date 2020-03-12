@@ -59,49 +59,43 @@ const buttonStyle = {
 
 function Footer() {
     return (
-        <div class="footer-margin navbar-fixed-bottom ">
-            <footer style={footerStyle.base} className="page-footer font-small ">
+        <footer style={footerStyle.base} className="page-footer font-small ">
 
-                <div className="card-footer  z-depth-2">
-                    {/* <div className="container z-depth-2"> */}
-                    {/* <div className="card-footer text-muted" */}
+            <div className="container z-depth-2">
 
-                    <ul className="list-unstyled list-inline text-center">
-                        <li className="list-inline-item">
-                            <a key={1} style={buttonStyle.fb} className='btn'>
-                                {/* <i style={{ marginLeft: '-.2rem', textAlign: 'center', color: "#4267b2" }} className="fa fa-fw fa-facebook fa-lg"></i> */}
-                                <i style={{ textAlign: 'left', color: "#4267b2" }} className="fa fa-fw fa-facebook fa-lg"></i>
-                            </a>
-                        </li>
-                        <li className="list-inline-item">
-                            <a key={2} style={buttonStyle.twt} className="btn">
-                                <i style={{ textAlign: 'left', color: '#1DA1F2' }} className="fa fa-fw fa-twitter fa-lg"></i>
-                            </a>
-                        </li>
-                        <li className="list-inline-item">
-                            <a key={3} style={buttonStyle.gg} className="btn">
-                                <i style={{ textAlign: 'left', color: 'white' }} className="fa fa-fw fa-google fa-lg"></i>
-                            </a>
-                        </li>
-                        <li className="list-inline-item">
-                            <a key={4} style={buttonStyle.linkd} className="btn">
-                                <i style={{ textAlign: 'left', color: '#007dbb' }} className="fa fa-fw fa-linkedin fa-lg"></i>
-                            </a>
-                        </li>
-                    </ul>
+                <ul className="list-unstyled list-inline text-center">
+                    <li className="list-inline-item">
+                        <a key={1} style={buttonStyle.fb} className='btn'>
+                            <i style={{ marginLeft: '-.2rem', textAlign: 'center', color: "#4267b2" }} className="fab fa-facebook fa-lg"></i>
+                        </a>
+                    </li>
+                    <li className="list-inline-item">
+                        <a key={2} style={buttonStyle.twt} className="btn">
+                            <i style={{ marginLeft: '-.2rem', color: '#1DA1F2' }} className="fab fa-twitter fa-lg"></i>
+                        </a>
+                    </li>
+                    <li className="list-inline-item">
+                        <a key={3} style={buttonStyle.gg} className="btn">
+                            <i style={{ marginLeft: '-.2rem', color: 'white' }} className="fab fa-google-plus-g fa-lg"></i>
+                        </a>
+                    </li>
+                    <li className="list-inline-item">
+                        <a key={4} style={buttonStyle.linkd} className="btn">
+                            <i style={{ marginLeft: '-.1rem', color: '#007dbb' }} className="fab fa-linkedin fa-lg"></i>
+                        </a>
+                    </li>
+                </ul>
 
 
-                </div >
+            </div>
 
 
-                <div style={{ backgroundColor: '#1e282d', color: 'white' }} className="footer-copyright text-center py-3">© 2020 Copyright:
-                <a href="https://github.com/homemadechowder/Final_Project">
-                        Andrew Krishna Sree @ Github</a>
-                </div>
+            <div style={{ backgroundColor: '#1e282d', color: 'white' }} className="footer-copyright text-center py-3">© 2020 Copyright:
+                <a href="https://github.com/homemadechowder/Final_Project"> Andrew Katia Krishna Sree @ Github</a>
+            </div>
 
 
-            </footer >
-        </div>
+        </footer>
 
     )
 }

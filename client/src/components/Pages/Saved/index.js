@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import '../../../App.css';
 import Nav from '../../../components/Nav';
-import Carousel from '../../../components/Carousel';
-import Bucket from '../../../components/Bucket';
+// import Carousel from '../../../components/Carousel';
+// import Bucket from '../../../components/Bucket';
 import axios from "axios";
 import $ from "jquery";
 
@@ -108,19 +108,18 @@ class SavedPage extends Component {
         return (
             <>
                 <Nav cb={this.refreshComponent} menus={this.state.menus} />
-                <ul class="nav justify-content-center">
-                    {/* <ul class="nav nav-pills justify-content-center mt-3 mb-3"> */}
-                    <li class="nav-item">
-                        <a class="nav-link active" id="nav-cat1" onClick={(ev) => { this.showCategory(ev, "cat1") }} href="#">Comedy</a>
+                <ul className="nav nav-pills justify-content-center mt-3 mb-3">
+                    <li className="nav-item">
+                        <a id="nav-cat1" className="nav-link active" onClick={(ev) => { this.showCategory(ev, "cat1") }} href="#">Comedy</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="nav-cat2" onClick={(ev) => { this.showCategory(ev, "cat2") }} href="#">Action</a>
+                    <li className="nav-item">
+                        <a id="nav-cat2" className="nav-link" onClick={(ev) => { this.showCategory(ev, "cat2") }} href="#">Action</a>
                     </li>
-                    <li class="nav-item">
-                        <a id="nav-cat3" class="nav-link" onClick={(ev) => { this.showCategory(ev, "cat3") }} href="#">Must watch</a>
+                    <li className="nav-item">
+                        <a id="nav-cat3" className="nav-link" onClick={(ev) => { this.showCategory(ev, "cat3") }} href="#">Must watch</a>
                     </li>
-                    <li class="nav-item">
-                        <a id="nav-cat4" class="nav-link" onClick={(ev) => { this.showCategory(ev, "cat4") }} href="#" >Waste of time</a>
+                    <li className="nav-item">
+                        <a id="nav-cat4" className="nav-link" onClick={(ev) => { this.showCategory(ev, "cat4") }} href="#" >Waste of time</a>
                     </li>
                 </ul>
 
