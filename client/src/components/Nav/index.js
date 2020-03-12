@@ -8,7 +8,7 @@ class Nav extends Component {
         super(props);
         this.state = {
             sessionId: "",
-            rotated: 0,
+            
         };
     }
 
@@ -213,32 +213,32 @@ class Nav extends Component {
     render(){
     return(
     <>
-        <div className ="overlay-content">
+        {/* <div className ="overlay-content">
         <a className = 'overlayItems' href="/">Home</a>
         <a className = 'overlayItems' href="/search">Search</a>
         <a className = 'overlayItems' href="/saved">Saved</a>
         <ul className="nav navbar-nav ml-auto">
-                        <li>
-                            <a id="signin-form" type="button" className="overlayItems" data-toggle="modal" data-target="#loginModal"> Log in </a>
-                        </li>
-                        <li>
-                            <a id="register-form" type="button" className="overlayItems" data-toggle="modal" data-target="#registerModal"> Sign up </a>
-                        </li>
-                        <li>
-                            <div className="app text-light">
-                                <div id="app-content" className="pt-1"></div>
-                                <div id="sign-out"></div>
-                            </div>
-                        </li>
-                        <li>
-                            <button id="signOut" type="button" className="btn btn-outline-light" onClick={() => {this.eventSignOut(this)}}>
-                                Sign out
-                            </button>
-                        </li>
-                    </ul> 
+            <li>
+                <a id="signin-form" type="button" className="overlayItems" data-toggle="modal" data-target="#loginModal"> Log in </a>
+            </li>
+            <li>
+                <a id="register-form" type="button" className="overlayItems" data-toggle="modal" data-target="#registerModal"> Sign up </a>
+            </li>
+            <li>
+                <div className="app text-light">
+                    <div id="app-content" className="pt-1"></div>
+                    <div id="sign-out"></div>
+                </div>
+            </li>
+            <li>
+                <button id="signOut" type="button" className="btn btn-outline-light" onClick={() => {this.eventSignOut(this)}}>
+                    Sign out
+                </button>
+            </li>
+        </ul> 
         </div>
     
-    
+     */}
  
 
                <div id="myNav" class="overlay">                                            
