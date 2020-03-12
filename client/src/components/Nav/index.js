@@ -26,10 +26,7 @@ class Nav extends Component {
                         <li className="pl-3 "><a className={this.props.menus.length != 0 ? "font-weight-bold border-bottom" : "font-weight-normal text-white-50"} href="/saved">Saved</a></li>
                     </ul> */}          
                 </div>
-                <NavButton />  
-                
-
-               
+                <NavButton />                 
                 {/* google sign in modal */}
                 <div className="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
                     <div className="modal-dialog" role="document">
