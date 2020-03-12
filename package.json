@@ -42,6 +42,8 @@
     "mongoose": "^5.3.16",
     "path": "^0.12.7",
     "qrcode": "^1.4.4",
+    "radium": "^0.26.0",
+    "react-multi-carousel": "^2.5.2",
     "react-responsive-carousel": "^3.1.51",
     "request": "^2.88.0"
   }
