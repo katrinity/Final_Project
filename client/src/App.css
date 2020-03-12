@@ -32,6 +32,13 @@
     transform: rotate(360deg);
   }
 }
+body{
+  background-color: #152238;
+}
+.theater{
+  width: 100%;
+  height: auto
+}
 a{
   color: black;
   font-weight: bold;
@@ -220,6 +227,96 @@ a{
   justify-content: center;
   margin-left: 4%;
 }
+.navbarNative {
+  position: fixed;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: .5rem 1rem;
+  z-index: 30000;
+  transition: all 0.5s ease-in-out;
+}
+
+/* Fancy Navbar section */
+#navbutton{
+  position: 'fixed';
+  top: 0;
+  cursor: pointer;
+  font-size: 50px;
+  color: white;
+  padding-left: 3vw;
+  z-index: 3;
+
+}
+
+.fa-plus{
+  transition: all 0.5s;
+  z-index: 3481282198759132;
+  
+}
+/* The Overlay (background) */
+.overlay {
+  /* Height & width depends on how you want to reveal the overlay (see JS below) */   
+  height: 0%;
+  width: 100%;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  background-color: rgb(0,0,0); /* Black fallback color */
+  background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+/* Position the content inside the overlay */
+.overlay-content {
+  position: relative;
+  top: 7%; 
+  left: 4%;
+  width: 100%; /* 100% width */
+  text-align: left; /* Centered text/links */
+  margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+}
+
+/* The navigation links inside the overlay */
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #E9E4E4;
+  display: block; /* Display block instead of inline */
+  transition: 0.3s; /* Transition effects on hover (color) */
+}
+
+/* When you mouse over the navigation links, change their color */
+.overlay a:hover, .overlay a:focus {
+  color: #FFCC00;
+}
+
+.overlayItems{
+  font-family: 'Righteous', cursive;
+}
+
+/* Position the close button (top right corner) */
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+/* End of section */
+#theater{
+  padding-top: 3vw;
+  position: 'absolute';
+  z-index: -1;
+}
 .card1 {
   width: 100%;
 }
@@ -335,17 +432,48 @@ margin: 2% 0 0 30%;
   transition: 0.6s;
   float: left;
 }
-.overlayBanner {
+.container{
+  padding-top: 4vh;
+}
+
+.containerBanner{
+  background-color: 'white';
+  padding: 3%;
+}
+/* .overlayBanner {
   position: absolute;
+} */
+.carousel-title{
+  text-align: left;
+  color: white;
+  font-family: 'Playfair Display', serif;
 }
-.movie-image-containerx:hover{
-  z-index: 0;
+.movie-image-container:hover > .movie-image-trending{
+  z-index: 20;
   color: #fff;
-  transform: scale(1.5);
+  transform: translate(0, -10px);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  
 }
+.movie-title:hover{
+  background-color: 'gray';
+}
+
 .movie-frame:hover{
   color: #fff;
-  transform: scale(1.5);
+  /* transform: scale(1.5); */
+  }
+  video {
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,2),0 6px 20px 0 rgba(0,0,0,0.19);
+  
+  }
+  
+  iframe{
+    z-index: -1;
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,2),0 6px 20px 0 rgba(0,0,0,0.19);
   }
 .hideOverlay {
   display: none !important;
@@ -355,33 +483,200 @@ margin: 2% 0 0 30%;
   width: 100%;
 }
 .movie-image-trending {
-  width: 98%;
-  height: 60%;
-  margin: 10%;
-  transition: 0.6s; 
+  width: 100%;
+  height:auto;
+  transition: all 0.7s;
+  float: left;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.3)
 }
+
 .containerBanner {
+  position: 'absolute';
   padding: 3%;
 }
 .movie-title {
-  position: absolute;
+  position: relative;
   left: 0;
   top: 0;
-  padding: 20%;
   color: white;
 }
+/*TV STUFF */
 .tv-image-trending {
-  width: 90%;
-  height: 60%;
-  margin: 1%;
-  transition: 0.6s;
+  width: 100%;
+  height: 400px;
+  transition: all 0.7s;
+  float: left;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.3)
 }
+
 .tv-image-container {
-  transition: 0.6s;
+  transition: 0.2s;
+  
+  padding: 3%;
+  background-color: 'grey';
 }
-.tv-image-container:hover {
-  transform: scale(1.5);
+.tv-image-container:hover > .tv-image-trending{
+  z-index: 20;
+  color: #fff;
+  transform: translate(0, -10px);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+/* Banner section */
+
+
+.overlayBanner {
+  clear: left;
+  /* width: 70; */
+  min-height: 20vw;
+  max-height: 20vw;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 2fr 2fr 1fr;
+  background: #192841;
+  color: #fef5df;
+  z-index: 0;
+  opacity: 1;
+  transition: all 0.5s;
+  font-family: 'Noto Serif', serif;
+  border: solid 2px #152238;;
+}
+.items {
+  padding-left: 20px;
+  letter-spacing: 3px;
+}
+
+.askk{
+  animation: 1.4s ease-in-out 0s 1 slideInFromLeft;
+  /* animation: 1s ease-in 0.2s 1 squish; */
+  text-align: center;
+  font-size: 5vw;
+  font-family: 'Faster One', cursive;
+  color: #ffbf00;
+}
+
+
+.motto{
+  text-align: center;
+  font-size: 1.9vw;
+  font-family: 'Saira Stencil One', cursive;
+  color: #fef5df;
+}
+.title {
+  font-size: 2vw;
+  line-height: 30px;
+  transform: translateY(40px);
+  text-align: center;
+  transition: all 0.7s;
+  font-family: 'Marcellus SC', serif;
+  margin-bottom: 1.5vw;
+}
+.title hr {
+  display: block;
+  width: 0;
+  border: none;
+  border-bottom: solid 2px #fef5df;
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  transition: all 0.5s;
+}
+.director {
+  text-align: left;
+  font-size: 1vw;
+  line-height: 0.5vw;
+  font-weight: bold;
+  opacity: 1;
+  transform: translateY(40px);
+  transition: all 0.7s;
+}
+.synopsis {
+  position: 'absolute';
+  padding-left: 1vw;
+  text-align: left;
+  font-size:   1.5vw;
+  letter-spacing: 1px;
+  color: #FFDBAC;
+  font-weight: bold;
+  font-family: 'Goudy Bookletter 1911', serif;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.7s;
+  
+}
+.genre{
+  transition: all 0.7s;
+}
+.cart {
+  font-size: 12px;
+  opacity: 0;
+  letter-spacing: 1px;
+  font-family: 'Lato', sans-serif;
+  transform: translateY(40px);
+  transition: all 0.7s;
+}
+.cart i {
+  font-size: 16px;
+}
+.cart span {
+  margin-left: 10px;
+}
+.containerBanner:hover .overlayBanner {
+  opacity: 1;
+  border-color: #fef5df;
+  transition: border-color 1s ease; 
+}
+.containerBanner:hover .overlayBanner .title {
+  transform: translateY(0px);
+  margin-bottom: 1vw;
+}
+/* .containerBanner:hover .overlayBanner hr {
+  width: 18vw;
+} */
+.containerBanner:hover .overlayBanner .director {
+  transform: translateY(0);
+  /* transition-delay: 0.3s; */
+  opacity: 0;
+  display: none;
+}
+.containerBanner:hover .overlayBanner .genre {
+  transform: translateY(0px);
+  /* transition-delay: 0.3s; */
+  opacity: 0;
+}
+.containerBanner:hover .overlayBanner .cart {
+  transform: translateY(0px);
+  /* transition-delay: 0.6s; */
+  opacity: 0;
+  display: none;
+}
+
+.containerBanner:hover .synopsis{
+  transform: translateY(0px);
+  opacity: 1;
+  display: block;
+}
+
+
+.react-multi-carousel-list{
+  border-bottom: 2px solid grey;
+}
+
+/* Shenanigans - TEXT EFFECT */
+
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-120%);
+    width: 100%;
+  }
+  80% {
+    transform: translateX(20%);
+  }
+  100%{
+    transform: translateX(0);
+  }
+}
+
 .search-input, .bucket{
   background-color: black;
   color: white;
