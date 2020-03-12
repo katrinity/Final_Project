@@ -213,124 +213,88 @@ class Nav extends Component {
     render(){
     return(
     <>
-        {/* <div className ="overlay-content">
-        <a className = 'overlayItems' href="/">Home</a>
-        <a className = 'overlayItems' href="/search">Search</a>
-        <a className = 'overlayItems' href="/saved">Saved</a>
-        <ul className="nav navbar-nav ml-auto">
-            <li>
-                <a id="signin-form" type="button" className="overlayItems" data-toggle="modal" data-target="#loginModal"> Log in </a>
-            </li>
-            <li>
-                <a id="register-form" type="button" className="overlayItems" data-toggle="modal" data-target="#registerModal"> Sign up </a>
-            </li>
-            <li>
-                <div className="app text-light">
-                    <div id="app-content" className="pt-1"></div>
-                    <div id="sign-out"></div>
-                </div>
-            </li>
-            <li>
-                <button id="signOut" type="button" className="btn btn-outline-light" onClick={() => {this.eventSignOut(this)}}>
-                    Sign out
-                </button>
-            </li>
-        </ul> 
+        <div id="myNav" class="overlay">                                           
+            <Overlay/>         
         </div>
-    
-     */}
- 
-
-               <div id="myNav" class="overlay">                                            
-                    {/* <a className="navbar-brand" href="/">Movie Review</a> */}
-                    <Overlay/>
-                    {/* <ul className="nav bg-primary text-light">
-                        <li className="" ><a className={this.props.menus.length != 0 ? "font-weight-normal text-white-50" : "font-weight-bold border-bottom"} href="/search">Search</a></li>
-                        <li className="pl-3 "><a className={this.props.menus.length != 0 ? "font-weight-bold border-bottom" : "font-weight-normal text-white-50"} href="/saved">Saved</a></li>
-                    </ul> */}          
-                </div>
-                <NavButton />  
-                
-
-               
-                {/* google sign in modal */}
-                <div className="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-                    <div className="modal-dialog" role="document">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title" id="loginModalLabel">Sign-in User</h5>
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-                            </div>
-                            <div className="modal-body text-left">
-                                <div>
-                                    <div className="google">
-                                        <div className="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-                                    </div>
-                                    <div>
-                                        <label for="email"><b>Email</b>
-                                            <div id="valiSignEmail"></div>
-                                        </label>
-                                        <div>
-                                            <input type="text" placeholder="Enter Email" name="email" id="signEmail" required />
-                                        </div>
-                                        <label for="psw"><b>Password</b></label>
-                                        <div>
-                                            <input type="password" placeholder="Enter Password" name="psw" id="signPsw" required />
-                                        </div>
-                                        <button type="button" onClick={this.authUserModal} className="btn btn-primary signinbtn">Sign-in</button>
-                                        <div id="invalidLogin"></div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
+        <NavButton />  
+        {/* google sign in modal */}
+        <div className="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div className="modal-dialog" role="document">
+                <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="loginModalLabel">Sign-in User</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
                     </div>
-                </div>
-
-                <div className="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
-                    <div className="modal-dialog" role="document">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title" id="registerModalLabel">Register User</h5>
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+                    <div className="modal-body text-left">
+                        <div>
+                            <div className="google">
+                                <div className="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
                             </div>
-                            <div className="modal-body text-left">
-
+                            <div>
                                 <label for="email"><b>Email</b>
-                                    <div id="valiEmail"></div>
+                                    <div id="valiSignEmail"></div>
                                 </label>
                                 <div>
-                                    <input type="text" placeholder="Enter Email" name="email" id="email" required />
+                                    <input type="text" placeholder="Enter Email" name="email" id="signEmail" required />
                                 </div>
-                                <label for="psw"><b>Password</b>
-                                    <div id="valiPsw"></div>
-                                </label>
+                                <label for="psw"><b>Password</b></label>
                                 <div>
-                                    <input type="password" placeholder="Enter Password" name="psw" id="psw" required />
+                                    <input type="password" placeholder="Enter Password" name="psw" id="signPsw" required />
                                 </div>
-                                <label for="psw-repeat"><b>Repeat Password</b>
-                                    <div id="valiRepeatPsw"></div>
-                                </label>
-                                <div>
-                                    <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required />
-                                </div>
+                                <button type="button" onClick={this.authUserModal} className="btn btn-primary signinbtn">Sign-in</button>
+                                <div id="invalidLogin"></div>
                             </div>
-                            <div className="modal-footer">
-                                <button id="registerbtn" type="button" onClick={this.registerUserModal} className="btn btn-primary registerbtn">Register</button>
-                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                            </div>
+
                         </div>
+
+                    </div>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div className="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+            <div className="modal-dialog" role="document">
+                <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="registerModalLabel">Register User</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div className="modal-body text-left">
+
+                        <label for="email"><b>Email</b>
+                            <div id="valiEmail"></div>
+                        </label>
+                        <div>
+                            <input type="text" placeholder="Enter Email" name="email" id="email" required />
+                        </div>
+                        <label for="psw"><b>Password</b>
+                            <div id="valiPsw"></div>
+                        </label>
+                        <div>
+                            <input type="password" placeholder="Enter Password" name="psw" id="psw" required />
+                        </div>
+                        <label for="psw-repeat"><b>Repeat Password</b>
+                            <div id="valiRepeatPsw"></div>
+                        </label>
+                        <div>
+                            <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required />
+                        </div>
+                    </div>
+                    <div className="modal-footer">
+                        <button id="registerbtn" type="button" onClick={this.registerUserModal} className="btn btn-primary registerbtn">Register</button>
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
-            </>
+        </>
 
         );
     }
