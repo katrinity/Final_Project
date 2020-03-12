@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Review from "../Review"
+import Review from "../Review";
 import $ from "jquery";
 const axios = require("axios");
 
@@ -100,9 +100,29 @@ drag = (ev) => {
       <div className="search-input">
         <input type="text" id="searchInput" className="inputs" placeholder="Search for a Movie"  onKeyPress={(event) => {this.keyPressed(event,this)}}/>
       </div>
-      {
+
+      <div className = 'search-result-container'>
+        <div id = 'search-item-1' className = 'search-results'> 1</div>
+        <div id = 'search-item-2' className = 'search-results'>2 </div>
+        <div id = 'search-item-3' className = 'search-results'>3 </div>
+        <div id = 'search-item-4' className = 'search-results'>4 </div>
+        <div id = 'search-item-5' className = 'search-results'>5 </div>
+        <div id = 'search-item-6' className = 'search-results'>6 </div>
+        <div id = 'search-item-7' className = 'search-results'> 7</div>
+        <div id = 'search-item-8' className = 'search-results'>8 </div>
+        <div id = 'search-item-9' className = 'search-results'> 9</div>
+        <div id = 'search-item-10' className = 'search-results'>10 </div>
+      </div>
+      {/* {
           this.state.movies.map((value,index) => {
-            return <div class="list-group">
+            return (
+            
+          <div className = 'search-result-container'>
+           
+          
+          <div class="list-group">
+
+            
             <a onClick={() => {this.getMovieDetails(value)}} style={{background: 'black'}}  class="list-group-item list-group-item-action">
                 <div style={{background: 'black'}} class="d-flex w-100 justify-content-between">
                     <img style={{width: '100px', height: '100px', float: 'left'}} src={value.poster}/>
@@ -112,9 +132,11 @@ drag = (ev) => {
         
             </a>
           </div>
+          </div>
+            )
           })
        
-      }
+      } */}
 
       {
           this.state.movieDetail.map((value,index) => {

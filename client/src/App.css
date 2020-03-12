@@ -259,7 +259,19 @@ a{
   z-index: 3481282198759132;
   
 }
-/* The Overlay (background) */
+
+#app-content{
+  padding: 2vw;
+  color: white;
+  font-size: 2vw;
+  font-family: 'Righteous', cursive;
+  transition: all 0.3s;
+}
+
+#app-content:hover{
+  color: gold;
+}
+/* The Over lay (background) */
 .overlay {
   /* Height & width depends on how you want to reveal the overlay (see JS below) */   
   height: 0%;
@@ -277,7 +289,7 @@ a{
 /* Position the content inside the overlay */
 .overlay-content {
   position: relative;
-  top: 7%; 
+  top: 13%; 
   left: 4%;
   width: 100%; /* 100% width */
   text-align: left; /* Centered text/links */
@@ -714,4 +726,81 @@ margin: 2% 0 0 30%;
 .dropdown-item{
   color: white;
   background-color: black;
+}
+
+
+/* Search Result Container */
+.search-result-container{
+  position: relative  ;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50vw;
+  overflow: hidden;
+
+
+}
+
+.search-results{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 25vw;
+  height: 18vw;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+div#search-item-1{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: yellow;
+}
+
+#search-item-2{
+  position: absolute;
+  top: 39vw;
+  right: 20vw;
+  background-color: orange;
+}
+#search-item-3{
+  position: absolute;
+  top: 15vw;
+  left: 80vw;
+  background-color: red;
+}
+#search-item-4{
+  top: 34vw;
+  left: 42vw;
+  background-color: blue;
+}
+#search-item-5{
+  top: 2vw;
+  left: 38vw;
+  background-color: pink;
+}
+#search-item-6{
+  top: 0;
+  left: 0;
+  background-color: olive;
+}
+#search-item-7{
+  top: 0;
+  left: 0;
+  background-color: maroon;
+}
+#search-item-8{
+  top: 0;
+  left: 0;
+  background-color: palegreen
+}
+#search-item-9{
+  top: 0;
+  left: 0;
+  background-color: palevioletred
+}
+#search-item-10{
+  top: 0;
+  left: 0;
+  background-color: gold
 }

@@ -9,6 +9,7 @@ class Nav extends Component {
         this.state = {
             sessionId: "",
             rotated: 0,
+            currentUser: '',
         };
     }
 
@@ -43,12 +44,15 @@ class Nav extends Component {
                 window.$("#register-form").hide();
                 window.$("#signin-form").hide();
                 window.$(".app").show();
-                window.$("#app-content").html("Welcome " + res.id + "!");
+                window.$("#app-content").show();
+                window.$("#app-content").html(res.id);    
                 window.$("#signOut").show();
+                this.setState({currentUser: res.id});
+                alert(this.state.currentUser);
               } else {
                 window.$("#register-form").show();
                 window.$("#signin-form").show();
-                window.$(".app").hide();
+                window.$("#app-content").hide();
                 window.$("#signOut").hide();
               }
             }
@@ -213,7 +217,7 @@ class Nav extends Component {
     render(){
     return(
     <>
-        <div className ="overlay-content">
+        {/* <div className ="overlay-content">
         <a className = 'overlayItems' href="/">Home</a>
         <a className = 'overlayItems' href="/search">Search</a>
         <a className = 'overlayItems' href="/saved">Saved</a>
@@ -237,7 +241,7 @@ class Nav extends Component {
                         </li>
                     </ul> 
         </div>
-    
+     */}
     
  
 
@@ -249,7 +253,7 @@ class Nav extends Component {
                         <li className="pl-3 "><a className={this.props.menus.length != 0 ? "font-weight-bold border-bottom" : "font-weight-normal text-white-50"} href="/saved">Saved</a></li>
                     </ul> */}          
                 </div>
-                <NavButton />  
+                <NavButton/>  
                 
 
                

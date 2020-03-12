@@ -9,6 +9,7 @@ class Overlay extends Component{
         this.state = {
             sessionId: "",
             rotated: 0,
+            currentUser: ''
 
         };
     }
@@ -44,12 +45,15 @@ class Overlay extends Component{
                 window.$("#register-form").hide();
                 window.$("#signin-form").hide();
                 window.$(".app").show();
-                window.$("#app-content").html("Welcome " + res.id + "!");
+                
+                window.$("#app-content").html("Welcome " + res.id + "!");    
                 window.$("#signOut").show();
+                // this.setState({currentUser: res.id});
               } else {
                 window.$("#register-form").show();
                 window.$("#signin-form").show();
                 window.$(".app").hide();
+                window.$("#app-content").hide();
                 window.$("#signOut").hide();
               }
             }
@@ -227,14 +231,14 @@ class Overlay extends Component{
                         </li>
                         <li>
                             <div className="app text-light">
-                                <div id="app-content" className="pt-1"></div>
+                                {/* {this.state.currentUser !== '' ? <div id="app-content" className="pt-1">Welcome! {this.state.currentUser}</div>:<div id="app-content" className="pt-1"></div>} */}
                                 <div id="sign-out"></div>
                             </div>
                         </li>
                         <li>
-                            <button id="signOut" type="button" className="btn btn-outline-light" onClick={() => {this.eventSignOut(this)}}>
+                            <a id="signOut" type="button" className="overlayItems" onClick={() => {this.eventSignOut(this)}}>
                                 Sign out
-                            </button>
+                            </a>
                         </li>
                     </ul> 
         </div>
