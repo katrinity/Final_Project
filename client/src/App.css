@@ -374,8 +374,11 @@ transform: scale(1.5);
   z-index: 1;
   height: 45%;
 }
-.delete-button, .delete-button-search {
+.delete-button, .delete-button-search{
   position: absolute;
+}
+.delete-button, .delete-button-search, .close{
+  
   font-weight: bolder;
   margin: 2% 0 0 70%;
   color: gold;
@@ -678,7 +681,7 @@ margin: 2% 0 0 30%;
 }
 
 .search-input, .bucket{
-  background-color: #282c34;;
+  background-color: #152238;
   color: white;
 }
 .inputs{
@@ -715,3 +718,12 @@ margin: 2% 0 0 30%;
   color: white;
   background-color: black;
 }
+#launch-modal {
+  display: hidden;
+}
+ .container, .modal-body{
+  background-color: #152238;
+  width: 850px;
+  height: 100%;
+}
+
