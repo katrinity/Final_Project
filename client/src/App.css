@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   background-color: #152238;
+  overflow: hidden;
 }
 .App-logo {
   height: 40vmin;
@@ -91,6 +92,7 @@ a{
 }
 .bucket{
   padding: 0 2% 5% 2%;
+  z-index: 1;
 }
 .drag3 {
   width: 100px;
@@ -259,7 +261,19 @@ a{
   z-index: 3481282198759132;
   
 }
-/* The Overlay (background) */
+
+#app-content{
+  padding: 2vw;
+  color: white;
+  font-size: 2vw;
+  font-family: 'Righteous', cursive;
+  transition: all 0.3s;
+}
+
+#app-content:hover{
+  color: gold;
+}
+/* The Over lay (background) */
 .overlay {
   /* Height & width depends on how you want to reveal the overlay (see JS below) */   
   height: 0%;
@@ -277,7 +291,7 @@ a{
 /* Position the content inside the overlay */
 .overlay-content {
   position: relative;
-  top: 7%; 
+  top: 13%; 
   left: 4%;
   width: 100%; /* 100% width */
   text-align: left; /* Centered text/links */
@@ -288,7 +302,7 @@ a{
 .overlay a {
   padding: 8px;
   text-decoration: none;
-  font-size: 36px;
+  font-size: 4vw;
   color: #E9E4E4;
   display: block; /* Display block instead of inline */
   transition: 0.3s; /* Transition effects on hover (color) */
@@ -374,11 +388,8 @@ transform: scale(1.5);
   z-index: 1;
   height: 45%;
 }
-.delete-button, .delete-button-search{
+.delete-button, .delete-button-search {
   position: absolute;
-}
-.delete-button, .delete-button-search, .close{
-  
   font-weight: bolder;
   margin: 2% 0 0 70%;
   color: gold;
@@ -681,7 +692,7 @@ margin: 2% 0 0 30%;
 }
 
 .search-input, .bucket{
-  background-color: #152238;
+  background-color: #282c34;;
   color: white;
 }
 .inputs{
@@ -718,12 +729,164 @@ margin: 2% 0 0 30%;
   color: white;
   background-color: black;
 }
-#launch-modal {
-  display: hidden;
+
+
+/* Search Result Container */
+#motion-container{
+  overflow:hidden;
+  display: flex;
+  background: rgb(2,0,36);
+  /* background: linear-gradient(300deg, rgba(2,0,36,1) 0%, rgba(4,4,41,1) 41%, rgba(38,81,135,1) 88%); */
+  background-image: url('https://i.pinimg.com/originals/cd/5c/f1/cd5cf1b48962ccd7eec87a6f14675999.gif');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
- .container, .modal-body{
-  background-color: #152238;
-  width: 850px;
-  height: 100%;
+#search-result-container{
+  position: relative  ;
+  /* background-image: url('https://images.unsplash.com/photo-1499162526249-f5b8b9ba9923?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=865bf5c0b77ceb22e88de9fd41c5a671'); */
+  background-size: 3000vw;
+  top: 0;
+  left: 0;
+  width: 200vw;
+  height: 50vw;
+  display: flex;
+  justify-content: center;
+  z-index: 0;
 }
 
+.search-results{
+  position: absolute;
+  overflow: visible;
+  top: 0;
+  left: 0;
+  width: 15vw;
+  height: 20vw;
+  transition: all 0.6s;
+  opacity: 0.7;
+  background-color:  #152238;
+  color: gold;
+  font-family: 'Marcellus SC', serif;
+  z-index: 0;
+}
+
+.search-results:hover {
+  transform: scale(1.1);
+  opacity: 1;
+  z-index: 6;
+  /* border:  2px solid #fef5df; */
+}
+
+.search-results:hover img.search-poster{
+  /* transform: scale(1.1);
+  width: 20vw;
+  height: 25vw;
+  */
+  z-index: 4;
+  opacity: 1;
+  border:  2px solid #fef5df;
+  /* filter: grayscale(20%) contrast(30%); */
+  filter: blur(2px) grayscale(70%) contrast(90%);
+}
+
+.search-results:hover p.search-year{
+  top: 0vw;
+  left: 1vw;
+  z-index: 5;
+  filter: contrast(200%);
+  text-shadow: 2px 2px black;
+}
+
+.search-results:hover h1.search-title{
+  z-index: 5;
+  filter: contrast(200%);
+  text-shadow: 2px 2px black;
+}
+
+
+
+.search-title{
+  position: absolute;
+  bottom: 0;
+  text-align: left;
+  left: 1vw;
+  font-size: 2vw;
+  opacity: 1;
+  transition: all 0.5s;
+}
+p.search-year{
+  position: absolute;
+  left: 1vw;
+  top: 0;
+  font-size: 3vw;
+  text-align: left;
+  }
+#search-item-1{
+  top: -5vw;
+  left: 2vw;
+}
+
+#search-item-2{
+  top: -3vw;
+  left: 36vw;
+}
+#search-item-3{
+  top: 18vw;
+  left: 20vw;
+}
+
+#search-item-4{
+  top: 23vw;
+  left: 53vw;
+}
+
+#search-item-5{
+  top: -8vw;
+  left: 62vw;
+}
+
+#search-item-6{ 
+  top: 5vw;
+  left: 85vw;
+}
+
+#search-item-7{
+  top: 23vw;
+  left: 100vw;
+}
+
+#search-item-8{
+  top: -2vw;
+  left: 110vw;
+}
+
+#search-item-9{
+  top: 0;
+  left: 130vw;
+}
+
+#search-item-10{
+  top: 22vw;
+  left: 135vw;
+}
+
+img.search-poster{
+  position: absolute;
+  left:0;
+  top:0;
+  object-fit: cover;
+  transition: all 0.6s;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  /* width: 100%;
+  height: 100%; */
+  max-width: 100%;
+  max-height: 25vw;
+}
+img[src=""] {
+  display: none;
+}
+img[src='N/A']{
+  display: none;
+}
+div[check=''] {
+  display:none;
+}

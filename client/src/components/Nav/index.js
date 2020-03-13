@@ -43,12 +43,15 @@ class Nav extends Component {
                 window.$("#register-form").hide();
                 window.$("#signin-form").hide();
                 window.$(".app").show();
-                window.$("#app-content").html("Welcome " + res.id + "!");
+                window.$("#app-content").show();
+                window.$("#app-content").html(res.id);    
                 window.$("#signOut").show();
+                this.setState({currentUser: res.id});
+                alert(this.state.currentUser);
               } else {
                 window.$("#register-form").show();
                 window.$("#signin-form").show();
-                window.$(".app").hide();
+                window.$("#app-content").hide();
                 window.$("#signOut").hide();
               }
             }
