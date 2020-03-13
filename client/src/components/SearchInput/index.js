@@ -105,6 +105,10 @@ componentDidUpdate() {
 drag = (ev) => {
     ev.dataTransfer.setData("text", "movie-from-search");
 }
+
+closeTrailer = (myThis) => {
+  myThis.setState({ movieDetail: []});
+}
   render(){
     return (
         <>
@@ -139,10 +143,10 @@ drag = (ev) => {
                             
                               <div  onDragStart={this.drag} className = 'row'>
                                 <div className = ' movie-frames col-12'>
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                <button onClick={() => {this.closeTrailer(this)}} type="button" className="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
-                                  <iframe  className="movie-frames d-block " src={"https://www.youtube.com/embed/"+value.trailer+"?rel=0"} frameborder="0"></iframe>
+                                  <iframe  id="movie-trailer" className="movie-frames d-block " src={"https://www.youtube.com/embed/"+value.trailer+"?rel=0"} frameborder="0"></iframe>
                                   <div className= "movie-frames-detail">
                                     <h5 class="mb-1 " style={{ 'text-align': 'left'}} >{value.title}</h5>
                                       <small>{value.rated} | {value.runtime} | {value.genre} | {value.year}  </small>
