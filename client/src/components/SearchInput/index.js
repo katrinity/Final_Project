@@ -137,7 +137,8 @@ drag = (ev) => {
       </div>
       <button id="launch-modal" style={{visibility: 'hidden'}} type="button" class="btn btn-primary" data-toggle="modal" data-target="#mModal">Hidden</button>
 
-      
+      {/* I could definitely do this with a big const style array and apply them through map I thought about it in the shower. but it'll take extra time i'll make this work for now */}
+
       <div id = 'motion-container'>
       {movieItems[0] != null
         ? 

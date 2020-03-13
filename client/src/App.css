@@ -736,7 +736,10 @@ margin: 2% 0 0 30%;
   overflow:hidden;
   display: flex;
   background: rgb(2,0,36);
-  background: linear-gradient(300deg, rgba(2,0,36,1) 0%, rgba(4,4,41,1) 41%, rgba(38,81,135,1) 88%);
+  /* background: linear-gradient(300deg, rgba(2,0,36,1) 0%, rgba(4,4,41,1) 41%, rgba(38,81,135,1) 88%); */
+  background-image: url('https://i.pinimg.com/originals/cd/5c/f1/cd5cf1b48962ccd7eec87a6f14675999.gif');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 #search-result-container{
   position: relative  ;
@@ -745,7 +748,7 @@ margin: 2% 0 0 30%;
   top: 0;
   left: 0;
   width: 200vw;
-  height: 35vw;
+  height: 40vw;
   display: flex;
   justify-content: center;
   z-index: 0;
@@ -753,74 +756,106 @@ margin: 2% 0 0 30%;
 
 .search-results{
   position: absolute;
+  overflow: visible;
   top: 0;
   left: 0;
-  width: 30vw;
-  height: 14vw;
+  width: 20vw;
+  height: 25vw;
   transition: all 0.6s;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   opacity: 0.7;
   background-color:  #152238;
-  color: #fef5df;
-  font-family: 'Stardos Stencil', cursive;
+  color: gold;
+  font-family: 'Marcellus SC', serif;
+  z-index: 0;
 }
 
-.search-results:hover{
+.search-results:hover {
   transform: scale(1.1);
-  z-index: 3;
+  opacity: 1;
+  z-index: 6;
+  /* border:  2px solid #fef5df; */
+}
+
+.search-results:hover img.search-poster{
+  /* transform: scale(1.1);
+  width: 20vw;
+  height: 25vw;
+  */
+  z-index: 4;
   opacity: 1;
   border:  2px solid #fef5df;
+  /* filter: grayscale(20%) contrast(30%); */
+  filter: blur(2px) grayscale(70%) contrast(90%);
 }
+
+.search-results:hover p.search-year{
+  top: 0vw;
+  left: 1vw;
+  z-index: 5;
+  filter: contrast(200%);
+  text-shadow: 2px 2px black;
+}
+
+.search-results:hover h1.search-title{
+  z-index: 5;
+  filter: contrast(200%);
+  text-shadow: 2px 2px black;
+}
+
+
+
 .search-title{
   position: absolute;
-  top: 1vw;
-  left: 10.5vw;
-  font-size: 2vw;
+  bottom: 0;
   text-align: left;
+  left: 1vw;
+  font-size: 3vw;
+  opacity: 1;
+  transition: all 0.5s;
 }
 p.search-year{
   position: absolute;
-  right: 1vw;
-  bottom: 0vw;
-  font-size: 3vw;
-  text-align: left
-}
-#search-item-1{
+  left: 1vw;
   top: 0;
+  font-size: 3vw;
+  text-align: left;
+  }
+#search-item-1{
+  top: -5vw;
   left: 2vw;
 }
 
 #search-item-2{
-  top: 14vw;
-  left: 28vw;
+  top: -3vw;
+  left: 36vw;
 }
 #search-item-3{
-  top: 20vw;
-  left: 3vw;
+  top: 18vw;
+  left: 20vw;
 }
 
 #search-item-4{
-  top: 5vw;
-  left: 50vw;
+  top: 23vw;
+  left: 53vw;
 }
 
 #search-item-5{
-  top: 22vw;
-  left: 60vw;
+  top: -8vw;
+  left: 62vw;
 }
 
 #search-item-6{ 
-  top: 1vw;
-  left: 79vw;
+  top: 5vw;
+  left: 85vw;
 }
 
 #search-item-7{
-  top: 18vw;
-  left: 90vw;
+  top: 23vw;
+  left: 100vw;
 }
 
 #search-item-8{
-  top: 5vw;
+  top: -2vw;
   left: 110vw;
   
 }
@@ -832,7 +867,7 @@ p.search-year{
 
 #search-item-10{
   top: 22vw;
-  left: 145vw;
+  left: 150vw;
 }
 
 img.search-poster{
@@ -840,8 +875,10 @@ img.search-poster{
   left:0;
   top:0;
   object-fit: cover;
-  max-width: 100%;
-  max-height: 100%;
+  transition: all 0.6s;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  /* width: 100%;
+  height: 100%; */
 }
 img[src=""] {
   display: none;
