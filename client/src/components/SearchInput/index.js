@@ -27,7 +27,6 @@ class SearchInput extends Component {
     axios.get(
         "https://www.omdbapi.com/?s=" + movieTitle + "&apikey=trilogy"
       ).then( (response) => {
-        console.log('response = '+response.data.Search.length);
         if(response.data.Search != null) {
             var movies = [];   
             for(var i=0; i< response.data.Search.length; i++){ 
@@ -111,6 +110,9 @@ drag = (ev) => {
 }
 
 
+closeTrailer = (myThis) => {
+  myThis.setState({ movieDetail: []});
+}
 
   render(){
 
@@ -226,14 +228,14 @@ drag = (ev) => {
                       <div className="modal-dialog col-8" role="document">
                         <div className="modal-content">
                           
-                          <div className="modal-body">
+                          <div className="modal-body searchV">
                             
                               <div  onDragStart={this.drag} className = 'row'>
                                 <div className = ' movie-frames col-12'>
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                <button onClick={() => {this.closeTrailer(this)}} type="button" className="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
-                                  <iframe  className="movie-frames d-block " src={"https://www.youtube.com/embed/"+value.trailer+"?rel=0"} frameborder="0"></iframe>
+                                  <iframe  id="movie-trailer" className="movie-frames d-block " src={"https://www.youtube.com/embed/"+value.trailer+"?rel=0"} frameborder="0"></iframe>
                                   <div className= "movie-frames-detail">
                                     <h5 class="mb-1 " style={{ 'text-align': 'left'}} >{value.title}</h5>
                                       <small>{value.rated} | {value.runtime} | {value.genre} | {value.year}  </small>

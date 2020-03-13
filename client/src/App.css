@@ -754,6 +754,32 @@ margin: 2% 0 0 30%;
   z-index: 0;
 }
 
+ .container, .searchV{
+  background-color: #152238;
+  width: 850px;
+  height: 100%;
+}
+
+.dropdown-btn {
+  
+  display: block;
+  border: none;
+  width:100%;
+  text-align: left;
+  cursor: pointer;
+}
+.dropdown-container {
+  display: none;
+  padding-left: 8px;
+}
+footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+
 .search-results{
   position: absolute;
   overflow: visible;
@@ -890,3 +916,4 @@ img[src='N/A']{
 div[check=''] {
   display:none;
 }
+

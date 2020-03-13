@@ -61,14 +61,28 @@ class Overlay extends Component{
             }
           );
     }
+dropDown = ()=>{
 
+   $(".dropdown-container").css('display','block');
+}
+hideDropDown = ()=>{
+
+    $(".dropdown-container").css('display','none');
+ }
     render(){
     return(
     
         <div className ="overlay-content">
         <a className = 'overlayItems' href="/">Home</a>
         <a className = 'overlayItems' href="/search">Search</a>
-        <a className = 'overlayItems' href="/saved">Saved</a>
+
+        <a onMouseEnter={this.dropDown} onMouseLeave={this.hideDropDown} className = 'overlayItems dropdown-btn' href="/saved">Saved <i className='fa fa-caret-right'></i></a>
+        <div onMouseEnter={this.dropDown} onMouseLeave={this.hideDropDown} className = 'dropdown-container'>
+        <a href="/saved/cat1">Comedy</a>
+        <a href="/saved/cat2">Action</a>
+        <a href="/saved/cat3">Must watch</a>
+        <a href="/saved/cat4">Waste of time</a>
+        </div>
         <ul className="nav navbar-nav ml-auto">
                         <li>
                             <a id="signin-form" type="button" className="overlayItems" data-toggle="modal" data-target="#loginModal"> Log in </a>
@@ -78,7 +92,8 @@ class Overlay extends Component{
                         </li>
                         <li>
                             <div className="app text-light">
-                                {/* {this.state.currentUser !== '' ? <div id="app-content" className="pt-1">Welcome! {this.state.currentUser}</div>:<div id="app-content" className="pt-1"></div>} */}
+                                <div id="app-content" className="pt-1 overlayItems"></div>
+
                                 <div id="sign-out"></div>
                             </div>
                         </li>
