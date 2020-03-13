@@ -135,7 +135,7 @@ drag = (ev) => {
       <div className="search-input">
         <input type="text" id="searchInput" className="inputs" placeholder="Search for a Movie"  onKeyPress={(event) => {this.keyPressed(event,this)}}/>
       </div>
-      <button id="launch-modal" style={{visibility: 'hidden'}} type="button" class="btn btn-primary" data-toggle="modal" data-target="#mModal">Hidden</button>
+      <button id="launch-modal" style={{visibility: 'show'}} type="button" class="btn btn-primary" data-toggle="modal" data-target="#mModal">Hidden</button>
 
       {/* I could definitely do this with a big const style array and apply them through map I thought about it in the shower. but it'll take extra time i'll make this work for now */}
 
@@ -147,52 +147,52 @@ drag = (ev) => {
         <div check = {movieItems[0].title} id = 'search-item-1' className = 'search-results'>
           <h1 className = 'search-title'>{movieItems[0].title}</h1>
           <p className = 'search-year'>{movieItems[0].year}</p>
-          <img className = 'search-poster' src = {movieItems[0].poster} alt = '1'></img>
+          <img onClick={() => {this.getMovieDetails(movieItems[0])}} className = 'search-poster' src = {movieItems[0].poster} alt = '1'></img>
         </div>
         <div check = {movieItems[1].title} id = 'search-item-2' className = 'search-results'>
         <h1 className = 'search-title'>{movieItems[1].title}</h1>
           <p className = 'search-year'>{movieItems[1].year}</p>
-          <img className = 'search-poster' src = {movieItems[1].poster} alt = '2'></img>
+          <img onClick={() => {this.getMovieDetails(movieItems[1])}} className = 'search-poster' src = {movieItems[1].poster} alt = '2'></img>
         </div>
         <div check = {movieItems[2].title} id = 'search-item-3' className = 'search-results'>
         <h1 className = 'search-title'>{movieItems[2].title}</h1>
           <p className = 'search-year'>{movieItems[2].year}</p>
-          <img className = 'search-poster' src = {movieItems[2].poster} alt = '3'></img>
+          <img onClick={() => {this.getMovieDetails(movieItems[2])}} className = 'search-poster' src = {movieItems[2].poster} alt = '3'></img>
         </div>
         <div check = {movieItems[3].title} id = 'search-item-4' className = 'search-results'>
         <h1 className = 'search-title'>{movieItems[3].title}</h1>
           <p className = 'search-year'>{movieItems[3].year}</p>
-          <img className = 'search-poster' src = {movieItems[3].poster} alt = '4'></img>
+          <img onClick={() => {this.getMovieDetails(movieItems[3])}} className = 'search-poster' src = {movieItems[3].poster} alt = '4'></img>
         </div>
         <div check = {movieItems[4].title} id = 'search-item-5' className = 'search-results'>
         <h1 className = 'search-title'>{movieItems[4].title}</h1>
           <p className = 'search-year'>{movieItems[4].year}</p>
-          <img className = 'search-poster' src = {movieItems[4].poster} alt = '5'></img>
+          <img onClick={() => {this.getMovieDetails(movieItems[4])}} className = 'search-poster' src = {movieItems[4].poster} alt = '5'></img>
         </div>
         <div check = {movieItems[5].title} id = 'search-item-6' className = 'search-results'>
         <h1 className = 'search-title'>{movieItems[5].title}</h1>
           <p className = 'search-year'>{movieItems[5].year}</p>
-          <img className = 'search-poster' src = {movieItems[5].poster} alt = '6'></img>
+          <img onClick={() => {this.getMovieDetails(movieItems[5])}} className = 'search-poster' src = {movieItems[5].poster} alt = '6'></img>
         </div>
         <div check = {movieItems[6].title} id = 'search-item-7' className = 'search-results'>
         <h1 className = 'search-title'>{movieItems[6].title}</h1>
           <p className = 'search-year'>{movieItems[6].year}</p>
-          <img className = 'search-poster' src = {movieItems[6].poster} alt = '7'></img>
+          <img onClick={() => {this.getMovieDetails(movieItems[6])}}  className = 'search-poster' src = {movieItems[6].poster} alt = '7'></img>
         </div>
         <div check = {movieItems[7].title} id = 'search-item-8' className = 'search-results'>
         <h1 className = 'search-title'>{movieItems[7].title}</h1>
           <p className = 'search-year'>{movieItems[7].year}</p>
-          <img className = 'search-poster' src = {movieItems[7].poster} alt = '8'></img>
+          <img onClick={() => {this.getMovieDetails(movieItems[7])}} className = 'search-poster' src = {movieItems[7].poster} alt = '8'></img>
         </div>
         <div check = {movieItems[8].title}  id = 'search-item-9' className = 'search-results'>
         <h1 className = 'search-title'>{movieItems[8].title}</h1>
           <p className = 'search-year'>{movieItems[8].year}</p>
-          <img className = 'search-poster' src = {movieItems[8].poster} alt = '9'></img>
+          <img onClick={() => {this.getMovieDetails(movieItems[8])}} className = 'search-poster' src = {movieItems[8].poster} alt = '9'></img>
         </div>
         <div check = {movieItems[9].title}id = 'search-item-10' className = 'search-results'>
         <h1 className = 'search-title'>{movieItems[9].title}</h1>
           <p className = 'search-year'>{movieItems[9].year}</p>
-          <img className = 'search-poster' src = {movieItems[9].poster} alt = '10'></img>
+          <img onClick={() => {this.getMovieDetails(movieItems[9])}} className = 'search-poster' src = {movieItems[9].poster} alt = '10'></img>
         </div>
         
         
