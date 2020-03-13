@@ -36,7 +36,28 @@ class SavedPage extends Component {
       };
     }
     componentDidMount(){
-        this.getMovies("cat1"); 
+   
+        if(window.location.pathname == "/saved/cat1") {
+            this.getMovies("cat1");
+        }
+        if(window.location.pathname == "/saved/cat2") {
+     
+            this.getMovies("cat2");
+        }
+        if(window.location.pathname == "/saved/cat3") {
+     
+            this.getMovies("cat3");
+        }
+        if(window.location.pathname == "/saved/cat4") {
+     
+            this.getMovies("cat4");
+        }
+        if(window.location.pathname == "/saved") {
+            this.getMovies("cat1");
+        }
+
+        
+        
     }
 
     getMovies = (category) => {
@@ -108,7 +129,7 @@ class SavedPage extends Component {
     return (
         <>
             <Nav cb={this.refreshComponent} menus={this.state.menus}/>
-            <ul className="nav nav-pills justify-content-center mt-3 mb-3">
+            {/* <ul className="nav nav-pills justify-content-center mt-3 mb-3">
                 <li className="nav-item">
                     <a id="nav-cat1" className="nav-link active" onClick={(ev) => {this.showCategory(ev,"cat1")}} href="#">Comedy</a>
                 </li>
@@ -121,9 +142,10 @@ class SavedPage extends Component {
                 <li className="nav-item">
                     <a id="nav-cat4" className="nav-link" onClick={(ev) => {this.showCategory(ev,"cat4")}} href="#" >Waste of time</a>
                 </li>
-            </ul>
+            </ul> */}
             
                 <div className="row">
+                <div className=" col-md-1 col-sm-12 d-inline-block"></div>
                 {
                     this.state.movies.map( (value, index)=>{
                         return <div className=" col-md-3 col-sm-12 d-inline-block">

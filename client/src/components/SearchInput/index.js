@@ -135,7 +135,7 @@ drag = (ev) => {
                       <div className="modal-dialog col-8" role="document">
                         <div className="modal-content">
                           
-                          <div className="modal-body">
+                          <div className="modal-body searchV">
                             
                               <div  onDragStart={this.drag} className = 'row'>
                                 <div className = ' movie-frames col-12'>

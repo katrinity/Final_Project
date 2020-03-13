@@ -57,14 +57,28 @@ class Overlay extends Component{
             }
           );
     }
+dropDown = ()=>{
 
+   $(".dropdown-container").css('display','block');
+}
+hideDropDown = ()=>{
+
+    $(".dropdown-container").css('display','none');
+ }
     render(){
     return(
     
         <div className ="overlay-content">
         <a className = 'overlayItems' href="/">Home</a>
         <a className = 'overlayItems' href="/search">Search</a>
-        <a className = 'overlayItems' href="/saved">Saved</a>
+
+        <a onMouseEnter={this.dropDown} onMouseLeave={this.hideDropDown} className = 'overlayItems dropdown-btn' href="/saved">Saved <i className='fa fa-caret-right'></i></a>
+        <div onMouseEnter={this.dropDown} onMouseLeave={this.hideDropDown} className = 'dropdown-container'>
+        <a href="/saved/cat1">Comedy</a>
+        <a href="/saved/cat2">Action</a>
+        <a href="/saved/cat3">Must watch</a>
+        <a href="/saved/cat4">Waste of time</a>
+        </div>
         <ul className="nav navbar-nav ml-auto">
                         <li>
                             <a id="signin-form" type="button" className="overlayItems" data-toggle="modal" data-target="#loginModal"> Log in </a>
@@ -74,14 +88,14 @@ class Overlay extends Component{
                         </li>
                         <li>
                             <div className="app text-light">
-                                <div id="app-content" className="pt-1"></div>
+                                <div id="app-content" className="pt-1 overlayItems"></div>
                                 <div id="sign-out"></div>
                             </div>
                         </li>
                         <li>
-                            <button id="signOut" type="button" className="btn btn-outline-light" onClick={() => {this.eventSignOut(this)}}>
+                            <a id="signOut" type="button" className="overlayItems" onClick={() => {this.eventSignOut(this)}}>
                                 Sign out
-                            </button>
+                            </a>
                         </li>
                     </ul> 
         </div>
