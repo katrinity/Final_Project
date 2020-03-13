@@ -27,7 +27,6 @@ class SearchInput extends Component {
     axios.get(
         "https://www.omdbapi.com/?s=" + movieTitle + "&apikey=trilogy"
       ).then( (response) => {
-        console.log('response = '+response.data.Search.length);
         if(response.data.Search != null) {
             var movies = [];
             for(var i=0; i< response.data.Search.length; i++){
