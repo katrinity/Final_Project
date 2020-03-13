@@ -9,6 +9,7 @@ class Overlay extends Component{
         this.state = {
             sessionId: "",
             rotated: 0,
+            currentUser: ''
 
         };
     }
@@ -46,12 +47,15 @@ class Overlay extends Component{
                 window.$("#register-form").hide();
                 window.$("#signin-form").hide();
                 window.$(".app").show();
-                window.$("#app-content").html("Welcome " + res.id + "!");
+                
+                window.$("#app-content").html("Welcome " + res.id + "!");    
                 window.$("#signOut").show();
+                // this.setState({currentUser: res.id});
               } else {
                 window.$("#register-form").show();
                 window.$("#signin-form").show();
                 window.$(".app").hide();
+                window.$("#app-content").hide();
                 window.$("#signOut").hide();
               }
             }
@@ -89,6 +93,7 @@ hideDropDown = ()=>{
                         <li>
                             <div className="app text-light">
                                 <div id="app-content" className="pt-1 overlayItems"></div>
+
                                 <div id="sign-out"></div>
                             </div>
                         </li>
