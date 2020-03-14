@@ -6,7 +6,7 @@ This application is a movie and TV show compendium. It showcases latest trending
 
 ## Table of contents
 1. [How the APP works](#howitworks)
-Technologies Used
+2. [Technologies Used](#tech)
 Applications Used
 Wireframe Design
 User Story Breakdown
@@ -26,6 +26,7 @@ Code Snippets
 
 The landing page of the application showcases carousels for latest trending movies and TV shows. User can click on the movies to checkout the trailers of the movies they selected by clicking on it. 
 
+<a name="tech"></a>
 ## Technologies Used
 HTML
 Javascript/jQuery
