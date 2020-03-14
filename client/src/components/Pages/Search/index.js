@@ -5,6 +5,7 @@ import Nav from '../../../components/Nav';
 import Carousel from '../../../components/Carousel';
 import Bucket from '../../../components/Bucket';
 import Sidebar from '../../../components/Sidebar';
+import Fb from '../../FbIntegrate';
 
 
 class SearchPage extends Component {
@@ -29,6 +30,7 @@ class SearchPage extends Component {
           {/* <Sidebar /> */}
           <Carousel />
           <Bucket />
+          <Fb/>
       </>
     );
   }
