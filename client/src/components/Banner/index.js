@@ -34,7 +34,7 @@ class Banner extends Component{
   }
 
   getTrendingTV = (compThis, movies) => {
-    $.ajax({METHOD: "GET", url: "/api/trending-tv"}).done(function (res, status) {        
+    $.ajax({METHOD: "GET", url: "/api/trending-tv"}).done(function (res, status) {       
         compThis.setState({trendingMovies: movies, trendingTV: res.result});      
     });
   }

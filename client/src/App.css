@@ -916,4 +916,7 @@ img[src='N/A']{
 div[check=''] {
   display:none;
 }
+.dropdown-container {
+  margin-left: 5%;
+}
 

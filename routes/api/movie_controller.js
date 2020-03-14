@@ -21,11 +21,9 @@ router.get("/api/movies/:title", function(req, res) {
       var index = youtubeData.data.indexOf("yt-lockup-video");
       var index = youtubeData.data.indexOf("https://i.ytimg.com/vi", index);
       var movie = youtubeData.data.substring(index+23, youtubeData.data.indexOf("/", index+23));
-      console.log(movie);
+    //   console.log(movie);
       res.json({youtubeId: movie});
       
-
-
     });
     
 });
@@ -159,9 +157,9 @@ function getMovieImage(req, res1, trendingMovies, movie, movieCount) {
                 var index2 = movieDetails.data.indexOf("</script>", index1);
                 var movieTrailer = JSON.parse(movieDetails.data.substring(index1+21, index2));
                 movie.image = movieTrailer.image;
-                console.log(movie.image);
+                // console.log(movie.image);
                 if(movie.image.indexOf("740x290") >= 0) {
-                    console.log("Movie count = " + movieCount.total);
+                    // console.log("Movie count = " + movieCount.total);
                     trendingMovies.push({ movie: movie, youtubeId: movieTrailer});
                     if(trendingMovies.length >= movieCount.total) {
                         res1.json({result: trendingMovies});
@@ -211,15 +209,15 @@ router.get("/api/trending-tv", function(req, res) {
 function getTrendingTV(req,res1) {
     var trendingMovies = [];
     //Get movie list from rottentomatoes
-    axios({method: "get", url: "https://www.rottentomatoes.com/browse/tv-list-1"}).then( function(res,status) {
+    axios({method: "get", url: "https://www.rottentomatoes.com/browse/tv-list-2"}).then( function(res,status) {
         res = res.data;
         var index1 = res.indexOf('var loadPage = (function(adPromise)');
-        console.log("index1 = " + index1);
+        // console.log("index1 = " + index1);
         var index2 = res.indexOf('[{"title":',index1);
-        console.log("index2 = " + index2);
+        // console.log("index2 = " + index2);
         var index3 = res.indexOf('}]', index2);
-        console.log("index3 = " + index3);
-        console.log("length = " + res.length);
+        // console.log("index3 = " + index3);
+        // console.log("length = " + res.length);
         var movies = res.substring(index2, index3+3);
         // console.log("movies = " + movies.substring(index3,4));
         var movieData = JSON.parse(res.substring(index2,index3+2));

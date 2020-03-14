@@ -17,7 +17,7 @@ router.post("/api/auth/:email", function(req, res) {
     };
 
     usersController.findAll(condition,function(result) {
-        if(result.length >= 0) {
+        if(result.length > 0) {
             if(result[0].provider && result[0].provider == "events") {
                 if (result[0].password == encryptedPassword) {
                     req.session.userid = req.params.email;
