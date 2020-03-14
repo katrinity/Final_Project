@@ -5,7 +5,7 @@ Heroku link:
 This application is a movie and TV show compendium. It showcases latest trending movies and TV shows. It provides personalized experience by allowing users to create an account and access it with their login credentials. It lets them search for movies or TV shows and save their personal comments and ratings to these movies/TV shows. Users can also share their content with friends and family in social media.
 
 ## Table of contents
-How the APP works
+1. [How the APP works](#howitworks)
 Technologies Used
 Applications Used
 Wireframe Design
@@ -21,7 +21,8 @@ Future RoadMap
 Team memeber GIT Links
 Code Snippets
 
-## How the APP works
+<a name="howitworks"></a>
+## 1. How the APP works
 
 The landing page of the application showcases carousels for latest trending movies and TV shows. User can click on the movies to checkout the trailers of the movies they selected by clicking on it. 
 
