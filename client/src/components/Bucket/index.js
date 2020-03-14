@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import $ from 'jquery';
 import {Carousel} from 'react-responsive-carousel';
+import Fb from '../FbIntegrate';
+
 
 class Bucket extends Component {
     constructor(props) {
@@ -139,7 +141,7 @@ class Bucket extends Component {
                     <button type="submit" onClick={this.saveMovies} className="search-button btn btn-outline-primary">Save</button></h1>
                 </div>
                 <div className="row">
-                    <div className="col-sm-3">
+                    <div className="col-sm-3 mb-5">
                         <div id="div1" className="div1" onDrop={(ev) => { this.dropToCategory(ev,"cat1")}} onDragOver={this.allowDrop} className="card grow comedy">
                             <div contenteditable="true" className="catName">Comedy({this.state.cat1.length})</div>
                             
@@ -165,6 +167,7 @@ class Bucket extends Component {
                                                     <img src={value.poster} className="d-block bucket-image d-inline" alt="..."/>
                                                 </div>
                                                 <div className="bucket-comments"><span >{value.comments}</span></div>
+                                                <Fb/>
                                             </div>
                                         } else {
                                             return <div id={id} className={active}>
@@ -174,17 +177,17 @@ class Bucket extends Component {
                                                     <img src={value.url} className="d-block bucket-image d-inline" alt="..."/>
                                                 </div>
                                                 <div className="bucket-comments"><span >{value.comments}</span></div>
+                                                <Fb/>
                                             </div>
                                         }
-                                        
                                     })
                                 }
                                 </div>
-                                <a className="carousel-control-prev" href="#cat1Carousel" role="button" data-slide="prev">
+                                <a className="carousel-control-prev z-depth-1" href="#cat1Carousel" role="button" data-slide="prev">
                                     <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                                     <span className="sr-only">Previous</span>
                                 </a>
-                                <a className="carousel-control-next" href="#cat1Carousel" role="button" data-slide="next">
+                                <a className="carousel-control-next z-depth-1" href="#cat1Carousel" role="button" data-slide="next">
                                     <span className="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span className="sr-only">Next</span>
                                 </a>
@@ -212,6 +215,7 @@ class Bucket extends Component {
                                                     <img src={value.url} className="d-block bucket-image d-inline" alt="..."/>
                                                 </div>
                                                 <div className="bucket-comments"><span >{value.comments}</span></div>
+                                                <Fb/>
                                             </div>
                                         } else {
                                             return <div id={id} className={active}>
@@ -221,6 +225,7 @@ class Bucket extends Component {
                                                     <img src={value.url} className="d-block bucket-image d-inline" alt="..."/>
                                                 </div>
                                                 <div className="bucket-comments"><span >{value.comments}</span></div>
+                                                <Fb/>
                                             </div>
                                         }
                                         
@@ -259,6 +264,7 @@ class Bucket extends Component {
                                                     <img src={value.url} className="d-block bucket-image d-inline" alt="..."/>
                                                 </div>
                                                 <div className="bucket-comments"><span >{value.comments}</span></div>
+                                                <Fb/>
                                             </div>
                                         } else {
                                             return <div id={id} className={active}>
@@ -268,6 +274,7 @@ class Bucket extends Component {
                                                     <img src={value.url} className="d-block bucket-image d-inline" alt="..."/>
                                                 </div>
                                                 <div className="bucket-comments"><span >{value.comments}</span></div>
+                                                <Fb/>
                                             </div>
                                         }
                                         
@@ -308,6 +315,7 @@ class Bucket extends Component {
                                                     <img src={value.url} className="d-block bucket-image d-inline" alt="..."/>
                                                 </div>
                                                 <div className="bucket-comments"><span >{value.comments}</span></div>
+                                                <Fb/>
                                             </div>
                                         } else {
                                             return <div id={id} className={active}>
@@ -317,6 +325,7 @@ class Bucket extends Component {
                                                     <img src={value.url} className="d-block bucket-image d-inline" alt="..."/>
                                                 </div>
                                                 <div className="bucket-comments"><span >{value.comments}</span></div>
+                                                <Fb/>
                                             </div>
                                         }
                                         
