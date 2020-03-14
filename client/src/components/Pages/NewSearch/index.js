@@ -10,9 +10,7 @@ class NewSearchPage extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        menus: [
-
-        ]
+        menus: []
       };
       this.bucket = React.createRef();
     }

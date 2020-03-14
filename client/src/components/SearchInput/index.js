@@ -137,7 +137,7 @@ closeTrailer = (myThis) => {
       <div className="search-input">
         <input type="text" id="searchInput" className="inputs" placeholder="Search for a Movie"  onKeyPress={(event) => {this.keyPressed(event,this)}}/>
       </div>
-      <button id="launch-modal" style={{visibility: 'show'}} type="button" class="btn btn-primary" data-toggle="modal" data-target="#mModal">Hidden</button>
+      <button id="launch-modal" style={{visibility: 'hidden'}} type="button" class="btn btn-primary" data-toggle="modal" data-target="#mModal">Hidden</button>
 
       {/* I could definitely do this with a big const style array and apply them through map I thought about it in the shower. but it'll take extra time i'll make this work for now */}
 
