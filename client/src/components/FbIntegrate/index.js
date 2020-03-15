@@ -9,12 +9,15 @@ import { FacebookProvider, ShareButton } from 'react-facebook';
  
 export default class FbIntegrate extends Component {
   render() {
-    return (
-      <FacebookProvider appId="913152545781163">
-        <ShareButton href="http://google.com">
-          Share
-        </ShareButton>
-      </FacebookProvider>
-    );
+      let val = this.props.value;
+      let cc = "http://localhost:3000/saved/" + val
+
+        return (
+        <FacebookProvider appId="913152545781163">
+            <ShareButton href={cc} >
+            Share
+            </ShareButton>
+        </FacebookProvider>
+        );
   }
 }

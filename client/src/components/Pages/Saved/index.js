@@ -6,6 +6,8 @@ import Nav from '../../../components/Nav';
 // import Bucket from '../../../components/Bucket';
 import axios from "axios";
 import $ from "jquery";
+import Fb from '../../FbIntegrate';
+
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -148,6 +150,7 @@ class SavedPage extends Component {
                 <div className=" col-md-1 col-sm-12 d-inline-block"></div>
                 {
                     this.state.movies.map( (value, index)=>{
+                        console.log(value)
                         return <div className=" col-md-3 col-sm-12 d-inline-block">
                                     <div className="movie">
                                         <div onClick={() => {this.deleteMovie(value._id,value.category)}} className="delete-button">X</div>
@@ -159,7 +162,8 @@ class SavedPage extends Component {
                                             <div className="d-inline text-muted text-small"> {value.runtime} | </div>
                                             <div className="d-inline text-muted text-small"> {value.genre} |</div>
                                             <div className="d-inline text-muted text-small"> {value.year}</div>
-                                            
+                                            <Fb value = {value.category}/>
+
                                             <br/>
                                             <p className="text mt-3 saved-comments">{value.comments}</p>
                                         
@@ -175,7 +179,6 @@ class SavedPage extends Component {
                                                 <li><a href="#"><i className="fa fa-whatsapp"></i></a></li>
                                             </ul>
                                         </div>   
-                              
                                     </div>
                                 </div>
                     })
