@@ -11,7 +11,7 @@ export default class FbIntegrate extends Component {
   render() {
     return (
       <FacebookProvider appId="913152545781163">
-        <ShareButton href="http://www.facebook.com">
+        <ShareButton href="http://google.com">
           Share
         </ShareButton>
       </FacebookProvider>
