@@ -3,6 +3,8 @@
   background-color: #152238;
   overflow: hidden;
 }
+
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -24,6 +26,9 @@
 }
 .App-link {
   color: #61dafb;
+}
+.main-wrapper {
+  /* background-color: pink; */
 }
 @keyframes App-logo-spin {
   from {
@@ -452,7 +457,6 @@ margin: 2% 0 0 30%;
 
 .containerBanner{
   background-color: 'white';
-  padding: 3%;
 }
 /* .overlayBanner {
   position: absolute;
@@ -607,7 +611,7 @@ margin: 2% 0 0 30%;
   position: 'absolute';
   padding-left: 1vw;
   text-align: left;
-  font-size:   1.5vw;
+  font-size:   1.2vw;
   letter-spacing: 1px;
   color: #FFDBAC;
   font-weight: bold;
@@ -673,6 +677,7 @@ margin: 2% 0 0 30%;
 
 .react-multi-carousel-list{
   border-bottom: 2px solid grey;
+  width: 100%
 }
 
 /* Shenanigans - TEXT EFFECT */
@@ -691,9 +696,14 @@ margin: 2% 0 0 30%;
   }
 }
 
-.search-input, .bucket{
-  background-color: #282c34;;
+.bucket{
+  background-color: transparent;
   color: white;
+}
+
+.search-input{
+  color: white;
+  background-color: transparent;
 }
 .inputs{
   width: 80%;
@@ -705,30 +715,7 @@ margin: 2% 0 0 30%;
   border-radius: 5em;
   background-color: rgb(12, 12, 12);
 }
-.movie-frames{
-  width: 100%;
-  height: 550px;
-}
-.movie-frames-detail{
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  color: white;
-  padding: 0 0 5% 5%;
-}
-.drop-down-button{
-  border-radius: 50%;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  margin: 0 5% 5% 0;
-  color: white;
-  background-color: rgb(238, 65, 12);
-}
-.dropdown-item{
-  color: white;
-  background-color: black;
-}
+
 
 
 /* Search Result Container */
@@ -754,11 +741,21 @@ margin: 2% 0 0 30%;
   z-index: 0;
 }
 
- .container, .searchV{
-  background-color: #152238;
-  width: 850px;
-  height: 100%;
+input[type="text"]
+{
+  text-align: center;
+  width: 10vw;
+  font-family: 'Josefin Sans', sans-serif;
+  transition: all 0.5s;
 }
+
+input[type="text"]:focus{
+  text-align: left;
+  width: 80%;
+  border: 2px solid #fef5df;
+  font-size: 120%;
+}
+
 
 .dropdown-btn {
   
@@ -770,12 +767,17 @@ margin: 2% 0 0 30%;
 }
 .dropdown-container {
   display: none;
-  padding-left: 8px;
+  padding-left: 4vw;
+  font-family: 'Righteous', cursive;
+}
+
+a.submenu{
+  font-size: 2.5vw;
 }
 footer{
-  position: fixed;
-  left: 0;
-  bottom: 0;
+  position: relative;
+  /* left: 0;
+  bottom: 0; */
   width: 100%;
 }
 
@@ -788,7 +790,7 @@ footer{
   width: 15vw;
   height: 20vw;
   transition: all 0.6s;
-  opacity: 0.7;
+  opacity: 0.8;
   background-color:  #152238;
   color: gold;
   font-family: 'Marcellus SC', serif;
@@ -807,6 +809,7 @@ footer{
   width: 20vw;
   height: 25vw;
   */
+  
   z-index: 4;
   opacity: 1;
   border:  2px solid #fef5df;
@@ -843,56 +846,56 @@ p.search-year{
   position: absolute;
   left: 1vw;
   top: 0;
-  font-size: 3vw;
+  font-size: 2.5vw;
   text-align: left;
   }
 #search-item-1{
-  top: -5vw;
+  top: -2vw;
   left: 2vw;
 }
 
 #search-item-2{
-  top: -3vw;
-  left: 36vw;
+  top: -2vw;  
+  left: 34vw;
 }
 #search-item-3{
-  top: 18vw;
-  left: 20vw;
+  top: 22vw;
+  left: 18vw;
 }
 
 #search-item-4{
-  top: 23vw;
-  left: 53vw;
+  top: 22vw;
+  left: 50vw;
 }
 
 #search-item-5{
-  top: -8vw;
-  left: 62vw;
+  top: -2vw;
+  left: 66vw;
 }
 
 #search-item-6{ 
-  top: 5vw;
-  left: 85vw;
+  top: 22vw;
+  left: 81vw;
 }
 
 #search-item-7{
-  top: 23vw;
-  left: 100vw;
+  top: -2vw;
+  left: 97vw;
 }
 
 #search-item-8{
-  top: -2vw;
-  left: 110vw;
+  top:  22vw;
+  left: 113vw;
 }
 
 #search-item-9{
-  top: 0;
-  left: 130vw;
+  top: -2vw;
+  left: 129vw;
 }
 
 #search-item-10{
   top: 22vw;
-  left: 135vw;
+  left: 145vw;
 }
 
 img.search-poster{
@@ -904,6 +907,7 @@ img.search-poster{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   /* width: 100%;
   height: 100%; */
+  min-width: 15vw;
   max-width: 100%;
   max-height: 25vw;
 }
@@ -916,4 +920,96 @@ img[src='N/A']{
 div[check=''] {
   display:none;
 }
+div.modal-google{
+  background-color: white;
+}
+/* Modal section */
+.modal-content{
+  background-color: transparent;
+}
 
+@media (min-width: 992px) {
+  .modal-lg {
+    width: 900px;
+  }
+}
+
+@media (min-width: 768px) {
+  .modal-xl {
+    width: 90%;
+   max-width:1200px;
+  }
+}
+
+.searchV{
+  position: relative;
+  background-color: #152238;
+  height: 100%;
+  border-radius: 25px;
+  object-fit: center;
+}
+
+
+.movie-frames{
+  border-radius: 25px;
+}
+a.close{
+  font-size: 2vw;
+  color: white;
+  opacity: 1;
+  margin-top: -1vw;
+  padding-bottom: 0.25vw;
+  padding-top: 0.25vw
+}
+
+a.close:hover{
+  cursor: pointer;
+  text-decoration: none;
+  color: red;
+  opacity: 1;
+}
+
+.movie-frames{
+  width: 100%;
+  height: 35vw;
+}
+.movie-frames-detail{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  color: white;
+  padding: 0 0 5% 5%;
+  pointer-events: none;
+}
+
+.drop-down-button{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 0 5% 5% 0;
+  color: white;
+  background-color: rgb(238, 65, 12);
+  font-family: 'Playfair Display', serif;
+  transition: all 0.3s;
+}
+
+.drop-down-button:hover{
+  color: white;
+  transform: scale(1.1);
+  border: solid 2px #fef5df;
+}
+
+.add-btn{
+  border-radius: 50%;
+  color: white;
+}
+.dropdown-item{
+  color: #fef5df;
+  background-color: #152238;
+  font-family: 'Marcellus SC', serif;
+}
+
+.dropdown-menu{
+  background-color: #152238;
+  border: 1px solid #fef5df;
+}
