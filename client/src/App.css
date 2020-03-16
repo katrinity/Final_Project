@@ -355,40 +355,14 @@ a{
   width:100%;
   height: 100%;
 }
-.movie .social{
-  width: 100%;
-  
-}
-.movie .social li{
-  display: inline-block;
-  padding: 0 5% 0 0;
-}
-.movie .social li a i{
-  width: 25px;
-  height: 30px;
-  line-height: 25px;
-  color: #fff;
-  background-color: #0b579f;
-  border-radius: 50%;
-  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); */ 
-  transition: all 0.5s ease 0s;
-  font-size: 15px;
-}
-.movie .social li a i:hover{
-background: linear-gradient(to right, #7851a9 0%, #0b579f 100%);
-color: #fff;
-transform: scale(1.5);
-}
 .movie .movie-review{
-  width: 86%;
+  width: 82%;
   background-color: #fff;
   position: absolute;
   bottom: 0;
-  left: 7%;
-  height: 55%;
+  left: 9%;
+  height: 50%;
 }
-
-
 .delete-button, .delete-button-search {
   position: absolute;
   font-weight: bolder;
@@ -541,7 +515,6 @@ margin: 2% 0 0 30%;
 
 .overlayBanner {
   clear: left;
-  /* width: 70; */
   min-height: 20vw;
   max-height: 20vw;
   display: grid;
@@ -562,7 +535,6 @@ margin: 2% 0 0 30%;
 
 .askk{
   animation: 1.4s ease-in-out 0s 1 slideInFromLeft;
-  /* animation: 1s ease-in 0.2s 1 squish; */
   text-align: center;
   font-size: 5vw;
   font-family: 'Faster One', cursive;
@@ -647,18 +619,15 @@ margin: 2% 0 0 30%;
 
 .containerBanner:hover .overlayBanner .director {
   transform: translateY(0);
-  /* transition-delay: 0.3s; */
   opacity: 0;
   display: none;
 }
 .containerBanner:hover .overlayBanner .genre {
   transform: translateY(0px);
-  /* transition-delay: 0.3s; */
   opacity: 0;
 }
 .containerBanner:hover .overlayBanner .cart {
   transform: translateY(0px);
-  /* transition-delay: 0.6s; */
   opacity: 0;
   display: none;
 }
@@ -735,7 +704,6 @@ margin: 2% 0 0 30%;
   overflow:hidden;
   display: flex;
   background: rgb(2,0,36);
-  /* background: linear-gradient(300deg, rgba(2,0,36,1) 0%, rgba(4,4,41,1) 41%, rgba(38,81,135,1) 88%); */
   background-image: url('https://i.pinimg.com/originals/cd/5c/f1/cd5cf1b48962ccd7eec87a6f14675999.gif');
   background-size: cover;
   background-repeat: no-repeat;
@@ -771,7 +739,7 @@ margin: 2% 0 0 30%;
   display: none;
   padding-left: 8px;
 }
-footer{
+.page-footer{
   position: fixed;
   left: 0;
   bottom: 0;
@@ -911,9 +879,22 @@ div[check=''] {
 .dropdown-container {
   margin-left: 5%;
 }
-
 .movie-ratings {
   position: absolute;
   bottom: 0;
+}
+.saved-empty-page {
+  text-align: center;
+  color: orange;
+  padding-left: 45%;
+  font-family: "Font Awesome 5 Pro";
+  font-size: 2.5rem;
+}
+.saved-empty-page1 {
+  text-align: center;
+  color: orange;
+  padding-left: 30%;
+  font-family: "Font Awesome 5 Pro";
+  font-size: 2.5rem;
 }
 

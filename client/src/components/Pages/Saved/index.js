@@ -12,6 +12,7 @@ class SavedPage extends Component {
       super(props);
       this.state = {
           movies: [],
+          email: ""
       };
     }
     componentDidMount(){
@@ -52,7 +53,7 @@ class SavedPage extends Component {
               if(res.id) {
                 myThis.getCategoryMovies(category,res.id);
               } else {
-                myThis.setState({movies: []});
+                myThis.setState({movies: [], email: ""});
               }
             }
           );
@@ -61,7 +62,7 @@ class SavedPage extends Component {
         var mythis = this;
         axios({ method: "get", url: "/api/"+ email + "/movies/" + category }).then(function(result){
             console.log(result);
-            mythis.setState({movies: result.data});
+            mythis.setState({movies: result.data, email: email});
 
         });
 
@@ -112,8 +113,11 @@ class SavedPage extends Component {
     return (
         <>
             <Nav cb={this.refreshComponent} />
-            
-                <div className="row m-5">
+                
+                <div className="row m-5 text-center">
+                    {this.state.email == "" ? <div className="saved-empty-page1 text-muted">Please login to view saved movies</div> : (this.state.movies.length == 0 ? 
+                        <div className="saved-empty-page text-muted">None</div> :  
+                        <div></div>)}
                 {
                     this.state.movies.map( (value, index)=>{
                         return <div className=" col-md-3 col-sm-12 d-inline-block mt-3 mb-3">
@@ -138,12 +142,7 @@ class SavedPage extends Component {
                                             <img className="d-inline rt-image3" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/500px-IMDB_Logo_2016.svg.png"/>
                                             <div className="d-inline text-small"> {value.rating}</div>
                                             </div>
-                                            {/* <ul className="social">
-                                                <li><a href="#"><i className="fa fa-facebook"></i></a></li>
-                                                <li><a href="#"><i className="fa fa-twitter"></i></a></li>
-                                                <li><a href="#"><i className="fa fa-google"></i></a></li>
-                                                <li><a href="#"><i className="fa fa-whatsapp"></i></a></li>
-                                            </ul> */}
+                                           
                                         </div>   
                               
                                     </div>
