@@ -696,9 +696,14 @@ margin: 2% 0 0 30%;
   }
 }
 
-.search-input, .bucket{
-  background-color: #282c34;;
+.bucket{
+  background-color: transparent;
   color: white;
+}
+
+.search-input{
+  color: white;
+  background-color: transparent;
 }
 .inputs{
   width: 80%;
@@ -710,30 +715,7 @@ margin: 2% 0 0 30%;
   border-radius: 5em;
   background-color: rgb(12, 12, 12);
 }
-.movie-frames{
-  width: 100%;
-  height: 550px;
-}
-.movie-frames-detail{
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  color: white;
-  padding: 0 0 5% 5%;
-}
-.drop-down-button{
-  border-radius: 50%;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  margin: 0 5% 5% 0;
-  color: white;
-  background-color: rgb(238, 65, 12);
-}
-.dropdown-item{
-  color: white;
-  background-color: black;
-}
+
 
 
 /* Search Result Container */
@@ -759,13 +741,21 @@ margin: 2% 0 0 30%;
   z-index: 0;
 }
 
-.container, .searchV{
-  position: relative;
-  z-index: 20;
-  background-color: #152238;
-  height: 100%;
-
+input[type="text"]
+{
+  text-align: center;
+  width: 10vw;
+  font-family: 'Josefin Sans', sans-serif;
+  transition: all 0.5s;
 }
+
+input[type="text"]:focus{
+  text-align: left;
+  width: 80%;
+  border: 2px solid #fef5df;
+  font-size: 120%;
+}
+
 
 .dropdown-btn {
   
@@ -930,9 +920,12 @@ img[src='N/A']{
 div[check=''] {
   display:none;
 }
-
+div.modal-google{
+  background-color: white;
+}
 /* Modal section */
 .modal-content{
+  background-color: transparent;
 }
 
 @media (min-width: 992px) {
@@ -946,4 +939,77 @@ div[check=''] {
     width: 90%;
    max-width:1200px;
   }
+}
+
+.searchV{
+  position: relative;
+  background-color: #152238;
+  height: 100%;
+  border-radius: 25px;
+  object-fit: center;
+}
+
+
+.movie-frames{
+  border-radius: 25px;
+}
+a.close{
+  font-size: 2vw;
+  color: white;
+  opacity: 1;
+  margin-top: -1vw;
+  padding-bottom: 0.25vw;
+  padding-top: 0.25vw
+}
+
+a.close:hover{
+  cursor: pointer;
+  text-decoration: none;
+  color: red;
+  opacity: 1;
+}
+
+.movie-frames{
+  width: 100%;
+  height: 35vw;
+}
+.movie-frames-detail{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  color: white;
+  padding: 0 0 5% 5%;
+  pointer-events: none;
+}
+
+.drop-down-button{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 0 5% 5% 0;
+  color: white;
+  background-color: rgb(238, 65, 12);
+  font-family: 'Playfair Display', serif;
+  transition: all 0.3s;
+}
+
+.drop-down-button:hover{
+  color: white;
+  transform: scale(1.1);
+  border: solid 2px #fef5df;
+}
+
+.add-btn{
+  border-radius: 50%;
+  color: white;
+}
+.dropdown-item{
+  color: #fef5df;
+  background-color: #152238;
+  font-family: 'Marcellus SC', serif;
+}
+
+.dropdown-menu{
+  background-color: #152238;
+  border: 1px solid #fef5df;
 }

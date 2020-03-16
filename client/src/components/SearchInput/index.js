@@ -135,7 +135,7 @@ closeTrailer = (myThis) => {
     return (
       <>
       <div className="search-input">
-        <input type="text" id="searchInput" className="inputs" placeholder="Search for a Movie"  onKeyPress={(event) => {this.keyPressed(event,this)}}/>
+        <input type="text" id="searchInput" className="inputs" placeholder="Search Here"  onKeyPress={(event) => {this.keyPressed(event,this)}}/> 
       </div>
       <button id="launch-modal" style={{display: 'none'}} type="button" class="btn btn-primary" data-toggle="modal" data-target="#mModal">Hidden</button>
 
@@ -226,15 +226,15 @@ closeTrailer = (myThis) => {
           this.state.movieDetail.map((value,index) => {
               return <div className="modal show modal-container row" id="mModal" data-show="true" role="dialog">
                       <div className="modal-dialog modal-lg modal-xl" role="document">
-                        <div className="modal-content">
+                        <div className="modal-content"> 
                           
                           <div className="modal-body searchV">
                             
                               <div  onDragStart={this.drag} className = 'row'>
                                 <div className = ' movie-frames col-12'>
-                                <button onClick={() => {this.closeTrailer(this)}} type="button" className="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
+                                <a onClick={() => {this.closeTrailer(this)}}  className="close" data-dismiss="modal" aria-label="Close">
+                                <i class="fas fa-power-off"></i>
+                              </a>
                                   <iframe  id="movie-trailer" className="movie-frames d-block " src={"https://www.youtube.com/embed/"+value.trailer+"?rel=0"} frameborder="0"></iframe>
                                   <div className= "movie-frames-detail">
                                     <h5 class="mb-1 " style={{ 'text-align': 'left'}} >{value.title}</h5>
@@ -243,11 +243,14 @@ closeTrailer = (myThis) => {
                                       <small>Rotten Tomatoes: {value.ratingrt} | IMDB: {value.rating}</small>
                                   </div>
                                   <div>
-                                    <button className=" drop-down-button btn btn-outline-danger" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                      +
+                                    
+                                    <button className=" drop-down-button btn" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Add to Bucket &nbsp;&nbsp;
+                                    <i class="fas fa-plus"></i>
                                     </button>
+
                                     <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat1")}} >Comedy</div>
+                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat1")}}>Comedy</div>
                                       <div className="dropdown-item" onClick={() => {this.props.cb("cat2")}}>Action</div>
                                       <div className="dropdown-item" onClick={() => {this.props.cb("cat3")}}>Must watch</div>
                                       <div className="dropdown-item" onClick={() => {this.props.cb("cat4")}}>Waste of time</div>

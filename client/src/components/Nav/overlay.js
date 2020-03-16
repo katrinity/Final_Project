@@ -9,7 +9,8 @@ class Overlay extends Component{
         this.state = {
             sessionId: "",
             rotated: 0,
-            currentUser: ''
+            currentUser: '',
+            dropdown: false,
 
         };
     }
@@ -61,9 +62,19 @@ class Overlay extends Component{
             }
           );
     }
-dropDown = ()=>{
+dropDown = (event)=>{
 
-   $(".dropdown-container").css('display','block');
+   event.preventDefault();
+   if (this.state.dropdown == true){
+    $(".dropdown-container").css('display','none');
+    this.setState({dropdown: false})
+   }
+   else{
+    $(".dropdown-container").css('display','block');
+    this.setState({dropdown: true});
+   }
+   
+   
 }
 hideDropDown = ()=>{
 
@@ -76,8 +87,8 @@ hideDropDown = ()=>{
         <a className = 'overlayItems' href="/">Home</a>
         <a className = 'overlayItems' href="/search">Search</a>
 
-        <a onMouseEnter={this.dropDown} onMouseLeave={this.hideDropDown} className = 'overlayItems dropdown-btn' href="/saved">Saved <i className='fa fa-caret-right'></i></a>
-        <div onMouseEnter={this.dropDown} onMouseLeave={this.hideDropDown} className = 'dropdown-container'>
+        <a onClick={this.dropDown}  className = 'overlayItems dropdown-btn' href="/saved">Saved <i className='fa fa-caret-right'></i></a>
+        <div  className = 'dropdown-container'>
         <a class = 'submenu' href="/saved/cat1">Comedy</a>
         <a class = 'submenu' href="/saved/cat2">Action</a>
         <a class = 'submenu' href="/saved/cat3">Must watch</a>
