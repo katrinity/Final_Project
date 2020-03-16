@@ -154,11 +154,12 @@ class SavedPage extends Component {
                     this.state.movies.map( (value, index)=>{
                         return <div className=" col-md-3 col-sm-12 d-inline-block">
                                     <div className="movie">
-                                        <div onClick={() => {this.deleteMovie(value._id,value.category)}} className="delete-button">X</div>
+                                        <div onClick= {() => {this.deleteMovie(value._id,value.category)}} className="delete-button">X</div>
                                         <img className="saved-img" src= {value.poster} />
                                         
                                         <div className="movie-review">
                                             <h5 className="title">{value.title}</h5>
+                                            <br/>
                                             <div className="d-inline text-muted text-small">{value.rated} | </div>
                                             <div className="d-inline text-muted text-small"> {value.runtime} | </div>
                                             <div className="d-inline text-muted text-small"> {value.genre} |</div>
