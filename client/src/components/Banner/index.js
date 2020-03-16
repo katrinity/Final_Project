@@ -2,10 +2,7 @@ import React, {Component} from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import BannerCard from '../BannerCard';
-import Theater from '../Theater';
-import Radium from 'radium';
 import $ from 'jquery';
-import { isAbsolute } from 'path';
 
 
 class Banner extends Component{
@@ -22,7 +19,10 @@ class Banner extends Component{
 
   componentDidMount() {
     var compThis = this;
-        $.ajax({METHOD: "GET", url: "/api/trending-movies"}).done(function (res, status) {           
+    console.log("fetching trending movies");
+        $.ajax({METHOD: "GET", url: "/api/trending-movies"}).done(function (res, status) {    
+            console.log("Fetched trending movies" + res);
+            console.log(res);
             compThis.getTrendingTV(compThis, res.result);         
         }); 
        
@@ -69,18 +69,11 @@ class Banner extends Component{
           minimumTouchDrag={80}
           renderButtonGroupOutside={true}
           renderDotsOutside={true}
-          // showDots={true}
           sliderClass=""
           slidesToSlide={2}
           swipeable
         >
-          {/* <div><BannerCard/></div>
-          <div><BannerCard/></div>
-          <div><BannerCard/></div>
-          <div><BannerCard/></div>   
-          <div><BannerCard/></div> 
-          <div><BannerCard/></div> 
-          <div><BannerCard/></div>  */}
+          
           {
               this.state[this.props.loadElement].map((value,index) => {
                   if(this.props.loadElement == "trendingMovies") {
@@ -91,28 +84,7 @@ class Banner extends Component{
                   
               })
           }
-          {/* <div>
-          <div style = {{width: '200px', height: '300px'}} className = 'container'>
-            <div className="containerBanner">
-                    <div className="overlayBanner">
-                        <div className = "items"></div>
-                        <div className = "items head">
-                            <p>Movie Here</p>
-                            <hr></hr>
-                        </div>
-                        <div className = "items director">
-                            <p className="old">Director: </p>
-                            <p className="new">Release Year:</p>
-                            <p className="genre">Genre: </p>
-                        </div>
-                        <div className="items cart">
-                            <i class="fas fa-cart-arrow-down"></i>
-                            <span>SAVE and RATE</span>
-                        </div>
-                        </div>
-                    </div>
-            </div>
-          </div>        */}
+          
         </Carousel>
         </div>
         )

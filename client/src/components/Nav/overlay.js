@@ -14,6 +14,7 @@ class Overlay extends Component{
         };
     }
 
+    // User session is deleted and the user is logged out of the application
     eventSignOut = (navThis) => {
         navThis.signOut();
         $.ajax("/api/session", {
@@ -21,7 +22,6 @@ class Overlay extends Component{
         }).then(
             function(res) {
           
-                // this.state.sessionId = "";
                 navThis.checkSession();
                 navThis.props.cb();
         
@@ -29,6 +29,7 @@ class Overlay extends Component{
         );
     }
 
+    //Google sign-out
     signOut = () => {
         var auth2 = window.gapi.auth2.getAuthInstance();
         auth2.signOut().then(function () {
@@ -37,12 +38,12 @@ class Overlay extends Component{
         ;
     }
 
+    //Check to see if the user is already logged in, if update the user name in the UI
     checkSession = () => {
         $.ajax("/api/session", {
             type: "GET"
           }).then(
             function(res) {
-            //   this.state.sessionId = res.id;
               if(res.id) {
                 window.$("#register-form").hide();
                 window.$("#signin-form").hide();
@@ -50,7 +51,6 @@ class Overlay extends Component{
                 
                 window.$("#app-content").html("Welcome " + res.id + "!");    
                 window.$("#signOut").show();
-                // this.setState({currentUser: res.id});
               } else {
                 window.$("#register-form").show();
                 window.$("#signin-form").show();
@@ -61,19 +61,19 @@ class Overlay extends Component{
             }
           );
     }
-toggleDropDown = (ev)=>{
-    ev.preventDefault();
-   if($(".dropdown-container").css('display') == 'block') {
-     $(".dropdown-container").css('display','none');
-   } else {
-     $(".dropdown-container").css('display','block');
-   }
-   
-}
-hideDropDown = ()=>{
 
-    $(".dropdown-container").css('display','none');
- }
+    // Show/Hide sub-menu for saved category pages
+    toggleDropDown = (ev)=>{
+
+      ev.preventDefault();
+      if($(".dropdown-container").css('display') == 'block') {
+        $(".dropdown-container").css('display','none');
+      } else {
+        $(".dropdown-container").css('display','block');
+      }
+   
+    }
+
     render(){
     return(
     

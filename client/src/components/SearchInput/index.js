@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Review from "../Review";
 import $ from "jquery";
-// import Modal from 'react-modal';
 import axios from 'axios';
 
 class SearchInput extends Component {
@@ -139,7 +138,6 @@ closeTrailer = (myThis) => {
       </div>
       <button id="launch-modal" style={{visibility: 'hidden'}} type="button" class="btn btn-primary" data-toggle="modal" data-target="#mModal">Hidden</button>
 
-      {/* I could definitely do this with a big const style array and apply them through map I thought about it in the shower. but it'll take extra time i'll make this work for now */}
 
       <div id = 'motion-container'>
       {movieItems[0] != null
@@ -203,24 +201,6 @@ closeTrailer = (myThis) => {
       <div></div>
       }
       </div>
-      {
-          // this.state.movies.map((value,index) => {
-          //   return <div class="list-group">
-          //   {/* <a onClick={() => {this.getMovieDetails(value)}} style={{background: 'black'}}  class="list-group-item list-group-item-action"> */}
-          // <a onClick={() => {this.getMovieDetails(value)}} style={{background: ' #152238'}}  className="list-group-item list-group-item-action"> 
-          //       <div style={{background: ' #152238'}} class="d-flex w-100 justify-content-between">
-          //           <img style={{width: '100px', height: '100px', float: 'left'}} src={value.poster}/>
-          //           <h5 class="mb-1 " style={{color: 'white', 'text-align': 'left'}} >{value.title} {value.year}</h5>
-          //           <small style={{color: 'white'}}>{value.type}</small>
-          //       </div>
-             
-          //   </a>
-          // </div>
-         
-            
-          // })
-       
-      } 
 
       {
           this.state.movieDetail.map((value,index) => {

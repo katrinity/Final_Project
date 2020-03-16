@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import $ from 'jquery';
-import {Carousel} from 'react-responsive-carousel';
 
 class Bucket extends Component {
     constructor(props) {
@@ -78,7 +77,6 @@ class Bucket extends Component {
     }
 
     selectACategory = (category) => {
-        // var url = document.getElementById("drag1").getAttribute("src");
         var emojiImage = document.getElementById("emojiImage");
         var comments = $("#inputField").val();
         var emojiUrl = "";
