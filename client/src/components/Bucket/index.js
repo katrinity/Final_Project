@@ -18,6 +18,9 @@ class Bucket extends Component {
             ],
             cat4: [
 
+            ],
+            cat5: [
+
             ]
         };
     }
@@ -33,7 +36,8 @@ class Bucket extends Component {
                 myComp.saveCategory("cat2",res.id, myComp);
                 myComp.saveCategory("cat3",res.id, myComp);
                 myComp.saveCategory("cat4",res.id, myComp);
-                myComp.setState({"cat1": [], "cat2": [], "cat3": [], "cat4": []});
+                myComp.saveCategory("cat5",res.id, myComp);
+                myComp.setState({"cat1": [], "cat2": [], "cat3": [], "cat4": [], "cat5": []});
               } else {
                 alert('Please log in first');
               }
@@ -130,6 +134,7 @@ class Bucket extends Component {
         window.continueCarousel("#cat2Carousel");
         window.continueCarousel("#cat3Carousel");
         window.continueCarousel("#cat4Carousel");
+        window.continueCarousel("#cat5Carousel");
     }
 
     render() {
@@ -141,7 +146,7 @@ class Bucket extends Component {
                 <div className="row">
                     <div className="col-sm-3">
                         <div id="div1" className="div1" onDrop={(ev) => { this.dropToCategory(ev,"cat1")}} onDragOver={this.allowDrop} className="card grow comedy">
-                            <div contenteditable="true" className="catName">Comedy({this.state.cat1.length})</div>
+                            <div contenteditable="true" className="catName">Waste of time({this.state.cat1.length})</div>
                             
                             <div id="cat1Carousel" className="carousel slide " data-ride="carousel">
                                 <div id="cat1-carousel-inner" className="carousel-inner">
@@ -193,7 +198,7 @@ class Bucket extends Component {
                     </div>
                     <div className="col-sm-3">
                         <div id="div2" className="div1" onDrop={(ev) => {this.dropToCategory(ev,"cat2")}} onDragOver={this.allowDrop} className="card grow action">
-                            <div contenteditable="true" className="catName">Action({this.state.cat2.length})</div>
+                            <div contenteditable="true" className="catName">Watch a summary of it on YouTube({this.state.cat2.length})</div>
                             <div id="cat2Carousel" className="carousel slide " data-ride="carousel">
                                 <div id="cat2-carousel-inner" className="carousel-inner">
                                 { 
@@ -240,7 +245,7 @@ class Bucket extends Component {
                     </div>
                     <div className="col-sm-3">
                         <div id="div3" className="div1" onDrop={(ev) => {this.dropToCategory(ev,"cat3")}} onDragOver={this.allowDrop} className="card grow must">
-                            <div contenteditable="true" className="catName">Must watch({this.state.cat3.length})</div>
+                            <div contenteditable="true" className="catName">Eventually watch it when it comes on DVD/BlueRay({this.state.cat3.length})</div>
                             <div id="cat3Carousel" className="carousel slide " data-ride="carousel">
                                 <div id="cat3-carousel-inner" className="carousel-inner">
                                 { 
@@ -287,7 +292,7 @@ class Bucket extends Component {
                     </div>   
                     <div className="col-sm-3">
                         <div id="div4" className="div1" onDrop={(ev) => {this.dropToCategory(ev,"cat4")}} onDragOver={this.allowDrop}  className="card grow waste">
-                            <div contenteditable="true" className="catName">Waste of time({this.state.cat4.length})</div>
+                            <div contenteditable="true" className="catName">Watch at a local theater({this.state.cat4.length})</div>
                             
                             
                             <div id="cat4Carousel" className="carousel slide " data-ride="carousel">
@@ -328,6 +333,55 @@ class Bucket extends Component {
                                     <span className="sr-only">Previous</span>
                                 </a>
                                 <a className="carousel-control-next" href="#cat4Carousel" role="button" data-slide="next">
+                                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span className="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-sm-3">
+                        <div id="div4" className="div1" onDrop={(ev) => {this.dropToCategory(ev,"cat5")}} onDragOver={this.allowDrop}  className="card grow waste">
+                            <div contenteditable="true" className="catName">Get a subscription for it({this.state.cat5.length})</div>
+                            
+                            
+                            <div id="cat5Carousel" className="carousel slide " data-ride="carousel">
+                                <div id="cat5-carousel-inner" className="carousel-inner">
+                                { 
+                                    this.state.cat5.map((value, index) => {
+                                        var active = "carousel-item showEmojicat5";
+                                        var id = "showEmojicat5" + index;
+                                        var emojiId = "showEmojicat5Emoji" + index;
+                                        if(index == 0) {
+                                            active = "carousel-item active showEmojicat5"
+                                        }
+                                        if (value.emojiUrl == "") {
+                                            return <div id={id} className={active}>
+                                                <div id={emojiId}><div className="text-muted pt-1">Click emojis below to rate this movie!</div></div>
+                                                <div className="bucket-image-container text-center">
+                                                    <div onClick={() => {this.deleteMovie(index,"cat5")}} className="delete-button-search">X</div>
+                                                    <img src={value.url} className="d-block bucket-image d-inline" alt="..."/>
+                                                </div>
+                                                <div className="bucket-comments"><span >{value.comments}</span></div>
+                                            </div>
+                                        } else {
+                                            return <div id={id} className={active}>
+                                                <div id={emojiId}><span class='emoji'><img className="emoji_images" src={value.emojiUrl}></img>{value.emojiText}</span></div>
+                                                <div className="bucket-image-container text-center">
+                                                    <div onClick={() => {this.deleteMovie(index,"cat5")}} className="delete-button-search">X</div>
+                                                    <img src={value.url} className="d-block bucket-image d-inline" alt="..."/>
+                                                </div>
+                                                <div className="bucket-comments"><span >{value.comments}</span></div>
+                                            </div>
+                                        }
+                                        
+                                    })
+                                }
+                                </div>
+                                <a className="carousel-control-prev" href="#cat5Carousel" role="button" data-slide="prev">
+                                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span className="sr-only">Previous</span>
+                                </a>
+                                <a className="carousel-control-next" href="#cat5Carousel" role="button" data-slide="next">
                                     <span className="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span className="sr-only">Next</span>
                                 </a>

@@ -52,6 +52,10 @@ class SavedPage extends Component {
      
             this.getMovies("cat4");
         }
+        if(window.location.pathname == "/saved/cat5") {
+     
+            this.getMovies("cat5");
+        }
         if(window.location.pathname == "/saved") {
             this.getMovies("cat1");
         }
@@ -114,7 +118,7 @@ class SavedPage extends Component {
     }
 
     updateNavLink = (id) => {
-        var navids = ["#nav-cat1", "#nav-cat2","#nav-cat3","#nav-cat4"];
+        var navids = ["#nav-cat1", "#nav-cat2","#nav-cat3","#nav-cat4","#nav-cat5"];
         navids.map((value,index) => {
 
             if(id == value) {
