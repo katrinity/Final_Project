@@ -61,9 +61,14 @@ class Overlay extends Component{
             }
           );
     }
-dropDown = ()=>{
-
-   $(".dropdown-container").css('display','block');
+toggleDropDown = (ev)=>{
+    ev.preventDefault();
+   if($(".dropdown-container").css('display') == 'block') {
+     $(".dropdown-container").css('display','none');
+   } else {
+     $(".dropdown-container").css('display','block');
+   }
+   
 }
 hideDropDown = ()=>{
 
@@ -76,8 +81,8 @@ hideDropDown = ()=>{
         <a className = 'overlayItems' href="/">Home</a>
         <a className = 'overlayItems' href="/search">Search</a>
 
-        <a onMouseEnter={this.dropDown} onMouseLeave={this.hideDropDown} className = 'overlayItems dropdown-btn' href="/saved">Saved <i className='fa fa-caret-right'></i></a>
-        <div onMouseEnter={this.dropDown} onMouseLeave={this.hideDropDown} className = 'dropdown-container'>
+        <a onClick={this.toggleDropDown} className = 'overlayItems dropdown-btn' >Saved <i className='fa fa-caret-right'></i></a>
+        <div className = 'dropdown-container'>
         <a href="/saved/cat1">Waste of time</a>
         <a href="/saved/cat2">Watch a summary of it on YouTube</a>
         <a href="/saved/cat3">Eventually watch it when it comes on DVD/BlueRay</a>
