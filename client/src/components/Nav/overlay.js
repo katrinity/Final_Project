@@ -76,10 +76,6 @@ dropDown = (event)=>{
    
    
 }
-hideDropDown = ()=>{
-
-    $(".dropdown-container").css('display','none');
- }
     render(){
     return(
     
