@@ -85,10 +85,11 @@ dropDown = (event)=>{
 
         <a onClick={this.dropDown}  className = 'overlayItems dropdown-btn' href="/saved">Saved <i className='fa fa-caret-right'></i></a>
         <div  className = 'dropdown-container'>
-        <a class = 'submenu' href="/saved/cat1">Comedy</a>
-        <a class = 'submenu' href="/saved/cat2">Action</a>
-        <a class = 'submenu' href="/saved/cat3">Must watch</a>
-        <a class = 'submenu' href="/saved/cat4">Waste of time</a>
+        <a class = 'submenu' href="/saved/cat1">Waste of time - Not Worthy</a>
+        <a class = 'submenu' href="/saved/cat2">Summary Worthy</a>
+        <a class = 'submenu' href="/saved/cat3">DVD/Bluray Worthy</a>
+        <a class = 'submenu' href="/saved/cat4">Local Theater Worthy</a>
+        <a class = 'submenu' href="/saved/cat5">Subscription Worthy</a>
         </div>
         <ul className="nav navbar-nav ml-auto">
                         <li>
