@@ -245,15 +245,16 @@ closeTrailer = (myThis) => {
                                   <div>
                                     
                                     <button className=" drop-down-button btn" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Add to Bucket &nbsp;&nbsp;
+                                    I would ... &nbsp;&nbsp;
                                     <i class="fas fa-plus"></i>
                                     </button>
 
                                     <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat1")}}>Comedy</div>
-                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat2")}}>Action</div>
-                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat3")}}>Must watch</div>
-                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat4")}}>Waste of time</div>
+                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat1")}}>say it is a waste of time</div>
+                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat2")}}>watch a summary of it on youtube</div>
+                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat3")}}>eventually watch it when it comes out on dvd/bluray</div>
+                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat4")}}>watch at a local theater</div>
+                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat5")}}>get a subscription for it</div>
                                     </div>
                                   </div>
                                 </div>
