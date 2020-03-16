@@ -137,7 +137,7 @@ closeTrailer = (myThis) => {
       <div className="search-input">
         <input type="text" id="searchInput" className="inputs" placeholder="Search for a Movie"  onKeyPress={(event) => {this.keyPressed(event,this)}}/>
       </div>
-      <button id="launch-modal" style={{visibility: 'show'}} type="button" class="btn btn-primary" data-toggle="modal" data-target="#mModal">Hidden</button>
+      <button id="launch-modal" style={{display: 'none'}} type="button" class="btn btn-primary" data-toggle="modal" data-target="#mModal">Hidden</button>
 
       {/* I could definitely do this with a big const style array and apply them through map I thought about it in the shower. but it'll take extra time i'll make this work for now */}
 
@@ -225,7 +225,7 @@ closeTrailer = (myThis) => {
       {
           this.state.movieDetail.map((value,index) => {
               return <div className="modal show modal-container row" id="mModal" data-show="true" role="dialog">
-                      <div className="modal-dialog col-8" role="document">
+                      <div className="modal-dialog modal-lg modal-xl" role="document">
                         <div className="modal-content">
                           
                           <div className="modal-body searchV">

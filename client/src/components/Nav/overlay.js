@@ -78,10 +78,10 @@ hideDropDown = ()=>{
 
         <a onMouseEnter={this.dropDown} onMouseLeave={this.hideDropDown} className = 'overlayItems dropdown-btn' href="/saved">Saved <i className='fa fa-caret-right'></i></a>
         <div onMouseEnter={this.dropDown} onMouseLeave={this.hideDropDown} className = 'dropdown-container'>
-        <a href="/saved/cat1">Comedy</a>
-        <a href="/saved/cat2">Action</a>
-        <a href="/saved/cat3">Must watch</a>
-        <a href="/saved/cat4">Waste of time</a>
+        <a class = 'submenu' href="/saved/cat1">Comedy</a>
+        <a class = 'submenu' href="/saved/cat2">Action</a>
+        <a class = 'submenu' href="/saved/cat3">Must watch</a>
+        <a class = 'submenu' href="/saved/cat4">Waste of time</a>
         </div>
         <ul className="nav navbar-nav ml-auto">
                         <li>
