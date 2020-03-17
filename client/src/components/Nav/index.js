@@ -8,7 +8,7 @@ class Nav extends Component {
         super(props);
         this.state = {
             sessionId: "",
-            rotated: 0,
+
         };
     }
 
@@ -43,12 +43,15 @@ class Nav extends Component {
                     window.$("#register-form").hide();
                     window.$("#signin-form").hide();
                     window.$(".app").show();
-                    window.$("#app-content").html("Welcome " + res.id + "!");
+                    window.$("#app-content").show();
+                    window.$("#app-content").html(res.id);
                     window.$("#signOut").show();
+                    this.setState({ currentUser: res.id });
+                    alert(this.state.currentUser);
                 } else {
                     window.$("#register-form").show();
                     window.$("#signin-form").show();
-                    window.$(".app").hide();
+                    window.$("#app-content").hide();
                     window.$("#signOut").hide();
                 }
             }
@@ -213,50 +216,14 @@ class Nav extends Component {
     render() {
         return (
             <>
-                <div className="overlay-content">
-                    <a className='overlayItems' href="/">Home</a>
-                    <a className='overlayItems' href="/search">Search</a>
-                    <a className='overlayItems' href="/saved">Saved</a>
-                    <ul className="nav navbar-nav ml-auto">
-                        <li>
-                            <a id="signin-form" type="button" className="overlayItems" data-toggle="modal" data-target="#loginModal"> Log in </a>
-                        </li>
-                        <li>
-                            <a id="register-form" type="button" className="overlayItems" data-toggle="modal" data-target="#registerModal"> Sign up </a>
-                        </li>
-                        <li>
-                            <div className="app text-light">
-                                <div id="app-content" className="pt-1"></div>
-                                <div id="sign-out"></div>
-                            </div>
-                        </li>
-                        <li>
-                            <button id="signOut" type="button" className="btn btn-outline-light" onClick={() => { this.eventSignOut(this) }}>
-                                Sign out
-                            </button>
-                        </li>
-                    </ul>
-                </div>
-
-
-
-
                 <div id="myNav" class="overlay">
-                    {/* <a className="navbar-brand" href="/">Movie Review</a> */}
-                    <Overlay />
-                    {/* <ul className="nav bg-primary text-light">
-                        <li className="" ><a className={this.props.menus.length != 0 ? "font-weight-normal text-white-50" : "font-weight-bold border-bottom"} href="/search">Search</a></li>
-                        <li className="pl-3 "><a className={this.props.menus.length != 0 ? "font-weight-bold border-bottom" : "font-weight-normal text-white-50"} href="/saved">Saved</a></li>
-                    </ul> */}
+                    <Overlay cb={this.props.cb} />
                 </div>
                 <NavButton />
-
-
-
                 {/* google sign in modal */}
                 <div className="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
                     <div className="modal-dialog" role="document">
-                        <div className="modal-content">
+                        <div className="modal-content modal-google">
                             <div className="modal-header">
                                 <h5 className="modal-title" id="loginModalLabel">Sign-in User</h5>
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import Review from "../Review"
+import Review from "../Review";
 import $ from "jquery";
-const axios = require("axios");
+// import Modal from 'react-modal';
+import axios from 'axios';
 
 class SearchInput extends Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class SearchInput extends Component {
   keyPressed(event,myThis) {
     if (event.key === "Enter") {
       myThis.searchMovie($("#searchInput").val());
+      
     }
   }
   searchMovie = (movieTitle) => {
@@ -25,18 +27,20 @@ class SearchInput extends Component {
     axios.get(
         "https://www.omdbapi.com/?s=" + movieTitle + "&apikey=trilogy"
       ).then( (response) => {
-        console.log('response = '+response.data.Search.length);
         if(response.data.Search != null) {
-            var movies = [];
-            for(var i=0; i< response.data.Search.length; i++){
-              movies[i]={
-                title: response.data.Search[i].Title,
-                poster: response.data.Search[i].Poster,
-                year: response.data.Search[i].Year,
-                imdbID: response.data.Search[i].imdbID,
-                type: response.data.Search[i].Type
-              }
+            var movies = [];   
+            for(var i=0; i< response.data.Search.length; i++){ 
+
+                movies[i]={
+                  title: response.data.Search[i].Title,
+                  poster: response.data.Search[i].Poster,
+                  year: response.data.Search[i].Year,
+                  imdbID: response.data.Search[i].imdbID,
+                  type: response.data.Search[i].Type
+                }
+            
             }
+            
             console.log('movies = '+movies.length);
             this.setState({
                 movies: movies,
@@ -57,7 +61,10 @@ getRottenTomatoesRating = (response) => {
 
 getMovieDetails = (movie) => {
     var myThis = this;
-    axios({ method: "get", url: "/api/trailers/" + movie.title + " "+movie.type}).then(function(youtubeData){
+    var year = movie.year.replace("–"," ");
+    var url1 = "/api/trailers/" + movie.title + " "+movie.type + " " + year;
+    console.log("url " + url1);
+    axios({ method: "get", url: "/api/trailers/" + movie.title + " "+movie.type + " " + year}).then(function(youtubeData){
 
                 movie.trailer = youtubeData.data.result;
                 myThis.getMovieDetailFromOmdb(movie, myThis);
@@ -87,71 +94,187 @@ getMovieDetailFromOmdb = (movie, myThis) => {
             movie.Type= response.data.Type;
 
       } 
-      myThis.setState({movies: [], movieDetail: [movie]});  
+      myThis.setState({ movieDetail: [movie]});  
+      
       });
 
+}
+componentDidUpdate() {
+  if(this.state.movieDetail.length > 0) {
+    $('#launch-modal').click();
+  }
+  
 }
 drag = (ev) => {
     ev.dataTransfer.setData("text", "movie-from-search");
 }
+
+
+closeTrailer = (myThis) => {
+  myThis.setState({ movieDetail: []});
+}
+
   render(){
+
+    const movieItems = this.state.movies;
+    if (movieItems.length < 10){
+      for (var i = movieItems.length; i < 10; i++){
+        movieItems[i]={         
+            title: '',
+            poster: '',
+            year: '',
+            imdbID: '',
+            type: '',
+        }
+      }
+    }
+
+    
+    
+
     return (
-        <>
+      <>
       <div className="search-input">
-        <input type="text" id="searchInput" className="inputs" placeholder="Search for a Movie"  onKeyPress={(event) => {this.keyPressed(event,this)}}/>
+        <input type="text" id="searchInput" className="inputs" placeholder="Search Here"  onKeyPress={(event) => {this.keyPressed(event,this)}}/> 
+      </div>
+      <button id="launch-modal" style={{display: 'none'}} type="button" class="btn btn-primary" data-toggle="modal" data-target="#mModal">Hidden</button>
+
+      {/* I could definitely do this with a big const style array and apply them through map I thought about it in the shower. but it'll take extra time i'll make this work for now */}
+
+      <div id = 'motion-container'>
+      {movieItems[0] != null
+        ? 
+      <div id = 'search-result-container'>
+       
+        <div check = {movieItems[0].title} id = 'search-item-1' className = 'search-results'>
+          <h1 className = 'search-title'>{movieItems[0].title}</h1>
+          <p className = 'search-year'>{movieItems[0].year}</p>
+          <img onClick={() => {this.getMovieDetails(movieItems[0])}} className = 'search-poster' src = {movieItems[0].poster} alt = '1'></img>
+        </div>
+        <div check = {movieItems[1].title} id = 'search-item-2' className = 'search-results'>
+        <h1 className = 'search-title'>{movieItems[1].title}</h1>
+          <p className = 'search-year'>{movieItems[1].year}</p>
+          <img onClick={() => {this.getMovieDetails(movieItems[1])}} className = 'search-poster' src = {movieItems[1].poster} alt = '2'></img>
+        </div>
+        <div check = {movieItems[2].title} id = 'search-item-3' className = 'search-results'>
+        <h1 className = 'search-title'>{movieItems[2].title}</h1>
+          <p className = 'search-year'>{movieItems[2].year}</p>
+          <img onClick={() => {this.getMovieDetails(movieItems[2])}} className = 'search-poster' src = {movieItems[2].poster} alt = '3'></img>
+        </div>
+        <div check = {movieItems[3].title} id = 'search-item-4' className = 'search-results'>
+        <h1 className = 'search-title'>{movieItems[3].title}</h1>
+          <p className = 'search-year'>{movieItems[3].year}</p>
+          <img onClick={() => {this.getMovieDetails(movieItems[3])}} className = 'search-poster' src = {movieItems[3].poster} alt = '4'></img>
+        </div>
+        <div check = {movieItems[4].title} id = 'search-item-5' className = 'search-results'>
+        <h1 className = 'search-title'>{movieItems[4].title}</h1>
+          <p className = 'search-year'>{movieItems[4].year}</p>
+          <img onClick={() => {this.getMovieDetails(movieItems[4])}} className = 'search-poster' src = {movieItems[4].poster} alt = '5'></img>
+        </div>
+        <div check = {movieItems[5].title} id = 'search-item-6' className = 'search-results'>
+        <h1 className = 'search-title'>{movieItems[5].title}</h1>
+          <p className = 'search-year'>{movieItems[5].year}</p>
+          <img onClick={() => {this.getMovieDetails(movieItems[5])}} className = 'search-poster' src = {movieItems[5].poster} alt = '6'></img>
+        </div>
+        <div check = {movieItems[6].title} id = 'search-item-7' className = 'search-results'>
+        <h1 className = 'search-title'>{movieItems[6].title}</h1>
+          <p className = 'search-year'>{movieItems[6].year}</p>
+          <img onClick={() => {this.getMovieDetails(movieItems[6])}}  className = 'search-poster' src = {movieItems[6].poster} alt = '7'></img>
+        </div>
+        <div check = {movieItems[7].title} id = 'search-item-8' className = 'search-results'>
+        <h1 className = 'search-title'>{movieItems[7].title}</h1>
+          <p className = 'search-year'>{movieItems[7].year}</p>
+          <img onClick={() => {this.getMovieDetails(movieItems[7])}} className = 'search-poster' src = {movieItems[7].poster} alt = '8'></img>
+        </div>
+        <div check = {movieItems[8].title}  id = 'search-item-9' className = 'search-results'>
+        <h1 className = 'search-title'>{movieItems[8].title}</h1>
+          <p className = 'search-year'>{movieItems[8].year}</p>
+          <img onClick={() => {this.getMovieDetails(movieItems[8])}} className = 'search-poster' src = {movieItems[8].poster} alt = '9'></img>
+        </div>
+        <div check = {movieItems[9].title}id = 'search-item-10' className = 'search-results'>
+        <h1 className = 'search-title'>{movieItems[9].title}</h1>
+          <p className = 'search-year'>{movieItems[9].year}</p>
+          <img onClick={() => {this.getMovieDetails(movieItems[9])}} className = 'search-poster' src = {movieItems[9].poster} alt = '10'></img>
+        </div>
+        
+        
+      </div>
+      :
+      <div></div>
+      }
       </div>
       {
-          this.state.movies.map((value,index) => {
-            return <div class="list-group">
-            <a onClick={() => {this.getMovieDetails(value)}} style={{background: 'black'}}  class="list-group-item list-group-item-action">
-                <div style={{background: 'black'}} class="d-flex w-100 justify-content-between">
-                    <img style={{width: '100px', height: '100px', float: 'left'}} src={value.poster}/>
-                    <h5 class="mb-1 " style={{color: 'white', 'text-align': 'left'}} >{value.title} {value.year}</h5>
-                    <small style={{color: 'white'}}>{value.type}</small>
-                </div>
-        
-            </a>
-          </div>
-          })
+          // this.state.movies.map((value,index) => {
+          //   return <div class="list-group">
+          //   {/* <a onClick={() => {this.getMovieDetails(value)}} style={{background: 'black'}}  class="list-group-item list-group-item-action"> */}
+          // <a onClick={() => {this.getMovieDetails(value)}} style={{background: ' #152238'}}  className="list-group-item list-group-item-action"> 
+          //       <div style={{background: ' #152238'}} class="d-flex w-100 justify-content-between">
+          //           <img style={{width: '100px', height: '100px', float: 'left'}} src={value.poster}/>
+          //           <h5 class="mb-1 " style={{color: 'white', 'text-align': 'left'}} >{value.title} {value.year}</h5>
+          //           <small style={{color: 'white'}}>{value.type}</small>
+          //       </div>
+             
+          //   </a>
+          // </div>
+         
+            
+          // })
        
-      }
+      } 
 
       {
           this.state.movieDetail.map((value,index) => {
-              return <div className = 'container'>
-              <div  onDragStart={this.drag} className = 'row'>
-                  <div className = ' movie-frames col-12'>
-                  <iframe  className="movie-frames d-block " src={"https://www.youtube.com/embed/"+value.trailer+"?rel=0"} frameborder="0"></iframe>
-                  <div className= "movie-frames-detail">
-                  <h5 class="mb-1 " style={{ 'text-align': 'left'}} >{value.title}</h5>
-                  <small>{value.rated} | {value.runtime} | {value.genre} | {value.year}  </small>
-                  <br />
-                    <small>Rotten Tomatoes: {value.ratingrt} | IMDB: {value.rating}</small>
-                  </div>
-                  <div>
-                <button className=" drop-down-button btn btn-outline-danger" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    +
-                </button>
-                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <div className="dropdown-item" onClick={() => {this.props.cb("cat1")}} >Comedy</div>
-                    <div className="dropdown-item" onClick={() => {this.props.cb("cat2")}}>Action</div>
-                    <div className="dropdown-item" onClick={() => {this.props.cb("cat3")}}>Must watch</div>
-                    <div className="dropdown-item" onClick={() => {this.props.cb("cat4")}}>Waste of time</div>
-                </div>
-            </div>
-                  </div>
-                  <div id="genre" className="d-none ">{value.genre}</div>
-                  <div id="runtime" className="d-none ">{value.runtime}</div>
-                  <div id="rated" className="d-none ">{value.rated}</div>
-                  <div id="title" className="d-none ">{value.title}</div>
-                  <div id="plot" className="d-none ">{value.plot}</div>
-                  <div id="year" className="d-none ">{value.year}</div>
-                  <div id="poster" className="d-none ">{value.poster}</div>
-                  <div id="rating" className="d-none ">{value.rating}</div>
-                  <div id="ratingrt" className="d-none ">{value.ratingrt}</div>
-              </div>
-              <Review />
-          </div>
+              return <div className="modal show modal-container row" id="mModal" data-show="true" role="dialog">
+                      <div className="modal-dialog modal-lg modal-xl" role="document">
+                        <div className="modal-content"> 
+                          
+                          <div className="modal-body searchV">
+                            
+                              <div  onDragStart={this.drag} className = 'row'>
+                                <div className = ' movie-frames col-12'>
+                                <a onClick={() => {this.closeTrailer(this)}}  className="close" data-dismiss="modal" aria-label="Close">
+                                <i class="fas fa-power-off"></i>
+                              </a>
+                                  <iframe  id="movie-trailer" className="movie-frames d-block " src={"https://www.youtube.com/embed/"+value.trailer+"?rel=0"} frameborder="0"></iframe>
+                                  <div className= "movie-frames-detail">
+                                    <h5 class="mb-1 " style={{ 'text-align': 'left'}} >{value.title}</h5>
+                                      <small>{value.rated} | {value.runtime} | {value.genre} | {value.year}  </small>
+                                      <br />
+                                      <small>Rotten Tomatoes: {value.ratingrt} | IMDB: {value.rating}</small>
+                                  </div>
+                                  <div>
+                                    
+                                    <button className=" drop-down-button btn" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    I would ... &nbsp;&nbsp;
+                                    <i class="fas fa-plus"></i>
+                                    </button>
+
+                                    <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat1")}}>say it is a waste of time</div>
+                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat2")}}>watch a summary of it on youtube</div>
+                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat3")}}>eventually watch it when it comes out on dvd/bluray</div>
+                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat4")}}>watch at a local theater</div>
+                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat5")}}>get a subscription for it</div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div id="genre" className="d-none ">{value.genre}</div>
+                                <div id="runtime" className="d-none ">{value.runtime}</div>
+                                <div id="rated" className="d-none ">{value.rated}</div>
+                                <div id="title" className="d-none ">{value.title}</div>
+                                <div id="plot" className="d-none ">{value.plot}</div>
+                                <div id="year" className="d-none ">{value.year}</div>
+                                <div id="poster" className="d-none ">{value.poster}</div>
+                                <div id="rating" className="d-none ">{value.rating}</div>
+                                <div id="ratingrt" className="d-none ">{value.ratingrt}</div>
+                              </div>
+                              <br></br>
+                              <Review />
+                            
+                          </div>
+                        </div>
+                      </div>
+                    </div>
           
           })
       }

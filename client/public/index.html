@@ -30,6 +30,7 @@
     rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fondamento&family=Goudy+Bookletter+1911&display=swap"
     rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
   <link
     href="https://fonts.googleapis.com/css2?family=Bangers&family=Faster+One&family=IM+Fell+DW+Pica&family=Saira+Stencil+One&family=Sonsie+One&family=Stardos+Stencil&display=swap"
     rel="stylesheet">
@@ -68,8 +69,8 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
-
-  <script src="https://kit.fontawesome.com/859b5e863e.js" crossorigin="anonymous"></script>
+  <<<<<<< HEAD <script src="https://kit.fontawesome.com/859b5e863e.js" crossorigin="anonymous">
+  </script>
   <script>
     function onSignIn(googleUser) {
       // Useful data for your client-side scripts:
@@ -84,6 +85,69 @@
       // The ID token you need to pass to your backend:
       var id_token = googleUser.getAuthResponse().id_token;
 
+=======
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <script>
+  var lFollowX = 0,
+    lFollowY = 0,
+    x = 0,
+    y = 0,
+    friction = 1/800;
+
+function moveBackground() {
+  x += (lFollowX - x) * friction;
+  y += (lFollowY - y) * friction;
+  if (x < -10){
+  translate = 'translate(' + x + 'px, ' + y + 'px) scale(1)';
+  }
+  else{
+    translate = 'translate(0px, ' + y + 'px) scale(1)'
+  }
+
+  $('#search-result-container').css({
+    '-webit-transform': translate,
+    '-moz-transform': translate,
+    'transform': translate
+  });
+
+
+
+
+  window.requestAnimationFrame(moveBackground);
+
+}
+
+
+$(window).on('mousemove click', function(e) {
+
+  var lMouseX = Math.max(-100, Math.min(100, $(window).width()/2 - e.clientX));
+  var lMouseY = Math.max(-100, Math.min(100, $(window).height()/2 - e.clientY));
+  lFollowX = (170 * lMouseX) / 10; // 100 : 12 = lMouxeX : lFollow
+  lFollowY = (20 * lMouseY) / 10;
+
+});
+
+moveBackground();
+  </script>
+  <script src="https://kit.fontawesome.com/859b5e863e.js" crossorigin="anonymous"></script>
+  <script>
+  function onSignIn(googleUser){
+        // Useful data for your client-side scripts:
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        console.log('Full Name: ' + profile.getName());
+        console.log('Given Name: ' + profile.getGivenName());
+        console.log('Family Name: ' + profile.getFamilyName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+
+>>>>>>> 6b8e146e4223eaadc7ff0e141ff5f9c306ef77bc
       //registerUser function call with google email parameters.
       // this.registerUser(profile.getEmail(),"", "google");
       if (window.navComponent != null) {

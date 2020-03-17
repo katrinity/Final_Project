@@ -15,6 +15,10 @@ function App() {
           <Route exact path="/" component={Landing} />
           <Route exact path="/search" component={NewSearch} />
           <Route exact path="/saved" component={SavedPage} />
+          <Route exact path="/saved/cat1" component={SavedPage} />
+          <Route exact path="/saved/cat2" component={SavedPage} />
+          <Route exact path="/saved/cat3" component={SavedPage} />
+          <Route exact path="/saved/cat4" component={SavedPage} />
         </Switch>
         <Footer />
       </div>
