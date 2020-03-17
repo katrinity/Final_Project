@@ -230,7 +230,7 @@ closeTrailer = (myThis) => {
                                     </button>
 
                                     <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat1")}}>Waste of time</div>
+                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat1")}}>Say it's'waste of time</div>
                                       <div className="dropdown-item" onClick={() => {this.props.cb("cat2")}}>Watch a summary of it on YouTube</div>
                                       <div className="dropdown-item" onClick={() => {this.props.cb("cat3")}}>Eventually watch it when it comes on DVD/BluRay</div>
                                       <div className="dropdown-item" onClick={() => {this.props.cb("cat4")}}>Watch at a local theater</div>

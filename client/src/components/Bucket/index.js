@@ -196,7 +196,7 @@ class Bucket extends Component {
                     </div>
                     <div className="col-sm-3">
                         <div id="div2" className="div1" onDrop={(ev) => {this.dropToCategory(ev,"cat2")}} onDragOver={this.allowDrop} className="card grow action">
-                            <div contenteditable="true" className="catName">Watch a summary of it on YouTube({this.state.cat2.length})</div>
+                            <div contenteditable="true" className="catName">Youtube Summary{this.state.cat2.length})</div>
                             <div id="cat2Carousel" className="carousel slide " data-ride="carousel">
                                 <div id="cat2-carousel-inner" className="carousel-inner">
                                 { 
@@ -243,7 +243,7 @@ class Bucket extends Component {
                     </div>
                     <div className="col-sm-3">
                         <div id="div3" className="div1" onDrop={(ev) => {this.dropToCategory(ev,"cat3")}} onDragOver={this.allowDrop} className="card grow must">
-                            <div contenteditable="true" className="catName">Eventually watch it when it comes on DVD/BlueRay({this.state.cat3.length})</div>
+                            <div contenteditable="true" className="catName">DVD/BlueRay({this.state.cat3.length})</div>
                             <div id="cat3Carousel" className="carousel slide " data-ride="carousel">
                                 <div id="cat3-carousel-inner" className="carousel-inner">
                                 { 
@@ -290,7 +290,7 @@ class Bucket extends Component {
                     </div>   
                     <div className="col-sm-3">
                         <div id="div4" className="div1" onDrop={(ev) => {this.dropToCategory(ev,"cat4")}} onDragOver={this.allowDrop}  className="card grow waste">
-                            <div contenteditable="true" className="catName">Watch at a local theater({this.state.cat4.length})</div>
+                            <div contenteditable="true" className="catName">Local Theater({this.state.cat4.length})</div>
                             
                             
                             <div id="cat4Carousel" className="carousel slide " data-ride="carousel">
@@ -339,7 +339,7 @@ class Bucket extends Component {
                     </div>
                     <div className="col-sm-3">
                         <div id="div4" className="div1" onDrop={(ev) => {this.dropToCategory(ev,"cat5")}} onDragOver={this.allowDrop}  className="card grow waste">
-                            <div contenteditable="true" className="catName">Get a subscription for it({this.state.cat5.length})</div>
+                            <div contenteditable="true" className="catName">Subscription({this.state.cat5.length})</div>
                             
                             
                             <div id="cat5Carousel" className="carousel slide " data-ride="carousel">
