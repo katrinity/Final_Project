@@ -12,9 +12,11 @@ class SearchInput extends Component {
     };
   }
   keyPressed(event,myThis) {
-    if (event.key === "Enter") {
-      myThis.searchMovie($("#searchInput").val());
-      
+
+    let _search = $("#searchInput").val()
+
+    if(_search.length > 3) {
+      myThis.searchMovie(_search);
     }
   }
   searchMovie = (movieTitle) => {
@@ -134,11 +136,9 @@ closeTrailer = (myThis) => {
     return (
       <>
       <div className="search-input">
-        <input type="text" id="searchInput" className="inputs" placeholder="Search Here"  onKeyPress={(event) => {this.keyPressed(event,this)}}/> 
+        <input type="text" id="searchInput" className="inputs" placeholder="Search Here"  onKeyUp={(event) => {this.keyPressed(event,this)}}/>
       </div>
-
       <button id="launch-modal" style={{display: 'none'}} type="button" class="btn btn-primary" data-toggle="modal" data-target="#mModal">Hidden</button>
-
       <div id = 'motion-container'>
       {movieItems[0] != null
         ? 

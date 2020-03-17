@@ -3,6 +3,8 @@ import '../../../App.css';
 import Nav from '../../../components/Nav';
 import axios from "axios";
 import $ from "jquery";
+import Fb from '../../FbIntegrate';
+
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -132,7 +134,8 @@ class SavedPage extends Component {
                                             <div className="d-inline text-muted text-small"> {value.runtime} | </div>
                                             <div className="d-inline text-muted text-small"> {value.genre} |</div>
                                             <div className="d-inline text-muted text-small"> {value.year}</div>
-                                            
+                                            <Fb value = {value.category}/>
+
                                             <br/>
                                             <p className="text mt-3 saved-comments">{value.comments}</p>
                                             <div className="movie-ratings">
@@ -144,7 +147,6 @@ class SavedPage extends Component {
                                             </div>
                                            
                                         </div>   
-                              
                                     </div>
                                 </div>
                     })
