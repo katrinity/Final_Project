@@ -10,7 +10,10 @@ import { FacebookProvider, ShareButton } from 'react-facebook';
 export default class FbIntegrate extends Component {
   render() {
       let val = this.props.value;
-      let cc = "http://localhost:3000/saved/" + val
+      let cc = "https://google.com"
+      //replace the below with heroku link and the rest stays the same for the FB share to work
+      // let cc = "https://localhost:3000/saved/" + val
+
 
         return (
         <FacebookProvider appId="913152545781163">
