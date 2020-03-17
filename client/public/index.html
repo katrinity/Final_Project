@@ -120,8 +120,8 @@ moveBackground();
         var id_token = googleUser.getAuthResponse().id_token;
       
       //registerUser function call with google email parameters.
-          // this.registerUser(profile.getEmail(),"", "google");
           if(window.navComponent != null) {
+            console.log("User is being registered");
             window.navComponent.registerUser(profile.getEmail(),"","google", window.navComponent);
           }
           console.log("profile "+JSON.stringify(profile));

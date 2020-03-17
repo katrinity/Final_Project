@@ -88,7 +88,7 @@ class Theater extends Component{
                       <span id = 'char3'>K</span>
                       <span id = 'char4'>K</span>
                     </h1>      
-                    <p className = 'motto'>Your Movie and TV Show Compendium</p> 
+                    <p id="motto" className = 'motto'>Your Movie and TV Show Compendium</p> 
                     
                     {this.state.link.indexOf('youtube')==-1 ? 
                     <video id = 'vid' key = {this.state.link} className = 'theater' controls autoPlay muted>

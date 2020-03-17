@@ -19,6 +19,7 @@ function App() {
           <Route exact path="/saved/cat2" component={SavedPage} />
           <Route exact path="/saved/cat3" component={SavedPage} />
           <Route exact path="/saved/cat4" component={SavedPage} />
+          <Route exact path="/saved/cat5" component={SavedPage} />
         </Switch>
         <Footer />
       </div>

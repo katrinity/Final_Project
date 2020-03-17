@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-import {BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import '../../../App.css';
 import Nav from '../../../components/Nav';
-// import Carousel from '../../../components/Carousel';
-// import Bucket from '../../../components/Bucket';
 import axios from "axios";
 import $ from "jquery";
 
@@ -15,24 +12,7 @@ class SavedPage extends Component {
       super(props);
       this.state = {
           movies: [],
-        menus: [
-            {
-                id: "cat1",
-                name: "Comedy"
-            },
-            {
-                id: "cat2",
-                name: "Action",
-            },
-            {
-                id: "cat3",
-                name: "Must Watch"
-            },
-            {
-                id: "cat4",
-                name: "Waste of time"
-            }
-        ]
+          email: ""
       };
     }
     componentDidMount(){
@@ -52,6 +32,10 @@ class SavedPage extends Component {
      
             this.getMovies("cat4");
         }
+        if(window.location.pathname == "/saved/cat5") {
+     
+            this.getMovies("cat5");
+        }
         if(window.location.pathname == "/saved") {
             this.getMovies("cat1");
         }
@@ -69,7 +53,7 @@ class SavedPage extends Component {
               if(res.id) {
                 myThis.getCategoryMovies(category,res.id);
               } else {
-                myThis.setState({movies: []});
+                myThis.setState({movies: [], email: ""});
               }
             }
           );
@@ -78,7 +62,7 @@ class SavedPage extends Component {
         var mythis = this;
         axios({ method: "get", url: "/api/"+ email + "/movies/" + category }).then(function(result){
             console.log(result);
-            mythis.setState({movies: result.data});
+            mythis.setState({movies: result.data, email: email});
 
         });
 
@@ -114,7 +98,7 @@ class SavedPage extends Component {
     }
 
     updateNavLink = (id) => {
-        var navids = ["#nav-cat1", "#nav-cat2","#nav-cat3","#nav-cat4"];
+        var navids = ["#nav-cat1", "#nav-cat2","#nav-cat3","#nav-cat4","#nav-cat5"];
         navids.map((value,index) => {
 
             if(id == value) {
@@ -128,33 +112,22 @@ class SavedPage extends Component {
   render() {
     return (
         <>
-            <Nav cb={this.refreshComponent} menus={this.state.menus}/>
-            {/* <ul className="nav nav-pills justify-content-center mt-3 mb-3">
-                <li className="nav-item">
-                    <a id="nav-cat1" className="nav-link active" onClick={(ev) => {this.showCategory(ev,"cat1")}} href="#">Comedy</a>
-                </li>
-                <li className="nav-item">
-                    <a id="nav-cat2" className="nav-link" onClick={(ev) => {this.showCategory(ev,"cat2")}} href="#">Action</a>
-                </li>
-                <li className="nav-item">
-                    <a id="nav-cat3" className="nav-link" onClick={(ev) => {this.showCategory(ev,"cat3")}} href="#">Must watch</a>
-                </li>
-                <li className="nav-item">
-                    <a id="nav-cat4" className="nav-link" onClick={(ev) => {this.showCategory(ev,"cat4")}} href="#" >Waste of time</a>
-                </li>
-            </ul> */}
-            
-                <div className="row">
-                <div className=" col-md-1 col-sm-12 d-inline-block"></div>
+            <Nav cb={this.refreshComponent} />
+                
+                <div className="row m-5 text-center">
+                    {this.state.email == "" ? <div className="saved-empty-page1 text-muted">Please login to view saved movies</div> : (this.state.movies.length == 0 ? 
+                        <div className="saved-empty-page text-muted">None</div> :  
+                        <div></div>)}
                 {
                     this.state.movies.map( (value, index)=>{
-                        return <div className=" col-md-3 col-sm-12 d-inline-block">
+                        return <div className=" col-md-3 col-sm-12 d-inline-block mt-3 mb-3">
                                     <div className="movie">
-                                        <div onClick={() => {this.deleteMovie(value._id,value.category)}} className="delete-button">X</div>
+                                        <div onClick= {() => {this.deleteMovie(value._id,value.category)}} className="delete-button">X</div>
                                         <img className="saved-img" src= {value.poster} />
                                         
                                         <div className="movie-review">
                                             <h5 className="title">{value.title}</h5>
+                                            <br/>
                                             <div className="d-inline text-muted text-small">{value.rated} | </div>
                                             <div className="d-inline text-muted text-small"> {value.runtime} | </div>
                                             <div className="d-inline text-muted text-small"> {value.genre} |</div>
@@ -162,18 +135,14 @@ class SavedPage extends Component {
                                             
                                             <br/>
                                             <p className="text mt-3 saved-comments">{value.comments}</p>
-                                        
+                                            <div className="movie-ratings">
                                             <p className="text1 d-inline"><small ><img className="dbimage" src={value.emojiUrl} />{value.emojiText}</small></p>
                                             <img className="d-inline rt-image" src="https://files.911media.com/wp-content/uploads/2017/10/rotten-tomatoes-logo.png"/>
                                             <div className="d-inline text-small"> {value.ratingrt}</div>
                                             <img className="d-inline rt-image3" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/500px-IMDB_Logo_2016.svg.png"/>
                                             <div className="d-inline text-small"> {value.rating}</div>
-                                            <ul className="social">
-                                                <li><a href="#"><i className="fa fa-facebook"></i></a></li>
-                                                <li><a href="#"><i className="fa fa-twitter"></i></a></li>
-                                                <li><a href="#"><i className="fa fa-google"></i></a></li>
-                                                <li><a href="#"><i className="fa fa-whatsapp"></i></a></li>
-                                            </ul>
+                                            </div>
+                                           
                                         </div>   
                               
                                     </div>

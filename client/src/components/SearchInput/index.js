@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Review from "../Review";
 import $ from "jquery";
-// import Modal from 'react-modal';
 import axios from 'axios';
 
 class SearchInput extends Component {
@@ -137,9 +136,8 @@ closeTrailer = (myThis) => {
       <div className="search-input">
         <input type="text" id="searchInput" className="inputs" placeholder="Search Here"  onKeyPress={(event) => {this.keyPressed(event,this)}}/> 
       </div>
-      <button id="launch-modal" style={{display: 'none'}} type="button" class="btn btn-primary" data-toggle="modal" data-target="#mModal">Hidden</button>
 
-      {/* I could definitely do this with a big const style array and apply them through map I thought about it in the shower. but it'll take extra time i'll make this work for now */}
+      <button id="launch-modal" style={{display: 'none'}} type="button" class="btn btn-primary" data-toggle="modal" data-target="#mModal">Hidden</button>
 
       <div id = 'motion-container'>
       {movieItems[0] != null
@@ -203,24 +201,6 @@ closeTrailer = (myThis) => {
       <div></div>
       }
       </div>
-      {
-          // this.state.movies.map((value,index) => {
-          //   return <div class="list-group">
-          //   {/* <a onClick={() => {this.getMovieDetails(value)}} style={{background: 'black'}}  class="list-group-item list-group-item-action"> */}
-          // <a onClick={() => {this.getMovieDetails(value)}} style={{background: ' #152238'}}  className="list-group-item list-group-item-action"> 
-          //       <div style={{background: ' #152238'}} class="d-flex w-100 justify-content-between">
-          //           <img style={{width: '100px', height: '100px', float: 'left'}} src={value.poster}/>
-          //           <h5 class="mb-1 " style={{color: 'white', 'text-align': 'left'}} >{value.title} {value.year}</h5>
-          //           <small style={{color: 'white'}}>{value.type}</small>
-          //       </div>
-             
-          //   </a>
-          // </div>
-         
-            
-          // })
-       
-      } 
 
       {
           this.state.movieDetail.map((value,index) => {
@@ -250,11 +230,11 @@ closeTrailer = (myThis) => {
                                     </button>
 
                                     <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat1")}}>say it is a waste of time</div>
-                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat2")}}>watch a summary of it on youtube</div>
-                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat3")}}>eventually watch it when it comes out on dvd/bluray</div>
-                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat4")}}>watch at a local theater</div>
-                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat5")}}>get a subscription for it</div>
+                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat1")}}>Waste of time</div>
+                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat2")}}>Watch a summary of it on YouTube</div>
+                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat3")}}>Eventually watch it when it comes on DVD/BluRay</div>
+                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat4")}}>Watch at a local theater</div>
+                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat5")}}>Get a subscription for it</div>
                                     </div>
                                   </div>
                                 </div>
