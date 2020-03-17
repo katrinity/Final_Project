@@ -9,7 +9,8 @@ class Overlay extends Component{
         this.state = {
             sessionId: "",
             rotated: 0,
-            currentUser: ''
+            currentUser: '',
+            dropdown: false,
 
         };
     }
@@ -62,17 +63,20 @@ class Overlay extends Component{
           );
     }
 
-    // Show/Hide sub-menu for saved category pages
-    toggleDropDown = (ev)=>{
+dropDown = (event)=>{
 
-      ev.preventDefault();
-      if($(".dropdown-container").css('display') == 'block') {
-        $(".dropdown-container").css('display','none');
-      } else {
-        $(".dropdown-container").css('display','block');
-      }
+   event.preventDefault();
+   if (this.state.dropdown == true){
+    $(".dropdown-container").css('display','none');
+    this.setState({dropdown: false})
+   }
+   else{
+    $(".dropdown-container").css('display','block');
+    this.setState({dropdown: true});
+   }
    
-    }
+   
+}
 
     render(){
     return(
@@ -80,14 +84,13 @@ class Overlay extends Component{
         <div className ="overlay-content">
         <a className = 'overlayItems' href="/">Home</a>
         <a className = 'overlayItems' href="/search">Search</a>
-
-        <a onClick={this.toggleDropDown} className = 'overlayItems dropdown-btn' >Saved <i className='fa fa-caret-right'></i></a>
-        <div className = 'dropdown-container'>
-        <a href="/saved/cat1">Waste of time</a>
-        <a href="/saved/cat2">Watch a summary of it on YouTube</a>
-        <a href="/saved/cat3">Eventually watch it when it comes on DVD/BlueRay</a>
-        <a href="/saved/cat4">Watch at a local theater</a>
-        <a href="/saved/cat5">Get a subscription for it</a>
+        <a onClick={this.dropDown}  className = 'overlayItems dropdown-btn' href="/saved">Saved <i className='fa fa-caret-right'></i></a>
+        <div  className = 'dropdown-container'>
+        <a class = 'submenu' href="/saved/cat1">Waste of time - Not Worthy</a>
+        <a class = 'submenu' href="/saved/cat2">Summary Worthy</a>
+        <a class = 'submenu' href="/saved/cat3">DVD/Bluray Worthy</a>
+        <a class = 'submenu' href="/saved/cat4">Local Theater Worthy</a>
+        <a class = 'submenu' href="/saved/cat5">Subscription Worthy</a>
         </div>
         <ul className="nav navbar-nav ml-auto">
                         <li>

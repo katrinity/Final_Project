@@ -2,10 +2,6 @@ import React, {Component} from 'react';
 import $ from 'jquery';
 
 
-const zindex = {
-    'z-index': -1
-};
-
 class BannerCard extends Component{
     
     
@@ -26,6 +22,7 @@ class BannerCard extends Component{
 
     getLink = () => {
         this.setState({link: this.props.movie.mainTrailer.sourceId});
+        
     }
 
     enableControls = (id, index) => {
