@@ -708,7 +708,7 @@ margin: 2% 0 0 30%;
   z-index: 0;
 }
 
-input[type="text"]
+#searchInput
 {
   text-align: center;
   width: 10vw;
@@ -716,7 +716,7 @@ input[type="text"]
   transition: all 0.5s;
 }
 
-input[type="text"]:focus{
+#searchInput:focus{
   text-align: left;
   width: 80%;
   border: 2px solid #fef5df;

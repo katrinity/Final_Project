@@ -275,7 +275,7 @@ class Nav extends Component {
 
         <div className="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
             <div className="modal-dialog" role="document">
-                <div className="modal-content">
+                <div className="modal-content modal-google">
                     <div className="modal-header">
                         <h5 className="modal-title" id="registerModalLabel">Register User</h5>
                         <button type="button" className="close" data-dismiss="modal" aria-label="Close">

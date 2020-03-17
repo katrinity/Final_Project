@@ -101,7 +101,7 @@ dropDown = (event)=>{
                         </li>
                         <li>
                             <div className="app text-light">
-                                <div id="app-content" className="pt-1 overlayItems"></div>
+                               
 
                                 <div id="sign-out"></div>
                             </div>
