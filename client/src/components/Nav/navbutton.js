@@ -29,7 +29,6 @@ class NavButton extends Component {
 
     render(){
         return(
-            // <span onClick = {this.openMenu} class="navbutton navbar-toggle collapsed" data-toggle="modal" data-target="#nav-modal" aria-expanded="false"><i class="fas fa-plus"></i></span>
             <div className = 'navbarNative'>
                 <span onClick = {this.openMenu} id="navbutton" aria-expanded="false"><i class="fas fa-plus"></i></span>
                 <div id = 'app-content'></div>

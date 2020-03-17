@@ -28,6 +28,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato&family=Noto+Serif&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Marcellus+SC&family=Righteous&family=VT323&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fondamento&family=Goudy+Bookletter+1911&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Faster+One&family=IM+Fell+DW+Pica&family=Saira+Stencil+One&family=Sonsie+One&family=Stardos+Stencil&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
     <!--
@@ -66,7 +67,7 @@
     lFollowY = 0,
     x = 0,
     y = 0,
-    friction = 1/300;
+    friction = 1/800;
 
 function moveBackground() {
   x += (lFollowX - x) * friction;
@@ -90,6 +91,7 @@ function moveBackground() {
   window.requestAnimationFrame(moveBackground);
 
 }
+
 
 $(window).on('mousemove click', function(e) {
 
@@ -118,8 +120,8 @@ moveBackground();
         var id_token = googleUser.getAuthResponse().id_token;
       
       //registerUser function call with google email parameters.
-          // this.registerUser(profile.getEmail(),"", "google");
           if(window.navComponent != null) {
+            console.log("User is being registered");
             window.navComponent.registerUser(profile.getEmail(),"","google", window.navComponent);
           }
           console.log("profile "+JSON.stringify(profile));

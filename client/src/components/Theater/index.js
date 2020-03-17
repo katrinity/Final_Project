@@ -33,7 +33,7 @@ const responsive2 ={
   },
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 4,
+    items: 3,
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
@@ -63,7 +63,8 @@ class Theater extends Component{
     }
     
     getLinkAgain = (link) => {
-        this.setState({link: link})
+      window.scrollTo({top: 200, behavior: 'smooth'});
+      this.setState({link: link})
     }
 
     getDimensions = () => {
@@ -87,7 +88,7 @@ class Theater extends Component{
                       <span id = 'char3'>K</span>
                       <span id = 'char4'>K</span>
                     </h1>      
-                    <p className = 'motto'>Your Movie and TV Show Compendium</p> 
+                    <p id="motto" className = 'motto'>Your Movie and TV Show Compendium</p> 
                     
                     {this.state.link.indexOf('youtube')==-1 ? 
                     <video id = 'vid' key = {this.state.link} className = 'theater' controls autoPlay muted>

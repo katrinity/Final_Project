@@ -8,7 +8,10 @@ var auth = require("../../models/user.js");
 const usersController = require("../../controllers/usersController");
 
 
-// Create all our routes and set up logic within those routes where required.
+// Authentication API
+// Compares email and password against the database
+// (It first generates the password hash for the input password before comparing)
+// It also creates a session for the user (by setting a new session attribute - userid)
 router.post("/api/auth/:email", function(req, res) {
     var encryptedPassword = Crypto.SHA256(req.body.password).toString();
     var condition = {
@@ -17,7 +20,7 @@ router.post("/api/auth/:email", function(req, res) {
     };
 
     usersController.findAll(condition,function(result) {
-        if(result.length >= 0) {
+        if(result.length > 0) {
             if(result[0].provider && result[0].provider == "events") {
                 if (result[0].password == encryptedPassword) {
                     req.session.userid = req.params.email;
@@ -36,6 +39,9 @@ router.post("/api/auth/:email", function(req, res) {
     
 });
 
+// Registration API
+// Stores the user information in the database.
+// (It generates the one-way password hash before storing it in the database)
 router.post("/api/register", function(req, res) {
     var encryptedPassword = "";
     if(req.body.password != ""){
@@ -55,6 +61,8 @@ router.post("/api/register", function(req, res) {
     
 });
 
+// Session API
+// Returns the userid attribute stored in the session (if any)
 router.get("/api/session", function(req,res) {
     
     if (req.session.userid) {
@@ -65,10 +73,13 @@ router.get("/api/session", function(req,res) {
     
 });
 
+// Delete session API:
+// Deletes the session
 router.delete("/api/session", function(req,res) {
     req.session.destroy(function(err) {
         res.json({});
       });
 });
+
 // Export routes for server.js to use.
 module.exports = router;

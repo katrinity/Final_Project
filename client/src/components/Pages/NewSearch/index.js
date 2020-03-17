@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import {BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import '../../../App.css';
 import Nav from '../../../components/Nav';
 import Bucket from '../../../components/Bucket';
@@ -10,9 +9,7 @@ class NewSearchPage extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        menus: [
-
-        ]
+        menus: []
       };
       this.bucket = React.createRef();
     }

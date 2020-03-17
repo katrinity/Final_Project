@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Review from "../Review";
 import $ from "jquery";
-// import Modal from 'react-modal';
 import axios from 'axios';
 
 class SearchInput extends Component {
@@ -12,8 +11,6 @@ class SearchInput extends Component {
         movieDetail: [],
     };
   }
-
-
   keyPressed(event,myThis) {
 
     let _search = $("#searchInput").val()
@@ -21,11 +18,6 @@ class SearchInput extends Component {
     if(_search.length > 3) {
       myThis.searchMovie(_search);
     }
-    
-    // if (event.key === "Enter") {
-    //   myThis.searchMovie($("#searchInput").val());
-      
-    // }
   }
   searchMovie = (movieTitle) => {
     if($("#emoji1") != null) {
@@ -144,12 +136,9 @@ closeTrailer = (myThis) => {
     return (
       <>
       <div className="search-input">
-        <input type="text" id="searchInput" className="inputs" placeholder="Search for a Movie"  onKeyUp={(event) => {this.keyPressed(event,this)}}/>
+        <input type="text" id="searchInput" className="inputs" placeholder="Search Here"  onKeyUp={(event) => {this.keyPressed(event,this)}}/>
       </div>
-      <button id="launch-modal" style={{visibility: 'show'}} type="button" class="btn btn-primary" data-toggle="modal" data-target="#mModal">Hidden</button>
-
-      {/* I could definitely do this with a big const style array and apply them through map I thought about it in the shower. but it'll take extra time i'll make this work for now */}
-
+      <button id="launch-modal" style={{display: 'none'}} type="button" class="btn btn-primary" data-toggle="modal" data-target="#mModal">Hidden</button>
       <div id = 'motion-container'>
       {movieItems[0] != null
         ? 
@@ -212,38 +201,20 @@ closeTrailer = (myThis) => {
       <div></div>
       }
       </div>
-      {
-          // this.state.movies.map((value,index) => {
-          //   return <div class="list-group">
-          //   {/* <a onClick={() => {this.getMovieDetails(value)}} style={{background: 'black'}}  class="list-group-item list-group-item-action"> */}
-          // <a onClick={() => {this.getMovieDetails(value)}} style={{background: ' #152238'}}  className="list-group-item list-group-item-action"> 
-          //       <div style={{background: ' #152238'}} class="d-flex w-100 justify-content-between">
-          //           <img style={{width: '100px', height: '100px', float: 'left'}} src={value.poster}/>
-          //           <h5 class="mb-1 " style={{color: 'white', 'text-align': 'left'}} >{value.title} {value.year}</h5>
-          //           <small style={{color: 'white'}}>{value.type}</small>
-          //       </div>
-             
-          //   </a>
-          // </div>
-         
-            
-          // })
-       
-      } 
 
       {
           this.state.movieDetail.map((value,index) => {
               return <div className="modal show modal-container row" id="mModal" data-show="true" role="dialog">
-                      <div className="modal-dialog col-8" role="document">
-                        <div className="modal-content">
+                      <div className="modal-dialog modal-lg modal-xl" role="document">
+                        <div className="modal-content"> 
                           
                           <div className="modal-body searchV">
                             
                               <div  onDragStart={this.drag} className = 'row'>
                                 <div className = ' movie-frames col-12'>
-                                <button onClick={() => {this.closeTrailer(this)}} type="button" className="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
+                                <a onClick={() => {this.closeTrailer(this)}}  className="close" data-dismiss="modal" aria-label="Close">
+                                <i class="fas fa-power-off"></i>
+                              </a>
                                   <iframe  id="movie-trailer" className="movie-frames d-block " src={"https://www.youtube.com/embed/"+value.trailer+"?rel=0"} frameborder="0"></iframe>
                                   <div className= "movie-frames-detail">
                                     <h5 class="mb-1 " style={{ 'text-align': 'left'}} >{value.title}</h5>
@@ -252,14 +223,18 @@ closeTrailer = (myThis) => {
                                       <small>Rotten Tomatoes: {value.ratingrt} | IMDB: {value.rating}</small>
                                   </div>
                                   <div>
-                                    <button className=" drop-down-button btn btn-outline-danger" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                      +
+                                    
+                                    <button className=" drop-down-button btn" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    I would ... &nbsp;&nbsp;
+                                    <i class="fas fa-plus"></i>
                                     </button>
+
                                     <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat1")}} >Comedy</div>
-                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat2")}}>Action</div>
-                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat3")}}>Must watch</div>
-                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat4")}}>Waste of time</div>
+                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat1")}}>Say it's'waste of time</div>
+                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat2")}}>Watch a summary of it on YouTube</div>
+                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat3")}}>Eventually watch it when it comes on DVD/BluRay</div>
+                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat4")}}>Watch at a local theater</div>
+                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat5")}}>Get a subscription for it</div>
                                     </div>
                                   </div>
                                 </div>

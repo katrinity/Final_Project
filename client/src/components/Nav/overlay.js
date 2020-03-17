@@ -9,11 +9,13 @@ class Overlay extends Component{
         this.state = {
             sessionId: "",
             rotated: 0,
-            currentUser: ''
+            currentUser: '',
+            dropdown: false,
 
         };
     }
 
+    // User session is deleted and the user is logged out of the application
     eventSignOut = (navThis) => {
         navThis.signOut();
         $.ajax("/api/session", {
@@ -21,7 +23,6 @@ class Overlay extends Component{
         }).then(
             function(res) {
           
-                // this.state.sessionId = "";
                 navThis.checkSession();
                 navThis.props.cb();
         
@@ -29,6 +30,7 @@ class Overlay extends Component{
         );
     }
 
+    //Google sign-out
     signOut = () => {
         var auth2 = window.gapi.auth2.getAuthInstance();
         auth2.signOut().then(function () {
@@ -37,12 +39,12 @@ class Overlay extends Component{
         ;
     }
 
+    //Check to see if the user is already logged in, if update the user name in the UI
     checkSession = () => {
         $.ajax("/api/session", {
             type: "GET"
           }).then(
             function(res) {
-            //   this.state.sessionId = res.id;
               if(res.id) {
                 window.$("#register-form").hide();
                 window.$("#signin-form").hide();
@@ -50,7 +52,6 @@ class Overlay extends Component{
                 
                 window.$("#app-content").html("Welcome " + res.id + "!");    
                 window.$("#signOut").show();
-                // this.setState({currentUser: res.id});
               } else {
                 window.$("#register-form").show();
                 window.$("#signin-form").show();
@@ -61,27 +62,35 @@ class Overlay extends Component{
             }
           );
     }
-dropDown = ()=>{
 
-   $(".dropdown-container").css('display','block');
-}
-hideDropDown = ()=>{
+dropDown = (event)=>{
 
+   event.preventDefault();
+   if (this.state.dropdown == true){
     $(".dropdown-container").css('display','none');
- }
+    this.setState({dropdown: false})
+   }
+   else{
+    $(".dropdown-container").css('display','block');
+    this.setState({dropdown: true});
+   }
+   
+   
+}
+
     render(){
     return(
     
         <div className ="overlay-content">
         <a className = 'overlayItems' href="/">Home</a>
         <a className = 'overlayItems' href="/search">Search</a>
-
-        <a onMouseEnter={this.dropDown} onMouseLeave={this.hideDropDown} className = 'overlayItems dropdown-btn' href="/saved">Saved <i className='fa fa-caret-right'></i></a>
-        <div onMouseEnter={this.dropDown} onMouseLeave={this.hideDropDown} className = 'dropdown-container'>
-        <a href="/saved/cat1">Comedy</a>
-        <a href="/saved/cat2">Action</a>
-        <a href="/saved/cat3">Must watch</a>
-        <a href="/saved/cat4">Waste of time</a>
+        <a onClick={this.dropDown}  className = 'overlayItems dropdown-btn' href="/saved">Saved <i className='fa fa-caret-right'></i></a>
+        <div  className = 'dropdown-container'>
+        <a class = 'submenu' href="/saved/cat1">Waste of time - Not Worthy</a>
+        <a class = 'submenu' href="/saved/cat2">Summary Worthy</a>
+        <a class = 'submenu' href="/saved/cat3">DVD/Bluray Worthy</a>
+        <a class = 'submenu' href="/saved/cat4">Local Theater Worthy</a>
+        <a class = 'submenu' href="/saved/cat5">Subscription Worthy</a>
         </div>
         <ul className="nav navbar-nav ml-auto">
                         <li>
