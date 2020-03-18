@@ -205,7 +205,7 @@ closeTrailer = (myThis) => {
       {
           this.state.movieDetail.map((value,index) => {
               return <div className="modal show modal-container row" id="mModal" data-show="true" role="dialog">
-                      <div className="modal-dialog modal-lg modal-xl" role="document">
+                      <div className="modal-dialog modal-lg modal-xl modal-xs" role="document">
                         <div className="modal-content"> 
                           
                           <div className="modal-body searchV">
@@ -228,13 +228,12 @@ closeTrailer = (myThis) => {
                                     I would ... &nbsp;&nbsp;
                                     <i class="fas fa-plus"></i>
                                     </button>
-
-                                    <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat1")}}>Waste of time</div>
-                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat2")}}>Youtube summary </div>
-                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat3")}}> DVD/BluRay</div>
-                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat4")}}>Local Theater</div>
-                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat5")}}>Subscription</div>
+                                      <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                      <div className="dropdown-item" data-dismiss="modal" aria-label="Close" onClick={() => {this.props.cb("cat1")}}>Say it's a waste of time</div>
+                                      <div className="dropdown-item" data-dismiss="modal" aria-label="Close" onClick={() => {this.props.cb("cat2")}}>Watch a summary of it on YouTube</div>
+                                      <div className="dropdown-item" data-dismiss="modal" aria-label="Close" onClick={() => {this.props.cb("cat3")}}>Eventually watch it when it comes on DVD/BluRay</div>
+                                      <div className="dropdown-item" data-dismiss="modal" aria-label="Close" onClick={() => {this.props.cb("cat4")}}>Watch at a local theater</div>
+                                      <div className="dropdown-item" data-dismiss="modal" aria-label="Close" onClick={() => {this.props.cb("cat5")}}>Get a subscription for it</div>
                                     </div>
                                   </div>
                                 </div>

@@ -5,7 +5,7 @@ import axios from "axios";
 import $ from "jquery";
 import Fb from '../../FbIntegrate';
 import { FacebookShareButton, TwitterShareButton, WhatsappShareButton, TelegramShareButton } from 'react-share';
-
+import './style.css';
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -59,8 +59,7 @@ class SavedPage extends Component {
         if(window.location.pathname == "/saved") {
             this.getMovies("cat1");
         }
-
-        
+               
         
     }
 
@@ -168,9 +167,9 @@ class SavedPage extends Component {
                         <div></div>)}
                 {
                     this.state.movies.map( (value, index)=>{
-                        return <div className=" col-md-3 col-sm-12 d-inline-block mt-3 mb-3">
+                        return <div className="d-inline-block mt-3 mb-3">
                                     <div className="movie">
-                                        <div onClick= {() => {this.deleteMovie(value._id,value.category)}} className="delete-button">X</div>
+                                        <div onClick= {() => {this.deleteMovie(value._id,value.category)}} className="delete-button">&times;</div>
                                         <img className="saved-img" src= {value.poster} />
                                         
                                         <div className="movie-review">
@@ -180,9 +179,7 @@ class SavedPage extends Component {
                                             <div className="d-inline text-muted text-small"> {value.runtime} | </div>
                                             <div className="d-inline text-muted text-small"> {value.genre} |</div>
                                             <div className="d-inline text-muted text-small"> {value.year}</div>
-                                            {/* <Fb value = {this.getSharableLink(value.link)}/> */}
-                                            
-
+                                            {/* <Fb value = {this.getSharableLink(value.link)}/> */}         
                                             <br/>
                                             <p className=" mt-3 saved-comments">{value.comments}</p>
                                             <div className="movie-ratings">
@@ -214,6 +211,7 @@ class SavedPage extends Component {
                                               <i style = {{marginLeft: '-.1rem', textAlign: 'center', color: '#007dbb'}} className="fab fa-telegram fa-lg"></i>
                                               </a>
                                             </TelegramShareButton>
+
                                             </div>
                                            
                                         </div>   

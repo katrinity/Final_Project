@@ -25,7 +25,7 @@ class Overlay extends Component{
           
                 navThis.checkSession();
                 navThis.props.cb();
-        
+                
             }
         );
     }
@@ -34,7 +34,7 @@ class Overlay extends Component{
     signOut = () => {
         var auth2 = window.gapi.auth2.getAuthInstance();
         auth2.signOut().then(function () {
-    
+            
         });
         ;
     }
@@ -82,6 +82,7 @@ dropDown = (event)=>{
     return(
     
         <div className ="overlay-content">
+        <div id = 'app-content'></div>  
         <a className = 'overlayItems' href="/">Home</a>
         <a className = 'overlayItems' href="/search">Search</a>
         <a onClick={this.dropDown}  className = 'overlayItems dropdown-btn' href="/saved">Saved <i className='fa fa-caret-right'></i></a>
@@ -107,7 +108,7 @@ dropDown = (event)=>{
                             </div>
                         </li>
                         <li>
-                            <a id="signOut" type="button" className="overlayItems" onClick={() => {this.eventSignOut(this)}}>
+                            <a id="signOut" type="button" className="overlayItems" onClick={() => {this.eventSignOut(this)}} href="/">
                                 Sign out
                             </a>
                         </li>

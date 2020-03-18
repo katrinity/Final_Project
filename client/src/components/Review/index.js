@@ -32,13 +32,14 @@ class Review extends Component {
         return(
             <>
             <div id="showEmoji">
-                <div className="text-muted pt-1 d-inline">emoji to rate!</div> 
+                <div className="text-muted pt-1 d-inline"></div> 
             </div>
             <div className="form-group" id="formBackground">
                 <textarea rows="5" cols="20" wrap="hard"type="field" id="inputField" placeholder="Tell us how you really feel.." maxlength="150"/>
             </div>
             
-            <span id="emojiBtn">
+            <div id="emojiBtn">
+                <div id = "emojipanel">
                 <span>
                     <span><img className='emoji_images' onClick={() => {this.addEmoji('https://media1.giphy.com/media/cNEkiz27tOidqUBuoR/giphy.gif?cid=5bb8f59ca32da18d5db7e3eec65bfc6485b1322c7076fe51&rid=giphy.gif', "Love it!")}} src='https://media1.giphy.com/media/cNEkiz27tOidqUBuoR/giphy.gif?cid=5bb8f59ca32da18d5db7e3eec65bfc6485b1322c7076fe51&rid=giphy.gif'/></span>
                 </span>
@@ -54,7 +55,8 @@ class Review extends Component {
                 <span>
                     <img className='emoji_images' onClick={() => {this.addEmoji('https://media1.giphy.com/media/3OsFzorSZSUZcvo6UC/giphy.gif?cid=5bb8f59ce67e551ac6b809f9280b8411078bfa3057e7b31a&rid=giphy.gif', "Very Entertaining!" )}} src='https://media1.giphy.com/media/3OsFzorSZSUZcvo6UC/giphy.gif?cid=5bb8f59ce67e551ac6b809f9280b8411078bfa3057e7b31a&rid=giphy.gif'/>
                 </span>
-            </span>
+                </div>
+            </div>
             </>
         );
     }
