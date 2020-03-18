@@ -147,7 +147,7 @@ class Bucket extends Component {
                     <div type="submit" onClick={this.saveMovies} className="search-button"><i class="far fa-save"></i>&nbsp;Save Your Bucket!</div>
                     </h1>
                 </div>
-                <div className="row">
+                <div className="bucket-row row">
                     <div className="col-xs-12 col-md-6 col-lg-2 mb-5">
                         <div id="div1" className="div1" onDrop={(ev) => { this.dropToCategory(ev,"cat1")}} onDragOver={this.allowDrop} className="card grow comedy">
                             <div contenteditable="true" className="catName">Waste of time <br></br>({this.state.cat1.length})</div>
@@ -355,7 +355,7 @@ class Bucket extends Component {
                         </div>
                     </div>
                     <div className="col-xs-12 col-md-6 col-lg-2">
-                        <div id="div4" className="div1" onDrop={(ev) => {this.dropToCategory(ev,"cat5")}} onDragOver={this.allowDrop}  className="card grow waste">
+                        <div id="div5" className="div1" onDrop={(ev) => {this.dropToCategory(ev,"cat5")}} onDragOver={this.allowDrop}  className="card grow waste">
                             <div contenteditable="true" className="catName">Subscription <br></br>({this.state.cat5.length})</div>
                             
                             
