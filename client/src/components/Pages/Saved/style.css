@@ -173,14 +173,20 @@
 }
 
 div.d-inline ~ button{
-    border-radius: 25px;
+    /* border-radius: 25px;
     background-color: #152238;
-    color: white;
+    color: white; */
 }
 div.bucket-comments ~button{
     border-radius: 25px;
     background-color: #152238;
     color: white;
+}
+.fab{
+    transition: all 0.3s;
+}
+a.social-media:hover > .fab{
+    transform: scale(1.2, 1.2)
 }
 input[name=email]{
     font-family: 'Playfair Display', serif;

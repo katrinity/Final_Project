@@ -3,7 +3,7 @@ import '../../../App.css';
 import Nav from '../../../components/Nav';
 import axios from "axios";
 import $ from "jquery";
-import Fb from '../../FbIntegrate';
+import Radium from 'radium';
 import { FacebookShareButton, TwitterShareButton, WhatsappShareButton, TelegramShareButton } from 'react-share';
 import './style.css';
 
@@ -12,16 +12,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const buttonStyle = {
     
-  media:{
-      height: '40px',
-      width: '40px',
-      borderRadius: '50%',  
-      backgroundColor: 'white',      
+  base:{
+      // height: '40px',
+      // width: '40px',
+      // borderRadius: '50%',  
+      // backgroundColor: 'white',      
       transition: 'all 0.3s',
-      'padding-right': '10px',
-      ':hover': {
-          transform: "scale(1.2, 0.7)"
-      } 
+      'padding-right': '10px',   
       
   }
 }
@@ -190,24 +187,24 @@ class SavedPage extends Component {
                                             <div className="d-inline text-small"> {value.rating}</div>
                                             <br/>
                                             <FacebookShareButton  className="d-inline" url={this.getSharableLink(value.link)}>
-                                              <a key = {1} style = {buttonStyle.media} >
+                                              <a class = 'social-media' key = {'one'} style = {buttonStyle.base} >
                                               <i style = {{marginLeft: '-.2rem', textAlign: 'center',color: "#4267b2"}} className="fab fa-facebook fa-lg">
                                               </i>
                                               </a> 
                                             </FacebookShareButton>
                                             <TwitterShareButton  className="d-inline" url={this.getSharableLink(value.link)}>
-                                              <a key = {2} style = {buttonStyle.media} >
+                                              <a class = 'social-media' key = {'two'} style = {buttonStyle.base} >
                                               <i style = {{marginLeft: '-.2rem', textAlign: 'center',color: '#1DA1F2'}} className="fab fa-twitter fa-lg">
                                               </i>
                                               </a> 
                                             </TwitterShareButton>
                                             <WhatsappShareButton className="d-inline" url={this.getSharableLink(value.link)}>
-                                              <a key = {3 }style = {buttonStyle.media}>
+                                              <a class = 'social-media' key = {'three'}style = {buttonStyle.base}>
                                               <i style = {{marginLeft: '-.2rem', textAlign: 'center', color: '#f685ab'}} className="fab fa-whatsapp fa-lg"></i>
                                               </a>
                                             </WhatsappShareButton>
                                             <TelegramShareButton className="d-inline" url={this.getSharableLink(value.link)}>
-                                              <a key = {4} style = {buttonStyle.media}>
+                                              <a class = 'social-media' key = {'four'} style = {buttonStyle.base}>
                                               <i style = {{marginLeft: '-.1rem', textAlign: 'center', color: '#007dbb'}} className="fab fa-telegram fa-lg"></i>
                                               </a>
                                             </TelegramShareButton>

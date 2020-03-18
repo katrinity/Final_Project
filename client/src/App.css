@@ -153,20 +153,23 @@ a{
 .signinbtn {
   margin-top: 3%;
   background-color: #1853b8;
+  color: #fef5df;
   border: none; 
   margin-bottom: 10px; 
   transition: all 0.2s;
 }
 .signinbtn:hover{
-  border: 2px solid #fef5df;
+  border: 1px solid #fef5df;
   background-color: #0b182e;
+  color: #fef5df;
 }
 
 #xout{
   color: white;
 }
 .modal-footer p{
-  text-align: center;
+  font-family: 'Playfair Display', serif;
+  text-align: left;
 }
 #emojipanel{
   width: 400px;

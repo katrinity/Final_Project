@@ -302,7 +302,7 @@ class Nav extends Component {
                                 <div>
                                     <input type="password" placeholder="Enter Password" name="psw" id="signPsw" required onKeyPress={(event) => {this.keyPressed(event,this)}}/>
                                 </div>
-                                <button type="button" onClick={this.authUserModal} className="btn btn-outline-primary signinbtn">Sign-in</button>
+                                <button type="button" onClick={this.authUserModal} className="btn signinbtn">Sign-in</button>
                                 <div id="invalidLogin"></div>
                             </div>
 
