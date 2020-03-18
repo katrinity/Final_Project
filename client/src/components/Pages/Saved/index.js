@@ -18,6 +18,7 @@ const buttonStyle = {
       borderRadius: '50%',  
       backgroundColor: 'white',      
       transition: 'all 0.3s',
+      'padding-left': '10px',
       ':hover': {
           transform: "scale(1.2, 0.7)"
       }
@@ -181,27 +182,29 @@ class SavedPage extends Component {
                                             <div className="d-inline text-muted text-small"> {value.genre} |</div>
                                             <div className="d-inline text-muted text-small"> {value.year}</div>
                                             <Fb value = {this.getSharableLink(value.link)}/>
-                                            <FacebookShareButton  url={this.getSharableLink(value.link)}>
-                                              <a key = {1} style = {buttonStyle.fb} className ='btn'>
-                                              <i style = {{marginLeft: '-.2rem', textAlign: 'center',color: "#4267b2"}} className="fab fa-facebook fa-lg">
-                                              </i>
-                                              </a> 
-                                            </FacebookShareButton>
-                                            <TwitterShareButton  url={this.getSharableLink(value.link)}>
-                                              <a key = {1} style = {buttonStyle.fb} className ='btn'>
-                                              <i style = {{marginLeft: '-.2rem', textAlign: 'center',color: "#4267b2"}} className="fab fa-twitter fa-lg">
-                                              </i>
-                                              </a> 
-                                            </TwitterShareButton>
+                                            
 
                                             <br/>
-                                            <p className="text mt-3 saved-comments">{value.comments}</p>
+                                            <p className=" mt-3 saved-comments">{value.comments}</p>
                                             <div className="movie-ratings">
                                             <p className="text1 d-inline"><small ><img className="dbimage" src={value.emojiUrl} />{value.emojiText}</small></p>
                                             <img className="d-inline rt-image" src="https://files.911media.com/wp-content/uploads/2017/10/rotten-tomatoes-logo.png"/>
                                             <div className="d-inline text-small"> {value.ratingrt}</div>
                                             <img className="d-inline rt-image3" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/500px-IMDB_Logo_2016.svg.png"/>
                                             <div className="d-inline text-small"> {value.rating}</div>
+                                            <br/>
+                                            <FacebookShareButton  className="d-inline" url={this.getSharableLink(value.link)}>
+                                              <a key = {1} style = {buttonStyle.fb} >
+                                              <i style = {{marginLeft: '-.2rem', textAlign: 'center',color: "#4267b2"}} className="fab fa-facebook fa-lg">
+                                              </i>
+                                              </a> 
+                                            </FacebookShareButton>
+                                            <TwitterShareButton  className="d-inline" url={this.getSharableLink(value.link)}>
+                                              <a key = {1} style = {buttonStyle.fb} >
+                                              <i style = {{marginLeft: '-.2rem', textAlign: 'center',color: "#4267b2"}} className="fab fa-twitter fa-lg">
+                                              </i>
+                                              </a> 
+                                            </TwitterShareButton>
                                             </div>
                                            
                                         </div>   

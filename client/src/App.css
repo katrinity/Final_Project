@@ -90,6 +90,7 @@ a{
   padding: 0 3% 3% 3%;
   text-align: justify;
 }
+
 .bucket1, .bucket2, .bucket3, .bucket4{
   color: blue;
   position: absolute;
@@ -369,7 +370,7 @@ a{
   position: absolute;
   bottom: 0;
   left: 9%;
-  height: 50%;
+  height: 60%;
 }
 .delete-button, .delete-button-search {
   position: absolute;
@@ -412,6 +413,9 @@ margin: 2% 0 0 30%;
 .saved-comments {
   overflow: hidden;
   height: 45%;
+  margin: 0 0 0 1%;
+  padding: 0 3% 3% 3%;
+  text-align: justify;
 }
 .saved-comments:hover {
   overflow: scroll;

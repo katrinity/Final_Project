@@ -32,7 +32,7 @@ class Review extends Component {
         return(
             <>
             <div id="showEmoji">
-                <div className="text-muted pt-1 d-inline">Click an emoji to rate this movie!</div> 
+                <div className="text-muted pt-1 d-inline">emoji to rate!</div> 
             </div>
             <div className="form-group" id="formBackground">
                 <textarea rows="5" cols="20" wrap="hard"type="field" id="inputField" placeholder="Tell us how you really feel.." maxlength="150"/>
