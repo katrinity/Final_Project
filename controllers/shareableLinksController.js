@@ -2,33 +2,33 @@ const db = require("../models");
 
 module.exports = {
   findAll: function(query, cb, errcb) {
-    db.User
+    db.ShareableLink
       .find(query)
-      .then(dbModel => cb(dbModel))
+      .then(model => cb(model))
       .catch(err => errcb(err));
   },
   findById: function(req, res) {
-    db.User
+    db.ShareableLink
       .findById(req.params.id)
-      .then(dbModel => res.json(dbModel))
+      .then(model => res.json(model))
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    db.User
+    db.ShareableLink
       .create(req.body)
-      .then(dbModel => res.json(dbModel));
+      .then(model => res.json(model));
   },
   update: function(req, res) {
-    db.User
+    db.ShareableLink
       .findOneAndUpdate({ _id: req.params.id }, req.body)
-      .then(dbModel => res.json(dbModel))
+      .then(model => res.json(model))
       .catch(err => res.status(422).json(err));
   },
   remove: function(req, res) {
-    db.User
+    db.ShareableLink
       .findById({ _id: req.params.id })
-      .then(dbModel => dbModel.remove())
-      .then(dbModel => res.json(dbModel))
+      .then(model => model.remove())
+      .then(model => res.json(model))
       .catch(err => res.status(422).json(err));
   }
 };

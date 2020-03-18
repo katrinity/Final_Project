@@ -4,9 +4,25 @@ import Nav from '../../../components/Nav';
 import axios from "axios";
 import $ from "jquery";
 import Fb from '../../FbIntegrate';
+import { FacebookShareButton, TwitterShareButton, LinkedinShareButton } from 'react-share';
+
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+const buttonStyle = {
+    
+  fb:{
+      height: '40px',
+      width: '40px',
+      borderRadius: '50%',  
+      backgroundColor: 'white',      
+      transition: 'all 0.3s',
+      ':hover': {
+          transform: "scale(1.2, 0.7)"
+      }
+  }
+}
 
 class SavedPage extends Component {
 
@@ -61,13 +77,30 @@ class SavedPage extends Component {
           );
     }
     getCategoryMovies = (category, email) =>{
-        var mythis = this;
+        var myThis = this;
         axios({ method: "get", url: "/api/"+ email + "/movies/" + category }).then(function(result){
             console.log(result);
-            mythis.setState({movies: result.data, email: email});
+            myThis.updateMoviesWithLinks(result);
+            myThis.setState({movies: result.data.movies, email: email});
 
         });
 
+    }
+
+    updateMoviesWithLinks = (result) => {
+      var movies = result.data.movies;
+      var links = result.data.links;
+      for(var i = 0; i < movies.length; i++) {
+        
+        for(var j = 0; j < links.length; j++) {
+            
+            if(movies[i]._id.toString() == links[j].movieid.toString()) {
+                movies[i].link = links[j].link.toString();
+                break;
+            }
+        }
+      }
+      console.log(movies);
     }
 
     deleteMovie = (id,category) => {
@@ -111,6 +144,19 @@ class SavedPage extends Component {
         });
     }
 
+    getSharableLink = (link) => {
+      var url = window.location.href;
+      var arr = url.split('/');
+      url = arr[0] + '//' + arr[2];
+      if(link) {
+        url = url + '/shared?' + link;
+        
+      }
+      console.log(url);
+      
+      return url;
+    }
+
   render() {
     return (
         <>
@@ -134,7 +180,19 @@ class SavedPage extends Component {
                                             <div className="d-inline text-muted text-small"> {value.runtime} | </div>
                                             <div className="d-inline text-muted text-small"> {value.genre} |</div>
                                             <div className="d-inline text-muted text-small"> {value.year}</div>
-                                            <Fb value = {value.category}/>
+                                            <Fb value = {this.getSharableLink(value.link)}/>
+                                            <FacebookShareButton  url={this.getSharableLink(value.link)}>
+                                              <a key = {1} style = {buttonStyle.fb} className ='btn'>
+                                              <i style = {{marginLeft: '-.2rem', textAlign: 'center',color: "#4267b2"}} className="fab fa-facebook fa-lg">
+                                              </i>
+                                              </a> 
+                                            </FacebookShareButton>
+                                            <TwitterShareButton  url={this.getSharableLink(value.link)}>
+                                              <a key = {1} style = {buttonStyle.fb} className ='btn'>
+                                              <i style = {{marginLeft: '-.2rem', textAlign: 'center',color: "#4267b2"}} className="fab fa-twitter fa-lg">
+                                              </i>
+                                              </a> 
+                                            </TwitterShareButton>
 
                                             <br/>
                                             <p className="text mt-3 saved-comments">{value.comments}</p>

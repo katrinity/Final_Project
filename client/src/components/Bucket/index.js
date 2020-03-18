@@ -65,10 +65,23 @@ class Bucket extends Component {
               }).then(
                 function(res) {
                   console.log(res);
+                  myComp.createShareableLink(email,res._id, res.category);
                 }
               );
         }
         
+    }
+
+    createShareableLink = (email,movieid, category) => {
+        $.post("/api/" + email + "/shareablelinks", {
+            email: email,
+            movieid: movieid,
+            category: category
+          }).then(
+            function(res) {
+              console.log(res);
+            }
+          );
     }
     
     dropToCategory = (ev,category) => {

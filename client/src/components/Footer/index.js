@@ -68,6 +68,14 @@ class Footer extends Component{
         
       }
 
+    getUrl = () => {
+        var url = window.location.href;
+        var arr = url.split('/');
+        url = arr[0] + '//' + arr[2];
+        
+        return url;
+    }
+
 
     render() {
     return(
@@ -77,7 +85,7 @@ class Footer extends Component{
 
                 <ul className="list-unstyled list-inline text-center">
                 <li className="list-inline-item">
-                <FacebookShareButton  url={document.location.href}>
+                <FacebookShareButton  url={this.getUrl()}>
                     <a key = {1} style = {buttonStyle.fb} className ='btn'>
                     <i style = {{marginLeft: '-.2rem', textAlign: 'center',color: "#4267b2"}} className="fab fa-facebook fa-lg">
                     </i>
@@ -85,7 +93,7 @@ class Footer extends Component{
                 </FacebookShareButton>
                 </li>
                 <li className="list-inline-item">
-                    <TwitterShareButton url={document.location.href}>
+                    <TwitterShareButton url={this.getUrl()}>
                     <a key = {2} style = {buttonStyle.twt} className="btn">
                     <i style = {{marginLeft: '-.2rem', color: '#1DA1F2'}} className="fab fa-twitter fa-lg"></i>
                     </a>
@@ -97,7 +105,7 @@ class Footer extends Component{
                     </a>
                 </li>
                 <li className="list-inline-item">
-                    <LinkedinShareButton url={document.location.href}>
+                    <LinkedinShareButton url={this.getUrl()}>
                     <a key = {4} style = {buttonStyle.linkd} className="btn">
                     <i style = {{marginLeft: '-.1rem', color: '#007dbb'}} className="fab fa-linkedin fa-lg"></i>
                     </a>

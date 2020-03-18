@@ -13,7 +13,6 @@ export default class FbIntegrate extends Component {
       let cc = "https://google.com"
       //replace the below with heroku link and the rest stays the same for the FB share to work
       // let cc = "https://localhost:3000/saved/" + val
-      // let cc = document.location + "/saved/" + val;
 
 
         return (

@@ -238,7 +238,7 @@ class Nav extends Component {
         {/* google sign in modal */}
         <div className="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
             <div className="modal-dialog" role="document">
-                <div className="modal-content modal-google">
+                <div className="modal-content loginModal">
                     <div className="modal-header">
                         <h5 className="modal-title" id="loginModalLabel">Sign-in User</h5>
                         <button type="button" className="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
@@ -259,7 +259,7 @@ class Nav extends Component {
                                 <div>
                                     <input type="password" placeholder="Enter Password" name="psw" id="signPsw" required />
                                 </div>
-                                <button type="button" onClick={this.authUserModal} className="btn btn-primary signinbtn">Sign-in</button>
+                                <button type="button" onClick={this.authUserModal} className="btn btn-outline-primary signinbtn">Sign-in</button>
                                 <div id="invalidLogin"></div>
                             </div>
 
@@ -267,7 +267,7 @@ class Nav extends Component {
 
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" className="btn btn-outline-primary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
@@ -275,7 +275,7 @@ class Nav extends Component {
 
         <div className="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
             <div className="modal-dialog" role="document">
-                <div className="modal-content modal-google">
+                <div className="modal-content registerModal">
                     <div className="modal-header">
                         <h5 className="modal-title" id="registerModalLabel">Register User</h5>
                         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
@@ -304,8 +304,8 @@ class Nav extends Component {
                         </div>
                     </div>
                     <div className="modal-footer">
-                        <button id="registerbtn" type="button" onClick={this.registerUserModal} className="btn btn-primary registerbtn">Register</button>
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button id="registerbtn" type="button" onClick={this.registerUserModal} className="btn btn-outline-primary registerbtn">Register</button>
+                        <button type="button" className="btn btn-outline-primary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>

@@ -4,6 +4,7 @@ import './App.css';
 import Landing from './components/Pages/Landing';
 import NewSearch from './components/Pages/NewSearch';
 import SavedPage from './components/Pages/Saved';
+import SharedPage from './components/Pages/Shared';
 import Footer from './components/Footer';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Route exact path="/" component={Landing} />
           <Route exact path="/search" component={NewSearch} />
           <Route exact path="/saved" component={SavedPage} />
+          <Route exact path="/shared" component={SharedPage} />
           <Route exact path="/saved/cat1" component={SavedPage} />
           <Route exact path="/saved/cat2" component={SavedPage} />
           <Route exact path="/saved/cat3" component={SavedPage} />
