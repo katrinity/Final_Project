@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { Component } from "react";
 import Radium from 'radium';
+import { FacebookShareButton, TwitterShareButton, LinkedinShareButton } from 'react-share';
+import $ from 'jquery';
 
 const footerStyle = {
     base:{
@@ -54,7 +56,20 @@ const buttonStyle = {
     }
 }
 
-function Footer(){
+
+
+class Footer extends Component{
+
+    constructor(props) {
+        super(props);
+        this.state = {
+          menus: []
+        };
+        
+      }
+
+
+    render() {
     return(
         <footer style = {footerStyle.base} className="page-footer font-small ">
 
@@ -62,14 +77,19 @@ function Footer(){
 
                 <ul className="list-unstyled list-inline text-center">
                 <li className="list-inline-item">
+                <FacebookShareButton  url={document.location.href}>
                     <a key = {1} style = {buttonStyle.fb} className ='btn'>
-                    <i style = {{marginLeft: '-.2rem', textAlign: 'center',color: "#4267b2"}} className="fab fa-facebook fa-lg"></i>
-                    </a>
+                    <i style = {{marginLeft: '-.2rem', textAlign: 'center',color: "#4267b2"}} className="fab fa-facebook fa-lg">
+                    </i>
+                    </a> 
+                </FacebookShareButton>
                 </li>
                 <li className="list-inline-item">
+                    <TwitterShareButton url={document.location.href}>
                     <a key = {2} style = {buttonStyle.twt} className="btn">
                     <i style = {{marginLeft: '-.2rem', color: '#1DA1F2'}} className="fab fa-twitter fa-lg"></i>
                     </a>
+                    </TwitterShareButton>
                 </li>
                 <li className="list-inline-item">
                     <a key = {3 }style = {buttonStyle.gg} className="btn">
@@ -77,9 +97,11 @@ function Footer(){
                     </a>
                 </li>
                 <li className="list-inline-item">
+                    <LinkedinShareButton url={document.location.href}>
                     <a key = {4} style = {buttonStyle.linkd} className="btn">
                     <i style = {{marginLeft: '-.1rem', color: '#007dbb'}} className="fab fa-linkedin fa-lg"></i>
                     </a>
+                    </LinkedinShareButton>
                 </li>
                 </ul>
 
@@ -95,6 +117,7 @@ function Footer(){
             </footer>
 
     )
+    }
 }
 
 export default Radium(Footer);

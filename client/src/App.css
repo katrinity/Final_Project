@@ -142,7 +142,10 @@ a{
   margin: 1%;
   cursor: grab;
   border-radius: 30px;
+  background-color: #152238;
+
 }
+
 #inputField{
   width: 300px;
   height: 50px;
@@ -994,4 +997,17 @@ a.close:hover{
 .dropdown-menu{
   background-color: #152238;
   border: 1px solid #fef5df;
+}
+.fb-share-style{
+  border-radius: '50%';
+}
+.loginModal, .registerModal{
+  background-color:#152238 ;
+  color: white;
+}
+.close{
+  color: white;
+}
+.close:hover{
+  color: white;
 }
