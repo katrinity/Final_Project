@@ -105,6 +105,7 @@ a{
   padding: 0 3% 3% 3%;
   text-align: justify;
 }
+
 .bucket1, .bucket2, .bucket3, .bucket4{
   color: blue;
   position: absolute;
@@ -178,6 +179,7 @@ a{
   margin: 1%;
   cursor: pointer;
   border-radius: 30px;
+
   background-color: transparent;
   transition: all 0.3s
 }
@@ -379,8 +381,6 @@ a{
   width: 30px;
   height: 30px;
 }
-
-
 
 .delete-button-search {
   position: absolute;
@@ -1093,4 +1093,17 @@ a.close:hover{
 .dropdown-menu{
   background-color: #152238;
   border: 1px solid #fef5df;
+}
+.fb-share-style{
+  border-radius: '50%';
+}
+.loginModal, .registerModal{
+  background-color:#152238 ;
+  color: white;
+}
+.close{
+  color: white;
+}
+.close:hover{
+  color: white;
 }

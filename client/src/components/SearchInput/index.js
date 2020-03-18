@@ -228,7 +228,6 @@ closeTrailer = (myThis) => {
                                     I would ... &nbsp;&nbsp;
                                     <i class="fas fa-plus"></i>
                                     </button>
-
                                       <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                       <div className="dropdown-item" data-dismiss="modal" aria-label="Close" onClick={() => {this.props.cb("cat1")}}>Say it's a waste of time</div>
                                       <div className="dropdown-item" data-dismiss="modal" aria-label="Close" onClick={() => {this.props.cb("cat2")}}>Watch a summary of it on YouTube</div>

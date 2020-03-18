@@ -6,22 +6,23 @@ const https = require('https');
 const axios = require("axios");
 
 
+
 var movie = require("../../models/movie.js");
 const moviesController = require("../../controllers/moviesController");
 const usersController = require("../../controllers/usersController");
 const shareableLinksController = require("../../controllers/shareableLinksController");
+const uuid = require('uuid');
 
 
-// Save Movies pertaining to a user API
-// Save movies in MognoDB for a user 
-router.post("/api/:user/movies", function(req, res) {
-    
+// Save shareable link pertaining to a user API
+router.post("/api/:user/shareablelinks", function(req, res) {
     var condition = {email: req.body.email};
     usersController.findAll(condition,function(result) {
         if(result.length > 0) {
             req.body.userid = result[0]._id;
+            req.body.link = uuid.v1();
             delete req.body.email;
-            moviesController.create(req,res);
+            shareableLinksController.create(req,res);
         } else {
             res.json({result: "failure"});
         }
@@ -30,47 +31,48 @@ router.post("/api/:user/movies", function(req, res) {
 });
 
 
-// Fetch Movies pertaining to a user and a given category API
-// Returns movies for a given user and category (fetches from MongoDB)
-router.get("/api/:email/movies/:cat", function(req, res) {
-    var condition = {email: req.params.email};
-    var userid = null;
+// Fetch shareable link pertaining to a user and a given movie id
+router.get("/api/:user/shareablelinks/:movie", function(req, res) {
+    var condition = {email: req.params.user};
     usersController.findAll(condition,function(result) {
         if(result.length > 0) {
             req.body.userid = result[0]._id;
-            userid = result[0]._id;
             delete req.body.email;
-            condition = {category: req.params.cat, userid: req.body.userid};
-            moviesController.findAll(condition,function(result) {
-                getShareableLinks(result,userid,req.params.cat,req,res);
+            condition = {movieid: req.params.movie, userid: req.body.userid};
+            shareableLinksController.findAll(condition,function(result) {
+                res.json(result);
             });
         } else {
             res.json({result: "failure"});
         }
     }, function(err) {console.log(err)});
 });
-//get all the sharable links for the given user and category
-function getShareableLinks(movies,userid,category,req,res) {
-    var condition = "";
-    var totalMovies = {total: 0};
-    condition = {userid: userid, category: category};
-        shareableLinksController.findAll(condition,function(links) {
-            
-            res.json({movies: movies, links: links});
-            
-        }, function(err) {
-            console.log(err);
-            res.json(movies);
-        });
-    
-   
-}
 
-// Delete Movie API
-// Deletes a movie from MongoDB store for a given user and movie-id
-router.delete("/api/:email/movies/:id", function(req, res) {
+// Fetch shareable link information  pertaining to a shareable link
+router.get("/api/shareablelinks/:link", function(req, res) {
+    var condition = {link: req.params.link};
+    shareableLinksController.findAll(condition,function(result) {
+        if(result.length > 0) {
+            condition = {_id: result[0].movieid};
+            moviesController.findAll(condition, function(movieResult) {
+                if(movieResult.length > 0) {
+                    res.json(movieResult);
+                } else {
+                    res.json({result: "failure"});
+                }
+                
+            });
+            
+        } else {
+            res.json({result: "failure"});
+        }
+    }, function(err) {console.log(err)});
+});
+
+// Delete Shareable link API
+router.delete("/api/:user/shareablelinks/:id", function(req, res) {
     
-    moviesController.remove(req,res);
+    shareableLinksController.remove(req,res);
         
 });
 

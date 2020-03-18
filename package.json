@@ -45,6 +45,8 @@
     "radium": "^0.26.0",
     "react-multi-carousel": "^2.5.2",
     "react-responsive-carousel": "^3.1.51",
-    "request": "^2.88.0"
+    "react-share": "^4.1.0",
+    "request": "^2.88.0",
+    "uuid": "^7.0.2"
   }
 }
