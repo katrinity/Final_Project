@@ -4,6 +4,7 @@ import Nav from '../../../components/Nav';
 import axios from "axios";
 import $ from "jquery";
 import Fb from '../../FbIntegrate';
+import './style.css';
 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -41,8 +42,7 @@ class SavedPage extends Component {
         if(window.location.pathname == "/saved") {
             this.getMovies("cat1");
         }
-
-        
+               
         
     }
 
@@ -122,9 +122,9 @@ class SavedPage extends Component {
                         <div></div>)}
                 {
                     this.state.movies.map( (value, index)=>{
-                        return <div className=" col-md-3 col-sm-12 d-inline-block mt-3 mb-3">
+                        return <div className="d-inline-block mt-3 mb-3">
                                     <div className="movie">
-                                        <div onClick= {() => {this.deleteMovie(value._id,value.category)}} className="delete-button">X</div>
+                                        <div onClick= {() => {this.deleteMovie(value._id,value.category)}} className="delete-button">&times;</div>
                                         <img className="saved-img" src= {value.poster} />
                                         
                                         <div className="movie-review">

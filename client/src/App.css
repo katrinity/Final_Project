@@ -150,9 +150,23 @@ a{
 	border-left: 1px solid lightgray;
 }
 .signinbtn {
-	margin-top: 3%;
+  margin-top: 3%;
+  background-color: #1853b8;
+  border: none; 
+  margin-bottom: 10px; 
+  transition: all 0.2s;
+}
+.signinbtn:hover{
+  border: 2px solid #fef5df;
+  background-color: #0b182e;
 }
 
+#xout{
+  color: white;
+}
+.modal-footer p{
+  text-align: center;
+}
 #emojipanel{
   width: 400px;
   position: absolute;
@@ -174,7 +188,7 @@ a{
 
 #inputField{
   padding: 30px;
-  width: 95%;
+  width: 100%;
   height: 20vw;
   font-family: 'Indie Flower', cursive;
   font-size: 30px;
@@ -365,24 +379,10 @@ a{
   width: 30px;
   height: 30px;
 }
-.movie{
-  overflow: hidden;
-  margin: 4%;
-  height: 100%;
-}
-.saved-img{
-  width:100%;
-  height: 100%;
-}
-.movie .movie-review{
-  width: 82%;
-  background-color: #fff;
-  position: absolute;
-  bottom: 0;
-  left: 9%;
-  height: 50%;
-}
-.delete-button, .delete-button-search {
+
+
+
+.delete-button-search {
   position: absolute;
   font-weight: bolder;
   margin: 2% 0 0 70%;
@@ -395,7 +395,7 @@ a{
   cursor: grab;
 }
 .delete-button-search{
-margin: 2% 0 0 40%;
+margin: 2% 0 0 50%;
 }
 .text-small {
   font-size: small;
@@ -423,9 +423,11 @@ margin: 2% 0 0 40%;
 .saved-comments {
   overflow: hidden;
   height: 45%;
+  font-family: 'Goudy Bookletter 1911', serif;
+  font-weight: bold;
 }
 .saved-comments:hover {
-  overflow: scroll;
+
 }
 .movie-image {
   width: 50%;
@@ -934,7 +936,12 @@ div[check=''] {
 }
 
 div.modal-google{
-  background-color: white;
+  background-color: #143261;
+  color: #fef5df;
+  font-family: 'Marcellus SC', serif;
+}
+#loginModal{
+  z-index: 1070;
 }
 /* Modal section */
 .modal-content{
@@ -960,9 +967,12 @@ div.modal-google{
     float: left;
     margin: 3%;
   }
+  .delete-button-search{
+    margin: 0 0 0 40%;
+  }
 }
 
-@media (min-width: 500px) {
+@media (max-width: 992px) {
   .modal-xl {
     width:1200px;
   }
@@ -982,8 +992,9 @@ div.modal-google{
     margin: 3%;
   }
   .delete-button-search{
-    margin: 0 0 0 12%;
-    }
+    margin: 0 0 0 15%;
+  }
+  
 }
 
 @media (max-width: 500px) {
@@ -1005,6 +1016,9 @@ div.modal-google{
     height: 60px;
     float: left;
     margin: 3%;
+  }
+  .delete-button-search{
+    margin: 0 0 0 20%;
   }
 }
 
