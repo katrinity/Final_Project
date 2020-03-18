@@ -229,12 +229,12 @@ closeTrailer = (myThis) => {
                                     <i class="fas fa-plus"></i>
                                     </button>
 
-                                    <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat1")}}>Say it's a waste of time</div>
-                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat2")}}>Watch a summary of it on YouTube</div>
-                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat3")}}>Eventually watch it when it comes on DVD/BluRay</div>
-                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat4")}}>Watch at a local theater</div>
-                                      <div className="dropdown-item" onClick={() => {this.props.cb("cat5")}}>Get a subscription for it</div>
+                                      <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                      <div className="dropdown-item" data-dismiss="modal" aria-label="Close" onClick={() => {this.props.cb("cat1")}}>Say it's a waste of time</div>
+                                      <div className="dropdown-item" data-dismiss="modal" aria-label="Close" onClick={() => {this.props.cb("cat2")}}>Watch a summary of it on YouTube</div>
+                                      <div className="dropdown-item" data-dismiss="modal" aria-label="Close" onClick={() => {this.props.cb("cat3")}}>Eventually watch it when it comes on DVD/BluRay</div>
+                                      <div className="dropdown-item" data-dismiss="modal" aria-label="Close" onClick={() => {this.props.cb("cat4")}}>Watch at a local theater</div>
+                                      <div className="dropdown-item" data-dismiss="modal" aria-label="Close" onClick={() => {this.props.cb("cat5")}}>Get a subscription for it</div>
                                     </div>
                                   </div>
                                 </div>

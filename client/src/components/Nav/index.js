@@ -175,8 +175,9 @@ class Nav extends Component {
     //Google sign-out
     signOut = () => {
         var auth2 = window.gapi.auth2.getAuthInstance();
+        
         auth2.signOut().then(function () {
-    
+                
         });
         ;
     }
@@ -281,7 +282,7 @@ class Nav extends Component {
                     <div className="modal-header">
                         <h5 className="modal-title" id="registerModalLabel">Register User</h5>
                         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+                            <span id="xout" aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div className="modal-body text-left">
@@ -306,8 +307,7 @@ class Nav extends Component {
                         </div>
                     </div>
                     <div className="modal-footer">
-                        <button id="registerbtn" type="button" onClick={this.registerUserModal} className="btn btn-primary registerbtn">Register</button>
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button id="registerbtn" type="button" onClick={this.registerUserModal} className="btn btn-primary signinbtn">Register</button>
                     </div>
                 </div>
             </div>

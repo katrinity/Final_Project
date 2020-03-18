@@ -134,7 +134,7 @@ class SavedPage extends Component {
                                             <div className="d-inline text-muted text-small"> {value.runtime} | </div>
                                             <div className="d-inline text-muted text-small"> {value.genre} |</div>
                                             <div className="d-inline text-muted text-small"> {value.year}</div>
-                                            <Fb value = {value.category}/>
+                                                                                       
 
                                             <br/>
                                             <p className="text mt-3 saved-comments">{value.comments}</p>
@@ -144,6 +144,8 @@ class SavedPage extends Component {
                                             <div className="d-inline text-small"> {value.ratingrt}</div>
                                             <img className="d-inline rt-image3" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/500px-IMDB_Logo_2016.svg.png"/>
                                             <div className="d-inline text-small"> {value.rating}</div>
+                                            <br/>
+                                            <Fb value = {value.category}/>
                                             </div>
                                            
                                         </div>   

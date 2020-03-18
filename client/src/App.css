@@ -176,7 +176,7 @@ a{
   height: 50px;
   width: 50px;
   margin: 1%;
-  cursor: grab;
+  cursor: pointer;
   border-radius: 30px;
   background-color: transparent;
   transition: all 0.3s
@@ -392,7 +392,7 @@ a{
   border-radius: 75px;
   width: 10%;
   background-color: black;
-  cursor: grab;
+  cursor: pointer;
 }
 .delete-button-search{
 margin: 2% 0 0 50%;
@@ -940,7 +940,8 @@ div.modal-google{
   color: #fef5df;
   font-family: 'Marcellus SC', serif;
 }
-#loginModal{
+
+#loginModal, #registerModal{
   z-index: 1070;
 }
 /* Modal section */
