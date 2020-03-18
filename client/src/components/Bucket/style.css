@@ -1,0 +1,40 @@
+.row{
+    justify-content: center;
+}
+
+#div1{
+    background-color: #152238;
+    color: #fef5df; 
+    border-radius: 0;
+}
+
+#div2{
+    background-color: #152238;
+    color: #fef5df; 
+    border-radius: 0;
+}
+
+#div3{
+    background-color: #152238;
+    color: #fef5df; 
+    border-radius: 0;
+}
+
+#div4{
+    background-color: #152238;
+    color: #fef5df; 
+    border-radius: 0;
+}
+
+#div5{
+    background-color: #152238;
+    color: #fef5df; 
+    border-radius: 0;
+}
+
+.carousel-control-next{
+    top: 15vw;
+}
+.carousel-control-prev{
+    top: 15vw;
+}

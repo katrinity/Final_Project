@@ -49,14 +49,16 @@ class Nav extends Component {
                 window.$("#signin-form").hide();
                 window.$(".app").show();
                 window.$("#app-content").show();
-                window.$("#app-content").html(res.id);    
+                window.$("#app-content").html('Logged In as: '+res.id);    
                 window.$("#signOut").show();
                 myThis.setState({currentUser: res.id});
+                window.$("#navbutton").css("color","gold");
               } else {
                 window.$("#register-form").show();
                 window.$("#signin-form").show();
                 window.$("#app-content").hide();
                 window.$("#signOut").hide();
+                window.$("#navbutton").css("color","white");
               }
             }
           );

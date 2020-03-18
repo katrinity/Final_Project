@@ -69,6 +69,8 @@ a{
 .bucketH {
   font-weight: bolder;
   margin: 20px 0px 20px 10px;
+  font-family: 'Playfair Display', serif;
+  text-align: left;
 }
 #drag1, #movie, #back{
   width: 300px;
@@ -79,10 +81,23 @@ a{
 }
 .catName{
   padding: 0 0 1% 0;
+  font-family: 'Marcellus SC', serif;
+  font-size: 23px;
 }
 .search-button{
-  margin: 0 0 0 2%;
+  text-align: center;
+  margin: 10px;
   border-radius: 5px;
+  background-color: #152238;
+  transition: all 0.5s;
+  
+}
+.search-button:hover{
+  text-align: center;
+  background-color: #2f3541;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border: 1px solid #fef5df;
+  transform: scale(1.2);
 }
 .text{
   width: 300px;
@@ -98,6 +113,7 @@ a{
 .bucket{
   padding: 0 2% 5% 2%;
   z-index: 1;
+  border-top: 2px solid #fef5df;
 }
 .drag3 {
   width: 100px;
@@ -136,25 +152,45 @@ a{
 .signinbtn {
 	margin-top: 3%;
 }
+
+#emojipanel{
+  width: 400px;
+  position: absolute;
+  justify-content: center;
+}
 .emoji_images{
   height: 50px;
   width: 50px;
   margin: 1%;
   cursor: grab;
   border-radius: 30px;
+  background-color: transparent;
+  transition: all 0.3s
 }
+.emoji_images:hover{
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 #inputField{
-  width: 300px;
-  height: 50px;
+  padding: 30px;
+  width: 95%;
+  height: 20vw;
+  font-family: 'Indie Flower', cursive;
+  font-size: 30px;
+  font-weight: bold;
+  color: black;
+  background-image: url('https://i.pinimg.com/originals/dc/ef/f6/dceff6eb8639f46f68f25c36125bdbeb.jpg');
+  border-radius: 24px;
 }
-#showEmoji {
-  width: 90px;
-  height: 70px;
-  border: solid;
-  border-color: lightgray;
-  float: left;
-  margin: 3%;
+
+#inputField::placeholder{
+  font-family: 'Indie Flower', cursive;
+  color: black;
+  font-size: 30px;
+  font-weight: bold;
 }
+
 #formBackground{
   margin: 3%;
 }
@@ -166,10 +202,17 @@ a{
   width: 30px;
 }
 .grow {
-  transition: all 0.1s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 .grow:hover {
   transform: scale(1.05);
+  z-index: 2;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border: 1px #fef5df solid;
+}
+
+.grow:hover ~ .bucket-comments {
+  border: 1px #fef5df solid;
 }
 .grow1 {
   transform: scale(1.05);
@@ -178,38 +221,11 @@ a{
   width: 30px;
   height: 30px;
 }
-#div1{
-  color: rgb(11, 11, 240);
-}
-.comedy{
-  background-color: #282c34;;
-  border-color:  rgb(11, 11, 240)
-}
-#div2{
-  color: rgb(238, 65, 12);
-}
-.action{
-  background-color: #282c34;;
-  border-color:rgb(238, 65, 12);
-}
-#div3{
-  color: rgb(5, 106, 33);
-}
-.must{
-  background-color: #282c34;;
-  border-color:rgb(5, 106, 33);
-}
-#div4{
-  color: rgb(238, 65, 12);
-}
-.waste{
-  background-color: #282c34;;
-  border-color: rgb(238, 65, 12); ;
-}
 .bucket-image {
   height: 280px;
   width: 250px;
   display: inline-block;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .bucket-image-container{
   text-align: center;
@@ -217,6 +233,8 @@ a{
   justify-content: center;
   width: 100%;
   padding-top: 1%;
+  border-top: 2px solid #fef5df;
+  border-bottom: 2px solid #fef5df;
 }
 .bucket-comments {
   font-weight: normal;
@@ -268,23 +286,19 @@ a{
 }
 
 #app-content{
-  padding: 2vw;
-  color: white;
+  color: gold;
   font-size: 2vw;
   font-family: 'Righteous', cursive;
   transition: all 0.3s;
 }
 
-#app-content:hover{
-  color: gold;
-}
 /* The Over lay (background) */
 .overlay {
   /* Height & width depends on how you want to reveal the overlay (see JS below) */   
   height: 0%;
   width: 100%;
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 1060; /* Sit on top */
   left: 0;
   top: 0;
   background-color: rgb(0,0,0); /* Black fallback color */
@@ -381,7 +395,7 @@ a{
   cursor: grab;
 }
 .delete-button-search{
-margin: 2% 0 0 30%;
+margin: 2% 0 0 40%;
 }
 .text-small {
   font-size: small;
@@ -672,6 +686,7 @@ margin: 2% 0 0 30%;
 .search-input{
   color: white;
   background-color: transparent;
+  border-bottom: 2px solid #fef5df;
 }
 .inputs{
   width: 80%;
@@ -693,8 +708,20 @@ margin: 2% 0 0 30%;
   background: rgb(2,0,36);
   background-image: url('https://i.pinimg.com/originals/cd/5c/f1/cd5cf1b48962ccd7eec87a6f14675999.gif');
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat;  
 }
+@media (min-width: 1621px) {
+  #motion-container{
+    overflow:hidden;
+    display: flex;
+    background: rgb(2,0,36);
+    background-image: url('https://i.pinimg.com/originals/cd/5c/f1/cd5cf1b48962ccd7eec87a6f14675999.gif');
+    background-size: cover;
+    background-repeat: no-repeat;  
+    max-height: 800px;
+  }
+}
+
 #search-result-container{
   position: relative  ;
   /* background-image: url('https://images.unsplash.com/photo-1499162526249-f5b8b9ba9923?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=865bf5c0b77ceb22e88de9fd41c5a671'); */
@@ -712,8 +739,13 @@ margin: 2% 0 0 30%;
 {
   text-align: center;
   width: 10vw;
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Playfair Display', serif;
   transition: all 0.5s;
+}
+
+#searchInput::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
 }
 
 #searchInput:focus{
@@ -722,7 +754,6 @@ margin: 2% 0 0 30%;
   border: 2px solid #fef5df;
   font-size: 120%;
 }
-
 
 .dropdown-btn {
   
@@ -914,12 +945,66 @@ div.modal-google{
   .modal-lg {
     width: 900px;
   }
+  #inputField{
+    height: 200px;
+  }
+  .movie-frames{
+    height: 300px;
+  }
+  #showEmoji {
+    position: absolute;
+    left: 60px;
+    bottom: 20px;
+    width: 90px;
+    height: 60px;
+    float: left;
+    margin: 3%;
+  }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 500px) {
   .modal-xl {
-    width: 90%;
-   max-width:1200px;
+    width:1200px;
+  }
+  #inputField{
+    height: 200px;
+  }
+  .movie-frames{
+    height: 300px;
+  }
+  #showEmoji {
+    position: absolute;
+    left: 60px;
+    bottom: 20px;
+    width: 90px;
+    height: 60px;
+    float: left;
+    margin: 3%;
+  }
+  .delete-button-search{
+    margin: 0 0 0 12%;
+    }
+}
+
+@media (max-width: 500px) {
+  .modal-xs {
+    width:400px;
+    left: 40px;
+  }
+  #inputField{
+    height:200px;
+  }
+  .movie-frames{
+    height: 300px;
+  }
+  #showEmoji {
+    position: absolute;
+    left: 30px;
+    bottom: 20px;
+    width: 90px;
+    height: 60px;
+    float: left;
+    margin: 3%;
   }
 }
 
@@ -953,7 +1038,6 @@ a.close:hover{
 
 .movie-frames{
   width: 100%;
-  height: 35vw;
 }
 .movie-frames-detail{
   position: absolute;

@@ -31,7 +31,7 @@ class NavButton extends Component {
         return(
             <div className = 'navbarNative'>
                 <span onClick = {this.openMenu} id="navbutton" aria-expanded="false"><i class="fas fa-plus"></i></span>
-                <div id = 'app-content'></div>
+                            
             </div>
             
         )

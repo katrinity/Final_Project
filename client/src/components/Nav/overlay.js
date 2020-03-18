@@ -82,6 +82,7 @@ dropDown = (event)=>{
     return(
     
         <div className ="overlay-content">
+        <div id = 'app-content'></div>  
         <a className = 'overlayItems' href="/">Home</a>
         <a className = 'overlayItems' href="/search">Search</a>
         <a onClick={this.dropDown}  className = 'overlayItems dropdown-btn' href="/saved">Saved <i className='fa fa-caret-right'></i></a>
