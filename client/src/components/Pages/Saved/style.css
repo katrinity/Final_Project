@@ -46,6 +46,7 @@
         background-color: black;
         cursor: pointer;
         z-index: 1000;
+        opacity: 0.7;
     }
 
     h5.title{
@@ -101,6 +102,7 @@
         background-color: black;
         cursor: pointer;
         z-index: 1000;
+        opacity: 0.7;
     }
 
     h5.title{
@@ -158,9 +160,15 @@
         background-color: black;
         cursor: pointer;
         z-index: 1000;
+        opacity: 0.7;
     }
 
     h5.title{
         font-size: 30px;
     }
 }
+
+.delete-button:hover{
+   opacity: 1.0;
+}
+
