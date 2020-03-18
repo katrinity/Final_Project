@@ -4,7 +4,7 @@ import Nav from '../../../components/Nav';
 import axios from "axios";
 import $ from "jquery";
 import Fb from '../../FbIntegrate';
-import { FacebookShareButton, TwitterShareButton, LinkedinShareButton } from 'react-share';
+import { FacebookShareButton, TwitterShareButton, WhatsappShareButton, TelegramShareButton } from 'react-share';
 
 
 
@@ -12,16 +12,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const buttonStyle = {
     
-  fb:{
+  media:{
       height: '40px',
       width: '40px',
       borderRadius: '50%',  
       backgroundColor: 'white',      
       transition: 'all 0.3s',
-      'padding-left': '10px',
+      'padding-right': '10px',
       ':hover': {
           transform: "scale(1.2, 0.7)"
-      }
+      } 
+      
   }
 }
 
@@ -181,7 +182,7 @@ class SavedPage extends Component {
                                             <div className="d-inline text-muted text-small"> {value.runtime} | </div>
                                             <div className="d-inline text-muted text-small"> {value.genre} |</div>
                                             <div className="d-inline text-muted text-small"> {value.year}</div>
-                                            <Fb value = {this.getSharableLink(value.link)}/>
+                                            {/* <Fb value = {this.getSharableLink(value.link)}/> */}
                                             
 
                                             <br/>
@@ -194,17 +195,27 @@ class SavedPage extends Component {
                                             <div className="d-inline text-small"> {value.rating}</div>
                                             <br/>
                                             <FacebookShareButton  className="d-inline" url={this.getSharableLink(value.link)}>
-                                              <a key = {1} style = {buttonStyle.fb} >
+                                              <a key = {1} style = {buttonStyle.media} >
                                               <i style = {{marginLeft: '-.2rem', textAlign: 'center',color: "#4267b2"}} className="fab fa-facebook fa-lg">
                                               </i>
                                               </a> 
                                             </FacebookShareButton>
                                             <TwitterShareButton  className="d-inline" url={this.getSharableLink(value.link)}>
-                                              <a key = {1} style = {buttonStyle.fb} >
-                                              <i style = {{marginLeft: '-.2rem', textAlign: 'center',color: "#4267b2"}} className="fab fa-twitter fa-lg">
+                                              <a key = {2} style = {buttonStyle.media} >
+                                              <i style = {{marginLeft: '-.2rem', textAlign: 'center',color: '#1DA1F2'}} className="fab fa-twitter fa-lg">
                                               </i>
                                               </a> 
                                             </TwitterShareButton>
+                                            <WhatsappShareButton className="d-inline" url={this.getSharableLink(value.link)}>
+                                              <a key = {3 }style = {buttonStyle.media}>
+                                              <i style = {{marginLeft: '-.2rem', textAlign: 'center', color: '#f685ab'}} className="fab fa-whatsapp fa-lg"></i>
+                                              </a>
+                                            </WhatsappShareButton>
+                                            <TelegramShareButton className="d-inline" url={this.getSharableLink(value.link)}>
+                                              <a key = {4} style = {buttonStyle.media}>
+                                              <i style = {{marginLeft: '-.1rem', textAlign: 'center', color: '#007dbb'}} className="fab fa-telegram fa-lg"></i>
+                                              </a>
+                                            </TelegramShareButton>
                                             </div>
                                            
                                         </div>   

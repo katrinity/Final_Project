@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Radium from 'radium';
-import { FacebookShareButton, TwitterShareButton, LinkedinShareButton } from 'react-share';
+import { FacebookShareButton, TwitterShareButton, WhatsappShareButton, TelegramShareButton } from 'react-share';
 import $ from 'jquery';
 
 const footerStyle = {
@@ -26,7 +26,7 @@ const buttonStyle = {
         height: '40px',
         width: '40px',
         borderRadius: '50%',  
-        backgroundColor: '#db4a39',      
+        backgroundColor: '#25D366',      
         transition: 'all 0.3s',
         ':hover': {
             transform: "scale(1.2, 0.7)"
@@ -100,16 +100,18 @@ class Footer extends Component{
                     </TwitterShareButton>
                 </li>
                 <li className="list-inline-item">
+                    <WhatsappShareButton url={this.getUrl()}>
                     <a key = {3 }style = {buttonStyle.gg} className="btn">
-                    <i style = {{marginLeft: '-.2rem', color: 'white'}} className="fab fa-google-plus-g fa-lg"></i>
+                    <i style = {{marginLeft: '-.2rem', color: 'white'}} className="fab fa-whatsapp fa-lg"></i>
                     </a>
+                    </WhatsappShareButton>
                 </li>
                 <li className="list-inline-item">
-                    <LinkedinShareButton url={this.getUrl()}>
+                    <TelegramShareButton url={this.getUrl()}>
                     <a key = {4} style = {buttonStyle.linkd} className="btn">
-                    <i style = {{marginLeft: '-.1rem', color: '#007dbb'}} className="fab fa-linkedin fa-lg"></i>
+                    <i style = {{marginLeft: '-.1rem', color: '#007dbb'}} className="fab fa-telegram fa-lg"></i>
                     </a>
-                    </LinkedinShareButton>
+                    </TelegramShareButton>
                 </li>
                 </ul>
 
