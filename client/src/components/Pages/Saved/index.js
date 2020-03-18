@@ -153,9 +153,7 @@ class SavedPage extends Component {
       if(link) {
         url = url + '/shared?' + link;
         
-      }
-      console.log(url);
-      
+      }      
       return url;
     }
 
