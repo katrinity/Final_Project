@@ -158,7 +158,7 @@ We scraped youtube search pages to get trailers for movies queried by users.
 ## Authors - Team members, GIT links
 <!-- make a link to the deployed site and have your name as the link -->
 * [Andrew](https://github.com/homemadechowder)
-* [Katia](https://github.com/katia)
+* [Katia](https://github.com/katrinity)
 * [Krishna](https://github.com/krishnaaddala)
 * [Sree](https://github.com/sreeveena/)
 
