@@ -50,7 +50,6 @@ class Banner extends Component{
           <div className = 'container'>
           {this.props.mediatype == "movie" ? <h1 className = 'carousel-title'><i class="fas fa-film"></i> Trending Movies </h1> : <h1 className = 'carousel-title'><i class="fas fa-tv"></i> Trending TV Shows </h1>}
           <Carousel
-          
           additionalTransfrom={0}
           responsive = {this.props.responsive}
           direction = {'right'}
@@ -72,7 +71,7 @@ class Banner extends Component{
           sliderClass=""
           slidesToSlide={2}
           swipeable
-        >
+          >
           
           {
               this.state[this.props.loadElement].map((value,index) => {
