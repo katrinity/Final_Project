@@ -187,7 +187,7 @@ class Bucket extends Component {
                                                     <img src={value.poster} className="d-block bucket-image d-inline" alt="..."/>
                                                 </div>
                                                 <div className="bucket-comments"><span >{value.comments}</span></div>
-                                                <Fb value = "cat1"/>
+
                                             </div>
                                         } else {
                                             return <div id={id} className={active}>
@@ -198,7 +198,7 @@ class Bucket extends Component {
                                                 </div>
                                                 <div className="bucket-comments"><span >{value.comments}</span></div>
                                                 <div id={emojiId}><div className="text-muted pt-1">{emojitext}</div></div>
-                                                <Fb value = "cat1"/>
+                                                
                                             </div>
                                         }
                                     })
@@ -236,7 +236,7 @@ class Bucket extends Component {
                                                     <img src={value.url} className="d-block bucket-image d-inline" alt="..."/>
                                                 </div>
                                                 <div className="bucket-comments"><span >{value.comments}</span></div>
-                                                <Fb value = "cat2"/>
+                                                
                                             </div>
                                         } else {
                                             return <div id={id} className={active}>
@@ -247,7 +247,7 @@ class Bucket extends Component {
                                                 </div>
                                                 <div className="bucket-comments"><span >{value.comments}</span></div>
                                                 <div id={emojiId}><div className="text-muted pt-1"></div></div>
-                                                <Fb value = "cat2"/>
+                                                
                                             </div>
                                         }
                                         
@@ -286,7 +286,7 @@ class Bucket extends Component {
                                                     <img src={value.url} className="d-block bucket-image d-inline" alt="..."/>
                                                 </div>
                                                 <div className="bucket-comments"><span >{value.comments}</span></div>
-                                                <Fb value = "cat3"/>
+                                                
                                             </div>
                                         } else {
                                             return <div id={id} className={active}>
@@ -297,7 +297,7 @@ class Bucket extends Component {
                                                 </div>
                                                 <div className="bucket-comments"><span >{value.comments}</span></div>
                                                 <div id={emojiId}><div className="text-muted pt-1"></div></div>
-                                                <Fb value = "cat3"/>
+                                                
                                             </div>
                                         }
                                         
@@ -338,7 +338,7 @@ class Bucket extends Component {
                                                     <img src={value.url} className="d-block bucket-image d-inline" alt="..."/>
                                                 </div>
                                                 <div className="bucket-comments"><span >{value.comments}</span></div>
-                                                <Fb value = "cat4"/>
+                                                
                                             </div>
                                         } else {
                                             return <div id={id} className={active}>
@@ -349,7 +349,7 @@ class Bucket extends Component {
                                                 </div>
                                                 <div className="bucket-comments"><span >{value.comments}</span></div>
                                                 <div id={emojiId}><div className="text-muted pt-1"></div></div>
-                                                <Fb value = "cat4"/>
+                                               
                                             </div>
                                         }
                                         

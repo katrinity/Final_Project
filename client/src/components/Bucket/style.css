@@ -7,30 +7,35 @@
     background-color: #050c18;
     color: #fef5df; 
     border-radius: 0;
+    overflow: hidden;
 }
 
 #div2{
     background-color: #0b182e;
     color: #fef5df; 
     border-radius: 0;
+    overflow: hidden;
 }
 
 #div3{
     background-color: #102241;
     color: #fef5df; 
     border-radius: 0;
+    overflow: hidden;
 }
 
 #div4{
     background-color: #143261;
     color: #fef5df; 
     border-radius: 0;
+    overflow: hidden;
 }
 
 #div5{
     background-color: #1853b8;
     color: #fef5df; 
     border-radius: 0;
+    overflow: hidden;
 }
 
 .carousel-control-next{

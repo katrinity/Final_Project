@@ -172,11 +172,6 @@
    opacity: 1.0;
 }
 
-div.d-inline ~ button{
-    /* border-radius: 25px;
-    background-color: #152238;
-    color: white; */
-}
 div.bucket-comments ~button{
     border-radius: 25px;
     background-color: #152238;
