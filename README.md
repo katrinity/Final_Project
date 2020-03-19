@@ -13,14 +13,17 @@ This application is a movie and TV show compendium. It showcases latest trending
 5. [User Story Breakdown](#user)
 6. [Task Breakdowns](#task)
 7. [UI Design](#UI)
-8. [How We Implemented Bootstrap](#bootstrap)
-9. [Mobile Responsiveness](#mobile)
-10. [API Design, Firebase, Libraries](#design)
-11. [Git Commands](#git)
-12. [DEMO Gif Walkthrough](#gifs)
-13. [Future RoadMap](#future)
-14. [Team memeber GIT Links](#team)
-15. [Code Snippets](#code)
+8. [How We Implemented React Carousel Component](#reactcarousel)
+9. [How We Implemented React Sharing Component](#reactsharing)
+10. [How We Implemented React Bucketing Component](#reactbucket)
+11. [How We Implemented z Index](#zIndex)
+12. [Mobile Responsiveness](#mobile)
+13. [API Design, Firebase, Libraries](#design)
+14. [Git Commands](#git)
+15. [DEMO Gif Walkthrough](#gifs)
+16. [Future RoadMap](#future)
+17. [Team memeber GIT Links](#team)
+18. [Code Snippets](#code)
 
 <a name="howitworks"></a>
 ## 1. How the APP works
@@ -47,11 +50,13 @@ Visual Studio Code
 Chrome browser
 Heroku - Deployment
 
+<a name="wire"></a>
 ## Wireframe Design
 
 ![WireFrame Design](https://github.com/homemadechowder/Final_Project/blob/master/client/public/Images/wireframe-1.png "WireFrame Design 1")
 ![WireFrame Design](https://github.com/homemadechowder/Final_Project/blob/master/client/public/Images/wireframe-2.png "WireFrame Design 2")
 
+<a name="user"></a>
 ## User Story Breakdown
 User Story 1: Create a website with necessary hooks for building the backend functionality
 
@@ -75,14 +80,14 @@ User Story 9: API Routes
 
 User Story 10: REACT Bucket pages 
 
-
+<a name="task"></a>
 ## Task Breakdowns
 Krishna (Sharing via social media/ Movie Search)
 Andrew (UI Design/Front-end/Javascript & Server set up/Routing)
 Sree (Back-end /Front-end/ Authentication)
 Katia (Front-end/UI Design/Mobile Responsiveness )
 
-
+<a name="UI"></a>
 ## UI Design
 
 ![UI Design Progression](https://github.com/homemadechowder/Final_Project/blob/master/client/public/Images/UI%20Layout.gif "UI Design Layout 1")
@@ -93,6 +98,18 @@ Katia (Front-end/UI Design/Mobile Responsiveness )
 An npm package that lets you set up a reasonably comprehensive carousel that can contain multiple items
 
 ![REACT Carousel](https://github.com/homemadechowder/Final_Project/blob/master/client/public/Images/react-carousel.png "React Carousel")
+
+## How We Implemented React Sharing Component
+
+An npm package that lets you share across social media platform
+
+![REACT Sharing](https://github.com/homemadechowder/Final_Project/blob/master/client/public/Images/Sharing.gif "React Sharing")
+
+## How We Implemented React Bucketing Component
+
+Then “save” selected  movies and TV shows are bucketed into different categories
+
+![REACT Bucket](https://github.com/homemadechowder/Final_Project/blob/master/client/public/Images/Bucket.gif "React Bucket")
 
 ## How We Implemented Z-index
 
