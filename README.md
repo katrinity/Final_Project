@@ -1,6 +1,7 @@
 # Project-03
 
-Heroku link: 
+### Heroku link: https://askk-movies.herokuapp.com/
+#### Test username/password: askk@askk.com  and password: Askk!123
 
 This application is a movie and TV show compendium. It showcases latest trending movies and TV shows. It provides personalized experience by allowing users to create an account and access it with their login credentials. It lets them search for movies or TV shows and save their personal comments and ratings to these movies/TV shows. Users can also share their content with friends and family in social media.
 
@@ -31,11 +32,12 @@ The landing page of the application showcases carousels for latest trending movi
 HTML
 Javascript/jQuery
 MongoDB
-APIs
-Javascript 
+APIs 
 Bootstrap
 AJAX
 JSON
+React
+Heroku
 
 <a name="app"></a>
 ## Applications Used
@@ -43,13 +45,83 @@ GitHub
 ChromeDev tools
 Visual Studio Code
 Chrome browser
+Heroku - Deployment
+
+## Wireframe Design
+
+![WireFrame Design](https://github.com/Chris-Hayashi/Project-One/blob/master/assets/images/wireframe.png "WireFrame Design 1")
+![WireFrame Design](https://github.com/Chris-Hayashi/Project-One/blob/master/assets/images/wireframe.png "WireFrame Design 2")
+
+## User Story Breakdown
+User Story 1: Create a website with necessary hooks for building the backend functionality
+
+User Story 2: Add Bootstrap for mobile responsivness
+
+User Story 3: Add OMDI API functionality
+
+User Story 4: Add Trending functionality
+
+User Story 5: Sign in and register with Google Sign-in
+
+User Story 6: Scrape from Rotten Tomatoes
+
+User Story 7: Add Social platform sharing 
+
+User Story 7: Bucket functionality for saving movies/Tv shows
+
+User Story 8: REACT front end
+
+User Story 9: API Routes
+
+User Story 10: REACT Bucket pages 
+
+
+## Task Breakdowns
+Krishna (Sharing via social media/ Movie Search)
+Andrew (UI Design/Front-end/Javascript & Server set up/Routing)
+Sree (Back-end /Front-end/ Authentication)
+Katia (Front-end/UI Design/Mobile Responsiveness )
+
+
+## UI Design
+
+![UI Design Progression](https://github.com/Chris-Hayashi/Project-One/blob/master/assets/images/codeProgression1.png "UI Design Layout 1")
+
+![Code progression Final](https://github.com/Chris-Hayashi/Project-One/blob/master/assets/images/codeProgression2.png "UI Design Layout 2")
+
+## How We Implemented Carousel Component
+
+An npm package that lets you set up a reasonably comprehensive carousel that can contain multiple items
+
+![Bootstrap Progression 1](https://github.com/Chris-Hayashi/Project-One/blob/master/assets/images/jumbotron.png "Jumbotron Design")
+
+## How We Implemented Z-index
+
+z-index comes into play only when the divs are in the same position
+
+Relative, Absolute, Fixed, Sticky(absolute/fixed)
+
+Double check the css property using inspect to see which position it is in or it inherited to prevent confusion. 
+
+Example showing z-index in work
+
+![Z Index Overlay](https://github.com/Chris-Hayashi/Project-One/blob/master/assets/images/bootstrapSnippet.png "Z index Overlay")
+
+
+## Mobile Responsiveness
+Accomplished with @media and vw, a scaling unit for mobile, tablet and desktop viewing
+
+![Mobile Responsiveness - 1](https://github.com/Chris-Hayashi/Project-One/blob/master/assets/images/mobileResponseExample.gif "Mobile Responsiveness - 1")
+
+![Mobile Responsiveness - 2](https://github.com/Chris-Hayashi/Project-One/blob/master/assets/images/mobileResponseExample.gif "Mobile Responsiveness - 2")
 
 <a name="task"></a>
 ## Task Breakdowns
 1. Andrew - A sleek looking UI using bootstrap and  the website being fully mobile responsive
-2. Katia - 
-3. Krishna - 
+2. Katia - Mobile responsive, Wireframe design
+3. Krishna - Social media sharing, Imporved search results which gets the results based on the search keys enetered by the user.
 4. Sree - OAuth sign-in, Registration page logic, modelling, search page (inital design, backend routes and fetching data and rendering component in the browser), saved page (initial design, backend routes to store data and React.js code to fetch and render component)
+
 
 <a name="design"></a>
 ## API Design, Libraries
