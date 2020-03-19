@@ -49,14 +49,16 @@ class Nav extends Component {
                 window.$("#signin-form").hide();
                 window.$(".app").show();
                 window.$("#app-content").show();
-                window.$("#app-content").html(res.id);    
+                window.$("#app-content").html('Logged In as: '+res.id);    
                 window.$("#signOut").show();
                 myThis.setState({currentUser: res.id});
+                window.$("#navbutton").css("color","gold");
               } else {
                 window.$("#register-form").show();
                 window.$("#signin-form").show();
                 window.$("#app-content").hide();
                 window.$("#signOut").hide();
+                window.$("#navbutton").css("color","white");
               }
             }
           );
@@ -102,6 +104,7 @@ class Nav extends Component {
                     window.$('#registerModal').modal('hide');
                     if(provider != "events") 
                         navThis.authUser(email,"", provider, navThis);
+                    navThis.clearModal();
                 } else {
                     var elem=$("#valiEmail");
                     $(elem).html("User is already registered!");
@@ -113,12 +116,43 @@ class Nav extends Component {
             }
         );
     }
+    keyPressedR(event,myThis) {
+        if (event.key === "Enter") {
+          myThis.registerUserModal();
+          
+        }
+      }
 
     //Registers a user with the database
     registerUserModal = () => {
+        if(!this.checkPasswordMatch()) {
+            return false;
+        }
+        if(!this.validateEmail($("#email"), $("#email").val(), "#valiEmail")) {
+            return false;
+        }
         var password = document.getElementById("psw").value;
         var email = document.getElementById("email").value;
         this.registerUser(email,password,"events", this);
+    }
+
+    clearModal = () => {
+        $("#email").val("");
+        $("#email").css("border-color", "white");
+        $("#psw").val("");
+        $("#psw").css("border-color", "white");
+        $("#psw-repeat").val("");
+        $("#psw-repeat").css("border-color", "white");
+        $("#signEmail").val("");
+        $("#signEmail").css("border-color", "white");
+        $("#signPsw").val("");
+        $("#signPsw").css("border-color", "white");
+        $("#invalidLogin").html("");
+        $("#valiEmail").html("");
+        $("#valiSignEmail").html("");
+        
+        $("#valiPsw").html("");
+        $("#valiRepeatPsw").html("");
     }
 
     //Authenticates a user
@@ -140,6 +174,7 @@ class Nav extends Component {
                     var elem=$("#invalidLogin");
                     $(elem).html("");
                     navThis.checkSession();
+                    navThis.clearModal();
                 }else{
                     var elem=$("#invalidLogin");
                     $(elem).html("Please enter a valid email or password.");
@@ -148,6 +183,13 @@ class Nav extends Component {
             }
         );
     }
+
+    keyPressed(event,myThis) {
+        if (event.key === "Enter") {
+          myThis.authUserModal();
+          
+        }
+      }
 
     //Authenticates a user
     authUserModal = () => {
@@ -173,8 +215,9 @@ class Nav extends Component {
     //Google sign-out
     signOut = () => {
         var auth2 = window.gapi.auth2.getAuthInstance();
+        
         auth2.signOut().then(function () {
-    
+                
         });
         ;
     }
@@ -238,10 +281,10 @@ class Nav extends Component {
         {/* google sign in modal */}
         <div className="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
             <div className="modal-dialog" role="document">
-                <div className="modal-content modal-google">
+                <div className="modal-content loginModal">
                     <div className="modal-header">
                         <h5 className="modal-title" id="loginModalLabel">Sign-in User</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                        <button type="button" className="close" data-dismiss="modal" onClick={this.clearModal} aria-label="Close"> <span id="xout" aria-hidden="true">&times;</span> </button>
                     </div>
                     <div className="modal-body text-left">
                         <div>
@@ -257,9 +300,9 @@ class Nav extends Component {
                                 </div>
                                 <label for="psw"><b>Password</b></label>
                                 <div>
-                                    <input type="password" placeholder="Enter Password" name="psw" id="signPsw" required />
+                                    <input type="password" placeholder="Enter Password" name="psw" id="signPsw" required onKeyPress={(event) => {this.keyPressed(event,this)}}/>
                                 </div>
-                                <button type="button" onClick={this.authUserModal} className="btn btn-primary signinbtn">Sign-in</button>
+                                <button type="button" onClick={this.authUserModal} className="btn signinbtn">Sign-in</button>
                                 <div id="invalidLogin"></div>
                             </div>
 
@@ -267,7 +310,7 @@ class Nav extends Component {
 
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <p>You can only save movies to your dashboard after signing in!</p>
                     </div>
                 </div>
             </div>
@@ -275,11 +318,11 @@ class Nav extends Component {
 
         <div className="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
             <div className="modal-dialog" role="document">
-                <div className="modal-content">
+                <div className="modal-content registerModal">
                     <div className="modal-header">
                         <h5 className="modal-title" id="registerModalLabel">Register User</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+                        <button type="button" className="close" data-dismiss="modal" onClick={this.clearModal} aria-label="Close">
+                            <span id="xout" aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div className="modal-body text-left">
@@ -300,12 +343,11 @@ class Nav extends Component {
                             <div id="valiRepeatPsw"></div>
                         </label>
                         <div>
-                            <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required />
+                            <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required onKeyPress={(event) => {this.keyPressedR(event,this)}} />
                         </div>
                     </div>
                     <div className="modal-footer">
-                        <button id="registerbtn" type="button" onClick={this.registerUserModal} className="btn btn-primary registerbtn">Register</button>
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button id="registerbtn" type="button" onClick={this.registerUserModal} className="btn btn-primary signinbtn">Register</button>
                     </div>
                 </div>
             </div>

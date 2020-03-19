@@ -7,19 +7,19 @@ This application is a movie and TV show compendium. It showcases latest trending
 ## Table of contents
 1. [How the APP works](#howitworks)
 2. [Technologies Used](#tech)
-Applications Used
-Wireframe Design
-User Story Breakdown
-Task Breakdowns
-UI Design
-How We Implemented Bootstrap
-Mobile Responsiveness
-API Design, Firebase, Libraries
-Git Flow
-DEMO Gif Walkthrough
-Future RoadMap
-Team memeber GIT Links
-Code Snippets
+3. [Applications Used](#app)
+4. [Wireframe Design](#wire)
+5. [User Story Breakdown](#user)
+6. [Task Breakdowns](#task)
+7. [UI Design](#UI)
+8. [How We Implemented Bootstrap](#bootstrap)
+9. [Mobile Responsiveness](#mobile)
+10. [API Design, Firebase, Libraries](#design)
+11. [Git Commands](#git)
+12. [DEMO Gif Walkthrough](#gifs)
+13. [Future RoadMap](#future)
+14. [Team memeber GIT Links](#team)
+15. [Code Snippets](#code)
 
 <a name="howitworks"></a>
 ## 1. How the APP works
@@ -44,18 +44,21 @@ HTML
 React.js
 
 
+<a name="app"></a>
 ## Applications Used
 GitHub
 ChromeDev tools
 Visual Studio Code
 Chrome browser
 
+<a name="task"></a>
 ## Task Breakdowns
 1. Andrew - A sleek looking UI using bootstrap and  the website being fully mobile responsive
 2. Katia - 
 3. Krishna - 
 4. Sree - OAuth sign-in, Registration page logic, modelling, search page (inital design, backend routes and fetching data and rendering component in the browser), saved page (initial design, backend routes to store data and React.js code to fetch and render component)
 
+<a name="design"></a>
 ## API Design, Libraries
 
 ### OMDB API
@@ -70,13 +73,15 @@ Rotten tomatoes pages included JSON objects for such data. We used this data for
 We scraped youtube search pages to get trailers for movies queried by users.
 
 
-## Authors
+<a name="team"></a>
+## Authors - Team members, GIT links
 <!-- make a link to the deployed site and have your name as the link -->
 * [Andrew](https://github.com/homemadechowder)
 * [Katia](https://github.com/katrinity)
 * [Krishna](https://github.com/krishnaaddala)
 * [Sree](https://github.com/sreeveena/)
 
+<a name="code"></a>
 ## Appendix for Code Snippets
 
 #### Code for authenticating a user(from browser)
@@ -154,6 +159,27 @@ render() {
 
 ```
 
+#### Code for sharing pages with friends online in social media
+
+```
+  <FacebookShareButton  className="d-inline" url={this.getSharableLink(value.link)}>
+    <a key = {1} style = {buttonStyle.media} >
+      <i style = {{marginLeft: '-.2rem', textAlign: 'center',color: "#4267b2"}} className="fab fa-facebook fa-lg"> </i>
+    </a> 
+  </FacebookShareButton>
+  <TwitterShareButton  className="d-inline" url={this.getSharableLink(value.link)}>
+    <a key = {2} style = {buttonStyle.media} >
+      <i style = {{marginLeft: '-.2rem', textAlign: 'center',color: '#1DA1F2'}} className="fab fa-twitter fa-lg"> </i>
+    </a> 
+  </TwitterShareButton>
+  <WhatsappShareButton className="d-inline" url={this.getSharableLink(value.link)}>
+    <a key = {3 }style = {buttonStyle.media}>
+      <i style = {{marginLeft: '-.2rem', textAlign: 'center', color: '#f685ab'}} className="fab fa-whatsapp fa-lg"></i>
+    </a>
+  </WhatsappShareButton>
+```
+
+<a name="git"></a>
 ## Git commands:
 
 ```

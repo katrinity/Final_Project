@@ -25,7 +25,7 @@ class Overlay extends Component{
           
                 navThis.checkSession();
                 navThis.props.cb();
-        
+                
             }
         );
     }
@@ -34,7 +34,7 @@ class Overlay extends Component{
     signOut = () => {
         var auth2 = window.gapi.auth2.getAuthInstance();
         auth2.signOut().then(function () {
-    
+            
         });
         ;
     }
@@ -82,15 +82,16 @@ dropDown = (event)=>{
     return(
     
         <div className ="overlay-content">
+        <div id = 'app-content'></div>  
         <a className = 'overlayItems' href="/">Home</a>
         <a className = 'overlayItems' href="/search">Search</a>
         <a onClick={this.dropDown}  className = 'overlayItems dropdown-btn' href="/saved">Saved <i className='fa fa-caret-right'></i></a>
         <div  className = 'dropdown-container'>
-        <a class = 'submenu' href="/saved/cat1">Waste of time - Not Worthy</a>
-        <a class = 'submenu' href="/saved/cat2">Summary Worthy</a>
-        <a class = 'submenu' href="/saved/cat3">DVD/Bluray Worthy</a>
-        <a class = 'submenu' href="/saved/cat4">Local Theater Worthy</a>
-        <a class = 'submenu' href="/saved/cat5">Subscription Worthy</a>
+        <a className = 'submenu' href="/saved/cat1">Waste of time - Not Worthy</a>
+        <a className = 'submenu' href="/saved/cat2">Summary Worthy</a>
+        <a className = 'submenu' href="/saved/cat3">DVD/Bluray Worthy</a>
+        <a className = 'submenu' href="/saved/cat4">Local Theater Worthy</a>
+        <a className = 'submenu' href="/saved/cat5">Subscription Worthy</a>
         </div>
         <ul className="nav navbar-nav ml-auto">
                         <li>
@@ -101,13 +102,13 @@ dropDown = (event)=>{
                         </li>
                         <li>
                             <div className="app text-light">
-                                <div id="app-content" className="pt-1 overlayItems"></div>
+                               
 
                                 <div id="sign-out"></div>
                             </div>
                         </li>
                         <li>
-                            <a id="signOut" type="button" className="overlayItems" onClick={() => {this.eventSignOut(this)}}>
+                            <a id="signOut" type="button" className="overlayItems" onClick={() => {this.eventSignOut(this)}} href="/">
                                 Sign out
                             </a>
                         </li>
