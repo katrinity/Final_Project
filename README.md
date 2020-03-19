@@ -36,6 +36,9 @@ Javascript
 Bootstrap
 AJAX
 JSON
+HTML 
+React.js
+
 
 ## Applications Used
 GitHub
