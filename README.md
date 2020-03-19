@@ -26,6 +26,10 @@ Code Snippets
 
 The landing page of the application showcases carousels for latest trending movies and TV shows. User can click on the movies to checkout the trailers of the movies they selected by clicking on it. 
 
+## Login Credentials 
+userid: askk@askk.com
+password: Askk!123
+
 <a name="tech"></a>
 ## Technologies Used
 HTML
@@ -69,7 +73,7 @@ We scraped youtube search pages to get trailers for movies queried by users.
 ## Authors
 <!-- make a link to the deployed site and have your name as the link -->
 * [Andrew](https://github.com/homemadechowder)
-* [Katia](https://github.com/katia)
+* [Katia](https://github.com/katrinity)
 * [Krishna](https://github.com/krishnaaddala)
 * [Sree](https://github.com/sreeveena/)
 
