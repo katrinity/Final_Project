@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React from 'react';
+import {BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 import Landing from './components/Pages/Landing';
 import NewSearch from './components/Pages/NewSearch';
