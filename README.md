@@ -49,8 +49,8 @@ Heroku - Deployment
 
 ## Wireframe Design
 
-![WireFrame Design](https://github.com/Chris-Hayashi/Project-One/blob/master/assets/images/wireframe.png "WireFrame Design 1")
-![WireFrame Design](https://github.com/Chris-Hayashi/Project-One/blob/master/assets/images/wireframe.png "WireFrame Design 2")
+![WireFrame Design](https://github.com/homemadechowder/Final_Project/blob/master/client/public/Images/wireframe-1.png "WireFrame Design 1")
+![WireFrame Design](https://github.com/homemadechowder/Final_Project/blob/master/client/public/Images/wireframe-2.png "WireFrame Design 2")
 
 ## User Story Breakdown
 User Story 1: Create a website with necessary hooks for building the backend functionality
@@ -85,15 +85,14 @@ Katia (Front-end/UI Design/Mobile Responsiveness )
 
 ## UI Design
 
-![UI Design Progression](https://github.com/Chris-Hayashi/Project-One/blob/master/assets/images/codeProgression1.png "UI Design Layout 1")
+![UI Design Progression](https://github.com/homemadechowder/Final_Project/blob/master/client/public/Images/UI%20Layout.gif "UI Design Layout 1")
 
-![Code progression Final](https://github.com/Chris-Hayashi/Project-One/blob/master/assets/images/codeProgression2.png "UI Design Layout 2")
 
 ## How We Implemented Carousel Component
 
 An npm package that lets you set up a reasonably comprehensive carousel that can contain multiple items
 
-![Bootstrap Progression 1](https://github.com/Chris-Hayashi/Project-One/blob/master/assets/images/jumbotron.png "Jumbotron Design")
+![REACT Carousel](https://github.com/homemadechowder/Final_Project/blob/master/client/public/Images/react-carousel.png "React Carousel")
 
 ## How We Implemented Z-index
 
@@ -105,15 +104,15 @@ Double check the css property using inspect to see which position it is in or it
 
 Example showing z-index in work
 
-![Z Index Overlay](https://github.com/Chris-Hayashi/Project-One/blob/master/assets/images/bootstrapSnippet.png "Z index Overlay")
+![Z Index Overlay](https://github.com/homemadechowder/Final_Project/blob/master/client/public/Images/z-index-image.png "Z index Overlay")
 
 
 ## Mobile Responsiveness
 Accomplished with @media and vw, a scaling unit for mobile, tablet and desktop viewing
 
-![Mobile Responsiveness - 1](https://github.com/Chris-Hayashi/Project-One/blob/master/assets/images/mobileResponseExample.gif "Mobile Responsiveness - 1")
+![Mobile Responsiveness - 1](https://github.com/homemadechowder/Final_Project/blob/master/client/public/Images/Animated%20GIF-downsized.gif "Mobile Responsiveness - 1")
 
-![Mobile Responsiveness - 2](https://github.com/Chris-Hayashi/Project-One/blob/master/assets/images/mobileResponseExample.gif "Mobile Responsiveness - 2")
+![Mobile Responsiveness - 2](https://github.com/homemadechowder/Final_Project/blob/master/client/public/Images/Animated%20GIF-downsized_large%202.53.52%20PM.gif "Mobile Responsiveness - 2")
 
 <a name="task"></a>
 ## Task Breakdowns
