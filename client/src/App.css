@@ -2,6 +2,8 @@
   text-align: center;
   background-color: #152238;
   overflow: hidden;
+  position: relative;
+  min-height: 100vh;
 }
 
 

@@ -3,10 +3,10 @@ import '../../../App.css';
 import Nav from '../../../components/Nav';
 import axios from "axios";
 import $ from "jquery";
+import Footer from '../../../components/Footer';
 import Radium from 'radium';
 import { FacebookShareButton, TwitterShareButton, WhatsappShareButton, TelegramShareButton } from 'react-share';
 import './style.css';
-
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -25,12 +25,17 @@ const buttonStyle = {
 
 class SavedPage extends Component {
 
-    constructor(props) {
-      super(props);
-      this.state = {
-          movies: [],
-          email: ""
-      };
+  constructor(props) {
+    super(props);
+    this.state = {
+      movies: [],
+      email: ""
+    };
+  }
+  componentDidMount() {
+
+    if (window.location.pathname == "/saved/cat1") {
+      this.getMovies("cat1");
     }
     componentDidMount(){
    
@@ -57,22 +62,10 @@ class SavedPage extends Component {
             this.getMovies("cat1");
         }
                
-        
     }
+    if (window.location.pathname == "/saved/cat3") {
 
-    getMovies = (category) => {
-        var myThis = this;
-        $.ajax("/api/session", {
-            type: "GET"
-          }).then(
-            function(res) {
-              if(res.id) {
-                myThis.getCategoryMovies(category,res.id);
-              } else {
-                myThis.setState({movies: [], email: ""});
-              }
-            }
-          );
+      this.getMovies("cat3");
     }
     getCategoryMovies = (category, email) =>{
         var myThis = this;
@@ -81,8 +74,14 @@ class SavedPage extends Component {
             myThis.updateMoviesWithLinks(result);
             myThis.setState({movies: result.data.movies, email: email});
 
-        });
+      this.getMovies("cat4");
+    }
+    if (window.location.pathname == "/saved/cat5") {
 
+      this.getMovies("cat5");
+    }
+    if (window.location.pathname == "/saved") {
+      this.getMovies("cat1");
     }
 
     updateMoviesWithLinks = (result) => {
@@ -106,41 +105,36 @@ class SavedPage extends Component {
         $.ajax("/api/session", {
             type: "GET"
           }).then(
-            function(res) {
-              if(res.id) {
-                $.ajax("/api/"+res.id+"/movies/"+id, {
-                    type: "DELETE"
-                  }).then(
-                    function(res) {
-                      myThis.getMovies(category);
-                    }
-                  );
-              }
+            function (res) {
+              myThis.getMovies(category);
             }
           );
-    }
+        }
+      }
+    );
+  }
 
-    refreshComponent = () => {
-        this.getMovies("cat1");
-    }
+  refreshComponent = () => {
+    this.getMovies("cat1");
+  }
 
-    showCategory = (ev,category) => {
-        this.getMovies(category);
-        var id = "#" + ev.target.id;
-        this.updateNavLink(id);
-    }
+  showCategory = (ev, category) => {
+    this.getMovies(category);
+    var id = "#" + ev.target.id;
+    this.updateNavLink(id);
+  }
 
-    updateNavLink = (id) => {
-        var navids = ["#nav-cat1", "#nav-cat2","#nav-cat3","#nav-cat4","#nav-cat5"];
-        navids.map((value,index) => {
+  updateNavLink = (id) => {
+    var navids = ["#nav-cat1", "#nav-cat2", "#nav-cat3", "#nav-cat4", "#nav-cat5"];
+    navids.map((value, index) => {
 
-            if(id == value) {
-                $(value).attr("class","nav-link active");
-            } else {
-                $(value).attr("class","nav-link");
-            }
-        });
-    }
+      if (id == value) {
+        $(value).attr("class", "nav-link active");
+      } else {
+        $(value).attr("class", "nav-link");
+      }
+    });
+  }
 
     getSharableLink = (link) => {
       var url = window.location.href;
@@ -218,7 +212,13 @@ class SavedPage extends Component {
                     
                 }
                 </div>
-            
+              </div>
+            })
+
+          }
+
+        </div>
+        <Footer />
       </>
     );
   }
